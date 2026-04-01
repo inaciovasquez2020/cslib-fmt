@@ -2,9 +2,11 @@ import FMT.Graph.Basic
 
 namespace FMT.Graph
 
-def dist (G : Graph) (u v : G.V) : Nat := 0
+def dist (G : Graph) (u v : G.V) : Nat :=
+  if h : u = v then 0 else 1
 
 theorem dist_refl (G : Graph) (v : G.V) :
-  dist G v v = 0 := rfl
+  dist G v v = 0 := by
+  simp [dist]
 
 end FMT.Graph
