@@ -34,39 +34,34 @@ theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := by
     | zero => exact le_rfl
     | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
 
--- symmetry (conditional on undirected adjacency)
-theorem dist_symm (G : Graph)
-  (h_symm : ∀ u v, G.adj u v → G.adj v u) :
-  ∀ u v, dist G u v = dist G v u := by
-  intro u v
-  apply le_antisymm
-  · apply Nat.find_le
-    rcases Nat.find_spec (G := G) (u := u) (v := v) with ⟨w, hw⟩
-    refine ⟨{
-      len := w.len,
-      verts := fun i => w.verts ⟨w.len - i.val, by
-        have := i.isLt
-        exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)⟩,
-      start := by simpa using w.end_,
-      end_ := by simpa using w.start,
-      adjacent := by
-        intro i
-        apply h_symm
-        simpa using w.adjacent ⟨_, _⟩
-    }, hw⟩
-  · apply Nat.find_le
-    rcases Nat.find_spec (G := G) (u := v) (v := u) with ⟨w, hw⟩
-    refine ⟨{
-      len := w.len,
-      verts := fun i => w.verts ⟨w.len - i.val, by
-        have := i.isLt
-        exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)⟩,
-      start := by simpa using w.end_,
-      end_ := by simpa using w.start,
-      adjacent := by
-        intro i
-        apply h_symm
-        simpa using w.adjacent ⟨_, _⟩
-    }, hw⟩
+-- triangle inequality (via walk concatenation)
+theorem dist_triangle (G : Graph) (u v w : G.V) :
+  dist G u w ≤ dist G u v + dist G v w := by
+  apply Nat.find_le
+  rcases Nat.find_spec (G := G) (u := u) (v := v) with ⟨wu, hu⟩
+  rcases Nat.find_spec (G := G) (u := v) (v := w) with ⟨wv, hv⟩
+  refine ⟨{
+    len := wu.len + wv.len,
+    verts := fun i =>
+      if h : i.val ≤ wu.len then
+        wu.verts ⟨i.val, by
+          have := i.isLt
+          exact Nat.lt_of_le_of_lt h (Nat.lt_succ_self _)⟩
+      else
+        wv.verts ⟨i.val - wu.len, by
+          have := i.isLt
+          exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)⟩,
+    start := by simpa using wu.start,
+    end_ := by simpa using wv.end_,
+    adjacent := by
+      intro i
+      by_cases h : i.val < wu.len
+      · simpa using wu.adjacent ⟨i.val, h⟩
+      · have : i.val - wu.len < wv.len := by
+          have := i.isLt
+          exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)
+        simpa using wv.adjacent ⟨i.val - wu.len, this⟩
+  }, by
+    simp [hu, hv]⟩
 
 end FMT.Graph
