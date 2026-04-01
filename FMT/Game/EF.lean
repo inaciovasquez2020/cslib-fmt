@@ -9,7 +9,6 @@ structure Position (G H : Type) where
   left : List (Pebble G)
   right : List (Pebble H)
 
-def indistinguishable (k R : Nat) : Prop :=
-  k = k ∧ R = R
+def indistinguishable (k R : Nat) : Prop := True
 
 end FMT.Game

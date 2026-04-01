@@ -7,7 +7,7 @@ def sameEF : Prop := FMT.Game.indistinguishable 2 1
 
 theorem ef_trivializes : sameEF := by
   unfold sameEF FMT.Game.indistinguishable
-  exact ⟨rfl, rfl⟩
+  trivial
 
 theorem sep_trivializes :
     ∃ n : Nat, n = 0 := by
