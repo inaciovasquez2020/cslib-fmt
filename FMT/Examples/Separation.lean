@@ -17,10 +17,11 @@ then they cannot be the same vertex.
 theorem separation_is_nontrivial (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) (R : Nat) :
   separated G u v R → u ≠ v := by
   intro h h_eq
-  -- Instead of subst, we rewrite the distance in the hypothesis
-  have h_zero : FMT.Graph.dist G u u = 0 := by simp [FMT.Graph.dist]
+  unfold separated at h
   rw [h_eq] at h
-  rw [FMT.Graph.dist_self] at h
+  -- Using the standard distance property from your Graph.Distance module
+  have h_zero := FMT.Graph.dist_self (G := G) v
+  rw [h_zero] at h
   exact Nat.not_lt_zero R h
 
 end FMT.Examples
