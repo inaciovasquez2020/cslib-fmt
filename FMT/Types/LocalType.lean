@@ -1,5 +1,5 @@
 namespace FMT.Types
 
-def LocalType (G : Type) : Type := Unit
+def LocalType : Type := Unit
 
 end FMT.Types
