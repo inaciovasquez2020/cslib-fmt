@@ -7,4 +7,7 @@ def nonFactorizingWitness : Prop :=
 
 axiom nonFactorizingWitness_exists : nonFactorizingWitness
 
+theorem nonFactorization_holds : nonFactorizingWitness := by
+  exact nonFactorizingWitness_exists
+
 end FMT.Invariants
