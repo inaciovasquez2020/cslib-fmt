@@ -1,20 +1,13 @@
 import FMT.Types.LocalType
-import FMT.Invariants.CycleSpace
 
 namespace FMT.Invariants
 
-structure Invariant where
-  eval : Nat → Nat
-
-def evalCycle (V E c : Nat) : Nat :=
-  E - V + c
-
 def evalLocal (t : FMT.Types.LocalType) : Nat :=
-  t.code
+  match t with
+  | true => 1
+  | false => 0
 
-theorem eval_consistency :
-  ∀ n : Nat, evalLocal ⟨n⟩ = n := by
-  intro n
-  rfl
+theorem evalLocal_spec (t : FMT.Types.LocalType) :
+  evalLocal t = (match t with | true => 1 | false => 0) := rfl
 
 end FMT.Invariants

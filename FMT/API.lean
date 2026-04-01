@@ -1,16 +1,14 @@
-import FMT.Graph.Basic
 import FMT.Types.LocalType
-import FMT.Invariants.CycleSpace
+import FMT.Invariants.Eval
 
-namespace FMT
+namespace FMT.API
 
-structure Query where
-  radius : Nat
+def evalAPI (t : FMT.Types.LocalType) : Nat :=
+  match t with
+  | true => 1
+  | false => 0
 
-def extractType (q : Query) (n : Nat) : Types.LocalType :=
-  ⟨q.radius + n⟩
+theorem evalAPI_spec (t : FMT.Types.LocalType) :
+  evalAPI t = (match t with | true => 1 | false => 0) := rfl
 
-def invariantDim (V E c : Nat) : Invariants.CycleSpace :=
-  ⟨E - V + c⟩
-
-end FMT
+end FMT.API
