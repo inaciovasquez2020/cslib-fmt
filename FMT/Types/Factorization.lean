@@ -13,6 +13,6 @@ theorem factors_example : ∃ f : LocalType → Nat, factorsThrough f := by
   refine ⟨fun _ => 0, ?_⟩
   refine ⟨fun _ => 0, ?_⟩
   intro x
-  simp [code]
+  simp
 
 end FMT.Types
