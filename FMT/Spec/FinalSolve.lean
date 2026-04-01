@@ -2,6 +2,7 @@ import FMT.Graph.Basic
 import FMT.Graph.Distance
 import FMT.Game.EF
 import FMT.Types.LocalType
+import FMT.Types.Factorization
 import FMT.Examples.Separation
 import FMT.Bridge.LocalGlobal
 import FMT.Invariants.NonFactorization
