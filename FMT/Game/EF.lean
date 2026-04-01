@@ -1,14 +1,7 @@
-import FMT.Graph.Basic
-
 namespace FMT.Game
 
-structure Pebble (G : Type) where
-  pos : G
+def EFGame : Type := Unit
 
-structure Position (G H : Type) where
-  left  : List (Pebble G)
-  right : List (Pebble H)
-
-def indistinguishable (k R : Nat) : Prop := True
+def DuplicatorWins : Prop := True
 
 end FMT.Game
