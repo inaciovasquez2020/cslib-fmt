@@ -14,6 +14,8 @@ axiom G2 : Type
 def sameEF : Prop := FMT.Game.indistinguishable 2 1
 def sameSep (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) (R : Nat) : Prop := separated G u v R
 
+def sameFO (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) (R : Nat) : Prop := FO_equiv G u v R
+
 theorem ef_trivializes : sameEF := by
   trivial
 
