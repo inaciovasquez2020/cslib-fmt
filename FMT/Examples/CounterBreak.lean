@@ -18,7 +18,7 @@ theorem ef_trivializes : sameEF := by
   trivial
 
 theorem sep_trivializes : sameSep := by
-  trivial
+  exact ⟨0, rfl⟩
 
 theorem dist_self (G : FMT.Graph.Graph) [DecidableEq G.V] (u : G.V) :
     FMT.Graph.dist G u u = 0 := by
