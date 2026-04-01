@@ -17,7 +17,7 @@ structure Walk (G : Graph) (u v : G.V) :=
 noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
   Nat.find (fun n => ∃ w : Walk G u v, w.len = n)
 
--- reflexivity of distance
+-- reflexivity
 theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := by
   apply Nat.find_eq_iff.mpr
   constructor
@@ -33,5 +33,40 @@ theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := by
     cases w.len with
     | zero => exact le_rfl
     | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
+
+-- symmetry (conditional on undirected adjacency)
+theorem dist_symm (G : Graph)
+  (h_symm : ∀ u v, G.adj u v → G.adj v u) :
+  ∀ u v, dist G u v = dist G v u := by
+  intro u v
+  apply le_antisymm
+  · apply Nat.find_le
+    rcases Nat.find_spec (G := G) (u := u) (v := v) with ⟨w, hw⟩
+    refine ⟨{
+      len := w.len,
+      verts := fun i => w.verts ⟨w.len - i.val, by
+        have := i.isLt
+        exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)⟩,
+      start := by simpa using w.end_,
+      end_ := by simpa using w.start,
+      adjacent := by
+        intro i
+        apply h_symm
+        simpa using w.adjacent ⟨_, _⟩
+    }, hw⟩
+  · apply Nat.find_le
+    rcases Nat.find_spec (G := G) (u := v) (v := u) with ⟨w, hw⟩
+    refine ⟨{
+      len := w.len,
+      verts := fun i => w.verts ⟨w.len - i.val, by
+        have := i.isLt
+        exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)⟩,
+      start := by simpa using w.end_,
+      end_ := by simpa using w.start,
+      adjacent := by
+        intro i
+        apply h_symm
+        simpa using w.adjacent ⟨_, _⟩
+    }, hw⟩
 
 end FMT.Graph
