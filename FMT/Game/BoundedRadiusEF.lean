@@ -1,5 +1,10 @@
+import FMT.Graph.Basic
+
 namespace FMT.Game
 
-def winsLocal (G H : Type) (k r : Nat) : Prop := True
+structure PositionBR (G H : Type) where
+  pebbles : Nat
+
+def winsLocal (_k _R : Nat) : Prop := True
 
 end FMT.Game

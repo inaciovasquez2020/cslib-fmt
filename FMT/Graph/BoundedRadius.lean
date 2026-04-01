@@ -1,9 +1,7 @@
 import FMT.Graph.Basic
--- import FMT.Graph.Distance
 
 namespace FMT.Graph
 
-def Ball (G : Graph) (r : Nat) (v : G.V) :=
-  { u : G.V // True }
+def Ball {G : Graph} (_r : Nat) : Type := G.V
 
 end FMT.Graph
