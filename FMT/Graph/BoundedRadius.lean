@@ -7,14 +7,13 @@ namespace FMT.Graph
 def Ball (G : Graph) (r : Nat) (v : G.V) :=
   { u : G.V // dist G v u ≤ r }
 
--- center is always in its own ball (using dist_refl)
+-- membership lemma (coercion-based)
+theorem mem_ball {G : Graph} {r : Nat} {v u : G.V} :
+  u ∈ Ball G r v ↔ dist G v u ≤ r := Iff.rfl
+
+-- center is always in its own ball
 theorem center_mem_ball (G : Graph) (r : Nat) (v : G.V) :
-  (⟨v, by
-      have h : dist G v v = 0 := dist_refl G v
-      simpa [h] using (Nat.zero_le r)
-   ⟩ : Ball G r v) = ⟨v, by
-      have h : dist G v v = 0 := dist_refl G v
-      simpa [h] using (Nat.zero_le r)
-   ⟩ := rfl
+  v ∈ Ball G r v := by
+  simpa [mem_ball, dist_refl]
 
 end FMT.Graph
