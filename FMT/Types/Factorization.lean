@@ -1,16 +1,14 @@
-import FMT.Types.LocalType
+import FMT.Graph.Basic
 
 namespace FMT.Types
 
-def factorsThrough (f : LocalType → Nat) : Prop :=
-  ∃ g : Nat → Nat, ∀ t : LocalType, f t = g t.code
+-- abstract local type extractor
+constant LocalType : Type
 
-def invariant (n : Nat) : Nat := n
-
-theorem factors_identity :
-  factorsThrough (fun t => t.code) := by
-  refine ⟨fun n => n, ?_⟩
-  intro t
-  rfl
+-- factorization through local types (commutative form)
+structure FactorsThrough
+  {G : Type} (f : G → Nat) (τ : G → LocalType) : Prop :=
+  (g : LocalType → Nat)
+  (comm : ∀ x, f x = g (τ x))
 
 end FMT.Types
