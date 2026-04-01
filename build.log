@@ -1,67 +1,41 @@
 info: [root]: lakefile.lean and lakefile.toml are both present; using lakefile.lean
-✔ [4/19] Built FMT.Graph.Basic (295ms)
-⚠ [5/19] Built FMT.Graph.Distance (550ms)
+⚠ [3/15] Replayed FMT.Graph.Distance
 warning: FMT/Graph/Distance.lean:6:22: unused variable `u`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
 warning: FMT/Graph/Distance.lean:6:24: unused variable `v`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-✖ [6/19] Building FMT.Types.Factorization (727ms)
-trace: .> LEAN_PATH=/Users/inaciof.vasquez/cslib-fmt/.lake/build/lib/lean /Users/inaciof.vasquez/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /Users/inaciof.vasquez/cslib-fmt/FMT/Types/Factorization.lean -o /Users/inaciof.vasquez/cslib-fmt/.lake/build/lib/lean/FMT/Types/Factorization.olean -i /Users/inaciof.vasquez/cslib-fmt/.lake/build/lib/lean/FMT/Types/Factorization.ilean -c /Users/inaciof.vasquez/cslib-fmt/.lake/build/ir/FMT/Types/Factorization.c --setup /Users/inaciof.vasquez/cslib-fmt/.lake/build/ir/FMT/Types/Factorization.setup.json --json
-error: FMT/Types/Factorization.lean:5:0: unexpected identifier; expected command
-error: Lean exited with code 1
-✔ [7/19] Built FMT.Invariants.CycleSpace (936ms)
-✔ [8/19] Built FMT.Types.LocalType (1.1s)
-✔ [9/19] Built FMT.Examples.HighGirthLift (1.2s)
-⚠ [10/19] Built FMT.Game.EF (1.4s)
-warning: FMT/Game/EF.lean:12:23: unused variable `k`
+⚠ [4/15] Replayed FMT.Graph.BoundedRadius
+warning: FMT/Graph/BoundedRadius.lean:5:22: unused variable `r`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-warning: FMT/Game/EF.lean:12:25: unused variable `R`
+warning: FMT/Graph/BoundedRadius.lean:5:32: unused variable `v`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-⚠ [11/19] Built FMT.Examples.Separation (1.5s)
-warning: FMT/Examples/Separation.lean:7:14: unused variable `G`
+warning: FMT/Graph/BoundedRadius.lean:6:4: unused variable `u`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-warning: FMT/Examples/Separation.lean:7:16: unused variable `H`
+⚠ [5/15] Replayed FMT.Types.Factorization
+warning: FMT/Types/Factorization.lean:3:31: unused variable `f`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-warning: FMT/Examples/Separation.lean:9:15: unused variable `G`
+warning: FMT/Types/Factorization.lean:3:45: unused variable `τ`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-warning: FMT/Examples/Separation.lean:9:17: unused variable `H`
-
-Note: This linter can be disabled with `set_option linter.unusedVariables false`
-✖ [12/19] Building FMT.Graph.BoundedRadius (1.0s)
-trace: .> LEAN_PATH=/Users/inaciof.vasquez/cslib-fmt/.lake/build/lib/lean /Users/inaciof.vasquez/.elan/toolchains/leanprover--lean4---v4.29.0-rc6/bin/lean /Users/inaciof.vasquez/cslib-fmt/FMT/Graph/BoundedRadius.lean -o /Users/inaciof.vasquez/cslib-fmt/.lake/build/lib/lean/FMT/Graph/BoundedRadius.olean -i /Users/inaciof.vasquez/cslib-fmt/.lake/build/lib/lean/FMT/Graph/BoundedRadius.ilean -c /Users/inaciof.vasquez/cslib-fmt/.lake/build/ir/FMT/Graph/BoundedRadius.c --setup /Users/inaciof.vasquez/cslib-fmt/.lake/build/ir/FMT/Graph/BoundedRadius.setup.json --json
-error: FMT/Graph/BoundedRadius.lean:12:2: failed to synthesize instance of type class
-  Membership G.V Type
-
-Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
-error: FMT/Graph/BoundedRadius.lean:16:2: failed to synthesize instance of type class
-  Membership G.V Type
-
-Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.
-error: FMT/Graph/BoundedRadius.lean:17:2: Tactic `assumption` failed
-
-G : Graph
-r : Nat
-v : G.V
-⊢ sorry ()
-error: Lean exited with code 1
-✔ [14/19] Built FMT.API (754ms)
-✔ [15/19] Built FMT.Invariants.Eval (866ms)
-✔ [16/19] Built FMT.Bridge.LocalGlobal (233ms)
-⚠ [17/19] Built FMT.Invariants.NonFactorization (223ms)
+⚠ [10/15] Replayed FMT.Invariants.NonFactorization
 warning: FMT/Invariants/NonFactorization.lean:6:25: unused variable `f`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
 warning: FMT/Invariants/NonFactorization.lean:8:21: unused variable `n`
 
 Note: This linter can be disabled with `set_option linter.unusedVariables false`
-Some required targets logged failures:
-- FMT.Types.Factorization
-- FMT.Graph.BoundedRadius
-error: build failed
+⚠ [13/15] Built FMT.Examples.Separation (269ms)
+warning: FMT/Examples/Separation.lean:5:15: unused variable `G`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: FMT/Examples/Separation.lean:5:17: unused variable `H`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [14/15] Built FMT (234ms)
+Build completed successfully (15 jobs).
