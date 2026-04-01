@@ -1,3 +1,4 @@
 namespace FMT.Game
-def EFGame : Type := Unit
+structure EFConfig where
+  pebbles : Nat
 end FMT.Game

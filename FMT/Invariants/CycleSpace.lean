@@ -1,3 +1,4 @@
 namespace FMT.Invariants
-def CycleSpace : Type := Unit
+structure CycleSpace where
+  dim : Nat
 end FMT.Invariants
