@@ -2,15 +2,10 @@ import FMT.Graph.Basic
 
 namespace FMT.Examples
 
-structure LiftedGraph where
-  V : Type
+open FMT.Graph
 
-def highGirthPair : LiftedGraph × LiftedGraph :=
-  ⟨⟨Unit⟩, ⟨Unit⟩⟩
-
-theorem local_indistinguishable :
-  ∀ k R : Nat, True := by
-  intro k R
-  trivial
+def trivialGraph : Graph :=
+{ V := Unit,
+  Adj := fun _ _ => False }
 
 end FMT.Examples
