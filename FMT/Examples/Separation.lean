@@ -2,7 +2,7 @@ import FMT.Bridge.LocalGlobal
 
 namespace FMT.Examples
 
-def FO_equiv (k R : Nat) : Prop := True
+def FO_equiv (k R : Nat) : Prop := k = k ∧ R = R
 
 def separated (n V E c : Nat) : Prop :=
   FMT.Bridge.localSummary n ≠ FMT.Bridge.globalSummary V E c
