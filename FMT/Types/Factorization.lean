@@ -1,7 +1,5 @@
-import FMT.Types.LocalType
-
 namespace FMT.Types
 
-def factorsThrough (f : LocalType → Nat) : Prop := True
+def FactorsThrough {G : Type} (f : G → Nat) (τ : G → Type) : Prop := True
 
 end FMT.Types

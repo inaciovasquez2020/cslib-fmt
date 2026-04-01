@@ -1,7 +1,5 @@
-import FMT.Examples.Separation
-
 namespace FMT.Bridge
 
-def localToGlobal : Prop := True
+def LocalGlobalStub : Prop := True
 
 end FMT.Bridge
