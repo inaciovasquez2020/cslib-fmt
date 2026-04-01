@@ -1,5 +1,9 @@
+import FMT.API
+
 namespace FMT.Invariants
 
-def NonFactorization : Prop := True
+def nonFactorizationWitness : Prop := True
+
+theorem nonFactorizationWitness_trivial : nonFactorizationWitness := trivial
 
 end FMT.Invariants
