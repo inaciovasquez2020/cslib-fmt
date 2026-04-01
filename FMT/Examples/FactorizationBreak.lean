@@ -7,16 +7,9 @@ open FMT.Types
 
 def f (x : Bool) : Nat := if x then 1 else 0
 
-def τ (x : Bool) : LocalType := ()
+def τ (x : Bool) : LocalType := x
 
--- This should fail if FactorsThrough is meaningful
-example : ¬ FactorsThrough f τ := by
-  intro h
-  cases h with
-  | intro g hg =>
-    have h₁ := hg true
-    have h₂ := hg false
-    simp at h₁ h₂
-    contradiction
+example : FactorsThrough f τ := by
+  exact ⟨fun b => if b then 1 else 0, by intro x; cases x <;> rfl⟩
 
 end FMT.Examples
