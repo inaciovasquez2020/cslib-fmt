@@ -1,22 +1,25 @@
-import FMT.Types.LocalType
-import FMT.Invariants.CycleSpace
-import FMT.Invariants.NonFactorization
+import FMT.Graph.Basic
+import FMT.Graph.Distance
 
 namespace FMT.Examples
 
-structure Instance where
-  n : Nat
+/-- Two vertices are separated if their distance in G is strictly greater than R -/
+def separated (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) (R : Nat) : Prop :=
+  FMT.Graph.dist G u v > R
 
-def FO_equiv (k R : Nat) : Prop :=
-  k = k ∧ R = R
+/-- Minimal reflexive FO equivalence stub -/
+def FO_equiv (k R : Nat) : Prop := k = k ∧ R = R
 
-def separated : Prop :=
-  ∃ n : Nat, n = 0
-
-theorem separation_theorem : ∀ k R : Nat, ∃ _n : Nat, FO_equiv k R ∧ separated := by
-  intro k R
-  refine ⟨0, ?_, ?_⟩
-  · exact ⟨rfl, rfl⟩
-  · exact ⟨0, rfl⟩
+/--
+A refinement theorem: if u and v are separated by R,
+then they cannot be the same vertex.
+-/
+theorem separation_is_nontrivial (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) (R : Nat) :
+  separated G u v R → u ≠ v := by
+  intro h h_eq
+  subst h_eq
+  unfold separated at h
+  -- simp here typically handles the 0 > R contradiction automatically
+  simp [FMT.Graph.dist] at h
 
 end FMT.Examples
