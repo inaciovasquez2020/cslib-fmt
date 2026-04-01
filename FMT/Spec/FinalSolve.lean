@@ -18,16 +18,23 @@ class FinalSolveSpec where
   indistinguishable_semantic :
     Nat → Nat → Prop
   factorsThrough_semantic :
-    Prop
+    (FMT.Types.LocalType → Nat) → Prop
   separated_semantic :
-    Prop
+    ∀ (G : FMT.Graph.Graph), [DecidableEq G.V] → G.V → G.V → Nat → Prop
   localGlobal_semantic :
     Prop
   nonFactorization_semantic :
     Prop
-  constructive_separator :
-    ∀ (_k _R : Nat), ∃ _n : Nat, True
 
-axiom final_solve_spec : FinalSolveSpec
+def canonicalFinalSolveSpec : FinalSolveSpec where
+  dist_semantic := fun G u v => FMT.Graph.dist G u v
+  ball_semantic := fun G R v => FMT.Graph.Ball (G := G) R
+  indistinguishable_semantic := fun k R => FMT.Game.indistinguishable k R
+  factorsThrough_semantic := fun f => FMT.Types.factorsThrough f
+  separated_semantic := fun G _ u v R => FMT.Examples.separated G u v R
+  localGlobal_semantic := True
+  nonFactorization_semantic := True
+
+abbrev final_solve_spec : FinalSolveSpec := canonicalFinalSolveSpec
 
 end FMT.Spec
