@@ -2,7 +2,9 @@ import FMT.Types.LocalType
 
 namespace FMT.Types
 
-def code : LocalType → Nat := fun _ => 0
+def code : LocalType → Nat
+  | false => 0
+  | true  => 0
 
 def factorsThrough (f : LocalType → Nat) : Prop :=
   ∃ g : Nat → Nat, ∀ x, f x = g (code x)
@@ -10,9 +12,9 @@ def factorsThrough (f : LocalType → Nat) : Prop :=
 def invariant (n : Nat) : Nat := n
 
 theorem factors_example : ∃ f : LocalType → Nat, factorsThrough f := by
-  refine ⟨fun _ => 0, ?_⟩
-  refine ⟨fun _ => 0, ?_⟩
+  refine ⟨fun x => code x, ?_⟩
+  refine ⟨fun n => n, ?_⟩
   intro x
-  simp
+  rfl
 
 end FMT.Types
