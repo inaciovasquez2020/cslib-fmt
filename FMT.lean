@@ -14,3 +14,4 @@ import FMT.Bridge.LocalGlobal
 import FMT.API
 
 import FMT.Spec.FinalSolve
+import FMT.API.FinalSolve
