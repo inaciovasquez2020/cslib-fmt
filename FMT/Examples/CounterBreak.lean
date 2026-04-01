@@ -8,7 +8,8 @@ import FMT.API.FinalSolve
 
 namespace FMT.Examples
 
-axiom G1 G2 : Type
+axiom G1 : Type
+axiom G2 : Type
 
 def sameEF : Prop := FMT.Game.indistinguishable 2 1
 def sameSep : Prop := separated
