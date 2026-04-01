@@ -17,4 +17,21 @@ structure Walk (G : Graph) (u v : G.V) :=
 noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
   Nat.find (fun n => ∃ w : Walk G u v, w.len = n)
 
+-- reflexivity of distance
+theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := by
+  apply Nat.find_eq_iff.mpr
+  constructor
+  · exact ⟨{
+      len := 0,
+      verts := fun _ => v,
+      start := rfl,
+      end_ := rfl,
+      adjacent := by intro i; cases i
+    }, rfl⟩
+  · intro m hm
+    rcases hm with ⟨w, hw⟩
+    cases w.len with
+    | zero => exact le_rfl
+    | succ k => exact Nat.succ_le_succ (Nat.zero_le k)
+
 end FMT.Graph
