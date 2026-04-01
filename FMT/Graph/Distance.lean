@@ -1,3 +1,4 @@
+import Std.Data.Nat.Lemmas
 import FMT.Graph.Basic
 
 namespace FMT.Graph
