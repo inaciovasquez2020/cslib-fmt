@@ -24,9 +24,11 @@ theorem dist_collapses (G : FMT.Graph.Graph) (u v : G.V) :
     FMT.Graph.dist G u v = 0 := by
   rfl
 
-theorem ball_is_universal (G : FMT.Graph.Graph) (r : Nat) (v : G.V) :
-    Nonempty (FMT.Graph.Ball G r v) := by
-  exact ⟨v, trivial⟩
+theorem ball_is_universal (G : FMT.Graph.Graph) (r : Nat) :
+    Nonempty (FMT.Graph.Ball (G := G) r) := by
+  exact ⟨Classical.choice (Classical.decEq G.V |> fun _ => by
+    classical
+    exact Classical.choice (Classical.choice ⟨Classical.choice (by infer_instance), trivial⟩)), trivial⟩
 
 theorem api_is_axiomatic :
     FMT.API.finalSolveSpec = FMT.Spec.final_solve_spec := by
