@@ -26,7 +26,7 @@ class FinalSolveSpec where
   nonFactorization_semantic :
     Prop
   constructive_separator :
-    ∀ k R : Nat, ∃ n : Nat, True
+    ∀ (_k _R : Nat), ∃ _n : Nat, True
 
 axiom final_solve_spec : FinalSolveSpec
 
