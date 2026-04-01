@@ -1,11 +1,6 @@
-import Init
 import FMT.Graph.Basic
 
 namespace FMT.Graph
-
-structure Graph where
-  V : Type
-  Adj : V → V → Prop
 
 inductive Path (G : Graph) : G.V → G.V → Type where
 | nil (v : G.V) : Path G v v
