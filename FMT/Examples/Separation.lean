@@ -11,7 +11,7 @@ def FO_equiv (_k _R : Nat) : Prop := True
 
 def separated : Prop := True
 
-theorem separation_theorem : ∀ k R : Nat, ∃ n : Nat, FO_equiv k R ∧ separated := by
+theorem separation_theorem : ∀ k R : Nat, ∃ _n : Nat, FO_equiv k R ∧ separated := by
   intro _k _R
   exact ⟨0, trivial, trivial⟩
 
