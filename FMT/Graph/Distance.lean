@@ -10,7 +10,7 @@ structure Walk (G : Graph) (u v : G.V) :=
   (end_ : verts ⟨len, Nat.lt_succ_self _⟩ = v)
   (adjacent :
     ∀ i : Fin len,
-      G.adj (verts ⟨i.val, Nat.lt_trans i.isLt (Nat.lt_succ_self _)⟩)
+      G.Adj (verts ⟨i.val, Nat.lt_trans i.isLt (Nat.lt_succ_self _)⟩)
             (verts ⟨i.val + 1, Nat.succ_lt_succ i.isLt⟩))
 
 -- graph distance as minimal walk length
@@ -56,11 +56,11 @@ theorem dist_triangle (G : Graph) (u v w : G.V) :
     adjacent := by
       intro i
       by_cases h : i.val < wu.len
-      · simpa using wu.adjacent ⟨i.val, h⟩
+      · simpa using wu.Adjacent ⟨i.val, h⟩
       · have : i.val - wu.len < wv.len := by
           have := i.isLt
           exact Nat.sub_lt (Nat.lt_succ_self _) (Nat.pos_of_lt this)
-        simpa using wv.adjacent ⟨i.val - wu.len, this⟩
+        simpa using wv.Adjacent ⟨i.val - wu.len, this⟩
   }, by
     simp [hu, hv]⟩
 

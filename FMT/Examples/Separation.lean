@@ -9,7 +9,7 @@ def FO_equiv (G H : Graph) : Prop := G.V ≃ H.V
 
 -- nontrivial separation via edge-count difference
 def separated (G H : Graph) : Prop :=
-  (∃ u v, G.adj u v) ≠ (∃ u v, H.adj u v)
+  (∃ u v, G.Adj u v) ≠ (∃ u v, H.Adj u v)
 
 -- explicit witness pair
 def G1 : Graph :=
