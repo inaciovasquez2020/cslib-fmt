@@ -1,9 +1,11 @@
 import FMT.Types.LocalType
+import FMT.Invariants.Eval
 
 namespace FMT.API
 
-def useLocalType : FMT.Types.LocalType := ()
+def evalLocal : FMT.Types.LocalType → Nat := fun _ => 0
 
-theorem useLocalType_ok : useLocalType = () := rfl
+theorem evalLocal_const (x : FMT.Types.LocalType) :
+  evalLocal x = 0 := rfl
 
 end FMT.API
