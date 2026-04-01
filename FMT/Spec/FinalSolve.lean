@@ -32,7 +32,7 @@ abbrev canonicalFinalSolveSpec : FinalSolveSpec where
   indistinguishable_semantic := fun k R => FMT.Game.indistinguishable k R
   factorsThrough_semantic := fun f => FMT.Types.factorsThrough f
   separated_semantic := fun G _ u v R => by
-    classical
+    let _ : DecidableEq G.V := Classical.decEq _
     exact FMT.Examples.separated G u v R
   localGlobal_semantic := FMT.Bridge.localToGlobal
   nonFactorization_semantic := FMT.Invariants.nonFactorizingWitness
