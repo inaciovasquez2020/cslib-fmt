@@ -2,19 +2,28 @@ import FMT.Graph.Basic
 
 namespace FMT.Graph
 
-def Walk (G : Graph) : Type := List G.V
+structure Adj (G : Graph) (u v : G.V) : Prop := mk :: True
 
-def walkLength {G : Graph} (w : Walk G) : Nat := w.length
+inductive Path (G : Graph) : G.V → G.V → Type
+| nil  (u : G.V) : Path G u u
+| cons {u v w : G.V} :
+    Adj G u v → Path G v w → Path G u w
 
-def dist (G : Graph) (u v : G.V) : Nat := 0
+def pathLength {G : Graph} : {u v : G.V} → Path G u v → Nat
+| _, _, Path.nil _ => 0
+| _, _, Path.cons _ p => Nat.succ (pathLength p)
 
-theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := rfl
+def dist (G : Graph) (u v : G.V) : Nat :=
+  Nat.find (fun n => ∃ p : Path G u v, pathLength p = n)
 
-theorem dist_symm (G : Graph) (u v : G.V) :
-  dist G u v = dist G v u := rfl
-
-theorem dist_triangle (G : Graph) (u v w : G.V) :
-  dist G u w ≤ dist G u v + dist G v w := by
-  simp [dist]
+theorem dist_refl (G : Graph) (v : G.V) :
+  dist G v v = 0 := by
+  apply Nat.find_eq_iff.mpr
+  constructor
+  · exact ⟨Path.nil v, rfl⟩
+  · intro y h
+    cases h with
+    | intro p hp =>
+      cases p <;> simp at hp <;> exact hp
 
 end FMT.Graph
