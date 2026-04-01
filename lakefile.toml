@@ -1,0 +1,10 @@
+name = "FMT"
+version = "0.1.0"
+defaultTargets = ["fmt"]
+
+[[lean_lib]]
+name = "FMT"
+
+[[lean_exe]]
+name = "fmt"
+root = "Main"
