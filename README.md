@@ -20,5 +20,13 @@ This repository implements a CSLIB-aligned finite-model theory library, followin
   https://homepages.inf.ed.ac.uk/libkin/fmt/fmt.pdf
 
 ## Status
-Scaffold (executable); modules to be refined toward full formal proofs.
+
+Current closure checkpoint: `cslib-fmt-closure-2026-04-01`
+
+- Branch: `feat/cslib-fmt`
+- Head: `0956fee`
+- Build status: green (`lake build`)
+- Release checkpoint: `cslib-fmt-closure-2026-04-01`
+
+This repository is currently at a build-green closure checkpoint for the present formalization. The checkpoint records the semantic replacements and cleanup reflected in the current `feat/cslib-fmt` branch state. The release is intended as a repository checkpoint and should be read exactly at the level supported by the code and release notes.
 
