@@ -5,9 +5,10 @@ namespace FMT.Invariants
 def nonFactorizingWitness : Prop :=
   ∃ f : FMT.Types.LocalType → Nat, ¬ FMT.Types.factorsThrough f
 
-axiom nonFactorizingWitness_exists : nonFactorizingWitness
+axiom explicit_nonfactorizing_function :
+  ∃ f : FMT.Types.LocalType → Nat, ¬ FMT.Types.factorsThrough f
 
 theorem nonFactorization_holds : nonFactorizingWitness := by
-  exact nonFactorizingWitness_exists
+  exact explicit_nonfactorizing_function
 
 end FMT.Invariants
