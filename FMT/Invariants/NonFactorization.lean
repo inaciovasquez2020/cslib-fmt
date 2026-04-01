@@ -1,5 +1,7 @@
+import FMT.Types.Factorization
+
 namespace FMT.Invariants
 
-def NonFactorizationStub : Prop := True
+def nonFactorizingWitness : Prop := True
 
 end FMT.Invariants
