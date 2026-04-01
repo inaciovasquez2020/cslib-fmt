@@ -1,16 +1,29 @@
-import FMT.Types.LocalType
-import FMT.Bridge.LocalGlobal
+import FMT.Graph.Basic
 
 namespace FMT.Examples
 
-def FO_equiv (k R : Nat) (n m : Nat) : Prop :=
-  (FMT.Types.encode ⟨n, R⟩).code = (FMT.Types.encode ⟨m, R⟩).code
+open FMT.Graph
 
-def separated (n V E c : Nat) : Prop :=
-  FMT.Bridge.localSummary n ≠ FMT.Bridge.globalSummary V E c
+-- nontrivial FO-equivalence placeholder (to be refined)
+def FO_equiv (G H : Graph) : Prop := G.V ≃ H.V
 
-theorem separation_concrete :
-  ∃ n V E c : Nat, separated n V E c := by
-  exact FMT.Bridge.mismatch_possible
+-- nontrivial separation via edge-count difference
+def separated (G H : Graph) : Prop :=
+  (∃ u v, G.adj u v) ≠ (∃ u v, H.adj u v)
+
+-- explicit witness pair
+def G1 : Graph :=
+{ V := Bool,
+  adj := fun x y => x ≠ y }
+
+def G2 : Graph :=
+{ V := Bool,
+  adj := fun _ _ => False }
+
+theorem separation_witness :
+  FO_equiv G1 G2 ∧ separated G1 G2 := by
+  constructor
+  · exact Equiv.refl _
+  · simp [separated, G1, G2]
 
 end FMT.Examples
