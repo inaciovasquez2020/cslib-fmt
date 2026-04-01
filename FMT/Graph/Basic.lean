@@ -1,5 +1,7 @@
 namespace FMT.Graph
+
 structure Graph where
-  V : Type
+  V   : Type
   Adj : V → V → Prop
+
 end FMT.Graph
