@@ -1,19 +1,14 @@
-import FMT.Types.LocalType
-import FMT.Invariants.CycleSpace
-import FMT.Invariants.NonFactorization
+import FMT.Bridge.LocalGlobal
 
 namespace FMT.Examples
 
-structure Instance where
-  n : Nat
-
 def FO_equiv (k R : Nat) : Prop := True
 
-def separated : Prop := True
+def separated (n V E c : Nat) : Prop :=
+  FMT.Bridge.localSummary n ≠ FMT.Bridge.globalSummary V E c
 
-theorem separation_theorem :
-  ∀ k R : Nat, ∃ n : Nat, FO_equiv k R ∧ separated := by
-  intro k R
-  exact ⟨0, trivial, trivial⟩
+theorem separation_concrete :
+  ∃ n V E c : Nat, separated n V E c := by
+  exact FMT.Bridge.mismatch_possible
 
 end FMT.Examples
