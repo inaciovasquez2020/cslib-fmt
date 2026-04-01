@@ -20,7 +20,7 @@ theorem ef_trivializes : sameEF := by
 theorem sep_trivializes : sameSep := by
   trivial
 
-theorem dist_collapses (G : FMT.Graph.Graph) (u v : G.V) :
+theorem dist_collapses (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) :
     FMT.Graph.dist G u v = 0 := by
   rfl
 
