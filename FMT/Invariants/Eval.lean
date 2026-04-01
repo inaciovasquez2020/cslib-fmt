@@ -1,20 +1,10 @@
-import FMT.Types.LocalType
-import FMT.Invariants.CycleSpace
+import FMT.Graph.Basic
 
 namespace FMT.Invariants
 
-structure Invariant where
-  eval : Nat → Nat
+def evalInvariant {G : Type} (I : G → Nat) (x : G) : Nat := I x
 
-def evalCycle (V E c : Nat) : Nat :=
-  E - V + c
-
-def evalLocal (t : FMT.Types.LocalType) : Nat :=
-  t.code
-
-theorem eval_consistency :
-  ∀ n : Nat, evalLocal ⟨n⟩ = n := by
-  intro n
-  rfl
+theorem evalInvariant_eq {G : Type} (I : G → Nat) (x : G) :
+  evalInvariant I x = I x := rfl
 
 end FMT.Invariants
