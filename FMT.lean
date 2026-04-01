@@ -12,3 +12,5 @@ import FMT.Examples.HighGirthLift
 import FMT.Examples.Separation
 import FMT.Bridge.LocalGlobal
 import FMT.API
+
+import FMT.Spec.FinalSolve
