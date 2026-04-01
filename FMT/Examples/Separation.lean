@@ -17,11 +17,9 @@ then they cannot be the same vertex.
 theorem separation_is_nontrivial (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) (R : Nat) :
   separated G u v R → u ≠ v := by
   intro h h_eq
+  subst h_eq
   unfold separated at h
-  rw [h_eq] at h
-  -- Using the standard distance property from your Graph.Distance module
-  have h_zero := FMT.Graph.dist_self (G := G) v
-  rw [h_zero] at h
-  exact Nat.not_lt_zero R h
+  -- simp here typically handles the 0 > R contradiction automatically
+  simp [FMT.Graph.dist] at h
 
 end FMT.Examples
