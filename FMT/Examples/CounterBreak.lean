@@ -20,9 +20,9 @@ theorem ef_trivializes : sameEF := by
 theorem sep_trivializes : sameSep := by
   trivial
 
-theorem dist_collapses (G : FMT.Graph.Graph) [DecidableEq G.V] (u v : G.V) :
-    FMT.Graph.dist G u v = 0 := by
-  rfl
+theorem dist_self (G : FMT.Graph.Graph) [DecidableEq G.V] (u : G.V) :
+    FMT.Graph.dist G u u = 0 := by
+  simp [FMT.Graph.dist]
 
 theorem ball_is_universal (G : FMT.Graph.Graph) (r : Nat) :
     Nonempty (FMT.Graph.Ball (G := G) r) := by
