@@ -1,4 +1,10 @@
-import FMT.Game.EF
+import FMT.Graph.Basic
+
 namespace FMT.Game
-def BoundedEF : Type := Unit
+
+structure PositionBR (G H : Type) where
+  pebbles : Nat
+
+def winsLocal (k R : Nat) : Prop := True
+
 end FMT.Game

@@ -1,14 +1,16 @@
 import FMT.Graph.Basic
-import FMT.Game.EF
 import FMT.Types.LocalType
 import FMT.Invariants.CycleSpace
 
 namespace FMT
 
-def extractType (n : Nat) : Types.LocalType :=
-  ⟨n⟩
+structure Query where
+  radius : Nat
 
-def invariantDim (n : Nat) : Invariants.CycleSpace :=
-  ⟨n⟩
+def extractType (q : Query) (n : Nat) : Types.LocalType :=
+  ⟨q.radius + n⟩
+
+def invariantDim (V E c : Nat) : Invariants.CycleSpace :=
+  ⟨E - V + c⟩
 
 end FMT
