@@ -1,4 +1,12 @@
 import FMT.Graph.Basic
+
 namespace FMT.Graph
-def Ball {G : Graph} (r : Nat) : Type := G.V
+
+-- distance on graphs (to be refined with paths later)
+constant dist : Graph → Graph.V → Graph.V → Nat
+
+-- bounded-radius ball as subtype
+def Ball (G : Graph) (r : Nat) (v : G.V) :=
+  { u : G.V // dist G v u ≤ r }
+
 end FMT.Graph
