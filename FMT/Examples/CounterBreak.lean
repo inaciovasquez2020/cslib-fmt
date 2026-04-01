@@ -17,7 +17,7 @@ theorem dist_self (G : FMT.Graph.Graph) [DecidableEq G.V] (u : G.V) :
     FMT.Graph.dist G u u = 0 := by
   simp [FMT.Graph.dist]
 
-theorem api_is_axiomatic :
+theorem api_alias_eq :
     FMT.API.finalSolveSpec = FMT.Spec.final_solve_spec := by
   rfl
 
