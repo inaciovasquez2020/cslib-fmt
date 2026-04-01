@@ -24,11 +24,9 @@ theorem dist_self (G : FMT.Graph.Graph) [DecidableEq G.V] (u : G.V) :
     FMT.Graph.dist G u u = 0 := by
   simp [FMT.Graph.dist]
 
-theorem ball_is_universal (G : FMT.Graph.Graph) (r : Nat) :
+theorem ball_is_universal (G : FMT.Graph.Graph) (r : Nat) (v : G.V) :
     Nonempty (FMT.Graph.Ball (G := G) r) := by
-  exact ⟨Classical.choice (Classical.decEq G.V |> fun _ => by
-    classical
-    exact Classical.choice (Classical.choice ⟨Classical.choice (by infer_instance), trivial⟩)), trivial⟩
+  exact ⟨v⟩
 
 theorem api_is_axiomatic :
     FMT.API.finalSolveSpec = FMT.Spec.final_solve_spec := by
