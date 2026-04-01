@@ -13,8 +13,7 @@ def localInvariant (n : Nat) : Nat :=
 
 theorem non_factorization_witness :
   ∃ n V E c : Nat,
-    globalInvariant n V E c ≠ localInvariant n := by
-  rcases FMT.Bridge.mismatch_possible with ⟨n, V, E, c, h⟩
-  exact ⟨n, V, E, c, h⟩
+    localInvariant n ≠ globalInvariant n V E c := by
+  exact FMT.Bridge.mismatch_possible
 
 end FMT.Invariants
