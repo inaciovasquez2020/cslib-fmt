@@ -1,4 +1,5 @@
 import FMT.Graph.ShortestPathSelectorReachableBridge
+import FMT.Graph.ExistsMinPathLengthBridge
 import FMT.Graph.PathLengthLemmas
 
 namespace FMT.Graph
