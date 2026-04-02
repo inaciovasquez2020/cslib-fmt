@@ -1,4 +1,4 @@
-import FMT.Graph.PathLength
+import FMT.Graph.ExistsMinPathLength
 
 namespace FMT.Graph
 
@@ -9,6 +9,6 @@ axiom shortest_path_selector
 
 axiom shortest_path_selector_complete
   (G : Graph) (u v : G.V) {n : Nat} :
-  Nonempty (PathLength G u v n) -> ∃ s, shortest_path_selector G u v = some s
+  Nonempty (PathLength G u v n) → ∃ s, shortest_path_selector G u v = some s
 
 end FMT.Graph
