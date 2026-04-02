@@ -12,7 +12,7 @@ theorem dist?_symm
   | none =>
       cases hvu : dist? G v u with
       | none =>
-          simp [huv, hvu]
+          simp [hvu]
       | some m =>
           exfalso
           have hP : Nonempty (PathLength G v u m) := path_of_dist?_some (G := G) hvu
@@ -49,6 +49,6 @@ theorem dist?_symm
             cases hd2
             simpa using h2
           have hmn : m = n := Nat.le_antisymm hm_le_n hn_le_m
-          simp [huv, hvu, hmn]
+          simp [hvu, hmn]
 
 end FMT.Graph
