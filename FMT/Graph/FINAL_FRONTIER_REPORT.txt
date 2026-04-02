@@ -12,5 +12,5 @@ STABLE BRIDGES/THEOREMS
 3. shortest_path_selector_complete_of_reachable
 
 STATUS
-- build expected green
+- build green
 - closure not complete until the three remaining axioms are replaced constructively
