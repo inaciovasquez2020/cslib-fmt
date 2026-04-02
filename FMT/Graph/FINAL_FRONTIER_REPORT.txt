@@ -1,0 +1,16 @@
+UNRESOLVED CLOSURE ITEMS
+1. axiom exists_min_pathLength
+2. axiom pathLength_reverse
+3. axiom pathLength_concat
+4. noncomputable def shortest_path_selector
+5. noncomputable def dist?
+6. noncomputable def dist
+
+STABLE BRIDGES/THEOREMS
+1. dist?_symm
+2. exists_min_pathLength_of_reachable
+3. shortest_path_selector_complete_of_reachable
+
+STATUS
+- build expected green
+- closure not complete until the three remaining axioms are replaced constructively
