@@ -1,5 +1,7 @@
 # CSLIB FMT (Finite-Model Theory)
 
+[![CI](https://github.com/inaciovasquez2020/cslib-fmt/actions/workflows/verify.yml/badge.svg)](https://github.com/inaciovasquez2020/cslib-fmt/actions/workflows/verify.yml)
+
 This repository implements a CSLIB-aligned finite-model theory library, following the suggestion of Moshe Vardi to build reusable infrastructure for locality, EF games, and invariants.
 
 ## Scope
