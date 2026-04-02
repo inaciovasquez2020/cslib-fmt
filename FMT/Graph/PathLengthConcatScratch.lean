@@ -15,7 +15,7 @@ def concatVerts {G : Graph} {u v w : G.V} {m n : Nat}
         have himn : i.1 < m + n + 1 := i.2
         omega⟩
 
-def pathLength_concat (G : Graph) {u v w : G.V} {m n : Nat} :
+def pathLength_concat_scratch (G : Graph) {u v w : G.V} {m n : Nat} :
     PathLength G u v m → PathLength G v w n → PathLength G u w (m + n) := by
   intro P Q
   refine
