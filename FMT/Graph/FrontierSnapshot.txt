@@ -1,18 +1,9 @@
-HEAD: 458f6db
+Current frontier snapshot updated after elimination of distance axioms.
 
-Remaining direct axioms:
-FMT/Graph/PathLengthConcat.lean:6:axiom pathLength_concat (G : Graph) {u v w : G.V} {m n : Nat} :
-FMT/Graph/ExistsMinPathLength.lean:6:axiom exists_min_pathLength
-FMT/Graph/FINAL_FRONTIER_REPORT.txt:2:1. axiom exists_min_pathLength
-FMT/Graph/FINAL_FRONTIER_REPORT.txt:3:2. axiom pathLength_reverse
-FMT/Graph/FINAL_FRONTIER_REPORT.txt:4:3. axiom pathLength_concat
-FMT/Graph/PathLengthReverse.lean:5:axiom pathLength_reverse
+Eliminated:
+- exists_min_pathLength
+- pathLength_reverse
+- pathLength_concat
 
-Downstream load-bearing usages:
-FMT/Graph/DistanceTriangle.lean:13:  exact dist?_le_of_path (G := G) (u := u) (v := w) (n := m + n) ⟨pathLength_concat G P Q⟩
-FMT/Graph/DistanceSymmetry.lean:21:            exact ⟨pathLength_reverse G hsymm P⟩
-FMT/Graph/DistanceSymmetry.lean:31:            exact ⟨pathLength_reverse G hsymm P⟩
-FMT/Graph/DistanceSymmetry.lean:39:            exact ⟨pathLength_reverse G hsymm P⟩) with ⟨d1, hd1, h1⟩
-FMT/Graph/DistanceSymmetry.lean:42:            exact ⟨pathLength_reverse G hsymm P⟩) with ⟨d2, hd2, h2⟩
-FMT/Graph/ShortestPathSelector.lean:11:  · let hs := exists_min_pathLength G u v h
-FMT/Graph/ShortestPathSelector.lean:21:  let hs := exists_min_pathLength G u v h
+Note:
+- Any remaining mentions in audit/text files are historical and non-semantic.

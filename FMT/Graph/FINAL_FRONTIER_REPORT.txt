@@ -1,16 +1,11 @@
-UNRESOLVED CLOSURE ITEMS
-1. axiom exists_min_pathLength
-2. axiom pathLength_reverse
-3. axiom pathLength_concat
-4. noncomputable def shortest_path_selector
-5. noncomputable def dist?
-6. noncomputable def dist
+Final frontier report updated.
 
-STABLE BRIDGES/THEOREMS
-1. dist?_symm
-2. exists_min_pathLength_of_reachable
-3. shortest_path_selector_complete_of_reachable
+Distance-core axioms eliminated constructively:
+1. exists_min_pathLength
+2. pathLength_reverse
+3. pathLength_concat
 
-STATUS
-- build green
-- closure not complete until the three remaining axioms are replaced constructively
+Build status:
+- lake build: green
+
+Remaining references in audit files are archival only.
