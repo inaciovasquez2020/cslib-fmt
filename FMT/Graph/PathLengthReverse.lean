@@ -39,7 +39,7 @@ def pathLength_reverse
       simpa [j] using this
     have hrev_curr_val :
         (revFin ⟨i.1, Nat.lt_trans i.2 (Nat.lt_succ_self n)⟩).1 = j.1 + 1 := by
-      simpa [revFin, hcalc]
+      simp [revFin, hcalc]
     have hstep := P.step j
     change G.Adj (P.verts ⟨n - i.1, Nat.lt_succ_of_le (Nat.sub_le _ _)⟩)
       (P.verts ⟨n - (i.1 + 1), Nat.lt_succ_of_le (Nat.sub_le _ _)⟩)
