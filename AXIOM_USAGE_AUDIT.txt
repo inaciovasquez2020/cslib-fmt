@@ -1,0 +1,28 @@
+MATHEMATICAL CLOSURE FRONTIER: AXIOM USAGE
+
+== shortest_path_selector ==
+FMT/Graph/ShortestPathSelector.lean:5:axiom shortest_path_selector
+FMT/Graph/ShortestPathSelector.lean:10:axiom shortest_path_selector_complete
+FMT/Graph/ShortestPathSelector.lean:12:  Nonempty (PathLength G u v n) -> ∃ s, shortest_path_selector G u v = some s
+FMT/Graph/DistancePath.lean:9:  match shortest_path_selector G u v with
+FMT/Graph/DistancePath.lean:15:      ∃ s, shortest_path_selector G u v = some s ∧ s.1 = n := by
+FMT/Graph/DistancePath.lean:17:  cases hsel : shortest_path_selector G u v with
+FMT/Graph/DistancePath.lean:24:    dist? G u v = none ↔ shortest_path_selector G u v = none := by
+FMT/Graph/DistancePath.lean:26:  cases hsel : shortest_path_selector G u v with
+FMT/Graph/DistancePath.lean:39:  rcases shortest_path_selector_complete G u v hP with ⟨s, hs⟩
+
+== shortest_path_selector_complete ==
+FMT/Graph/ShortestPathSelector.lean:10:axiom shortest_path_selector_complete
+FMT/Graph/DistancePath.lean:39:  rcases shortest_path_selector_complete G u v hP with ⟨s, hs⟩
+
+== pathLength_concat ==
+FMT/Graph/PathLengthConcat.lean:5:axiom pathLength_concat
+FMT/Graph/DistanceTriangle.lean:13:  exact dist?_le_of_path (G := G) (u := u) (v := w) (n := m + n) ⟨pathLength_concat G P Q⟩
+
+== pathLength_reverse ==
+FMT/Graph/PathLengthReverse.lean:5:axiom pathLength_reverse
+
+== dist?_symm ==
+FMT/Graph/DistanceSymmetry.lean:6:axiom dist?_symm
+FMT/Examples/DistanceAlgebra.lean:30:  exact dist?_symm lineGraph lineGraph_symm
+
