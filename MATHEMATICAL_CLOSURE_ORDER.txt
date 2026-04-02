@@ -1,0 +1,40 @@
+MATHEMATICAL CLOSURE ORDER
+
+1. shortest_path_selector / shortest_path_selector_complete
+FMT/Graph/ShortestPathSelector.lean:5:axiom shortest_path_selector
+FMT/Graph/ShortestPathSelector.lean:10:axiom shortest_path_selector_complete
+FMT/Graph/ShortestPathSelector.lean:12:  Nonempty (PathLength G u v n) -> ∃ s, shortest_path_selector G u v = some s
+FMT/Graph/DistancePath.lean:9:  match shortest_path_selector G u v with
+FMT/Graph/DistancePath.lean:15:      ∃ s, shortest_path_selector G u v = some s ∧ s.1 = n := by
+FMT/Graph/DistancePath.lean:17:  cases hsel : shortest_path_selector G u v with
+FMT/Graph/DistancePath.lean:24:    dist? G u v = none ↔ shortest_path_selector G u v = none := by
+FMT/Graph/DistancePath.lean:26:  cases hsel : shortest_path_selector G u v with
+FMT/Graph/DistancePath.lean:39:  rcases shortest_path_selector_complete G u v hP with ⟨s, hs⟩
+
+2. dist?_le_of_path / path_of_dist?_some
+FMT/Graph/DistancePathBound.lean:10:  dist?_le_of_path (G := G) hP
+FMT/Graph/DistancePathBound.lean:15:  path_of_dist?_some (G := G) h
+FMT/Graph/DistancePathBound.lean:22:  · exact path_of_dist?_some (G := G) h
+FMT/Graph/DistancePathBound.lean:24:    rcases dist?_le_of_path (G := G) (u := u) (v := v) (n := m) hmP with ⟨d, hd, hdm⟩
+FMT/Graph/DistancePath.lean:32:theorem path_of_dist?_some {u v : G.V} {n : Nat} (h : dist? G u v = some n) :
+FMT/Graph/DistancePath.lean:37:theorem dist?_le_of_path {u v : G.V} {n : Nat} (hP : Nonempty (PathLength G u v n)) :
+FMT/Graph/DistancePath.lean:51:  rcases dist?_le_of_path (G := G) (u := u) (v := u) (n := 0) hP with ⟨d, hd, hle⟩
+FMT/Graph/DistancePath.lean:56:  have hP : Nonempty (PathLength G u v 0) := path_of_dist?_some (G := G) h
+FMT/Graph/DistanceTriangle.lean:13:  exact dist?_le_of_path (G := G) (u := u) (v := w) (n := m + n) ⟨pathLength_concat G P Q⟩
+FMT/Graph/DistanceTriangle.lean:23:    path_of_dist?_some (G := G) hdu
+FMT/Graph/DistanceTriangle.lean:25:    path_of_dist?_some (G := G) hdv
+FMT/Examples/DistanceAlgebra.lean:40:        rcases dist?_le_of_path (G := lineGraph) (u := Line3.a) (v := Line3.b) (n := 1) hab with ⟨d, hd, hle⟩
+FMT/Examples/DistanceAlgebra.lean:47:        rcases dist?_le_of_path (G := lineGraph) (u := Line3.b) (v := Line3.c) (n := 1) hbc with ⟨d, hd, hle⟩
+FMT/Examples/DistanceRegression.lean:24:  exact dist?_le_of_path (G := splitGraph) (u := SplitV.a) (v := SplitV.b)
+FMT/Examples/DistanceTest.lean:27:  exact dist?_le_of_path (G := testGraph) (u := TwoV.a) (v := TwoV.b)
+
+3. pathLength_concat / pathLength_reverse
+FMT/Graph/PathLengthConcat.lean:5:axiom pathLength_concat
+FMT/Graph/PathLengthReverse.lean:5:axiom pathLength_reverse
+FMT/Graph/DistanceTriangle.lean:13:  exact dist?_le_of_path (G := G) (u := u) (v := w) (n := m + n) ⟨pathLength_concat G P Q⟩
+
+4. dist?_symm / distLE_triangle
+FMT/Graph/DistanceSymmetry.lean:6:axiom dist?_symm
+FMT/Graph/DistanceTriangle.lean:15:theorem distLE_triangle
+FMT/Examples/DistanceAlgebra.lean:30:  exact dist?_symm lineGraph lineGraph_symm
+FMT/Examples/DistanceAlgebra.lean:51:  simpa using distLE_triangle lineGraph h1 h2
