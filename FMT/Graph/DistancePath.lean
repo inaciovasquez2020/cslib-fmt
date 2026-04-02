@@ -18,7 +18,7 @@ theorem dist?_some_iff {u v : G.V} {n : Nat} :
   | none =>
       simp
   | some s =>
-      simp [hsel]
+      simp
 
 theorem dist?_none_iff {u v : G.V} :
     dist? G u v = none ↔ shortest_path_selector G u v = none := by
@@ -27,7 +27,7 @@ theorem dist?_none_iff {u v : G.V} :
   | none =>
       simp
   | some s =>
-      simp [hsel]
+      simp
 
 theorem path_of_dist?_some {u v : G.V} {n : Nat} (h : dist? G u v = some n) :
     Nonempty (PathLength G u v n) := by
