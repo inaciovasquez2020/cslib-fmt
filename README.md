@@ -30,18 +30,23 @@ Current closure checkpoint: `cslib-fmt-closure-2026-04-01`
 
 This repository is currently at a build-green closure checkpoint for the present formalization. The checkpoint records the semantic replacements and cleanup reflected in the current `feat/cslib-fmt` branch state. The release is intended as a repository checkpoint and should be read exactly at the level supported by the code and release notes.
 
-
 ## Graph distance semantics
 
-The graph-distance layer now exposes path-based semantics through `FMT.Graph.DistancePath`.
+Canonical graph distance is now path-based and exposed through `FMT.Graph`.
 
-Public objects:
+Primary public objects:
+- `FMT.Graph.PathLength`
 - `FMT.Graph.Reachable`
 - `FMT.Graph.dist?`
-- `FMT.Graph.path_of_dist?_some`
-- `FMT.Graph.dist?_le_of_path`
-- `FMT.Graph.dist?_zero_iff_eq`
+- `FMT.Graph.DistLE`
+- `FMT.Graph.DistGT`
 
-Design choice:
-- disconnected pairs evaluate to `none`
-- finite distance values are shortest-path lengths witnessed by `PathLength`
+Canonical semantics:
+- `dist? G u v = none` means no finite path witness exists
+- `dist? G u v = some d` means there is a path of length `d`
+- `dist? G u v = some 0` iff `u = v`
+
+Compatibility status:
+- `FMT.Graph.dist` remains only as a legacy compatibility wrapper
+- new modules should use `dist?`, `DistLE`, and `DistGT`
+

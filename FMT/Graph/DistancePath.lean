@@ -1,70 +1,60 @@
-import FMT.Graph.PathLength
 import FMT.Graph.PathLengthLemmas
-import Mathlib.Data.Nat.Find
-import Mathlib.Data.Option.Basic
+import FMT.Graph.ShortestPathSelector
 
 namespace FMT.Graph
 
-universe u
-
 variable {G : Graph}
 
-/-- Path-based distance with explicit disconnectedness. -/
-def dist? (G : Graph) (u v : G.V) : Option Nat :=
-  if h : ∃ n : Nat, Nonempty (PathLength G u v n) then
-    some (Nat.find h)
-  else
-    none
+noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
+  match shortest_path_selector G u v with
+  | some s => some s.1
+  | none => none
 
 theorem dist?_some_iff {u v : G.V} {n : Nat} :
     dist? G u v = some n ↔
-      (∃ h : ∃ m : Nat, Nonempty (PathLength G u v m),
-        Nat.find h = n) := by
+      ∃ s, shortest_path_selector G u v = some s ∧ s.1 = n := by
   unfold dist?
-  by_cases h : ∃ m : Nat, Nonempty (PathLength G u v m)
-  · simp [h]
-  · simp [h]
+  cases hsel : shortest_path_selector G u v with
+  | none =>
+      simp
+  | some s =>
+      simp [hsel]
 
 theorem dist?_none_iff {u v : G.V} :
-    dist? G u v = none ↔ ¬ ∃ n : Nat, Nonempty (PathLength G u v n) := by
+    dist? G u v = none ↔ shortest_path_selector G u v = none := by
   unfold dist?
-  by_cases h : ∃ n : Nat, Nonempty (PathLength G u v n)
-  · simp [h]
-  · simp [h]
+  cases hsel : shortest_path_selector G u v with
+  | none =>
+      simp
+  | some s =>
+      simp [hsel]
 
-/-- Extract a path witness from a finite distance value. -/
 theorem path_of_dist?_some {u v : G.V} {n : Nat} (h : dist? G u v = some n) :
     Nonempty (PathLength G u v n) := by
-  rcases (dist?_some_iff (G := G) (u := u) (v := v) (n := n)).1 h with ⟨hex, hfind⟩
-  have hspec := Nat.find_spec hex
-  simpa [hfind] using hspec
+  rcases (dist?_some_iff (G := G) (u := u) (v := v) (n := n)).1 h with ⟨s, hs, hn⟩
+  simpa [hn] using s.2.1
 
-/-- Any path witness gives an upper bound on the shortest path length. -/
 theorem dist?_le_of_path {u v : G.V} {n : Nat} (hP : Nonempty (PathLength G u v n)) :
     ∃ d, dist? G u v = some d ∧ d ≤ n := by
-  let hex : ∃ m : Nat, Nonempty (PathLength G u v m) := ⟨n, hP⟩
-  refine ⟨Nat.find hex, ?_, Nat.find_min' hex n hP⟩
-  unfold dist?
-  simp [hex]
+  rcases shortest_path_selector_complete G u v hP with ⟨s, hs⟩
+  refine ⟨s.1, ?_, ?_⟩
+  · unfold dist?
+    simp [hs]
+  · by_cases hlt : n < s.1
+    · exact False.elim ((s.2.2 n hlt) hP)
+    · exact Nat.le_of_not_gt hlt
 
-/-- Separation at distance zero. -/
 theorem dist?_zero_of_eq {u v : G.V} (h : u = v) : dist? G u v = some 0 := by
   subst v
-  have h0 : ∃ n : Nat, Nonempty (PathLength G u u n) := ⟨0, by
-    simpa using (pathLength_zero_iff (G := G) (u := u) (v := u)).2 rfl⟩
-  unfold dist?
-  simp [h0, Nat.find_eq_iff]
-  constructor
-  · exact Nat.zero_le
-  · intro m hm
-    have : Nonempty (PathLength G u u m) := hm
-    rcases this with ⟨P⟩
-    simpa using (pathLength_zero_iff (G := G) (u := u) (v := u)).1 ⟨P⟩
+  have hP : Nonempty (PathLength G u u 0) := by
+    simpa using (pathLength_zero_iff G u u).2 rfl
+  rcases dist?_le_of_path (G := G) (u := u) (v := u) (n := 0) hP with ⟨d, hd, hle⟩
+  have hd0 : d = 0 := Nat.eq_zero_of_le_zero hle
+  simpa [hd0] using hd
 
-/-- Distance zero implies equality of endpoints. -/
 theorem eq_of_dist?_zero {u v : G.V} (h : dist? G u v = some 0) : u = v := by
   have hP : Nonempty (PathLength G u v 0) := path_of_dist?_some (G := G) h
-  simpa using (pathLength_zero_iff (G := G) (u := u) (v := v)).1 hP
+  simpa using (pathLength_zero_iff G u v).1 hP
 
 theorem dist?_zero_iff_eq {u v : G.V} :
     dist? G u v = some 0 ↔ u = v := by

@@ -1,24 +1,21 @@
-import FMT.API.FinalSolve
-import FMT.Examples.Separation
+import FMT.Graph.Distance
 
 namespace FMT.Examples
 
-def sameEF : Prop := FMT.Game.indistinguishable 2 1
+open FMT.Graph
 
-theorem ef_trivializes : sameEF := by
-  unfold sameEF FMT.Game.indistinguishable
-  trivial
+variable {G : Graph}
 
-theorem sep_trivializes :
-    ∃ n : Nat, n = 0 := by
-  exact ⟨0, rfl⟩
+example (u : G.V) :
+    dist G u u = 0 := by
+  simpa using dist_refl G u
 
-theorem dist_self (G : FMT.Graph.Graph) [DecidableEq G.V] (u : G.V) :
-    FMT.Graph.dist G u u = 0 := by
-  simp [FMT.Graph.dist]
+example (u : G.V) :
+    dist? G u u = some 0 := by
+  exact dist?_zero_of_eq (G := G) rfl
 
-theorem api_alias_eq :
-    FMT.API.finalSolveSpec = FMT.Spec.final_solve_spec := by
-  rfl
+example (u : G.V) :
+    dist? G u u = some 0 ↔ u = u := by
+  simpa using (dist?_zero_iff_eq (G := G) (u := u) (v := u))
 
 end FMT.Examples
