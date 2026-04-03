@@ -1,9 +1,8 @@
-Distance frontier after core refactor
+Distance frontier after dist?_is_shortest theoremization
 
 Remaining axioms:
 FMT/Graph/DistancePath.lean:10:axiom dist?_bound_of_path
 FMT/Graph/DistancePath.lean:5:axiom dist?_le_of_path
-FMT/Graph/DistIsShortest.lean:5:axiom dist?_is_shortest
 FMT/Graph/DistSomeOfShortestPath.lean:5:axiom dist?_some_of_shortest_path
 FMT/Graph/DistSymm.lean:5:axiom dist?_symm
 FMT/Graph/DistTriangle.lean:5:axiom dist?_triangle
