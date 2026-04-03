@@ -11,9 +11,9 @@ noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
     none
 
 theorem shortest_path_selector
-  (G : Graph) {u v : G.V} {n : Nat}
-  (h : dist? G u v = some n) :
-  Nonempty (PathLength G u v n) := by
+    (G : Graph) {u v : G.V} {n : Nat}
+    (h : dist? G u v = some n) :
+    Nonempty (PathLength G u v n) := by
   classical
   unfold dist? at h
   by_cases hex : ∃ k, Nonempty (PathLength G u v k)
