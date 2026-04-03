@@ -1,0 +1,13 @@
+NEXT_CLOSURE_TARGET: EXISTS_MIN_PATHLENGTH
+
+FMT/Graph/ExistsMinPathLength.lean:5:axiom exists_min_pathLength
+
+FILES STILL MARKED axiomatic/noncomputable
+FMT/Graph/ShortestPathSelector.lean:5:axiom shortest_path_selector
+FMT/Graph/ShortestPathSelector.lean:10:axiom shortest_path_selector_complete
+FMT/Graph/Distance.lean:12:noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
+FMT/Graph/PathLengthConcat.lean:6:axiom pathLength_concat (G : Graph) {u v w : G.V} {m n : Nat} :
+FMT/Graph/DistanceSymmetry.lean:7:axiom dist?_symm (G : Graph) (hsymm : ∀ a b : G.V, G.Adj a b → G.Adj b a) (u v : G.V) :
+FMT/Graph/ExistsMinPathLength.lean:5:axiom exists_min_pathLength
+FMT/Graph/DistancePath.lean:8:noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
+FMT/Graph/PathLengthReverse.lean:5:axiom pathLength_reverse

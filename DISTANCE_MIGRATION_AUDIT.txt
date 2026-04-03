@@ -1,0 +1,16 @@
+DISTANCE MIGRATION TARGETS
+
+FMT/Graph/Distance.lean:9:def dist (G : Graph) (_u _v : G.V) : Nat := 0
+FMT/Graph/Distance.lean:11:theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := rfl
+FMT/Graph/BoundedRadius.lean:7:  { u : G.V // dist G v u ≤ r }
+FMT/Spec/FinalSolve.lean:34:    FMT.Graph.dist G u v
+FMT/Spec/FinalSolve.lean:37:    FMT.Graph.dist G v w ≤ R
+FMT/Spec/FinalSolve.lean:42:    FMT.Graph.dist G u v > R
+FMT/Examples/Girth.lean:16:    FMT.Graph.dist G u v > R := by
+FMT/Examples/CounterBreak.lean:17:    FMT.Graph.dist G u u = 0 := by
+FMT/Examples/DistanceTest.lean:19:example : dist (G := G) () () = 0 := by
+FMT/Examples/DistanceTest.lean:22:example : dist (G := G) () () ≤ dist (G := G) () () + dist (G := G) () () := by
+
+LEGACY DISTANCE DEFINITION
+
+FMT/Graph/Distance.lean:9:def dist (G : Graph) (_u _v : G.V) : Nat := 0

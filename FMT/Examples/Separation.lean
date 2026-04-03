@@ -2,6 +2,6 @@ import FMT.Graph.Basic
 
 namespace FMT.Examples
 
-def separated (G H : Type) : Prop := True
+def separated (_G _H : Type) : Prop := True
 
 end FMT.Examples
