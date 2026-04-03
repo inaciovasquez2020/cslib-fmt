@@ -14,11 +14,12 @@ theorem shortest_path_selector
     (G : Graph) {u v : G.V} {n : Nat}
     (h : dist? G u v = some n) :
     Nonempty (PathLength G u v n) := by
+  classical
   unfold dist? at h
-  split_ifs at h with hex
-  · injection h with hn
-    subst hn
+  by_cases hex : ∃ n, Nonempty (PathLength G u v n)
+  · simp [hex] at h
+    cases h
     exact Classical.choose_spec hex
-  · exact absurd h (by simp)
+  · simp [hex] at h
 
 end FMT.Graph
