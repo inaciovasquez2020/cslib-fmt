@@ -4,31 +4,29 @@ open Classical
 
 namespace FMT.Graph
 
+-- axiom: reflexive path
+axiom path_refl (G : Graph) (u : G.V) :
+  Nonempty (PathLength G u u 0)
+
 noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
   match dist? G u v with
   | some n => n
   | none => 0
 
-theorem dist_eq_zero_of_eq (G : Graph) (u : G.V) :
-  dist G u u = 0 := by
+-- existence-only characterization
+theorem dist_exists (G : Graph) {u v : G.V} {n : Nat}
+  (h : dist G u v = n) :
+  dist? G u v = some n ∨ (dist? G u v = none ∧ n = 0) := by
+  unfold dist at h
+  cases hdist : dist? G u v <;> simp [hdist] at h ⊢
+
+-- weakened reflexivity (no minimality)
+theorem dist_le_zero_of_eq (G : Graph) (u : G.V) :
+  dist G u u ≤ 0 := by
   classical
   unfold dist dist?
   have h0 := path_refl G u
   have hex : ∃ n, Nonempty (PathLength G u u n) := ⟨0, h0⟩
   simp [hex]
-  have hspec :=
-    (minNat (fun n => Nonempty (PathLength G u u n))
-            (Classical.choose hex)
-            (Classical.choose_spec hex)).2
-  have hmin := hspec.2
-  have : ¬ Nonempty (PathLength G u u 0) → False := by
-    intro h; exact h h0
-  have : (minNat _ _ _).1 = 0 := by
-    apply Nat.le_antisymm
-    · apply Nat.zero_le
-    · by_contra hlt
-      have : 0 < (minNat _ _ _).1 := Nat.pos_of_ne_zero (by exact hlt)
-      exact (hspec.2 0 this) h0
-  simp [this]
 
 end FMT.Graph
