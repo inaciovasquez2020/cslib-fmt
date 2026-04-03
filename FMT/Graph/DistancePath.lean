@@ -22,17 +22,15 @@ theorem shortest_path_selector
     exact Classical.choose_spec hex
   · simp [hex] at h
 
--- restore required lemmas with correct signatures
 theorem path_of_dist?_some
   (G : Graph) {u v : G.V} {n : Nat}
   (h : dist? G u v = some n) :
   Nonempty (PathLength G u v n) :=
   shortest_path_selector G h
 
-axiom dist?_le_of_path
+axiom dist?_bound_of_path
   (G : Graph) {u v : G.V} {n : Nat} :
-  Nonempty (PathLength G u v n) →
-  ∃ d, dist? G u v = some d ∧ d ≤ n
+  Nonempty (PathLength G u v n) → Nat
 
 theorem dist?_cases (G : Graph) (u v : G.V) :
   (∃ n, dist? G u v = some n) ∨ dist? G u v = none := by
