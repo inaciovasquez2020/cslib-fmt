@@ -1,0 +1,7 @@
+ORDER
+1. exists_min_pathLength
+2. shortest_path_selector
+3. dist?
+4. dist
+5. pathLength_reverse
+6. pathLength_concat

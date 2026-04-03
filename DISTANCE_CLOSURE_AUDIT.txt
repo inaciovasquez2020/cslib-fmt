@@ -1,0 +1,28 @@
+REFRESHED DISTANCE CLOSURE AUDIT
+
+LEGACY dist CONSUMERS
+
+FMT/Graph/Distance.lean:12:def dist (G : Graph) (u v : G.V) : Nat :=
+FMT/Graph/Distance.lean:17:    dist G u v = (dist? G u v).getD 0 := rfl
+FMT/Graph/Distance.lean:20:theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := by
+FMT/Graph/BoundedRadius.lean:13:    (h : dist G v u ≤ r) :
+FMT/Graph/BoundedRadius.lean:25:    dist G v u ≤ r := by
+FMT/Examples/CounterBreak.lean:10:    dist G u u = 0 := by
+
+CANONICAL dist? / DistLE / DistGT CONSUMERS
+
+FMT/Graph/Distance.lean:17:    dist G u v = (dist? G u v).getD 0 := rfl
+FMT/Graph/Distance.lean:20:theorem dist_refl (G : Graph) (v : G.V) : dist G v v = 0 := by
+FMT/Graph/DistanceOrder.lean:14:    DistLE G u v r := by
+FMT/Graph/DistanceOrder.lean:20:    ¬ DistLE G u v r := by
+FMT/Graph/DistanceOrder.lean:28:    DistGT G u v r := by
+FMT/Graph/DistanceOrder.lean:34:    (hle : DistLE G u v r) :
+FMT/Graph/DistanceOrder.lean:35:    ¬ DistGT G u v r := by
+FMT/Graph/BoundedRadius.lean:13:    (h : dist G v u ≤ r) :
+FMT/Graph/BoundedRadius.lean:25:    dist G v u ≤ r := by
+FMT/Graph/DistanceTriangle.lean:17:    (huv : DistLE G u v m)
+FMT/Graph/DistanceTriangle.lean:18:    (hvw : DistLE G v w n) :
+FMT/Graph/DistanceTriangle.lean:19:    DistLE G u w (m + n) := by
+FMT/Spec/FinalSolve.lean:8:  DistLE G u v R
+FMT/Spec/FinalSolve.lean:11:  DistGT G u v R
+FMT/Examples/CounterBreak.lean:10:    dist G u u = 0 := by

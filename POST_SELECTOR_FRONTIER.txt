@@ -1,0 +1,11 @@
+POST-SELECTOR FRONTIER
+
+FMT/Graph/ShortestPathSelector.lean:5:noncomputable def shortest_path_selector
+FMT/Graph/Distance.lean:12:noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
+FMT/Graph/PathLengthConcat.lean:6:axiom pathLength_concat (G : Graph) {u v w : G.V} {m n : Nat} :
+FMT/Graph/DistanceSymmetry.lean:7:axiom dist?_symm (G : Graph) (hsymm : ∀ a b : G.V, G.Adj a b → G.Adj b a) (u v : G.V) :
+FMT/Graph/ExistsMinPathLength.lean:5:axiom exists_min_pathLength
+FMT/Graph/DistancePath.lean:8:noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
+FMT/Graph/PathLengthReverse.lean:5:axiom pathLength_reverse
+FMT/Graph/DistanceTriangle.lean:13:  exact dist?_le_of_path (G := G) (u := u) (v := w) (n := m + n) ⟨pathLength_concat G P Q⟩
+FMT/Examples/DistanceAlgebra.lean:30:  exact dist?_symm lineGraph lineGraph_symm

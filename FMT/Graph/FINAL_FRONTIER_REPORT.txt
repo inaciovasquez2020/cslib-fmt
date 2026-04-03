@@ -1,0 +1,11 @@
+Final frontier report updated.
+
+Distance-core axioms eliminated constructively:
+1. exists_min_pathLength
+2. pathLength_reverse
+3. pathLength_concat
+
+Build status:
+- lake build: green
+
+Remaining references in audit files are archival only.
