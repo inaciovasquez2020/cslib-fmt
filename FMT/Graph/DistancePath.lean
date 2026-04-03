@@ -28,6 +28,12 @@ theorem path_of_dist?_some
   Nonempty (PathLength G u v n) :=
   shortest_path_selector G h
 
+
+axiom dist?_le_of_path
+  (G : Graph) {u v : G.V} {n : Nat} :
+  Nonempty (PathLength G u v n) →
+  ∃ d, dist? G u v = some d ∧ d ≤ n
+
 axiom dist?_bound_of_path
   (G : Graph) {u v : G.V} {n : Nat} :
   Nonempty (PathLength G u v n) → Nat
