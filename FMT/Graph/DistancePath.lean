@@ -1,5 +1,4 @@
 import FMT.Graph.PathLength
-import Mathlib.Data.Nat.Basic
 
 open Classical
 
@@ -7,7 +6,7 @@ namespace FMT.Graph
 
 noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
   if h : ∃ n, Nonempty (PathLength G u v n) then
-    some (Nat.find h)
+    some (Nat.find (Classical.decEq _) (fun n => Nonempty (PathLength G u v n)) h)
   else
     none
 
