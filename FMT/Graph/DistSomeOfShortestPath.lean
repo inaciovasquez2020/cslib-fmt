@@ -10,18 +10,14 @@ theorem dist?_some_of_shortest_path
   obtain ⟨hpath0, hmin0⟩ := Classical.choose_spec (shortest_path_length G u v)
   have hle1 : Classical.choose (shortest_path_length G u v) ≤ d := by
     by_cases h : d < Classical.choose (shortest_path_length G u v)
-    · exfalso
-      exact hmin0 d h hdpath
+    · exact absurd hdpath (hmin0 d h)
     · exact Nat.le_of_not_gt h
   have hle2 : d ≤ Classical.choose (shortest_path_length G u v) := by
     by_cases h : Classical.choose (shortest_path_length G u v) < d
-    · exfalso
-      exact hdmin _ h hpath0
+    · exact absurd hpath0 (hdmin _ h)
     · exact Nat.le_of_not_gt h
-  have heq : Classical.choose (shortest_path_length G u v) = d :=
-    Nat.le_antisymm hle1 hle2
   calc
     dist? G u v = some (Classical.choose (shortest_path_length G u v)) := rfl
-    _ = some d := by rw [heq]
+    _ = some d := by rw [Nat.le_antisymm hle1 hle2]
 
 end FMT.Graph
