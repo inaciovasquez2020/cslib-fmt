@@ -9,3 +9,5 @@ import FMT.Graph.DistanceTriangle
 import FMT.Graph.PathLengthReverse
 import FMT.Graph.DistanceSymmetry
 import FMT.Graph.ExistsMinPathLength
+
+import FMT.Inputs.SLASH_INPUT
