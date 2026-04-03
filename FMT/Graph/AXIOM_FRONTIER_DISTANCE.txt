@@ -1,0 +1,19 @@
+Distance frontier after core refactor
+
+Remaining axioms:
+FMT/Graph/DistancePath.lean:10:axiom dist?_bound_of_path
+FMT/Graph/DistancePath.lean:5:axiom dist?_le_of_path
+FMT/Graph/DistIsShortest.lean:5:axiom dist?_is_shortest
+FMT/Graph/DistSomeOfShortestPath.lean:5:axiom dist?_some_of_shortest_path
+FMT/Graph/DistSymm.lean:5:axiom dist?_symm
+FMT/Graph/DistTriangle.lean:5:axiom dist?_triangle
+FMT/Graph/ExistsShortestPathLength.lean:5:axiom exists_shortest_path_length
+
+Direct non-axiom dependencies:
+FMT/Graph/DistLeOfPathViaExists.lean:7:theorem dist?_le_of_path_via_exists
+FMT/Graph/DistLeOfPathViaExists.lean:12:  exact dist?_le_of_path_from_shortest_axioms G hpath ⟨m, path_of_dist?_some G hm⟩
+FMT/Graph/DistLeOfPathFromShortestAxioms.lean:7:theorem dist?_le_of_path_from_shortest_axioms
+FMT/Graph/DistLeOfPathFromShortestAxioms.lean:12:  rcases exists_shortest_path_length G u v hex with ⟨d, hdpath, hdmin⟩
+FMT/Graph/DistLeOfPathFromShortestAxioms.lean:14:    dist?_some_of_shortest_path G hdpath hdmin
+FMT/Graph/DistanceMinimality.lean:11:  rcases dist?_le_of_path G hpath with ⟨d, hd, hle⟩
+FMT/Graph/DistanceMinimality.lean:31:      rcases dist?_le_of_path G hpm with ⟨d, hd, hdm⟩
