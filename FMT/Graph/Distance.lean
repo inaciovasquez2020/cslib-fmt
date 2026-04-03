@@ -4,9 +4,6 @@ open Classical
 
 namespace FMT.Graph
 
-axiom path_refl (G : Graph) (u : G.V) :
-  Nonempty (PathLength G u u 0)
-
 noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
   match dist? G u v with
   | some n => n
@@ -16,14 +13,14 @@ theorem dist_exists (G : Graph) {u v : G.V} {n : Nat}
   (h : dist G u v = n) :
   dist? G u v = some n ∨ (dist? G u v = none ∧ n = 0) := by
   unfold dist at h
-  cases hdist : dist? G u v <;> simp [hdist] at h ⊢
-
-theorem dist_le_zero_of_eq (G : Graph) (u : G.V) :
-  dist G u u ≤ 0 := by
-  classical
-  unfold dist dist?
-  have h0 := path_refl G u
-  have hex : ∃ n, Nonempty (PathLength G u u n) := ⟨0, h0⟩
-  simp [hex]
+  cases hdist : dist? G u v with
+  | none =>
+      simp [hdist] at h
+      subst h
+      exact Or.inr ⟨rfl, rfl⟩
+  | some val =>
+      simp [hdist] at h
+      subst h
+      exact Or.inl rfl
 
 end FMT.Graph
