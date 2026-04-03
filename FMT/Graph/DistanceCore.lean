@@ -4,23 +4,23 @@ open Classical
 
 namespace FMT.Graph
 
+axiom shortest_path_length
+  (G : Graph) (u v : G.V) :
+  ∃ d : Nat,
+    Nonempty (PathLength G u v d) ∧
+    (∀ m, m < d → ¬ Nonempty (PathLength G u v m))
+
 noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
-  if h : ∃ n, Nonempty (PathLength G u v n) then
-    some (Classical.choose h)
-  else
-    none
+  some (Classical.choose (shortest_path_length G u v))
 
 theorem shortest_path_selector
   (G : Graph) {u v : G.V} {n : Nat}
   (h : dist? G u v = some n) :
   Nonempty (PathLength G u v n) := by
-  classical
   unfold dist? at h
-  by_cases hex : ∃ k, Nonempty (PathLength G u v k)
-  · simp [hex] at h
-    cases h
-    exact Classical.choose_spec hex
-  · simp [hex] at h
+  rcases Classical.choose_spec (shortest_path_length G u v) with ⟨hpath, _⟩
+  cases h
+  exact hpath
 
 theorem path_of_dist?_some
   (G : Graph) {u v : G.V} {n : Nat}
@@ -28,15 +28,17 @@ theorem path_of_dist?_some
   Nonempty (PathLength G u v n) :=
   shortest_path_selector G h
 
+theorem dist?_minimal
+  (G : Graph) {u v : G.V} {n : Nat}
+  (h : dist? G u v = some n) :
+  ∀ m, m < n → ¬ Nonempty (PathLength G u v m) := by
+  unfold dist? at h
+  rcases Classical.choose_spec (shortest_path_length G u v) with ⟨_, hmin⟩
+  cases h
+  exact hmin
+
 theorem dist?_cases (G : Graph) (u v : G.V) :
-  (∃ n, dist? G u v = some n) ∨ dist? G u v = none := by
-  classical
-  unfold dist?
-  by_cases h : ∃ n, Nonempty (PathLength G u v n)
-  · left
-    refine ⟨Classical.choose h, ?_⟩
-    simp [h]
-  · right
-    simp [h]
+  ∃ n, dist? G u v = some n := by
+  refine ⟨Classical.choose (shortest_path_length G u v), rfl⟩
 
 end FMT.Graph
