@@ -1,4 +1,4 @@
 Distance Layer Build Closure: 100%
-Distance Layer Mathematical Closure: Conditional on shortest_selector
-Distance Layer Constructive Closure: pending selector construction
-Placeholder-Free Distance Closure: pending selector construction
+Distance Layer Mathematical Closure: Conditional on shortest_path_length
+Distance Layer Constructive Closure: reduced to shortest_path_length
+Placeholder-Free Distance Closure: reduced to shortest_path_length
