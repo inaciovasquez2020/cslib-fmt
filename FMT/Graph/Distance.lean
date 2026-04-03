@@ -9,11 +9,12 @@ noncomputable def dist (G : Graph) (u v : G.V) : Nat :=
   | some n => n
   | none => 0
 
-theorem dist_eq_zero_of_eq (G : Graph) (u : G.V) :
+theorem dist_eq_zero_of_eq (G : Graph) (u : G.V)
+  (h0 : Nonempty (PathLength G u u 0)) :
   dist G u u = 0 := by
+  classical
   unfold dist dist?
-  by_cases h : ∃ n, Nonempty (PathLength G u u n)
-  · simp [h]
-  · simp [h]
+  have hex : ∃ n, Nonempty (PathLength G u u n) := ⟨0, h0⟩
+  simp [hex]
 
 end FMT.Graph
