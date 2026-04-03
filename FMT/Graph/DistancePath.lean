@@ -6,7 +6,7 @@ namespace FMT.Graph
 
 noncomputable def dist? (G : Graph) (u v : G.V) : Option Nat :=
   if h : ∃ n, Nonempty (PathLength G u v n) then
-    some (Classical.choose h)
+    some (Nat.find h)
   else
     none
 
@@ -16,10 +16,10 @@ theorem shortest_path_selector
     Nonempty (PathLength G u v n) := by
   classical
   unfold dist? at h
-  by_cases hex : ∃ n, Nonempty (PathLength G u v n)
+  by_cases hex : ∃ k, Nonempty (PathLength G u v k)
   · simp [hex] at h
     cases h
-    exact Classical.choose_spec hex
+    exact Nat.find_spec hex
   · simp [hex] at h
 
 end FMT.Graph
