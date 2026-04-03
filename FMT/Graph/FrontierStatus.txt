@@ -1,4 +1,5 @@
 Distance Layer Build Closure: 100%
 Distance Layer Mathematical Closure: Conditional on shortest_path_length
 Distance Layer Constructive Closure: reduced to shortest_path_length
-Placeholder-Free Distance Closure: reduced to shortest_path_length
+Independent Live Frontier: FMT/Graph/DistanceCore.lean:7:axiom shortest_path_length
+Audit Result: no other live axiom/sorry/admit in FMT (excluding AXIOM_FRONTIER_DISTANCE.txt)
