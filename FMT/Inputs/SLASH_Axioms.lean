@@ -6,6 +6,12 @@ namespace FMT.Inputs
 open FMT.Graph
 
 class SLASHAxioms (G : Graph) where
+exists_shortest_path_length :
+(u v : G.V) →
+(∃ n, Nonempty (PathLength G u v n)) →
+∃ n, Nonempty (PathLength G u v n) ∧
+  ∀ m, m < n → ¬ Nonempty (PathLength G u v m)
+
 dist_is_shortest :
 {u v : G.V} → {n : Nat} →
 dist? G u v = some n →
