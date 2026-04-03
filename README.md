@@ -52,3 +52,10 @@ Compatibility status:
 - `FMT.Graph.dist` remains only as a legacy compatibility wrapper
 - new modules should use `dist?`, `DistLE`, and `DistGT`
 
+
+
+## Current status
+
+* Main-branch incorporation: 100%
+* CI/merge pipeline completion: 100%
+* Distance-frontier closure: merged to `main` via PR #101
