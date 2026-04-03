@@ -1,4 +1,4 @@
-import FMT.Graph.DistancePath
+import FMT.Graph.DistanceCore
 
 namespace FMT.Graph
 
