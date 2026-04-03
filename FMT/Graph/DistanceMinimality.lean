@@ -4,7 +4,7 @@ import FMT.Graph.DistancePath
 namespace FMT.Graph
 
 theorem dist_eq_of_no_shorter_path
-  (G : Graph) {u v : G.V} {n : Nat}
+  (G : Graph) [FMT.Inputs.SLASHAxioms G] {u v : G.V} {n : Nat}
   (hpath : Nonempty (PathLength G u v n))
   (hmin : ∀ m, m < n → ¬ Nonempty (PathLength G u v m)) :
   ∃ d, dist? G u v = some d ∧ d = n := by
@@ -18,7 +18,7 @@ theorem dist_eq_of_no_shorter_path
   exact ⟨d, hd, hEq⟩
 
 theorem dist?_some_iff_shortest
-  (G : Graph) {u v : G.V} {n : Nat} :
+  (G : Graph) [Inputs.SLASHAxioms G] {u v : G.V} {n : Nat} :
   dist? G u v = some n ↔
     Nonempty (PathLength G u v n) ∧
     ∀ m, m < n → ¬ Nonempty (PathLength G u v m) := by
