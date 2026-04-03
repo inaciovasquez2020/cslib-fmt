@@ -1,4 +1,5 @@
 import FMT.Graph.PathLength
+import Mathlib.Data.Nat.Basic
 
 open Classical
 
