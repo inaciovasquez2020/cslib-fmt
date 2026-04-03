@@ -8,5 +8,4 @@ import FMT.Graph.PathLengthConcat
 import FMT.Graph.DistanceTriangle
 import FMT.Graph.PathLengthReverse
 import FMT.Graph.DistanceSymmetry
-import FMT.Graph.ShortestPathSelector
 import FMT.Graph.ExistsMinPathLength
