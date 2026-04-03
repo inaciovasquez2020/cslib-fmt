@@ -1,4 +1,4 @@
-Distance frontier after dist?_is_shortest theoremization
+Distance frontier after restoring dist?_some_of_shortest_path axiom
 
 Remaining axioms:
 FMT/Graph/DistancePath.lean:10:axiom dist?_bound_of_path
