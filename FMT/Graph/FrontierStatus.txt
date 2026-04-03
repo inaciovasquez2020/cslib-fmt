@@ -1,11 +1,4 @@
-REMAINING FRONTIER
-- pathLength_concat
-- pathLength_reverse
-- exists_min_pathLength
-- noncomputable def shortest_path_selector
-- noncomputable def dist
-- noncomputable def dist?
-STABLE THEOREMS
-- dist?_symm
-- exists_min_pathLength_of_reachable
-- shortest_path_selector_complete_of_reachable
+Distance Layer Build Closure: 100%
+Distance Layer Mathematical Closure: Conditional on shortest_selector
+Distance Layer Constructive Closure: pending selector construction
+Placeholder-Free Distance Closure: pending selector construction
