@@ -1,0 +1,21 @@
+{
+  "name": "EXNILIO",
+  "short": "En",
+  "purpose": "break-repair harness",
+  "entries": [
+    "generate",
+    "break",
+    "check",
+    "correct",
+    "run"
+  ],
+  "target": {
+    "type": "text_lines",
+    "invariants": [
+      "nonempty",
+      "trimmed",
+      "unique",
+      "sorted"
+    ]
+  }
+}
