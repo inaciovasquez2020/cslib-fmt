@@ -2,7 +2,11 @@ import sys
 import subprocess
 from pathlib import Path
 
-mode = sys.argv[1] if len(sys.argv) > 1 else "quick"
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from EXNILIO.config import EXNILIOConfig
+
+cfg = EXNILIOConfig()
+mode = sys.argv[1] if len(sys.argv) > 1 else cfg.path_mode
 
 steps_quick = [
     ["python3", "EXNILIO/generate.py"],
