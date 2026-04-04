@@ -1,10 +1,9 @@
 name: Theorem status update
-about: Propose a Closed / Conditional / Open status change
+about: Update theorem status or closure level
 title: "[STATUS] "
-labels: status
-assignees: ''
-Item
-Current status
-Proposed status
-Justification
-File evidence
+labels: theorem-status
+assignees: ""
+Statement
+Old status
+New status
+Dependency impact

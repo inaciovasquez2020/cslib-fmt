@@ -1,17 +1,9 @@
 name: Bug report
-about: Report a build, import, theorem, or documentation defect
+about: Report a library defect
 title: "[BUG] "
 labels: bug
-assignees: ''
-Component
-Graph
-Logic
-Game
-Types
-Invariants
-Docs
-CI
+assignees: ""
+File
 Expected behavior
 Actual behavior
-Reproduction
-Proposed micro-fix
+Minimal reproduction
