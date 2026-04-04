@@ -1,9 +1,15 @@
+# CSLIB FMT (Finite-Model Theory)
+
+[![CI](https://github.com/inaciovasquez2020/cslib-fmt/actions/workflows/verify.yml/badge.svg)](https://github.com/inaciovasquez2020/cslib-fmt/actions/workflows/verify.yml)
+
+A Lean 4 library for finite-model-theoretic locality, bounded-radius structure, EF games, FO^k syntax, local types, and invariant interfaces.
+
 
 # CSLIB FMT (Finite-Model Theory)
 
 [![CI](https://github.com/inaciovasquez2020/cslib-fmt/actions/workflows/verify.yml/badge.svg)](https://github.com/inaciovasquez2020/cslib-fmt/actions/workflows/verify.yml)
 
-A Lean 4 library and research program for finite-model-theoretic locality, bounded-radius structure, EF games, FO^k syntax, local types, and cycle-space/global-obstruction interfaces.
+A Lean 4 library for finite-model-theoretic locality, bounded-radius structure, EF games, FO^k syntax, local types, and invariant interfaces.
 
 ## Current status
 
@@ -12,6 +18,15 @@ A Lean 4 library and research program for finite-model-theoretic locality, bound
 * Public maturity target: stable core, explicit status map, reusable examples, contributor path.
 
 ## Start here
+
+## Public API
+
+- `FMT.Graph`
+- `FMT.Logic`
+- `FMT.Game`
+- `FMT.Types`
+- `FMT.Invariants`
+
 
 1. `lake build`
 2. Read `docs/onboarding/START_HERE.md`
