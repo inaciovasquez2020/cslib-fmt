@@ -1,0 +1,24 @@
+name: EXNILIO
+
+on:
+  push:
+    paths:
+      - 'EXNILIO/**'
+      - '.github/workflows/exnilio.yml'
+  pull_request:
+    paths:
+      - 'EXNILIO/**'
+      - '.github/workflows/exnilio.yml'
+
+jobs:
+  exnilio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run EXNILIO quick path
+        run: bash EXNILIO/run.sh quick
+      - name: Run EXNILIO long path
+        run: bash EXNILIO/run.sh long
