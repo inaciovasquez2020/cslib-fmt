@@ -1,10 +1,8 @@
 name: Good first task
-about: Small scoped public-maturity task
+about: Small library-scoped improvement
 title: "[TASK] "
 labels: good first task
-assignees: ''
-Objective
-Exact file targets
-Acceptance condition
-Build command
-lake build
+assignees: ""
+Target file
+Single structural change
+Acceptance criterion
