@@ -40,7 +40,7 @@ def PathLength.concat
         exact p.step ⟨i.1, by omega⟩
       · -- Join point: i.1 = m
         have him : i.1 = m := by omega
-        simp [hcur, hnext, him]
+        simp [him]
         -- Bridge the paths directly to avoid rewriting v
         have h_bridge : p.verts ⟨m, by omega⟩ = q.verts ⟨0, by omega⟩ := 
           p.finish.trans q.start.symm
