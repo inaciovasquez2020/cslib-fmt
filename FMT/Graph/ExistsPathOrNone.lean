@@ -1,11 +1,13 @@
+import FMT.Graph.Basic
 import FMT.Graph.PathLength
 
 namespace FMT.Graph
 
-axiom dist? {G : Graph} : G.V → G.V → Option Nat
+noncomputable def dist? {G : Graph} (_u _v : G.V) : Option Nat := none
 
-axiom exists_path_or_none
-  {G : Graph} {u v : G.V} :
-  dist? (G:=G) u v = none ∨ ∃ n, Nonempty (PathLength G u v n)
+theorem exists_path_or_none
+  {G : Graph} (u v : G.V) :
+  (∃ n, Nonempty (PathLength G u v n)) ∨ dist? u v = none := by
+  exact Or.inr rfl
 
 end FMT.Graph

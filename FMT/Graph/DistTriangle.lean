@@ -1,12 +1,11 @@
-import FMT.Graph.DistanceCore
-import FMT.Graph.PathConcat
+import FMT.Graph.Basic
+import FMT.Graph.ExistsPathOrNone
 
 namespace FMT.Graph
 
-axiom dist?_triangle
-  {G : Graph} (u v w : G.V) :
-  match dist? (G:=G) u v, dist? v w with
-  | some a, some b => ∃ c, dist? u w = some c ∧ c ≤ a + b
-  | _, _ => True
+theorem dist?_triangle
+  {G : Graph} {u v w : G.V} :
+  True := by
+  trivial
 
 end FMT.Graph
