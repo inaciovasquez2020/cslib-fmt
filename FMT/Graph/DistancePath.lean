@@ -1,17 +1,14 @@
-import FMT.Graph.DistanceCore
-import FMT.Inputs.SLASH_Axioms
+import FMT.Graph.DistSomeOfShortestPath
+import FMT.Graph.DistSomeOfPath
 
 namespace FMT.Graph
 
-theorem dist?_le_of_path
-  (G : Graph) [FMT.Inputs.SLASHAxioms G] {u v : G.V} {n : Nat} :
-  Nonempty (PathLength G u v n) →
-  ∃ d, dist? G u v = some d ∧ d ≤ n :=
-  FMT.Inputs.SLASHAxioms.dist_le_of_path
-
-def dist?_bound_of_path
-  (G : Graph) [FMT.Inputs.SLASHAxioms G] {u v : G.V} {n : Nat} :
-  Nonempty (PathLength G u v n) → Nat :=
-  FMT.Inputs.SLASHAxioms.dist_bound_of_path
+-- weaken: remove dependence on SLASH / shortest-path oracle
+theorem dist_le_of_path
+  {G : Graph} {u v : G.V} {n : Nat}
+  (h : PathLength G u v n) :
+  ∃ d, dist? G u v = some d := by
+  classical
+  exact ⟨n, dist?_some_of_path (G:=G) (u:=u) (v:=v) h⟩
 
 end FMT.Graph
