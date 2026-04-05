@@ -1,11 +1,20 @@
+import FMT.Graph.Finite
+
 namespace FMT.Invariants
 
-structure CycleSpace where
+open FMT.Graph
+
+structure CycleSpace (G : Graph) where
   dim : Nat
 
-def cycleDim (n : Nat) : CycleSpace := ⟨n⟩
+def vertexCount (G : Graph) [FiniteGraph G] : Nat :=
+  Fintype.card G.V
 
-theorem cycleDim_nonneg (n : Nat) : 0 ≤ (cycleDim n).dim := by
+def cycleSpaceOfGraph (G : Graph) [FiniteGraph G] : CycleSpace G :=
+  ⟨vertexCount G⟩
+
+theorem cycleDim_nonneg (G : Graph) [FiniteGraph G] :
+    0 ≤ (cycleSpaceOfGraph G).dim := by
   omega
 
 end FMT.Invariants
