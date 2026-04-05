@@ -16,3 +16,6 @@ import FMT.API
 import FMT.Spec.FinalSolve
 import FMT.API.FinalSolve
 import FMT.Examples.CounterBreak
+import FMT.Invariants.GenuineCycleRankV2
+import FMT.Examples.GenuineCycleRankWitnessV2
+import FMT.Examples.GenuineCycleRankPath3WitnessV2
