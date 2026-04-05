@@ -4,7 +4,7 @@ import FMT.Graph.Distance
 namespace FMT.Graph
 
 def InBoundedRadius (G : Graph) (v u : G.V) (r : Nat) : Prop :=
-  ∃ d, dist? G v u = some d ∧ d ≤ r
+  ∃ d, dist? (G:=G) v u = some d ∧ d ≤ r
 
 def BoundedRadius (G : Graph) (v : G.V) (r : Nat) : Type _ :=
   { u : G.V // InBoundedRadius G v u r }

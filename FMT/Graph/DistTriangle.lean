@@ -5,7 +5,7 @@ namespace FMT.Graph
 
 axiom dist?_triangle
   {G : Graph} (u v w : G.V) :
-  match dist? u v, dist? v w with
+  match dist? (G:=G) u v, dist? v w with
   | some a, some b => ∃ c, dist? u w = some c ∧ c ≤ a + b
   | _, _ => True
 

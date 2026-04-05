@@ -14,7 +14,7 @@ def nilPath (G : Graph) (u : G.V) : PathLength G u u 0 where
     exact Fin.elim0 i
 
 theorem dist?_refl (G : Graph) (u : G.V) :
-  dist? G u u = some 0 := by
+  dist? (G:=G) u u = some 0 := by
   apply dist?_some_of_shortest_path
   · exact ⟨nilPath G u⟩
   · intro m hm

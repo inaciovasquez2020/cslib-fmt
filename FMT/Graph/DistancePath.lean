@@ -7,7 +7,7 @@ namespace FMT.Graph
 theorem dist?_le_of_path
   (G : Graph) [FMT.Inputs.SLASHAxioms G] (u v : G.V) {n : Nat} :
   Nonempty (PathLength G u v n) →
-  ∃ d, dist? G u v = some d ∧ d ≤ n := by
+  ∃ d, dist? (G:=G) u v = some d ∧ d ≤ n := by
   intro h
   classical
   obtain ⟨m, hm, hmin⟩ :=

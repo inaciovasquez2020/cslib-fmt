@@ -7,7 +7,7 @@ theorem dist_eq_of_no_shorter_path
   (G : Graph) [FMT.Inputs.SLASHAxioms G] {u v : G.V} {n : Nat}
   (hpath : Nonempty (PathLength G u v n))
   (hmin : ∀ m, m < n → ¬ Nonempty (PathLength G u v m)) :
-  ∃ d, dist? G u v = some d ∧ d = n := by
+  ∃ d, dist? (G:=G) u v = some d ∧ d = n := by
   rcases dist?_le_of_path G hpath with ⟨d, hd, hle⟩
   have hpd : Nonempty (PathLength G u v d) := path_of_dist?_some G hd
   have hnd : ¬ d < n := by
@@ -19,7 +19,7 @@ theorem dist_eq_of_no_shorter_path
 
 theorem dist?_some_iff_shortest
   (G : Graph) [Inputs.SLASHAxioms G] {u v : G.V} {n : Nat} :
-  dist? G u v = some n ↔
+  dist? (G:=G) u v = some n ↔
     Nonempty (PathLength G u v n) ∧
     ∀ m, m < n → ¬ Nonempty (PathLength G u v m) := by
   constructor

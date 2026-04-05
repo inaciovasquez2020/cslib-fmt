@@ -7,7 +7,7 @@ theorem dist?_symm_via_reverse
   (G : Graph)
   (hsymm : ∀ a b : G.V, G.Adj a b → G.Adj b a)
   (u v : G.V) :
-  (∃ n, dist? G u v = some n) → (∃ n, dist? G v u = some n) := by
+  (∃ n, dist? (G:=G) u v = some n) → (∃ n, dist? (G:=G) v u = some n) := by
   intro huv
   rcases huv with ⟨n, hn⟩
   have hp : Nonempty (PathLength G u v n) := path_of_dist?_some G hn

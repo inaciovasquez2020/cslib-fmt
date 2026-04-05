@@ -7,7 +7,7 @@ open FMT.Inputs
 
 theorem dist_triangle_nat
   (G : Graph) [SLASHAxioms G] (u v w : G.V) {a b : Nat}
-  (huv : dist? G u v = some a)
+  (huv : dist? (G:=G) u v = some a)
   (hvw : dist? G v w = some b) :
   dist G u w ≤ a + b := by
   unfold dist

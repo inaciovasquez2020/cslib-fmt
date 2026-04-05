@@ -4,11 +4,11 @@ import FMT.Inputs.ConstructiveSLASHAxioms
 namespace FMT.Graph
 
 def Ball (G : Graph) (u : G.V) (r : Nat) : Set G.V :=
-  {v | ∃ d, dist? G u v = some d ∧ d ≤ r}
+  {v | ∃ d, dist? (G:=G) u v = some d ∧ d ≤ r}
 
 theorem memBall_iff
     (G : Graph) [Inputs.SLASHAxioms G] (u v : G.V) (r : Nat) :
-    v ∈ Ball G u r ↔ ∃ d, dist? G u v = some d ∧ d ≤ r := by
+    v ∈ Ball G u r ↔ ∃ d, dist? (G:=G) u v = some d ∧ d ≤ r := by
   rfl
 
 theorem center_mem_ball
