@@ -1,0 +1,5 @@
+-- diameter closure
+-- include:
+-- cycleDist_antipode,
+-- diameter_eq_max_cycleDist,
+-- cycle_diameter_formula
