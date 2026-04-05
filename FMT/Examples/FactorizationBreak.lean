@@ -1,22 +1,20 @@
-import FMT.Types.Factorization
-import FMT.Types.LocalType
+import FMT.Invariants.NonFactorization
 
 namespace FMT.Examples
 
+open FMT.Invariants
 open FMT.Types
 
-def f (x : Bool) : Nat := if x then 1 else 0
-
-def τ (x : Bool) : LocalType := ()
-
--- This should fail if FactorsThrough is meaningful
-example : ¬ FactorsThrough f τ := by
+example : ¬ factorsThrough badF := by
   intro h
-  cases h with
-  | intro g hg =>
-    have h₁ := hg true
-    have h₂ := hg false
-    simp at h₁ h₂
-    contradiction
+  have hneq : badF LocalType.zero ≠ badF LocalType.one := by
+    simp [badF]
+  have heq : badF LocalType.zero = badF LocalType.one := by
+    rcases h with ⟨g, hg⟩
+    calc
+      badF LocalType.zero = g (code LocalType.zero) := hg LocalType.zero
+      _ = g (code LocalType.one) := by simp [code]
+      _ = badF LocalType.one := (hg LocalType.one).symm
+  exact hneq heq
 
 end FMT.Examples
