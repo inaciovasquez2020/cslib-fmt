@@ -1,8 +1,9 @@
 import FMT.Types.LocalType
+import FMT.Types.LocalEncoding
 
 namespace FMT.Types
 
-def code : LocalType → Nat := fun _ => 0
+def code : LocalType → Nat := localCode
 
 def factorsThrough (f : LocalType → Nat) : Prop :=
   ∃ g : Nat → Nat, ∀ x, f x = g (code x)
