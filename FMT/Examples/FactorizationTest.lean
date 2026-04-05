@@ -5,11 +5,12 @@ namespace FMT.Examples
 
 open FMT.Types
 
-def f (x : Unit) : Nat := 0
+def f (_x : Unit) : Nat := 0
+def τ (_x : Unit) : LocalType := LocalType.zero
 
-def τ (x : Unit) : LocalType := ()
-
-example : FactorsThrough f τ := by
-  exact ⟨fun _ => 0, by intro x; rfl⟩
+example : factorsThrough (fun _ : LocalType => 0) := by
+  refine ⟨fun _ => 0, ?_⟩
+  intro x
+  rfl
 
 end FMT.Examples
