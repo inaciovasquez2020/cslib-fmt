@@ -1,5 +1,5 @@
 namespace FMT.Types
 
-def LocalType : Type := Bool
+abbrev LocalType : Type := Bool
 
 end FMT.Types
