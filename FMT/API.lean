@@ -1,7 +1,7 @@
 import FMT.Types.LocalType
 
-namespace FMT.API
+namespace FMT
 
-def useLocalType : FMT.Types.LocalType := true
+def useLocalType : FMT.Types.LocalType := FMT.Types.LocalType.one
 
-end FMT.API
+end FMT

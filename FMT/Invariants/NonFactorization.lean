@@ -4,7 +4,9 @@ namespace FMT.Invariants
 
 open FMT.Types
 
-def badF : LocalType → Nat := fun x => if x then 1 else 0
+def badF : LocalType → Nat
+| .zero => 0
+| .one  => 1
 
 def nonFactorizingWitness : Prop :=
   ∃ f : LocalType → Nat, ¬ factorsThrough f
@@ -14,11 +16,11 @@ theorem explicit_nonfactorizing_function :
   refine ⟨badF, ?_⟩
   intro h
   rcases h with ⟨g, hg⟩
-  have hff : badF false = badF true := by
+  have hff : badF LocalType.zero = badF LocalType.one := by
     calc
-      badF false = g (code false) := hg false
-      _ = g (code true) := by simp [code]
-      _ = badF true := (hg true).symm
+      badF LocalType.zero = g (code LocalType.zero) := hg LocalType.zero
+      _ = g (code LocalType.one) := by simp [code]
+      _ = badF LocalType.one := (hg LocalType.one).symm
   simp [badF] at hff
 
 theorem nonFactorization_holds : nonFactorizingWitness :=
