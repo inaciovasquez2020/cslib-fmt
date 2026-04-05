@@ -3,9 +3,9 @@ import FMT.Invariants.NonFactorization
 namespace FMT.Bridge
 
 def localToGlobal : Prop :=
-  FMT.Invariants.nonFactorizingWitness
+  FMT.Types.factorsThrough FMT.Invariants.badF
 
 theorem localToGlobal_holds : localToGlobal :=
-  FMT.Invariants.nonFactorization_holds
+  FMT.Invariants.badF_factorsThrough
 
 end FMT.Bridge
