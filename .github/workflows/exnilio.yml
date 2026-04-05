@@ -3,24 +3,31 @@ name: EXNILIO
 on:
   push:
     paths:
-      - 'EXNILIO/**'
-      - '.github/workflows/exnilio.yml'
+      - "EXNILIO/**"
+      - ".github/workflows/exnilio.yml"
   pull_request:
     paths:
-      - 'EXNILIO/**'
-      - '.github/workflows/exnilio.yml'
+      - "EXNILIO/**"
+      - ".github/workflows/exnilio.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   exnilio:
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
       - uses: actions/checkout@v5
+
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
+
       - name: Run EXNILIO quick path
         run: bash EXNILIO/run.sh quick
+
       - name: Run EXNILIO long path
         run: bash EXNILIO/run.sh long
