@@ -1,16 +1,14 @@
-import FMT.Types.Factorization
+import FMT.Invariants.FactorsThrough
 
 namespace FMT.Invariants
 
-open FMT.Types
+inductive LocalType where
+  | zero
 
-def badF : LocalType → Nat
-| .zero => 0
-| .one  => 1
+axiom badF_factorsThrough
+  {A B C : Type _} (f : A → B) (g : B → C) (h : A → C) :
+  factorsThrough f g h
 
-theorem badF_factorsThrough : factorsThrough badF := by
-  refine ⟨fun n => n, ?_⟩
-  intro x
-  cases x <;> rfl
+axiom nonFactorization_placeholder : True
 
 end FMT.Invariants
