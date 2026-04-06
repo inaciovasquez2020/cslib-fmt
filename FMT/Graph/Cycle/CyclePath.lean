@@ -1,0 +1,5 @@
+-- path interaction layer
+-- include:
+-- cycleDist_adj_eq_one,
+-- pathLength_cycleDist_lower_bound,
+-- shortestLength_eq_cycleDist

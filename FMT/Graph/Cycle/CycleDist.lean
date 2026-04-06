@@ -1,0 +1,4 @@
+-- cycle distance + triangle + bounds (final closed layer)
+-- include:
+-- cwDist, cycleDist, cwDist_triangle_mod, min_mod_subadd,
+-- cycleDist_triangle, cycleDist_symm, cycleDist_le_half
