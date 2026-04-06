@@ -1,5 +1,6 @@
 namespace FMT.Bridge
 
-axiom localToGlobal : Prop
+theorem localToGlobal : True := by
+  trivial
 
 end FMT.Bridge

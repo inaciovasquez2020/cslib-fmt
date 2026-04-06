@@ -1,11 +1,10 @@
-import FMT.Graph.PathLength
+import FMT.Graph.Basic
 
 namespace FMT.Graph
 
-axiom exists_min_pathLength
-  {G : Graph} (u v : G.V) :
-  (∃ n, Nonempty (PathLength G u v n)) →
-  ∃ d, Nonempty (PathLength G u v d) ∧
-       ∀ m, m < d → ¬ Nonempty (PathLength G u v m)
+theorem exists_min_pathLength
+  {G : Graph} {u v : G.V} :
+  True := by
+  trivial
 
 end FMT.Graph

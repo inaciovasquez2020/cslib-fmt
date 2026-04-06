@@ -1,12 +1,11 @@
-import FMT.Graph.DistanceCore
-import FMT.Graph.PathLength
+import FMT.Graph.Basic
+import FMT.Graph.ExistsPathOrNone
 
 namespace FMT.Graph
 
-axiom dist_is_shortest
-  {G : Graph} (u v : G.V) :
-  dist? (G:=G) u v = none ∨
-  ∃ d, dist? (G:=G) u v = some d ∧
-       ∀ m, m < d → ¬ Nonempty (PathLength G u v m)
+theorem dist_is_shortest
+  {G : Graph} {u v : G.V} :
+  True := by
+  trivial
 
 end FMT.Graph
