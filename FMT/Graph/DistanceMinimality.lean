@@ -1,6 +1,5 @@
 import FMT.Graph.Distance
 import FMT.Graph.DistancePath
-import FMT.Inputs.ConstructiveSLASHAxioms
 
 namespace FMT.Graph
 
