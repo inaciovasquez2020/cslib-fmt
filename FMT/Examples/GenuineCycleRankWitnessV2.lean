@@ -11,6 +11,6 @@ example : (cycleSpaceOfGraph trivialGraph).dim = 1 := by
   simp [cycleSpaceOfGraph, vertexCount, trivialGraph]
 
 example : 0 ≤ genuineCycleRankV2 trivialGraph := by
-  simpa using genuineCycleRankV2_nonneg trivialGraph
+  exact genuineCycleRankV2_nonneg trivialGraph
 
 end FMT.Examples
