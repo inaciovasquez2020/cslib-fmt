@@ -1,2 +1,7 @@
-Independent distance frontier:
-FMT/Graph/DistanceCore.lean:7:axiom shortest_path_length
+ARCHIVAL NOTE
+The former frontier `FMT/Graph/DistanceCore.lean:7: axiom shortest_path_length` has been eliminated.
+Current code uses:
+- FMT/Graph/ShortestLength.lean
+- FMT/Graph/ExistsMinPathLength.lean
+- FMT/Inputs/ConstructiveSLASHAxioms.lean
+No live distance-core axiom remains.

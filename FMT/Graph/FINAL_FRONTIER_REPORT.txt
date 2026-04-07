@@ -1,6 +1,6 @@
 Final frontier report updated.
 
-Distance-core axioms eliminated constructively:
+Distance-core axioms eliminated constructively (closed in live code):
 1. exists_min_pathLength
 2. pathLength_reverse
 3. pathLength_concat

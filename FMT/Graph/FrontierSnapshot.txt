@@ -1,9 +1,1 @@
-Current frontier snapshot updated after elimination of distance axioms.
-
-Eliminated:
-- exists_min_pathLength
-- pathLength_reverse
-- pathLength_concat
-
-Note:
-- Any remaining mentions in audit/text files are historical and non-semantic.
+Current frontier snapshot: compiled distance-core frontier eliminated; remaining references are archival text only.

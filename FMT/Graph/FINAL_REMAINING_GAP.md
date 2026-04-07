@@ -1,7 +1,7 @@
 # Final Remaining Gap
 
 ## Unprovable unconditional frontier
-- `FMT/Graph/DistanceCore.lean:7: axiom shortest_path_length`
+- RESOLVED: no remaining live distance-core gap in compiled code
 
 ## Weakest sufficient replacement
 For every graph `G` and vertices `u v`, assume path existence:
