@@ -23,3 +23,11 @@ A Lean 4 library for finite-model-theoretic locality, bounded-radius structure, 
 - `FMT.Game`
 - `FMT.Types`
 - `FMT.Invariants`
+
+## URF routing
+
+This repository is a finite-model-theory library and formalization surface within the broader URF program.
+
+Canonical URF definitions, theorem statements, dependency ledgers, and closure claims remain in `urf-core`.
+
+Community-additive examples, tests, implementations, and non-canonical extensions belong in `urf-core-community`.
