@@ -1,18 +1,29 @@
-# Repository Status
+# CSLIB FMT Status
 
-## Canonical status source
+## Scope
+Finite-model-theory library for FO^k locality, EF games, bounded-radius structure, and global obstruction interfaces.
 
-The canonical live mathematical frontier for the graph-distance layer is:
+## Core Layers
+- graph / distance / ball
+- FO^k syntax and semantics
+- EF game machinery
+- local type / factorization
+- invariant / cycle-space interface
 
-- `FMT/Graph/FrontierStatus.txt`
-- `FMT/Graph/FINAL_REMAINING_GAP.md`
+## Status Labels
+- closed
+- conditional
+- open
+- archival
 
-## Current live status
+## Current State
+- build: stable
+- locality layer: complete
+- distance layer: complete
+- factorization layer: partial
+- examples/tests: active
 
-- Distance Layer Mathematical Closure: complete
-- Distance Layer Constructive Closure: complete
-- Independent Live Frontier: none
-
-## Note
-
-Any older root-level files that describe partial distance closure, selector gaps, or live graph axioms are superseded by the canonical graph-local frontier files above and should be treated as archival history only.
+## Canonical Pointer
+For graph-distance closure, the canonical live frontier is:
+- FMT/Graph/FrontierStatus.txt
+- FMT/Graph/FINAL_REMAINING_GAP.md
