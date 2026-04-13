@@ -10,6 +10,7 @@ def test_axiom_usage_audit_no_live_frontier_wording():
         "live blocker: pathLength_concat",
         "live blocker: pathLength_reverse",
         "live blocker: dist?_symm",
+        "distance layer: partial (triangle/symmetry frontier)",
     ]
     for s in banned:
         assert s not in audit

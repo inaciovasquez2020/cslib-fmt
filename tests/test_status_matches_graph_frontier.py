@@ -7,4 +7,5 @@ def test_status_matches_graph_frontier():
     assert "Distance Layer Constructive Closure: complete" in frontier
     assert "Independent Live Frontier: none" in frontier
     assert "- distance layer: complete" in status
+    assert "- factorization layer: partial" in status
     assert "graph-distance layer has no live blocker on main" in status
