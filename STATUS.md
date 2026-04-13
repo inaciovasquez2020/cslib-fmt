@@ -28,7 +28,6 @@ For graph-distance closure, the canonical live frontier is:
 - FMT/Graph/FrontierStatus.txt
 - FMT/Graph/FINAL_REMAINING_GAP.md
 
-## Factorization Frontier
-The graph-distance layer has no live blocker on main.
-The remaining non-closed layer is factorization.
-See `FACTORIZATION_FRONTIER.md` for the single weakest remaining theorem object.
+## Remaining Live Frontier
+Single weakest remaining theorem object:
+- prove the core factorization existence/uniqueness bridge used to pass from local type data to the public factorization interface
