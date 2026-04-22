@@ -1,19 +1,17 @@
+import FMT.Types.LocalType
+import FMT.Types.Factorization
+
 namespace FMT.Bridge
 
-structure LocalData where
-  witness : Unit
+open FMT.Types
 
-structure GlobalFactorization where
-  witness : Unit
+def localProjection : LocalType → LocalType := id
 
-def buildFactorization (_ : LocalData) : GlobalFactorization :=
-  ⟨()⟩
+def globalLift : LocalType → Nat := evalLocal
 
-theorem localToGlobal (d : LocalData) :
-    ∃ g : GlobalFactorization, ∀ h : GlobalFactorization, h = g := by
-  refine ⟨buildFactorization d, ?_⟩
-  intro h
-  cases h
-  rfl
+def localToGlobal : FactorsThrough evalLocal localProjection :=
+  ⟨globalLift, by
+    intro x
+    rfl⟩
 
 end FMT.Bridge

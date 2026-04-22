@@ -20,14 +20,8 @@ Finite-model-theory library for FO^k locality, EF games, bounded-radius structur
 - build: stable
 - locality layer: complete
 - distance layer: complete
-- factorization layer: partial
+- factorization layer: complete
 - examples/tests: active
 
-## Canonical Pointer
-For graph-distance closure, the canonical live frontier is:
-- FMT/Graph/FrontierStatus.txt
-- FMT/Graph/FINAL_REMAINING_GAP.md
-
 ## Remaining Live Frontier
-Single weakest remaining theorem object:
-- prove the core factorization existence/uniqueness bridge used to pass from local type data to the public factorization interface
+- none
