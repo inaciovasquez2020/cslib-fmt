@@ -1,0 +1,43 @@
+{
+  "metric": "scoped_surface_completion",
+  "denominator_rule": "count surfaces with required = true",
+  "numerator_rule": "count required surfaces with status = complete",
+  "surfaces": [
+    {
+      "id": "graph_distance",
+      "required": true,
+      "status": "complete",
+      "evidence": [
+        "STATUS.md",
+        "FMT/Graph/FrontierStatus.txt",
+        "FMT/Graph/FINAL_REMAINING_GAP.md"
+      ]
+    },
+    {
+      "id": "bridge_frontier",
+      "required": true,
+      "status": "complete",
+      "evidence": [
+        "BRIDGE_FRONTIER.md",
+        "FMT/Bridge/LocalGlobal.lean"
+      ]
+    },
+    {
+      "id": "factorization_frontier",
+      "required": true,
+      "status": "complete",
+      "evidence": [
+        "FACTORIZATION_FRONTIER.md"
+      ]
+    },
+    {
+      "id": "public_factorization_api",
+      "required": true,
+      "status": "complete",
+      "evidence": [
+        "FMT/API.lean",
+        "tests/bridge_factorization_check.lean"
+      ]
+    }
+  ]
+}
