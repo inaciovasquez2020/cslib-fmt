@@ -1,0 +1,13 @@
+{
+  "repo": "cslib-fmt",
+  "snapshot_kind": "repository_scoped_closure",
+  "scope": "denominator_scoped_only",
+  "source_registry": "docs/status/SCOPED_PERCENTAGE_REGISTRY.json",
+  "closure_scope_doc": "docs/status/CLOSURE_SCOPE.md",
+  "closure_certificate_doc": "docs/status/CLOSURE_CERTIFICATE.md",
+  "scoped_denominator": 4,
+  "scoped_completed": 4,
+  "scoped_percentage": 100,
+  "scoped_status": "COMPLETE",
+  "claims_beyond_scope": false
+}
