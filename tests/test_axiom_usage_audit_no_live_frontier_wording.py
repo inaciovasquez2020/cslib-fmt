@@ -5,7 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def test_no_stale_distance_frontier_wording_in_status_surfaces():
     stale = [
         "live blocker: " + "dist?_symm",
-        "distance layer: " + "partial (triangle/symmetry frontier)",
+        "distance layer: " + "partial (" + "triangle" + "/" + "symmetry" + " frontier)",
     ]
     surfaces = [
         ROOT / "AXIOM_USAGE_AUDIT.txt",

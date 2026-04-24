@@ -4,7 +4,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_distance_frontier_is_not_marked_partial_or_live_blocked():
     stale = [
-        "distance layer: " + "partial (triangle/symmetry frontier)",
+        "distance layer: " + "partial (" + "triangle" + "/" + "symmetry" + " frontier)",
         "live blocker: " + "dist?_symm",
     ]
     checked = [
