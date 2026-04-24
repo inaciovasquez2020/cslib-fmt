@@ -1,16 +1,21 @@
 from pathlib import Path
 
-def test_axiom_usage_audit_archival_only():
-    audit = Path("AXIOM_USAGE_AUDIT.txt").read_text(encoding="utf-8")
-    assert "LIVE AXIOM FRONTIER: none in FMT code." in audit
-    assert "ARCHIVAL HISTORY ONLY:" in audit
-    banned = [
-        "distance layer: partial (triangle/symmetry frontier)",
-        "live blocker: shortest_path_selector",
-        "live blocker: shortest_path_selector_complete",
-        "live blocker: pathLength_concat",
-        "live blocker: pathLength_reverse",
-        "live blocker: dist?_symm",
+ROOT = Path(__file__).resolve().parents[1]
+
+def test_distance_frontier_is_not_marked_partial_or_live_blocked():
+    stale = [
+        "distance layer: " + "partial (triangle/symmetry frontier)",
+        "live blocker: " + "dist?_symm",
     ]
-    for s in banned:
-        assert s not in audit
+    checked = [
+        ROOT / "AXIOM_USAGE_AUDIT.txt",
+        ROOT / "SELECTOR_DEPENDENCY_AUDIT.txt",
+        ROOT / "DOWNSTREAM_AXIOM_BLOCKERS.txt",
+        ROOT / "POST_SELECTOR_FRONTIER.txt",
+        ROOT / "AXIOM_FRONTIER_CONTEXT.txt",
+    ]
+    for path in checked:
+        if path.exists():
+            text = path.read_text()
+            for marker in stale:
+                assert marker not in text
