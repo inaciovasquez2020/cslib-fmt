@@ -2,3 +2,6 @@
 
 EXNILIO/input.txt
 EXNILIO/report.json
+__pycache__/
+.pytest_cache/
+*.pyc
