@@ -4,6 +4,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STATUS_DOC = ROOT / "docs/status/THEOREM_SURFACE_AUDIT_2026_04_27.md"
 FORMAL_DOC = ROOT / "docs/status/FORMAL_STATUS_2026_04_27.md"
+README = ROOT / "README.md"
 
 def main() -> int:
     if not STATUS_DOC.exists():
@@ -14,8 +15,13 @@ def main() -> int:
         print(f"missing formal status document: {FORMAL_DOC.relative_to(ROOT)}")
         return 1
 
+    if not README.exists():
+        print("missing README.md")
+        return 1
+
     text = STATUS_DOC.read_text(encoding="utf-8", errors="ignore")
     formal_text = FORMAL_DOC.read_text(encoding="utf-8", errors="ignore")
+    readme_text = README.read_text(encoding="utf-8", errors="ignore")
 
     required = [
         "Status: Clean Formal Scaffold / Needs Theorem Audit",
@@ -46,11 +52,26 @@ def main() -> int:
             print(f"missing: {s}")
         return 1
 
+    readme_required = [
+        "## Formal Status",
+        "Status: Clean Formal Scaffold / Needs Theorem Audit",
+        "A `Prop` specification is not a proof.",
+        "No final-solve claim is asserted at repository level.",
+        "Theorem-surface audit: `docs/status/THEOREM_SURFACE_AUDIT_2026_04_27.md`",
+    ]
+    readme_missing = [s for s in readme_required if s not in readme_text]
+    if readme_missing:
+        print("README formal-status block check failed")
+        for s in readme_missing:
+            print(f"missing: {s}")
+        return 1
+
     print({
         "status": "PASS",
         "classification": "Clean Formal Scaffold / Needs Theorem Audit",
         "status_doc": str(STATUS_DOC.relative_to(ROOT)),
         "formal_status_doc": str(FORMAL_DOC.relative_to(ROOT)),
+        "readme_status_block": "PASS",
     })
     return 0
 
