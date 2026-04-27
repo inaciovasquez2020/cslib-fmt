@@ -32,6 +32,10 @@ Canonical URF definitions, theorem statements, dependency ledgers, and closure c
 
 Community-additive examples, tests, implementations, and non-canonical extensions belong in `urf-core-community`.
 
+## External status
+
+This repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.
+
 ## Formal Status
 
 Status: Clean Formal Scaffold / Needs Theorem Audit
@@ -50,3 +54,4 @@ Current status:
 - Strongest verified theorem: not asserted at repository level
 - Weakest missing object: exported-theorem audit separating definitions, specifications, verified lemmas, conditional theorems, and final theorems
 - Theorem-surface audit: `docs/status/THEOREM_SURFACE_AUDIT_2026_04_27.md`
+
