@@ -36,6 +36,26 @@ Community-additive examples, tests, implementations, and non-canonical extension
 
 This repository is governed by [`docs/status/EXTERNAL_STATUS_LOCK.md`](docs/status/EXTERNAL_STATUS_LOCK.md). Build success, CI success, dashboards, ledgers, axioms, admits, `sorry`, or placeholder witnesses do not constitute theorem-level closure.
 
+
 ## Lean proof portfolio classification
 
 This repository is governed by [`docs/status/LEAN_PROOF_PORTFOLIO_CLASSIFICATION.md`](docs/status/LEAN_PROOF_PORTFOLIO_CLASSIFICATION.md). Its role in the portfolio is explicitly classified as proof-facing, conditional frontier, infrastructure/documentation, or legacy/scaffold.
+## Formal Status
+
+Status: Clean Formal Scaffold / Needs Theorem Audit
+
+Build status:
+- A successful build means the checked root target compiles.
+- It does not imply that the repository contains a final solve.
+
+Theorem status:
+- A `Prop` specification is not a proof.
+- A target statement is not a proof.
+- No final-solve claim is asserted at repository level.
+- A final theorem claim requires an identified file name, theorem name, dependency chain, and proof status.
+
+Current status:
+- Strongest verified theorem: not asserted at repository level
+- Weakest missing object: exported-theorem audit separating definitions, specifications, verified lemmas, conditional theorems, and final theorems
+- Theorem-surface audit: `docs/status/THEOREM_SURFACE_AUDIT_2026_04_27.md`
+
