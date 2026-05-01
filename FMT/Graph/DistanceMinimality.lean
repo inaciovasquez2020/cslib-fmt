@@ -8,14 +8,8 @@ theorem dist_eq_of_no_shorter_path
   (hpath : Nonempty (PathLength G u v n))
   (hmin : ∀ m, m < n → ¬ Nonempty (PathLength G u v m)) :
   ∃ d, dist? (G:=G) u v = some d ∧ d = n := by
-  rcases dist?_le_of_path G hpath with ⟨d, hd, hle⟩
-  have hpd : Nonempty (PathLength G u v d) := path_of_dist?_some G hd
-  have hnd : ¬ d < n := by
-    intro hlt
-    exact hmin d hlt hpd
-  have hge : n ≤ d := Nat.le_of_not_gt hnd
-  have hEq : d = n := Nat.le_antisymm hle hge
-  exact ⟨d, hd, hEq⟩
+  refine ⟨n, ?_, rfl⟩
+  exact dist?_some_of_shortest_path (G:=G) (u:=u) (v:=v) hpath hmin
 
 theorem dist?_some_iff_shortest
   (G : Graph) [Inputs.SLASHAxioms G] {u v : G.V} {n : Nat} :
@@ -24,14 +18,7 @@ theorem dist?_some_iff_shortest
     ∀ m, m < n → ¬ Nonempty (PathLength G u v m) := by
   constructor
   · intro h
-    constructor
-    · exact path_of_dist?_some G h
-    · intro m hm
-      intro hpm
-      rcases dist?_le_of_path G hpm with ⟨d, hd, hdm⟩
-      rw [h] at hd
-      cases hd
-      exact Nat.not_lt_of_ge hdm hm
+    exact shortest_length_spec h
   · intro h
     rcases h with ⟨hpath, hmin⟩
     rcases dist_eq_of_no_shorter_path G hpath hmin with ⟨d, hd, hEq⟩

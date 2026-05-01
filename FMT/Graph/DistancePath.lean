@@ -4,6 +4,12 @@ import FMT.Inputs.SLASH_Axioms
 
 namespace FMT.Graph
 
+theorem path_of_dist?_some
+  (G : Graph) {u v : G.V} {n : Nat}
+  (h : dist? (G:=G) u v = some n) :
+  Nonempty (PathLength G u v n) := by
+  exact (shortest_length_spec (G:=G) (u:=u) (v:=v) h).1
+
 theorem dist?_le_of_path
   (G : Graph) [FMT.Inputs.SLASHAxioms G] (u v : G.V) {n : Nat} :
   Nonempty (PathLength G u v n) →

@@ -6,6 +6,8 @@ import FMT.Graph.DistTriangle
 import FMT.Graph.DistRefl
 import FMT.Graph.DistanceMinimality
 
+namespace FMT.Graph
+
 #check dist?
 #check dist?_le_of_path
 #check pathLength_reverse
@@ -13,3 +15,5 @@ import FMT.Graph.DistanceMinimality
 #check dist?_triangle
 #check dist?_refl
 #check dist?_some_iff_shortest
+
+end FMT.Graph
