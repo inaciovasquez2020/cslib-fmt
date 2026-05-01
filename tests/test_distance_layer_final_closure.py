@@ -12,6 +12,7 @@ REQUIRED = [
     "#check dist?_triangle",
     "#check dist?_refl",
     "#check dist?_some_iff_shortest",
+    "#check dist_is_shortest",
 ]
 
 FORBIDDEN = [
@@ -37,3 +38,9 @@ def test_distance_layer_final_closure_audit_has_no_frontier_placeholders():
     text = AUDIT.read_text()
     for token in FORBIDDEN:
         assert token not in text
+
+def test_dist_is_shortest_is_not_vacuous_true():
+    text = (ROOT / "FMT" / "Graph" / "DistIsShortest.lean").read_text()
+    assert ":\n  True := by" not in text
+    assert "dist?_some_iff_shortest" in text
+    assert "Nonempty (PathLength G u v n)" in text
