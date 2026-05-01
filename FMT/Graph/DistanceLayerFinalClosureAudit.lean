@@ -5,6 +5,7 @@ import FMT.Graph.DistSymm
 import FMT.Graph.DistTriangle
 import FMT.Graph.DistRefl
 import FMT.Graph.DistanceMinimality
+import FMT.Graph.DistIsShortest
 
 namespace FMT.Graph
 
@@ -15,5 +16,6 @@ namespace FMT.Graph
 #check dist?_triangle
 #check dist?_refl
 #check dist?_some_iff_shortest
+#check dist_is_shortest
 
 end FMT.Graph
