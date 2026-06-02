@@ -138,6 +138,16 @@ theorem finiteGraphDiameter_exists_of_allPairDistancesReachable
   refine ⟨natListMax (pairDistanceValues G).toList, ?_⟩
   simp [finiteGraphDiameter?, h]
 
+
+theorem finiteGraphDiameter_eq_some_natListMax_of_allPairDistancesReachable
+  (G : Graph)
+  [Fintype G.V]
+  [DecidableEq G.V]
+  (h : allPairDistancesReachable G) :
+  finiteGraphDiameter? G = some (natListMax (pairDistanceValues G).toList) := by
+  classical
+  simp [finiteGraphDiameter?, h]
+
 theorem finiteGraphDiameter_exists_iff_allPairDistancesReachable
   (G : Graph)
   [Fintype G.V]
