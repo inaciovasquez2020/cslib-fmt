@@ -1,0 +1,20 @@
+{
+  "artifact": "FINITE_GRAPH_DIAMETER_SOME_IFF_REACHABLE_2026_06_02",
+  "status": "TARGET_IMPLEMENTED_PENDING_VERIFICATION",
+  "depends_on": [
+    "FiniteGraphDiameterOptionNatDefinition",
+    "finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable"
+  ],
+  "implemented_objects": [
+    "finiteGraphDiameter_exists_of_allPairDistancesReachable",
+    "finiteGraphDiameter_exists_iff_allPairDistancesReachable"
+  ],
+  "statement": "The option-valued finite graph diameter has a some value exactly when all finite vertex-pair distances are reachable.",
+  "boundary": [
+    "no directed distance symmetry claim",
+    "no new connectedness closure",
+    "no change to Graph",
+    "no new diameter computation algorithm"
+  ],
+  "next_admissible_object": "VerifyFiniteGraphDiameterSomeIffReachable"
+}
