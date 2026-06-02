@@ -1,53 +1,57 @@
-import FMT.Graph.DistanceSymmetry
-import FMT.Graph.DistanceTriangle
-import FMT.Graph.PathLengthOne
+import FMT.Graph.Basic
+import FMT.Graph.PathLength
+import FMT.Graph.PathLengthLemmas
+import FMT.Graph.DistanceOrder
 
 namespace FMT.Examples
 
-open FMT.Graph
+inductive Line3 where
+  | a
+  | b
+  | c
+deriving DecidableEq, Repr
 
-inductive Line3
-| a
-| b
-| c
-deriving DecidableEq
-
-def lineGraph : Graph where
+def lineGraph : FMT.Graph.Graph where
   V := Line3
-  Adj
-  | Line3.a, Line3.b => True
-  | Line3.b, Line3.a => True
-  | Line3.b, Line3.c => True
-  | Line3.c, Line3.b => True
-  | _, _ => False
+  Adj u v :=
+    (u = Line3.a ∧ v = Line3.b) ∨
+    (u = Line3.b ∧ v = Line3.a) ∨
+    (u = Line3.b ∧ v = Line3.c) ∨
+    (u = Line3.c ∧ v = Line3.b)
 
 theorem lineGraph_symm :
-    ∀ x y : lineGraph.V, lineGraph.Adj x y → lineGraph.Adj y x := by
-  intro x y h
-  cases x <;> cases y <;> simpa [lineGraph] at h ⊢
+    ∀ {u v : lineGraph.V}, lineGraph.Adj u v → lineGraph.Adj v u := by
+  intro u v h
+  rcases h with h | h | h | h
+  · exact Or.inr (Or.inl ⟨h.2, h.1⟩)
+  · exact Or.inl ⟨h.2, h.1⟩
+  · exact Or.inr (Or.inr (Or.inr ⟨h.2, h.1⟩))
+  · exact Or.inr (Or.inr (Or.inl ⟨h.2, h.1⟩))
 
-example : dist? lineGraph Line3.a Line3.b = dist? lineGraph Line3.b Line3.a := by
-  exact dist?_symm lineGraph lineGraph_symm
+theorem lineGraph_path_ab :
+    Nonempty (FMT.Graph.PathLength lineGraph Line3.a Line3.b 1) := by
+  refine ⟨?_⟩
+  exact
+    { verts := fun i => if i.1 = 0 then Line3.a else Line3.b
+      start := by simp
+      finish := by simp
+      step := by
+        intro i
+        fin_cases i
+        simp
+        exact Or.inl ⟨rfl, rfl⟩ }
 
-example : DistLE lineGraph Line3.a Line3.c 2 := by
-  have hab : Nonempty (PathLength lineGraph Line3.a Line3.b 1) :=
-    pathLength_one_of_adj lineGraph trivial
-  have hbc : Nonempty (PathLength lineGraph Line3.b Line3.c 1) :=
-    pathLength_one_of_adj lineGraph trivial
-  have h1 : DistLE lineGraph Line3.a Line3.b 1 :=
-    distLE_of_eq lineGraph Line3.a Line3.b
-      (by
-        rcases dist?_le_of_path (G := lineGraph) (u := Line3.a) (v := Line3.b) (n := 1) hab with ⟨d, hd, hle⟩
-        have : d = 1 := by omega
-        simpa [this] using hd)
-      (by decide)
-  have h2 : DistLE lineGraph Line3.b Line3.c 1 :=
-    distLE_of_eq lineGraph Line3.b Line3.c
-      (by
-        rcases dist?_le_of_path (G := lineGraph) (u := Line3.b) (v := Line3.c) (n := 1) hbc with ⟨d, hd, hle⟩
-        have : d = 1 := by omega
-        simpa [this] using hd)
-      (by decide)
-  simpa using distLE_triangle lineGraph h1 h2
+theorem lineGraph_path_bc :
+    Nonempty (FMT.Graph.PathLength lineGraph Line3.b Line3.c 1) := by
+  refine ⟨?_⟩
+  exact
+    { verts := fun i => if i.1 = 0 then Line3.b else Line3.c
+      start := by simp
+      finish := by simp
+      step := by
+        intro i
+        fin_cases i
+        simp
+        exact Or.inr (Or.inr (Or.inl ⟨rfl, rfl⟩)) }
 
 end FMT.Examples
