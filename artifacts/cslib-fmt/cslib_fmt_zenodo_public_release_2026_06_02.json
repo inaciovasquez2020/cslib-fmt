@@ -1,0 +1,27 @@
+{
+  "artifact": "CSLIB_FMT_ZENODO_PUBLIC_RELEASE_2026_06_02",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "github_release_tag": "public-cslib-fmt-finite-graph-diameter-2026-06-02",
+  "github_release_url": "https://github.com/inaciovasquez2020/cslib-fmt/releases/tag/public-cslib-fmt-finite-graph-diameter-2026-06-02",
+  "zenodo": {
+    "deposition_id": 20518144,
+    "doi": "10.5281/zenodo.20518144",
+    "conceptdoi": "10.5281/zenodo.20518143",
+    "record_url": "https://zenodo.org/records/20518144"
+  },
+  "status": "CSLIB_FMT_ZENODO_PUBLIC_RELEASE_PUBLISHED",
+  "closed_objects": [
+    "PublicCslibFmtRepository",
+    "TaggedPublicGitHubRelease",
+    "ZenodoPublicSoftwareRelease",
+    "FiniteGraphDiameterOptionNatPublicReleaseSurface"
+  ],
+  "boundary": [
+    "Public finite graph diameter release only",
+    "No infinite graph claim",
+    "No weighted graph claim",
+    "No full graph theory completion claim",
+    "No cross-repository theorem closure claim"
+  ],
+  "next_admissible_object": "Stop"
+}
