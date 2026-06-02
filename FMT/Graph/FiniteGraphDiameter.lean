@@ -206,3 +206,63 @@ theorem distance_le_diameter_of_finite_connected
   exact le_natListMax_of_mem hlist
 
 end FMT.Graph
+
+
+namespace FMT.Graph
+
+/--
+Final convenience theorem: on a reachable finite graph, the finite graph
+diameter value is exactly the maximum of the finite pair-distance value list.
+This is the public-facing alias of the exact theorem closed in PR #161.
+-/
+theorem finiteGraphDiameter_eq_exact_value_of_allPairDistancesReachable
+    (G : Graph) [Fintype G.V] [DecidableEq G.V]
+    (h : allPairDistancesReachable G) :
+    finiteGraphDiameter? G = some (natListMax (pairDistanceValues G).toList) :=
+  finiteGraphDiameter_eq_some_natListMax_of_allPairDistancesReachable G h
+
+/--
+Final existence theorem: reachability gives a concrete exact diameter witness.
+-/
+theorem finiteGraphDiameter_exact_value_exists_of_allPairDistancesReachable
+    (G : Graph) [Fintype G.V] [DecidableEq G.V]
+    (h : allPairDistancesReachable G) :
+    ∃ d, finiteGraphDiameter? G = some d :=
+  finiteGraphDiameter_exists_of_allPairDistancesReachable G h
+
+/--
+Final nonexistence theorem: failure of all-pairs reachability gives no diameter.
+-/
+theorem finiteGraphDiameter_none_of_not_allPairDistancesReachable'
+    (G : Graph) [Fintype G.V] [DecidableEq G.V]
+    (h : ¬ allPairDistancesReachable G) :
+    finiteGraphDiameter? G = none :=
+  finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable G h
+
+/--
+Final iff theorem: a finite graph has a diameter value iff all pair distances are reachable.
+-/
+theorem finiteGraphDiameter_some_iff_allPairDistancesReachable
+    (G : Graph) [Fintype G.V] [DecidableEq G.V] :
+    (∃ d, finiteGraphDiameter? G = some d) ↔ allPairDistancesReachable G :=
+  finiteGraphDiameter_exists_iff_allPairDistancesReachable G
+
+/--
+Final public theorem: the finite graph diameter package is closed at the
+Option Nat level by none/some/exact-value cases.
+-/
+theorem finiteGraphDiameter_closed_option_nat_cases
+    (G : Graph) [Fintype G.V] [DecidableEq G.V] :
+    ((¬ allPairDistancesReachable G) → finiteGraphDiameter? G = none)
+      ∧ (allPairDistancesReachable G →
+          finiteGraphDiameter? G = some (natListMax (pairDistanceValues G).toList))
+      ∧ ((∃ d, finiteGraphDiameter? G = some d) ↔ allPairDistancesReachable G) := by
+  constructor
+  · intro h
+    exact finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable G h
+  constructor
+  · intro h
+    exact finiteGraphDiameter_eq_some_natListMax_of_allPairDistancesReachable G h
+  · exact finiteGraphDiameter_exists_iff_allPairDistancesReachable G
+
+end FMT.Graph

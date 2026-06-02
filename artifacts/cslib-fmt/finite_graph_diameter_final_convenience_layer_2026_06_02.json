@@ -1,0 +1,28 @@
+{
+  "artifact": "artifacts/cslib-fmt/finite_graph_diameter_final_convenience_layer_2026_06_02.json",
+  "date": "2026-06-02",
+  "repo": "cslib-fmt",
+  "layer": "FMT.Graph.FiniteGraphDiameter",
+  "status": "FINITE_GRAPH_DIAMETER_OPTION_NAT_LAYER_PUBLIC_CONVENIENCE_CLOSED",
+  "closed_objects": [
+    "finiteGraphDiameter_eq_exact_value_of_allPairDistancesReachable",
+    "finiteGraphDiameter_exact_value_exists_of_allPairDistancesReachable",
+    "finiteGraphDiameter_none_of_not_allPairDistancesReachable'",
+    "finiteGraphDiameter_some_iff_allPairDistancesReachable",
+    "finiteGraphDiameter_closed_option_nat_cases"
+  ],
+  "depends_on": [
+    "finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable",
+    "finiteGraphDiameter_exists_of_allPairDistancesReachable",
+    "finiteGraphDiameter_exists_iff_allPairDistancesReachable",
+    "finiteGraphDiameter_eq_some_natListMax_of_allPairDistancesReachable"
+  ],
+  "boundary": [
+    "FiniteGraphDiameter Option Nat layer only.",
+    "No claim that all graph-theoretic diameter theory in cslib-fmt is complete.",
+    "No claim about infinite graphs.",
+    "No claim about weighted graphs unless already encoded by the existing Graph API.",
+    "No cross-repository or field-level theorem claim."
+  ],
+  "next_admissible_object": "PreparePublicCslibFmtRelease"
+}
