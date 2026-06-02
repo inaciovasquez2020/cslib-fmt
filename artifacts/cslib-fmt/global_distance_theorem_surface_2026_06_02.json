@@ -1,0 +1,25 @@
+{
+  "boundary": [
+    "target surface only",
+    "does not prove global distance symmetry",
+    "does not prove global triangle inequality",
+    "does not discharge required global graph axioms",
+    "does not promote the concrete Line3 DistanceAlgebra theorem to all graphs"
+  ],
+  "date": "2026-06-02",
+  "input_object": "DISTANCEALGEBRA_POST_MERGE_STATUS_LOCK",
+  "missing_objects": [
+    "GlobalGraphDistanceDefinition",
+    "GlobalShortestPathExistenceOrDistanceTotality",
+    "GlobalPathReversalClosure",
+    "GlobalPathConcatenationClosure",
+    "GlobalDistanceLowerBoundOrMinimalityLemma",
+    "GlobalDistanceSymmetryTheorem",
+    "GlobalDistanceTriangleTheorem"
+  ],
+  "next_admissible_object": "GLOBAL_DISTANCE_SYMMETRY_OR_TRIANGLE_THEOREM_PATCH",
+  "object": "GLOBAL_DISTANCE_THEOREM_SURFACE",
+  "repo": "cslib-fmt",
+  "status": "TARGET_SURFACE_ONLY_GLOBAL_THEOREMS_NOT_PROVED",
+  "weakest_sufficient_next_input": "GlobalShortestPathExistenceAndPathReversalConcatenationLemmas"
+}
