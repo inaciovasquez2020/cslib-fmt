@@ -1,0 +1,22 @@
+{
+  "boundary": [
+    "SLASHAxioms is discharged globally by Nat-minimal path length existence",
+    "global triangle theorem no longer requires an explicit SLASHAxioms parameter",
+    "global symmetry still requires SymmAdj because directed graphs need not be symmetric",
+    "does not prove every graph is undirected",
+    "does not remove the explicit adjacency-symmetry hypothesis from distance symmetry"
+  ],
+  "closed_objects": [
+    "GlobalSLASHAxiomsDischarge",
+    "GlobalDistanceTriangleTheoremUnconditionalOnSLASH",
+    "GlobalDistanceSymmetryTheoremConditionalOnlyOnSymmAdj"
+  ],
+  "date": "2026-06-02",
+  "input_object": "GLOBAL_DISTANCE_THEOREM_PATCH",
+  "lean_file": "FMT/Graph/GlobalDistanceAxiomDischarge.lean",
+  "next_admissible_object": "STOP_OR_UNDIRECTED_GRAPH_CLASS_DISTANCE_SYMMETRY_API",
+  "object": "GLOBAL_DISTANCE_AXIOM_DISCHARGE",
+  "repo": "cslib-fmt",
+  "status": "SLASH_AXIOM_DISCHARGED_ADJACENCY_SYMMETRY_REMAINS_EXPLICIT",
+  "weakest_sufficient_next_input": "TargetUndirectedGraphClassOrStop"
+}
