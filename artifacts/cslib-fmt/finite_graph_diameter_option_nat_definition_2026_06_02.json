@@ -1,0 +1,30 @@
+{
+  "artifact": "FINITE_GRAPH_DIAMETER_OPTION_NAT_DEFINITION_2026_06_02",
+  "status": "TARGET_IMPLEMENTED_PENDING_VERIFICATION",
+  "selected_target": "FiniteGraphDiameterLayer",
+  "registration_action": "RegisterFiniteGraphDiameterLayerTarget",
+  "implemented_objects": [
+    "ConnectedGraph",
+    "allVertexPairs",
+    "pairDistance?",
+    "allPairDistancesReachable",
+    "pairDistanceValues",
+    "finiteGraphDiameter?",
+    "connected_implies_all_pair_distances_reachable",
+    "finite_connected_graph_diameter_exists",
+    "distance_mem_pairDistanceValues",
+    "distance_le_diameter_of_finite_connected"
+  ],
+  "final_assumptions": [
+    "[Fintype G.Vertex]",
+    "[DecidableEq G.Vertex]"
+  ],
+  "empty_graph_convention": "diameter defaults to some 0 through max?.getD 0 when the vertex-pair distance set is empty",
+  "boundaries": [
+    "no arbitrary directed graph distance symmetry",
+    "no proof that every graph is undirected",
+    "no removal of SymmAdj for directed graphs",
+    "no change to the underlying directed Graph structure"
+  ],
+  "next_admissible_object": "VerifyFiniteGraphDiameterOptionNatDefinition"
+}
