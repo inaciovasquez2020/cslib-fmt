@@ -127,6 +127,35 @@ theorem finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable
   classical
   simp [finiteGraphDiameter?, h]
 
+
+theorem finiteGraphDiameter_exists_of_allPairDistancesReachable
+  (G : Graph)
+  [Fintype G.V]
+  [DecidableEq G.V]
+  (h : allPairDistancesReachable G) :
+  ∃ d : Nat, finiteGraphDiameter? G = some d := by
+  classical
+  refine ⟨natListMax (pairDistanceValues G).toList, ?_⟩
+  simp [finiteGraphDiameter?, h]
+
+theorem finiteGraphDiameter_exists_iff_allPairDistancesReachable
+  (G : Graph)
+  [Fintype G.V]
+  [DecidableEq G.V] :
+  (∃ d : Nat, finiteGraphDiameter? G = some d) ↔ allPairDistancesReachable G := by
+  classical
+  constructor
+  · intro hsome
+    by_contra hnot
+    rcases hsome with ⟨d, hd⟩
+    have hnone :
+        finiteGraphDiameter? G = none :=
+      finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable G hnot
+    rw [hd] at hnone
+    cases hnone
+  · intro h
+    exact finiteGraphDiameter_exists_of_allPairDistancesReachable G h
+
 theorem distance_mem_pairDistanceValues
   (G : Graph)
   [Fintype G.V]
