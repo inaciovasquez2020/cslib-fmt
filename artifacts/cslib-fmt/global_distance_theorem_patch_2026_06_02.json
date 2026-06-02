@@ -1,0 +1,21 @@
+{
+  "boundary": [
+    "global theorem wrapper only",
+    "global symmetry remains conditional on SLASHAxioms and an explicit adjacency-symmetry hypothesis",
+    "global triangle remains conditional on SLASHAxioms shortest-path selection",
+    "does not prove all graphs satisfy adjacency symmetry",
+    "does not prove all graphs satisfy SLASHAxioms"
+  ],
+  "closed_objects": [
+    "GlobalDistanceSymmetryTheoremConditional",
+    "GlobalDistanceTriangleTheoremConditional"
+  ],
+  "date": "2026-06-02",
+  "input_object": "GLOBAL_DISTANCE_THEOREM_SURFACE",
+  "lean_file": "FMT/Graph/GlobalDistanceTheorems.lean",
+  "next_admissible_object": "GLOBAL_DISTANCE_AXIOM_DISCHARGE_OR_STOP",
+  "object": "GLOBAL_DISTANCE_THEOREM_PATCH",
+  "repo": "cslib-fmt",
+  "status": "CONDITIONAL_GLOBAL_DISTANCE_THEOREM_WRAPPERS_ADDED",
+  "weakest_sufficient_next_input": "ProofThatTargetGraphClassSatisfiesAdjacencySymmetryAndSLASHAxioms"
+}
