@@ -79,3 +79,5 @@ import FMT.Examples.GenuineCycleRankPath3WitnessV2
 import FMT.Graph.Cycle.CycleDist
 import FMT.Graph.Cycle.CyclePath
 import FMT.Graph.Cycle.CycleDiameter
+
+import FMT.Graph.FiniteGraphDiameter
