@@ -1,0 +1,22 @@
+{
+  "boundary": [
+    "API layer only",
+    "distance symmetry is unconditional only inside the explicit UndirectedGraph class",
+    "does not prove every graph is undirected",
+    "does not prove distance symmetry for arbitrary directed graphs",
+    "does not alter the underlying Graph structure"
+  ],
+  "closed_objects": [
+    "UndirectedGraphClass",
+    "SymmAdjProjectionFromUndirectedGraph",
+    "DistanceSymmetryForUndirectedGraphClass"
+  ],
+  "date": "2026-06-02",
+  "input_object": "GLOBAL_DISTANCE_AXIOM_DISCHARGE",
+  "lean_file": "FMT/Graph/UndirectedGraphDistanceSymmetryAPI.lean",
+  "next_admissible_object": "STOP_OR_REGISTER_DISTANCE_LAYER_FINAL_CLOSURE_STATUS",
+  "object": "UNDIRECTED_GRAPH_CLASS_DISTANCE_SYMMETRY_API",
+  "repo": "cslib-fmt",
+  "status": "UNDIRECTED_GRAPH_DISTANCE_SYMMETRY_API_ADDED",
+  "weakest_sufficient_next_input": "StopOrDistanceLayerFinalClosureStatus"
+}
