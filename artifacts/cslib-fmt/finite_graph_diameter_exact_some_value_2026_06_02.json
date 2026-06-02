@@ -1,0 +1,19 @@
+{
+  "artifact": "FINITE_GRAPH_DIAMETER_EXACT_SOME_VALUE_2026_06_02",
+  "status": "TARGET_IMPLEMENTED_PENDING_VERIFICATION",
+  "depends_on": [
+    "FiniteGraphDiameterOptionNatDefinition",
+    "finiteGraphDiameter_exists_iff_allPairDistancesReachable"
+  ],
+  "implemented_objects": [
+    "finiteGraphDiameter_eq_some_natListMax_of_allPairDistancesReachable"
+  ],
+  "statement": "If all finite vertex-pair distances are reachable, finiteGraphDiameter? equals the exact natListMax value of pairDistanceValues.toList.",
+  "boundary": [
+    "no directed distance symmetry claim",
+    "no new connectedness closure",
+    "no change to Graph",
+    "no new diameter computation algorithm"
+  ],
+  "next_admissible_object": "VerifyFiniteGraphDiameterExactSomeValue"
+}
