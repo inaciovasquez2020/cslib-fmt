@@ -1,0 +1,30 @@
+{
+  "boundary": [
+    "distance layer closure status only",
+    "SLASHAxioms discharged globally",
+    "global triangle theorem available without explicit SLASHAxioms parameter",
+    "distance symmetry available for explicit UndirectedGraph class",
+    "arbitrary directed graph distance symmetry is not claimed",
+    "underlying Graph structure remains directed"
+  ],
+  "closed_objects": [
+    "GlobalSLASHAxiomsDischarge",
+    "GlobalDistanceTriangleTheoremUnconditionalOnSLASH",
+    "GlobalDistanceSymmetryTheoremConditionalOnlyOnSymmAdj",
+    "UndirectedGraphClass",
+    "SymmAdjProjectionFromUndirectedGraph",
+    "DistanceSymmetryForUndirectedGraphClass"
+  ],
+  "date": "2026-06-02",
+  "input_objects": [
+    "GLOBAL_DISTANCE_AXIOM_DISCHARGE",
+    "UNDIRECTED_GRAPH_CLASS_DISTANCE_SYMMETRY_API"
+  ],
+  "latest_merge_commit": "0a7bd68",
+  "object": "DISTANCE_LAYER_FINAL_CLOSURE_STATUS",
+  "repo": "cslib-fmt",
+  "status": "DISTANCE_LAYER_FINAL_STATUS_REGISTERED",
+  "theorem_boundary": "GLOBAL_TRIANGLE_CLOSED_UNDIRECTED_SYMMETRY_API_CLOSED_DIRECTED_SYMMETRY_NOT_CLOSED",
+  "next_admissible_object": "STOP",
+  "weakest_sufficient_next_input": "NoFurtherDistanceLayerInputRequiredUnlessTargetingDirectedSymmetryCounterexampleOrNewGraphClass"
+}
