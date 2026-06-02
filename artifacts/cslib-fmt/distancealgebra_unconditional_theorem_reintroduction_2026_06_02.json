@@ -1,0 +1,50 @@
+{
+  "object": "DISTANCEALGEBRA_UNCONDITIONAL_THEOREM_REINTRODUCTION",
+  "status": "UNCONDITIONAL_THEOREM_REINTRODUCTION_PATCH_BUILDS",
+  "input_dependency": "DISTANCEALGEBRA_DISTANCE_THEOREM_REINTRODUCTION_SURFACE",
+  "input_pr": 150,
+  "input_commit": "9678e8a",
+  "source_file": "FMT/Examples/DistanceAlgebra.lean",
+  "closed_objects": [
+    "lineGraph_path_ba",
+    "lineGraph_path_cb",
+    "lineGraph_path_ac_two",
+    "lineGraph_path_ca_two",
+    "lineGraph_direct_path_symmetry_ab_ba",
+    "lineGraph_direct_path_ac_le_two",
+    "lineGraph_slashAxioms",
+    "lineGraph_dist_ab_le_one",
+    "lineGraph_dist_ba_le_one",
+    "lineGraph_dist_ab_ba_symmetry",
+    "lineGraph_dist_ac_le_two"
+  ],
+  "dependency_axiom_discharge": {
+    "class": "FMT.Inputs.SLASHAxioms",
+    "instance": "lineGraph_slashAxioms",
+    "scope": "Line3 example graph only",
+    "unconditional": true
+  },
+  "distance_theorem_reintroduction": {
+    "lineGraph_dist_ab_ba_symmetry": true,
+    "lineGraph_dist_ac_le_two": true,
+    "derived_from": [
+      "explicit PathLength witnesses",
+      "lineGraph_slashAxioms",
+      "FMT.Graph.dist?_le_of_path",
+      "FMT.Graph.distLE_of_eq"
+    ]
+  },
+  "verification": {
+    "module_build": "lake build FMT.Examples.DistanceAlgebra",
+    "full_build": "lake build",
+    "diff_check": "git diff --check"
+  },
+  "boundary": [
+    "unconditional for the concrete Line3 example graph",
+    "not a global distance symmetry theorem for all graphs",
+    "not a global distance triangle theorem for all graphs",
+    "no broader FMT theorem promotion beyond DistanceAlgebra"
+  ],
+  "next_admissible_object": "DISTANCEALGEBRA_UNCONDITIONAL_THEOREM_REINTRODUCTION_REPO_PR",
+  "weakest_sufficient_next_input": "CommitAndPRForVerifiedUnconditionalDistanceAlgebraPatch"
+}
