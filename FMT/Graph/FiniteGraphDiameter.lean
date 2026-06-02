@@ -117,6 +117,16 @@ theorem finite_connected_graph_diameter_exists
   refine ⟨natListMax (pairDistanceValues G).toList, ?_⟩
   simp [finiteGraphDiameter?, connected_implies_all_pair_distances_reachable G hG]
 
+
+theorem finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable
+  (G : Graph)
+  [Fintype G.V]
+  [DecidableEq G.V]
+  (h : ¬ allPairDistancesReachable G) :
+  finiteGraphDiameter? G = none := by
+  classical
+  simp [finiteGraphDiameter?, h]
+
 theorem distance_mem_pairDistanceValues
   (G : Graph)
   [Fintype G.V]
