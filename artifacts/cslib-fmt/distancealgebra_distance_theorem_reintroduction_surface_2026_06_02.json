@@ -1,0 +1,36 @@
+{
+  "object": "DISTANCEALGEBRA_DISTANCE_THEOREM_REINTRODUCTION_SURFACE_OR_DEPENDENCY_AXIOM_DISCHARGE",
+  "selected_branch": "DISTANCE_THEOREM_REINTRODUCTION_SURFACE",
+  "status": "TARGET_SURFACE_RECORDED_NO_THEOREM_REINTRODUCED",
+  "input_dependency": "DISTANCEALGEBRA_DEPENDENCY_AXIOM_OUTPUT_CLASSIFICATION",
+  "input_pr": 149,
+  "input_commit": "8451e64",
+  "source_file": "FMT/Examples/DistanceAlgebra.lean",
+  "current_build_surface": {
+    "lineGraph_symm": true,
+    "lineGraph_path_ab": true,
+    "lineGraph_path_bc": true,
+    "distance_symmetry_example_reintroduced": false,
+    "distance_triangle_example_reintroduced": false
+  },
+  "target_reintroduction_surface": {
+    "candidate_outputs": [
+      "lineGraph_dist_ab_ba_symmetry",
+      "lineGraph_dist_ac_le_two"
+    ],
+    "required_dependency_choices": [
+      "prove/build import-level distance symmetry theorem on current Graph interface",
+      "prove/build import-level distance triangle theorem on current Graph interface",
+      "derive the examples directly from PathLength/DistanceOrder without obsolete imports"
+    ],
+    "chosen_now": "record target only"
+  },
+  "boundary": [
+    "target surface only",
+    "no distance theorem reintroduced",
+    "no dependency axiom discharged",
+    "no broader FMT theorem promotion"
+  ],
+  "next_admissible_object": "DISTANCEALGEBRA_DISTANCE_THEOREM_REINTRODUCTION_PATCH_OR_EXPLICIT_DEPENDENCY_AXIOM_DISCHARGE",
+  "weakest_sufficient_next_input": "LeanBuildableDistanceTheoremReintroductionPatchOrDependencyAxiomDischarge"
+}
