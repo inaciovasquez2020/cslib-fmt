@@ -1,0 +1,38 @@
+{
+  "object": "DISTANCEALGEBRA_DEPENDENCY_AXIOM_OUTPUT_CLASSIFICATION_OR_DISTANCE_THEOREM_REINTRODUCTION_SURFACE",
+  "selected_branch": "DEPENDENCY_AXIOM_OUTPUT_CLASSIFICATION",
+  "status": "CLASSIFICATION_SURFACE_RECORDED",
+  "closed_input": "DISTANCEALGEBRA_BUILD_SURFACE",
+  "closed_pr": 148,
+  "closed_commit": "8a1b67f",
+  "classification": {
+    "DistanceAlgebra": {
+      "current_surface": "buildable path-length examples only",
+      "reintroduced_distance_theorems": false,
+      "new_dependency_axioms_discharged": false,
+      "obsolete_imports_removed": [
+        "FMT.Graph.DistanceSymmetry",
+        "FMT.Graph.DistanceTriangle",
+        "FMT.Graph.PathLengthOne"
+      ],
+      "buildable_imports_used": [
+        "FMT.Graph.Basic",
+        "FMT.Graph.PathLength",
+        "FMT.Graph.PathLengthLemmas",
+        "FMT.Graph.DistanceOrder"
+      ],
+      "explicit_witnesses": [
+        "lineGraph_path_ab",
+        "lineGraph_path_bc"
+      ]
+    }
+  },
+  "boundary": [
+    "classification only",
+    "no new distance theorem closure",
+    "no dependency axiom discharge",
+    "no broader FMT theorem promotion"
+  ],
+  "next_admissible_object": "DISTANCEALGEBRA_DISTANCE_THEOREM_REINTRODUCTION_SURFACE_OR_DEPENDENCY_AXIOM_DISCHARGE",
+  "weakest_sufficient_next_input": "DistanceTheoremReintroductionSurfaceOrDependencyAxiomDischarge"
+}
