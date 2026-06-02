@@ -1,0 +1,39 @@
+{
+  "boundary": [
+    "unconditional closure is only for the concrete Line3 DistanceAlgebra example graph",
+    "no global distance symmetry theorem for all graphs is claimed",
+    "no global distance triangle theorem for all graphs is claimed",
+    "no broader FMT theorem promotion is claimed"
+  ],
+  "closed_objects": [
+    "lineGraph_slashAxioms",
+    "lineGraph_dist_ab_ba_symmetry",
+    "lineGraph_dist_ac_le_two"
+  ],
+  "date": "2026-06-02",
+  "input_merge_commit": "fed4f53",
+  "input_merge_commit_full": "fed4f53be9206f0f17c8a3c1608f28a490dd237a",
+  "input_object": "DISTANCEALGEBRA_UNCONDITIONAL_THEOREM_REINTRODUCTION",
+  "input_pr": 151,
+  "mathematical_decision": "DISTANCEALGEBRA_CONCRETE_EXAMPLE_THEOREM_REINTRODUCTION_COMPLETE",
+  "next_admissible_object": "STOP_OR_GLOBAL_DISTANCE_THEOREM_SURFACE",
+  "object": "DISTANCEALGEBRA_POST_MERGE_STATUS_LOCK",
+  "repo": "cslib-fmt",
+  "status": "POST_MERGE_VERIFIED_STOP_POINT",
+  "verification_commands": [
+    "python3 tools/verify_distancealgebra_unconditional_theorem_reintroduction.py",
+    "python3 -m pytest -q tests/test_distancealgebra_unconditional_theorem_reintroduction.py",
+    "lake build FMT.Examples.DistanceAlgebra",
+    "lake build",
+    "git diff --check",
+    "git status --short --branch"
+  ],
+  "verified_files": [
+    "FMT/Examples/DistanceAlgebra.lean",
+    "artifacts/cslib-fmt/distancealgebra_unconditional_theorem_reintroduction_2026_06_02.json",
+    "docs/status/DISTANCEALGEBRA_UNCONDITIONAL_THEOREM_REINTRODUCTION_2026_06_02.md",
+    "tests/test_distancealgebra_unconditional_theorem_reintroduction.py",
+    "tools/verify_distancealgebra_unconditional_theorem_reintroduction.py"
+  ],
+  "weakest_sufficient_next_input": "GeneralGraphDistanceSymmetryOrTriangleTheoremStatementWithRequiredAxioms"
+}
