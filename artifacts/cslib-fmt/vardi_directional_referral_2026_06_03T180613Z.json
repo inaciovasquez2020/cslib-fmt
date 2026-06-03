@@ -1,0 +1,16 @@
+{
+  "object": "VardiDirectionalReferral",
+  "status": "DIRECTIONAL_REFERRAL_RECEIVED_NOT_INDEPENDENT_VALIDATION",
+  "from": "Moshe Vardi",
+  "message_summary": "Recommended looking at Mathlib activity and seeing whether someone is building libraries in model theory.",
+  "counts_as": [
+    "external expert response",
+    "directional referral toward Lean/Mathlib model-theory community"
+  ],
+  "does_not_count_as": [
+    "independent validation",
+    "endorsement",
+    "named validator referral"
+  ],
+  "next_admissible_object": "IdentifyMathlibModelTheoryContributorOrAskMathlibZulipForNarrowValidatorRecommendation"
+}
