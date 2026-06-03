@@ -1,0 +1,11 @@
+{
+  "status": "EXTERNAL_VALIDATOR_RECIPIENT_SET",
+  "artifact": "finite_graph_diameter_public_release",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "zenodo_doi": "10.5281/zenodo.20518144",
+  "external_validator_recipient": "vardi@rice.edu",
+  "ExternalValidationRequestSent": false,
+  "ExternalValidationExists": false,
+  "ExternalValidatorAccepts": false,
+  "next_admissible_object": "CreateExternalValidationRequestMessage"
+}
