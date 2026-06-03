@@ -1,0 +1,29 @@
+{
+  "status": "EXTERNAL_VALIDATION_REQUEST_PACKET_CREATED",
+  "artifact": "finite_graph_diameter_public_release",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "public_release_tag": "public-cslib-fmt-finite-graph-diameter-2026-06-02",
+  "zenodo_doi": "10.5281/zenodo.20518144",
+  "concept_doi": "10.5281/zenodo.20518143",
+  "claim_under_review": "finite graph diameter theorem stack is machine-checked and publicly citable",
+  "not_claimed": [
+    "external validation",
+    "external acceptance",
+    "field-wide adoption",
+    "Clay problem solution"
+  ],
+  "requested_validation": [
+    "independent repository clone",
+    "lake build",
+    "targeted finite graph diameter build",
+    "review of theorem statements against documentation",
+    "confirmation that public DOI resolves to the intended release artifact"
+  ],
+  "missing_objects": {
+    "ExternalValidatorRecipient": null,
+    "ExternalValidationRequestSent": false,
+    "ExternalValidationExists": false,
+    "ExternalValidatorAccepts": false
+  },
+  "next_admissible_object": "SetExternalValidatorRecipient"
+}

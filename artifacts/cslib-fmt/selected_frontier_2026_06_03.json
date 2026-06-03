@@ -1,0 +1,11 @@
+{
+  "status": "SELECTED_FRONTIER_RECORDED",
+  "selected_frontier": "ExternalValidationExists",
+  "reason": "public verified citable artifact is complete; next unsatisfied global gate is external validation",
+  "depends_on": {
+    "ClaimVerifiedArtifact": true,
+    "ClaimCitablePublicArtifact": true,
+    "ExternalValidationExists": false
+  },
+  "next_admissible_object": "CreateExternalValidationRequestPacket"
+}
