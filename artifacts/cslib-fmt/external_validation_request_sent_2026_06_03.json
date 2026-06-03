@@ -1,0 +1,19 @@
+{
+  "status": "EXTERNAL_VALIDATION_REQUEST_SENT_RECORDED",
+  "artifact": "finite_graph_diameter_public_release",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "zenodo_doi": "10.5281/zenodo.20518144",
+  "external_validator_recipient": "vardi@rice.edu",
+  "request_sent": true,
+  "sent_date": "2026-06-03",
+  "claim_under_review": "finite graph diameter theorem stack is machine-checked and publicly citable",
+  "not_claimed": [
+    "external validation exists",
+    "external validator accepts",
+    "field-wide adoption",
+    "Clay problem solution"
+  ],
+  "ExternalValidationExists": false,
+  "ExternalValidatorAccepts": false,
+  "next_admissible_object": "ExternalValidatorReplyOrSecondValidatorAfterWaitingWindow"
+}
