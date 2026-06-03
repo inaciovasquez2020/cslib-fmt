@@ -1,0 +1,15 @@
+{
+  "object": "LeanZulipValidatorRecommendationRequestPosted",
+  "status": "POSTED_REQUEST_NOT_VALIDATION",
+  "posted_url": "https://leanprover.zulipchat.com/#narrow/channel/287929-mathlib4/topic/Finite.20graph.20diameter.20validation/with/599888266",
+  "stream_target": "mathlib4",
+  "topic": "Finite graph diameter validation",
+  "draft_path": "drafts/lean_zulip_narrow_validator_request_2026_06_03T183351Z.md",
+  "does_not_count_as": [
+    "external validation",
+    "endorsement",
+    "agreement to review",
+    "validator recommendation received"
+  ],
+  "next_admissible_object": "ZulipValidatorRecommendationReplyOrSecondValidatorAfterWaitingWindow"
+}
