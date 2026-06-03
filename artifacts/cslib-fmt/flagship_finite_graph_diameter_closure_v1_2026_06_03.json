@@ -1,0 +1,38 @@
+{
+  "schema": "cslib_fmt_flagship_closure_v1",
+  "date_utc": "2026-06-03T00:04:08Z",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "flagship_object": "finite_graph_diameter_public_release",
+  "status": "FLAGSHIP_CLOSURE_PACKET_RECORDED",
+  "claim_level": "bounded_unconditional_repository_result",
+  "closed_public_result": {
+    "name": "finite graph diameter public release",
+    "lean_module": "FMT.Graph.FiniteGraphDiameter",
+    "release_tag": "public-cslib-fmt-finite-graph-diameter-2026-06-02",
+    "zenodo_doi": "10.5281/zenodo.20518144",
+    "zenodo_concept_doi": "10.5281/zenodo.20518143",
+    "zenodo_record_url": "https://zenodo.org/records/20518144"
+  },
+  "required_closure_components": {
+    "public_repository": true,
+    "public_release_tag": true,
+    "zenodo_release": true,
+    "lean_checked_surface": true,
+    "artifact_record": true,
+    "status_document": true,
+    "verifier": true,
+    "pytest": true,
+    "boundary_statement": true,
+    "external_readable_summary": true
+  },
+  "non_claim_boundaries": [
+    "This packet does not claim P vs NP.",
+    "This packet does not claim a Clay problem solution.",
+    "This packet does not claim unrestricted Chronos-RR.",
+    "This packet does not claim unrestricted H4.1/FGL.",
+    "This packet does not claim new physics.",
+    "This packet does not claim that all URF frontiers are closed.",
+    "This packet records one bounded public flagship result only."
+  ],
+  "success_condition": "An external reader can identify one public bounded result, its release, its DOI, its Lean module, its verification path, and its non-claim boundary."
+}
