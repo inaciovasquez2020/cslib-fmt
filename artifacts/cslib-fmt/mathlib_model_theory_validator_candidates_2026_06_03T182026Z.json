@@ -1,0 +1,39 @@
+{
+  "object": "MathlibModelTheoryValidatorCandidates",
+  "status": "CANDIDATES_SELECTED_NOT_CONTACTED_NOT_VALIDATION",
+  "selection_basis": "Recent git activity under Mathlib/ModelTheory after Vardi directional referral.",
+  "selected_candidates": [
+    {
+      "name": "Kim Morrison",
+      "combined_recent_commit_count": 55,
+      "reason": "Highest combined recent Mathlib/ModelTheory git-log count across two email identities."
+    },
+    {
+      "name": "Aaron Anderson",
+      "recent_commit_count": 25,
+      "reason": "Second-highest recent Mathlib/ModelTheory git-log count."
+    },
+    {
+      "name": "damiano",
+      "recent_commit_count": 16,
+      "reason": "Third-highest recent Mathlib/ModelTheory git-log count."
+    },
+    {
+      "name": "Ruben Van de Velde",
+      "recent_commit_count": 15,
+      "reason": "Fourth-highest recent Mathlib/ModelTheory git-log count."
+    },
+    {
+      "name": "Chris Hughes",
+      "recent_commit_count": 11,
+      "reason": "Tied fifth recent Mathlib/ModelTheory git-log count."
+    }
+  ],
+  "does_not_count_as": [
+    "external validation",
+    "endorsement",
+    "contact attempt",
+    "agreement to review"
+  ],
+  "next_admissible_object": "AskMathlibZulipForNarrowValidatorRecommendation"
+}
