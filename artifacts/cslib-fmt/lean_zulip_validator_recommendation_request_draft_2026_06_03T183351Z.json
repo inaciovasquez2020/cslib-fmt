@@ -1,0 +1,14 @@
+{
+  "object": "LeanZulipValidatorRecommendationRequestDraft",
+  "status": "DRAFT_CREATED_NOT_POSTED",
+  "stream_preferred": "new members or mathlib4",
+  "topic": "Narrow validator recommendation for finite graph diameter Lean release",
+  "draft_path": "drafts/lean_zulip_narrow_validator_request_2026_06_03T183351Z.md",
+  "does_not_count_as": [
+    "posted request",
+    "external validation",
+    "endorsement",
+    "agreement to review"
+  ],
+  "next_admissible_object": "PostInAppropriateLeanZulipStream"
+}
