@@ -1,0 +1,48 @@
+{
+  "status": "CSLIB_FMT_BOUNDED_FRONTIER_SYNC_ONLY",
+  "date": "2026-06-09",
+  "repo": "cslib-fmt",
+  "repository_role": "Lean 4 finite-model-theory infrastructure for locality, EF games, FO^k syntax, local types, bounded-radius structure, and invariant interfaces",
+  "synced_objects": [
+    {
+      "source_repo": "urf-core",
+      "pr": 452,
+      "commit": "cf4ffe0",
+      "closed_object": "repository_native_bounded_status_certificate",
+      "boundary": "STATUS_CONJUNCTION_ONLY"
+    },
+    {
+      "source_repo": "chronos-urf-rr",
+      "pr": 648,
+      "commit": "284efa3c",
+      "closed_object": "concreteAnalyticPackageNextBuildStopLockCertificate",
+      "boundary": "STATUS_CERTIFICATE_ONLY"
+    },
+    {
+      "source_repo": "urf-textbook",
+      "pr": 167,
+      "commit": "b51c3ae",
+      "closed_object": "URF_TEXTBOOK_BOUNDED_STATUS_SYNC_2026_06_09",
+      "boundary": "EXPLANATORY_SYNC_ONLY"
+    },
+    {
+      "source_repo": "dfm-mkc-cosmology",
+      "pr": 186,
+      "commit": "e712d49",
+      "closed_object": "DFM_MKC_BOUNDED_REPO_SYNC_2026_06_09",
+      "boundary": "SYNC_ONLY"
+    }
+  ],
+  "claims_not_made": [
+    "final_finite_model_theory_theorem_closure",
+    "H1_locality_theorem_closure",
+    "H4_FGL_closure",
+    "Chronos_RR_closure",
+    "P_vs_NP",
+    "Clay_problem_closure",
+    "build_success_as_theorem_closure",
+    "ci_success_as_theorem_closure",
+    "examples_ledgers_placeholders_admits_or_sorry_as_theorem_closure"
+  ],
+  "next_admissible_object": "Stop"
+}
