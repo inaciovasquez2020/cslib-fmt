@@ -1,0 +1,26 @@
+{
+  "object": "CSLIB_FMT_EXPORTED_THEOREM_AUDIT_LOCK_2026_06_11",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "date": "2026-06-11",
+  "classification": "exported_theorem_audit_lock",
+  "scope": "repository-level exported theorem status classification",
+  "internal_live_frontier": "none",
+  "theorem_level_closure_claim": false,
+  "strongest_verified_theorem_at_repository_level": "not_asserted",
+  "weakest_missing_object_closed": "exported-theorem audit separating definitions, specifications, verified lemmas, conditional theorems, and final theorems",
+  "audit_policy": {
+    "definitions_are_not_theorems": true,
+    "prop_specifications_are_not_proofs": true,
+    "target_statements_are_not_proofs": true,
+    "placeholder_witnesses_are_not_final_closure": true,
+    "build_success_is_not_theorem_level_closure": true,
+    "final_theorem_claim_requires_file_theorem_dependency_chain_and_proof_status": true
+  },
+  "admissible_next_object": "ExternalValidatorReplyOrSecondValidatorAfterWaitingWindow",
+  "nonclaim_boundary": [
+    "No repository-level final-solve claim is asserted.",
+    "No universal library-completeness claim is asserted.",
+    "No peer-reviewed acceptance claim is asserted unless separately documented.",
+    "No internal Lean theorem target is promoted by this audit lock."
+  ]
+}
