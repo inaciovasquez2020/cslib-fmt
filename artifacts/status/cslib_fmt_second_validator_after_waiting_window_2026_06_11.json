@@ -1,0 +1,20 @@
+{
+  "object": "CSLIB_FMT_SECOND_VALIDATOR_AFTER_WAITING_WINDOW_2026_06_11",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "date": "2026-06-11",
+  "classification": "external_validation_waiting_window_elapsed",
+  "closed_missing_object": "ExternalValidatorReplyOrSecondValidatorAfterWaitingWindow",
+  "first_validator_request_date": "2026-06-03",
+  "first_validator_reply_status": "absent_or_pending",
+  "waiting_window_elapsed": true,
+  "second_validator_action_authorized": true,
+  "internal_theorem_target_promoted": false,
+  "theorem_level_closure_claim": false,
+  "next_admissible_object": "SendSecondValidatorRequestOrRecordFirstValidatorReply",
+  "nonclaim_boundary": [
+    "No external validation acceptance is asserted.",
+    "No repository-level final theorem claim is asserted.",
+    "No internal theorem target is promoted.",
+    "This object only records that the waiting-window branch of the external-validation disjunction is admissible."
+  ]
+}
