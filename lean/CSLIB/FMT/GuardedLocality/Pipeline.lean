@@ -408,6 +408,42 @@ theorem locality_pipeline_certificate
   plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent
     𝔄 𝔅 h φ
 
+
+structure RestrictedEFGameLocalTypeInvariantInputSurface {α β : Type}
+    (𝒜 : Struct α) (ℬ : Struct β) (r : Nat) (a : α) (b : β) : Prop where
+  invariant : RestrictedGuardedLocalTypeEquivalent 𝒜 ℬ r a b
+
+theorem restricted_guarded_local_type_equivalent_to_restricted_ef_game_local_type_invariant_input_surface
+    {α β : Type} (𝒜 : Struct α) (ℬ : Struct β) {r : Nat} {a : α} {b : β}
+    (h : RestrictedGuardedLocalTypeEquivalent 𝒜 ℬ r a b) :
+    RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b := by
+  exact ⟨h⟩
+
+theorem restricted_ef_game_local_type_invariant_input_surface_to_restricted_guarded_local_type_equivalent
+    {α β : Type} (𝒜 : Struct α) (ℬ : Struct β) {r : Nat} {a : α} {b : β}
+    (h : RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b) :
+    RestrictedGuardedLocalTypeEquivalent 𝒜 ℬ r a b := by
+  exact h.invariant
+
+theorem restricted_ef_game_local_type_invariant_input_surface_formula_invariant
+    {α β : Type} (𝒜 : Struct α) (ℬ : Struct β) {r : Nat} {a : α} {b : β}
+    (h : RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b)
+    (φ : RestrictedGuardedFO r) :
+    restrictedSat 𝒜 a φ ↔ restrictedSat ℬ b φ := by
+  exact h.invariant φ
+
+theorem ballIso_to_restricted_ef_game_local_type_invariant_input_surface
+    {α β : Type} (𝒜 : Struct α) (ℬ : Struct β) {r : Nat} {a : α} {b : β}
+    (h : BallIso 𝒜 ℬ r a b) :
+    RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b := by
+  exact ⟨ballIso_to_restricted_guarded_local_type_equivalent 𝒜 ℬ h⟩
+
+theorem plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_invariant_input_surface
+    {α β : Type} (𝒜 : Struct α) (ℬ : Struct β) {r : Nat} {a : α} {b : β}
+    (h : PlainInducedRadiusBallIso 𝒜 ℬ r a b) :
+    RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b := by
+  exact ⟨plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent 𝒜 ℬ h⟩
+
 end GuardedLocality
 end FMT
 end CSLIB
