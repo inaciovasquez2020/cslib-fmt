@@ -21,6 +21,7 @@ required = [
     "plain_induced_radius_ball_isomorphism_to_pointed_radius_ball_equiv",
     "plain_induced_radius_ball_isomorphism_iff_pointed_radius_ball_equiv",
     "RestrictedGuardedLocalTypeEquivalent",
+    "ballIso_to_restricted_guarded_local_type_equivalent",
     "plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent",
     "locality_pipeline_certificate",
 ]

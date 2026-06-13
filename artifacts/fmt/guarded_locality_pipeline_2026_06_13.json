@@ -15,7 +15,8 @@
   "date": "2026_06_13",
   "declarations": [
     "RestrictedGuardedLocalTypeEquivalent",
-    "plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent"
+    "plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent",
+    "ballIso_to_restricted_guarded_local_type_equivalent"
   ],
   "lean_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
   "non_claims": [

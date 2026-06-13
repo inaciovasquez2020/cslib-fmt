@@ -8,6 +8,7 @@ Closed bounded pipeline:
 PlainInducedRadiusBallIso
   → PointedRadiusBallEquiv
   → BallIso
+  → ballIso_to_restricted_guarded_local_type_equivalent
   → LocalIso
   → guarded_rank_locality
   → restricted_guarded_rank_locality
