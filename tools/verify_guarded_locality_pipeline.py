@@ -20,6 +20,8 @@ required = [
     "pointed_radius_ball_equiv_iff_ballIso",
     "plain_induced_radius_ball_isomorphism_to_pointed_radius_ball_equiv",
     "plain_induced_radius_ball_isomorphism_iff_pointed_radius_ball_equiv",
+    "RestrictedGuardedLocalTypeEquivalent",
+    "plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent",
     "locality_pipeline_certificate",
 ]
 
@@ -38,5 +40,10 @@ if not artifacts:
 data = json.loads(artifacts[-1].read_text())
 if data.get("status") != "BOUNDED_GUARDED_LOCALITY_CLOSURE":
     raise SystemExit("bad artifact status")
+
+artifact_declared = set(data.get("claims", [])) | set(data.get("declarations", []))
+missing_artifact = [name for name in required if name not in artifact_declared]
+if missing_artifact:
+    raise SystemExit(f"missing artifact declarations: {missing_artifact}")
 
 print("CSLIB_FMT_GUARDED_LOCALITY_PIPELINE_OK")

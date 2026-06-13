@@ -368,6 +368,25 @@ theorem restricted_guarded_rank_locality_from_plain_induced_radius_ball_isomorph
     restrictedSat 𝔄 a φ ↔ restrictedSat 𝔅 b φ :=
   restricted_guarded_rank_locality φ 𝔄 𝔅 h
 
+
+def RestrictedGuardedLocalTypeEquivalent
+    {α β : Type}
+    (𝔄 : Struct α) (𝔅 : Struct β)
+    (r : Nat) (a : α) (b : β) : Prop :=
+  ∀ φ : RestrictedGuardedFO r,
+    restrictedSat 𝔄 a φ ↔ restrictedSat 𝔅 b φ
+
+
+theorem plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent
+    {α β : Type}
+    (𝔄 : Struct α) (𝔅 : Struct β)
+    {r : Nat} {a : α} {b : β}
+    (h : PlainInducedRadiusBallIso 𝔄 𝔅 r a b) :
+    RestrictedGuardedLocalTypeEquivalent 𝔄 𝔅 r a b :=
+  fun φ =>
+    restricted_guarded_rank_locality_from_plain_induced_radius_ball_isomorphism
+      𝔄 𝔅 h φ
+
 theorem locality_pipeline_certificate
     {α β : Type}
     (𝔄 : Struct α) (𝔅 : Struct β)
@@ -375,7 +394,7 @@ theorem locality_pipeline_certificate
     (h : PlainInducedRadiusBallIso 𝔄 𝔅 r a b)
     (φ : RestrictedGuardedFO r) :
     restrictedSat 𝔄 a φ ↔ restrictedSat 𝔅 b φ :=
-  restricted_guarded_rank_locality_from_plain_induced_radius_ball_isomorphism
+  plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent
     𝔄 𝔅 h φ
 
 end GuardedLocality

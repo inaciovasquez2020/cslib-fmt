@@ -1,8 +1,4 @@
 {
-  "object": "CSLIB_FMT_GUARDED_LOCALITY_PIPELINE",
-  "date": "2026_06_13",
-  "status": "BOUNDED_GUARDED_LOCALITY_CLOSURE",
-  "scope": "guarded/modal finite-model-theory locality fragment",
   "claims": [
     "guarded_rank_locality",
     "restricted_guarded_translation_sound",
@@ -16,17 +12,25 @@
     "plain_induced_radius_ball_isomorphism_iff_pointed_radius_ball_equiv",
     "locality_pipeline_certificate"
   ],
+  "date": "2026_06_13",
+  "declarations": [
+    "RestrictedGuardedLocalTypeEquivalent",
+    "plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent"
+  ],
+  "lean_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
   "non_claims": [
     "full Gaifman locality",
     "unguarded first-order locality",
     "Fagin theorem",
     "0-1 law"
   ],
-  "lean_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "object": "CSLIB_FMT_GUARDED_LOCALITY_PIPELINE",
   "placeholder_policy": {
-    "sorry": 0,
     "admit": 0,
     "axiom": 0,
-    "opaque": 0
-  }
+    "opaque": 0,
+    "sorry": 0
+  },
+  "scope": "guarded/modal finite-model-theory locality fragment",
+  "status": "BOUNDED_GUARDED_LOCALITY_CLOSURE"
 }

@@ -11,6 +11,8 @@ PlainInducedRadiusBallIso
   → LocalIso
   → guarded_rank_locality
   → restricted_guarded_rank_locality
+  → RestrictedGuardedLocalTypeEquivalent
+  → locality_pipeline_certificate
 ```
 
 Non-claims:
