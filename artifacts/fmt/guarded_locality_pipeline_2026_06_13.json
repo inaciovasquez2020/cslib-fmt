@@ -1,0 +1,32 @@
+{
+  "object": "CSLIB_FMT_GUARDED_LOCALITY_PIPELINE",
+  "date": "2026_06_13",
+  "status": "BOUNDED_GUARDED_LOCALITY_CLOSURE",
+  "scope": "guarded/modal finite-model-theory locality fragment",
+  "claims": [
+    "guarded_rank_locality",
+    "restricted_guarded_translation_sound",
+    "restricted_guarded_rank_locality",
+    "ballIso_to_localIso",
+    "localIso_to_ballIso",
+    "ballIso_iff_localIso",
+    "ordinary_pointed_radius_ball_bijection_to_ballIso",
+    "pointed_radius_ball_equiv_iff_ballIso",
+    "plain_induced_radius_ball_isomorphism_to_pointed_radius_ball_equiv",
+    "plain_induced_radius_ball_isomorphism_iff_pointed_radius_ball_equiv",
+    "locality_pipeline_certificate"
+  ],
+  "non_claims": [
+    "full Gaifman locality",
+    "unguarded first-order locality",
+    "Fagin theorem",
+    "0-1 law"
+  ],
+  "lean_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "placeholder_policy": {
+    "sorry": 0,
+    "admit": 0,
+    "axiom": 0,
+    "opaque": 0
+  }
+}
