@@ -59,3 +59,16 @@ Current status:
 - Weakest missing object: exported-theorem audit separating definitions, specifications, verified lemmas, conditional theorems, and final theorems
 - Theorem-surface audit: `docs/status/THEOREM_SURFACE_AUDIT_2026_04_27.md`
 
+
+## Closure status
+
+Status: Distance/Factorization Surface Closed; General FMT Frontier Open.
+
+* Distance-core surface: closed constructively in live `FMT.Graph` code.
+* Factorization surface: closed by `useLocalFactorization` bridge witness.
+* General FMT frontier: open; no Fagin theorem, 0-1 Law, or global finite-model-theory final theorem is claimed.
+* Audit lock: `docs/status/CSLIB_FMT_DISTANCE_FACTORIZATION_SURFACE_STATUS_2026_06_13.md`
+
+## General FMT frontier boundary
+
+No Fagin theorem, 0-1 Law, global finite-model-theory final theorem, broad CSLIB adoption, direct Mathlib adoption, or Vardi endorsement/collaboration/coauthorship claim is asserted.
