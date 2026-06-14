@@ -1,0 +1,45 @@
+{
+  "id": "CSLIB_FMT_BOUNDED_CLOSURE_PROOF_PATTERN_SYNC_2026_06_13",
+  "repository": "cslib-fmt",
+  "status": "BOUNDED_CLOSURE_PROOF_PATTERN_SYNC_ADDED",
+  "closed_object": "CSLIB_FMT_BOUNDED_CLOSURE_PROOF_PATTERN_SYNC",
+  "object_type": "bounded_status_pattern_sync",
+  "purpose": "Record that the CSLIB-FMT guarded locality pipeline is classified using the bounded-closure proof-pattern discipline: input surfaces, bounded theorem objects, verifier artifacts, explicit status, and explicit boundary non-claims.",
+  "source_pattern_repository": "urf-textbook",
+  "source_pattern_commit": "8def1fc",
+  "source_pattern_section": "Proof Pattern: Bounded Closure by Classified Formal Artifacts",
+  "classifier_reference_repository": "theorem-closure-classifier",
+  "classifier_reference_commit": "d9b6677",
+  "depends_on": [
+    "CSLIB_FMT_GUARDED_LOCALITY_PIPELINE"
+  ],
+  "local_artifacts": [
+    "docs/status/CSLIB_FMT_GUARDED_LOCALITY_PIPELINE_2026_06_13.md",
+    "artifacts/fmt/guarded_locality_pipeline_2026_06_13.json",
+    "tools/verify_guarded_locality_pipeline.py",
+    "tests/test_guarded_locality_pipeline.py"
+  ],
+  "status_classes_used": [
+    "PROVED_BOUNDED_PIPELINE",
+    "INPUT_SURFACE",
+    "EXPLICIT_NON_CLAIM_BOUNDARY",
+    "OPEN_GLOBAL_FRONTIER"
+  ],
+  "required_pattern_components": [
+    "bounded_pipeline_claim",
+    "input_surface",
+    "bounded_theorem_objects",
+    "verifier_or_certificate",
+    "status_classification",
+    "explicit_boundary"
+  ],
+  "non_claims": [
+    "NO_FULL_GAIFMAN_LOCALITY",
+    "NO_UNGUARDED_FO_LOCALITY",
+    "NO_FAGIN_THEOREM",
+    "NO_ZERO_ONE_LAW",
+    "NO_GLOBAL_FMT_FINAL_THEOREM",
+    "NO_THEOREM_PROMOTION"
+  ],
+  "next_admissible_object": "StopOrAddPatternAdoptionForAnotherBoundedPipeline"
+}
