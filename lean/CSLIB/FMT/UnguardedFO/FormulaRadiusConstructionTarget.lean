@@ -813,6 +813,82 @@ theorem finite_boolean_family_fold_disj_fragment_member
   change (disj_shared_radius_target_family_fragment P).member (Formula.disj φ ψ)
   exact ⟨φ, ψ, hφ, hψ, rfl⟩
 
+
+
+/- Finite Boolean fold expression-indexed radius and target access lemmas. -/
+
+/-- Access the first projection of the expression-indexed fold-with-radius package. -/
+theorem finite_boolean_family_fold_with_radius_value_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1 =
+      finite_boolean_family_fold env sharedRadius henv expr := by
+  rfl
+
+/-- Access the shared radius carried by an expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_radius_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv expr).sharedRadius = sharedRadius := by
+  exact (finite_boolean_family_fold_with_radius env sharedRadius henv expr).2
+
+/-- Any two expression-indexed finite Boolean fold outputs share the explicit fold radius. -/
+theorem finite_boolean_family_fold_pair_radius_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv left).sharedRadius =
+      (finite_boolean_family_fold env sharedRadius henv right).sharedRadius := by
+  rw [
+    finite_boolean_family_fold_radius_access env sharedRadius henv left,
+    finite_boolean_family_fold_radius_access env sharedRadius henv right,
+  ]
+
+/-- Access the target projection of an expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_target_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv expr).target =
+      (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1.target := by
+  rfl
+
+/-- Access the target fragment projection of an expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_target_fragment_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv expr).target.fragment =
+      (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1.target.fragment := by
+  rfl
+
 end UnguardedFO
 end FMT
 end CSLIB
