@@ -499,6 +499,134 @@ noncomputable def disj_shared_radius_target_family_constructor
         (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound),
       hinputθ⟩
 
+/-! ### Shared-radius family introductions -/
+
+/-- Introduce a shared-radius target family from one explicit singleton radius input. -/
+def singleton_shared_radius_target_family
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ : Formula σ n)
+    (depthBound r : Nat)
+    (hdepth : FormulaQuantifierDepth φ ≤ depthBound)
+    (hinput : UnguardedFOLocalityInputSurface M φ r) :
+    SharedRadiusTargetFamily M n where
+  target := singleton_radius_construction_target M φ depthBound r r
+    hdepth
+    (Nat.le_refl r)
+    hinput
+  sharedRadius := r
+  shared_radius_bounded := Nat.le_refl r
+  constructs_at_shared_radius := by
+    intro ψ hψ
+    cases hψ
+    exact hinput
+
+/-- Introduce a shared-radius target family from an explicit atomic singleton input. -/
+def atomic_shared_radius_target_family
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ : Formula σ n)
+    (r : Nat)
+    (hdepth : FormulaQuantifierDepth φ = 0)
+    (hinput : UnguardedFOLocalityInputSurface M φ r) :
+    SharedRadiusTargetFamily M n :=
+  singleton_shared_radius_target_family M φ 0 r
+    (Nat.le_of_eq hdepth)
+    hinput
+
+/-- Introduce a shared-radius target family from a negation constructor output. -/
+noncomputable def neg_shared_radius_target_family
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (F : SharedRadiusTargetFamily M n) :
+    SharedRadiusTargetFamily M n where
+  target := neg_shared_radius_target_family_constructor F
+  sharedRadius := F.sharedRadius
+  shared_radius_bounded := F.shared_radius_bounded
+  constructs_at_shared_radius := by
+    intro θ hθ
+    change (neg_shared_radius_target_family_fragment F).member θ at hθ
+    let φ := Classical.choose hθ
+    have hφ_spec := Classical.choose_spec hθ
+    have hinput :
+        UnguardedFOLocalityInputSurface M (Formula.neg φ) F.sharedRadius :=
+      neg_radius_input (F.constructs_at_shared_radius φ hφ_spec.1)
+    have hinputθ :
+        UnguardedFOLocalityInputSurface M θ F.sharedRadius := by
+      rw [hφ_spec.2]
+      exact hinput
+    exact hinputθ
+
+/-- Introduce a shared-radius target family from a conjunction constructor output. -/
+noncomputable def conj_shared_radius_target_family
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n) :
+    SharedRadiusTargetFamily M n where
+  target := conj_shared_radius_target_family_constructor P
+  sharedRadius := P.left.sharedRadius
+  shared_radius_bounded :=
+    Nat.le_trans P.left.shared_radius_bounded
+      (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound)
+  constructs_at_shared_radius := by
+    intro θ hθ
+    change (conj_shared_radius_target_family_fragment P).member θ at hθ
+    let φ := Classical.choose hθ
+    have hφ_spec := Classical.choose_spec hθ
+    let ψ := Classical.choose hφ_spec
+    have hψ_spec := Classical.choose_spec hφ_spec
+    have hφ_input := P.left.constructs_at_shared_radius φ hψ_spec.1
+    have hψ_input :
+        UnguardedFOLocalityInputSurface M ψ P.left.sharedRadius := by
+      simpa [P.same_shared_radius] using
+        P.right.constructs_at_shared_radius ψ hψ_spec.2.1
+    have hinput :
+        UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) P.left.sharedRadius :=
+      conj_radius_input hφ_input hψ_input
+    have hinputθ :
+        UnguardedFOLocalityInputSurface M θ P.left.sharedRadius := by
+      rw [hψ_spec.2.2]
+      exact hinput
+    exact hinputθ
+
+/-- Introduce a shared-radius target family from a disjunction constructor output. -/
+noncomputable def disj_shared_radius_target_family
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n) :
+    SharedRadiusTargetFamily M n where
+  target := disj_shared_radius_target_family_constructor P
+  sharedRadius := P.left.sharedRadius
+  shared_radius_bounded :=
+    Nat.le_trans P.left.shared_radius_bounded
+      (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound)
+  constructs_at_shared_radius := by
+    intro θ hθ
+    change (disj_shared_radius_target_family_fragment P).member θ at hθ
+    let φ := Classical.choose hθ
+    have hφ_spec := Classical.choose_spec hθ
+    let ψ := Classical.choose hφ_spec
+    have hψ_spec := Classical.choose_spec hφ_spec
+    have hφ_input := P.left.constructs_at_shared_radius φ hψ_spec.1
+    have hψ_input :
+        UnguardedFOLocalityInputSurface M ψ P.left.sharedRadius := by
+      simpa [P.same_shared_radius] using
+        P.right.constructs_at_shared_radius ψ hψ_spec.2.1
+    have hinput :
+        UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) P.left.sharedRadius :=
+      disj_radius_input hφ_input hψ_input
+    have hinputθ :
+        UnguardedFOLocalityInputSurface M θ P.left.sharedRadius := by
+      rw [hψ_spec.2.2]
+      exact hinput
+    exact hinputθ
+
+
 
 
 

@@ -1,0 +1,31 @@
+{
+  "artifact": "unguarded_fo_shared_radius_family_introductions_2026_06_20",
+  "status": "SHARED_RADIUS_FAMILY_INTRODUCTIONS",
+  "base_commit": "4807ab4",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "added_objects": [
+    "singleton_shared_radius_target_family",
+    "atomic_shared_radius_target_family",
+    "neg_shared_radius_target_family",
+    "conj_shared_radius_target_family",
+    "disj_shared_radius_target_family"
+  ],
+  "bounded_scope": [
+    "shared-radius family introduction from explicit singleton radius input",
+    "shared-radius family introduction from explicit atomic singleton input",
+    "shared-radius family introduction from Boolean constructor outputs",
+    "explicit-radius scoped introductions only",
+    "target-family scoped Boolean propagation only"
+  ],
+  "does_not_prove": [
+    "formula-radius construction theorem",
+    "existence of atomic locality inputs",
+    "radius monotonicity",
+    "arbitrary bounded-fragment closure",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}
