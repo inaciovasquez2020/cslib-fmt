@@ -1,0 +1,17 @@
+{
+  "artifact": "ATOMIC_FORMULA_RADIUS_INPUT_CONNECTION_STATUS",
+  "date": "2026-06-20",
+  "status": "CONNECTION_STATUS_ONLY",
+  "head_prefix": "90d98a4",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def atomic_formula_radius_input_connection_status",
+    "theorem atomic_formula_radius_input_connection_status_closed"
+  ],
+  "depends_on": [
+    "def formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate",
+    "theorem formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed",
+    "atomic locality/formula-radius input surface located by repository grep"
+  ],
+  "boundary": "BOUNDARY := ¬ unguarded_fo_formula_radius_construction"
+}

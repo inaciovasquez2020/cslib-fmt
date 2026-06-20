@@ -529,6 +529,21 @@ theorem formula_radius_construction_gate_status_from_bounded_boolean_recursion_g
     formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate := by
   exact bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_closed
 
+
+/-- Atomic formula-radius input connection status.
+
+This is a connection-status object only. It records that the formula-radius
+construction gate can now be connected to the already surfaced atomic-input
+frontier, without proving full unguarded FO formula-radius construction,
+Boolean recursion beyond the bounded gate, or quantifier recursion.
+-/
+def atomic_formula_radius_input_connection_status : Prop :=
+  formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate
+
+theorem atomic_formula_radius_input_connection_status_closed :
+    atomic_formula_radius_input_connection_status := by
+  exact formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
