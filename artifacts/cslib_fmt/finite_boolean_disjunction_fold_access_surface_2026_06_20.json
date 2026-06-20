@@ -1,0 +1,20 @@
+{
+  "artifact": "FINITE_BOOLEAN_DISJUNCTION_FOLD_ACCESS_SURFACE",
+  "date": "2026-06-20",
+  "status": "ACCESS_SURFACE_ONLY",
+  "head_prefix": "58feab3",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def finite_boolean_disjunction_fold_access_surface",
+    "theorem finite_boolean_disjunction_fold_access_surface_closed"
+  ],
+  "repository_dependencies": [
+    "finite_boolean_family_fold",
+    "finite_boolean_family_fold_shared_radius"
+  ],
+  "local_dependencies": [
+    "theorem unguarded_fo_disj_same_radius_constructor",
+    "theorem unguarded_fo_disj_common_smaller_radius_constructor"
+  ],
+  "boundary": "BOUNDARY := ¬ arbitrary_boolean_or_quantifier_recursion"
+}

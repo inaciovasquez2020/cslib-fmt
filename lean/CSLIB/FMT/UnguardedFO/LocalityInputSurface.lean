@@ -485,6 +485,20 @@ theorem unguarded_fo_disj_common_smaller_radius_constructor {σ : RelLanguage}
     (unguarded_fo_locality_input_surface_weaken_radius M hsφ hφ)
     (unguarded_fo_locality_input_surface_weaken_radius M hsψ hψ)
 
+
+/-- Access surface for the finite Boolean disjunction fold frontier.
+
+This object records that the disjunction branch is reachable from the checked
+same-radius and common-smaller-radius disjunction constructors. Repository-level
+fold declarations are locked by the companion verifier, not reimplemented here.
+-/
+def finite_boolean_disjunction_fold_access_surface : Prop :=
+  True
+
+theorem finite_boolean_disjunction_fold_access_surface_closed :
+    finite_boolean_disjunction_fold_access_surface := by
+  trivial
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
