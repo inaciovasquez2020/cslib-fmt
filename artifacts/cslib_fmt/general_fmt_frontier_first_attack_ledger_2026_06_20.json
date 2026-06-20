@@ -1,0 +1,62 @@
+{
+  "attack_order": [
+    {
+      "rank": 1,
+      "reason": "Cr2 is restricted guarded-locality machinery; general FMT first needs an unguarded FO language layer.",
+      "status": "missing-or-unlocked target surface",
+      "target": "Unguarded FO syntax and semantics"
+    },
+    {
+      "rank": 2,
+      "reason": "Unguarded FO locality requires structure-level locality geometry, not only the restricted guarded surface.",
+      "status": "missing-or-unlocked target surface",
+      "target": "Gaifman graph and distance for arbitrary finite structures"
+    },
+    {
+      "rank": 3,
+      "reason": "This is the closest global frontier theorem to the current guarded-locality work.",
+      "status": "open",
+      "target": "Unguarded FO locality"
+    },
+    {
+      "rank": 4,
+      "reason": "Requires ESO/NP encoding and finite-structure complexity machinery.",
+      "status": "open",
+      "target": "Fagin theorem"
+    },
+    {
+      "rank": 5,
+      "reason": "Requires random finite structure/probability asymptotic layer.",
+      "status": "open",
+      "target": "0-1 Law"
+    }
+  ],
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "specification",
+  "current_bounded_cr2_lock_retained": true,
+  "first_admissible_target": "Unguarded FO syntax and semantics",
+  "first_global_theorem_target_after_language": "Unguarded FO locality",
+  "id": "GENERAL_FMT_FRONTIER_FIRST_ATTACK_LEDGER_2026_06_20",
+  "inspection": {
+    "has_fagin_mentions": true,
+    "has_gaifman_mentions": true,
+    "has_unguarded_or_first_order_mentions": true,
+    "has_zero_one_law_mentions": true
+  },
+  "nonclaims": [
+    "Does not claim general FMT closure.",
+    "Does not claim Fagin theorem.",
+    "Does not claim 0-1 Law.",
+    "Does not claim full Gaifman locality.",
+    "Does not claim unguarded FO locality.",
+    "Does not claim external validation."
+  ],
+  "status": "general FMT frontier attack ledger"
+}
