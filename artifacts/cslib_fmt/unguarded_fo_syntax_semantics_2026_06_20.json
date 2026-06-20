@@ -1,0 +1,41 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "definition layer with basic verified simp lemmas",
+  "definitions": [
+    "RelLanguage",
+    "RelStructure",
+    "Formula",
+    "Sentence",
+    "extendAssignment",
+    "emptyAssignment",
+    "Holds",
+    "Satisfies"
+  ],
+  "id": "UNGUARDED_FO_SYNTAX_SEMANTICS_2026_06_20",
+  "next_target": "Gaifman graph and distance for arbitrary finite structures",
+  "nonclaims": [
+    "Does not claim general FMT closure.",
+    "Does not claim Fagin theorem.",
+    "Does not claim 0-1 Law.",
+    "Does not claim full Gaifman locality.",
+    "Does not claim unguarded FO locality.",
+    "Does not claim external validation."
+  ],
+  "source_file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+  "status": "unguarded FO syntax and semantics layer added",
+  "verified_lemmas": [
+    "holds_top",
+    "holds_bot",
+    "holds_eq",
+    "holds_conj",
+    "holds_disj",
+    "holds_ex"
+  ]
+}
