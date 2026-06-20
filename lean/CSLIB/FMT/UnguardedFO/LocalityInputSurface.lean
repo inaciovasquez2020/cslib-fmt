@@ -499,6 +499,21 @@ theorem finite_boolean_disjunction_fold_access_surface_closed :
     finite_boolean_disjunction_fold_access_surface := by
   trivial
 
+
+/-- Bounded Boolean recursion gate from the finite Boolean fold access surface.
+
+This is a gate object only. It records that the checked finite Boolean
+disjunction access surface is now available as the bounded Boolean-recursion
+entry point, without asserting arbitrary FO formula recursion or quantifier
+closure.
+-/
+def bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface : Prop :=
+  finite_boolean_disjunction_fold_access_surface
+
+theorem bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_closed :
+    bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface := by
+  exact finite_boolean_disjunction_fold_access_surface_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :

@@ -1,0 +1,18 @@
+{
+  "artifact": "BOUNDED_BOOLEAN_RECURSION_GATE_FROM_FINITE_BOOLEAN_FOLD_ACCESS_SURFACE",
+  "date": "2026-06-20",
+  "status": "GATE_ONLY",
+  "head_prefix": "118f90a",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface",
+    "theorem bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_closed"
+  ],
+  "depends_on": [
+    "def finite_boolean_disjunction_fold_access_surface",
+    "theorem finite_boolean_disjunction_fold_access_surface_closed",
+    "theorem unguarded_fo_conj_common_smaller_radius_constructor",
+    "theorem unguarded_fo_disj_common_smaller_radius_constructor"
+  ],
+  "boundary": "BOUNDARY := ¬ arbitrary_fo_boolean_or_quantifier_recursion"
+}
