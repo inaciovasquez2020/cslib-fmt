@@ -155,6 +155,29 @@ theorem equality_atom_locality_input_of_assignment_eq
       _ = ρ y := hy.symm
 
 /--
+Relation atoms have an atomic-locality input at radius `r` once the current
+assignment-closeness relation preserves the interpreted relation tuple.
+
+This is only the relation-atom target shell; it does not prove the required
+tuple-neighborhood or interpretation-preservation invariant.
+-/
+theorem relation_atom_locality_input_of_interp_iff
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (R : σ.Rel) (args : Fin (σ.arity R) → Fin n) (r : Nat)
+    (hinterp :
+      ∀ ρ τ : Fin n → M.carrier,
+        AssignmentGaifmanClose M r ρ τ →
+        (M.interp R (fun i => ρ (args i)) ↔
+          M.interp R (fun i => τ (args i)))) :
+    AtomicLocalityInput M (Formula.rel R args) r := by
+  refine ⟨?_⟩
+  intro ρ τ hclose
+  change
+    M.interp R (fun i => ρ (args i)) ↔
+      M.interp R (fun i => τ (args i))
+  exact hinterp ρ τ hclose
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
