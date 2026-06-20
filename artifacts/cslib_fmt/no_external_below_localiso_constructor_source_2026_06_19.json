@@ -1,0 +1,38 @@
+{
+  "id": "NO_EXTERNAL_BELOW_LOCALISO_CONSTRUCTOR_SOURCE_2026_06_19",
+  "repo": "cslib-fmt",
+  "head_at_validation": "215e669762c20d92b4396b2dc119ab85013cc61a",
+  "search_scope": "lean/**/*.lean",
+  "target": "LocalIso 𝒜 ℬ r a b",
+  "all_localiso_producers": [
+    {
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "line": 233,
+      "kind": "theorem",
+      "name": "ballIso_to_localIso",
+      "codomain": "LocalIso 𝔄 𝔅 r a b",
+      "assumption_surfaces": [
+        "BallIso",
+        "LocalIso",
+        "Iso"
+      ]
+    }
+  ],
+  "direct_localiso_mentions": [
+    {
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "line": 233,
+      "line_text": "theorem ballIso_to_localIso"
+    },
+    {
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "line": 538,
+      "line_text": "theorem localIso_to_cr2"
+    }
+  ],
+  "external_or_below_candidates": [],
+  "result": "NO_EXTERNAL_OR_BELOW_LOCALISO_CONSTRUCTOR_SOURCE",
+  "classification": "bounded_Cr2_ladder_stops_at_LocalIso",
+  "patch_decision": "no_new_theorem",
+  "boundary": "BOUNDARY := ¬ cr2_unconditional_constructor"
+}
