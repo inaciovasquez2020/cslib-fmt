@@ -100,6 +100,34 @@ def AssignmentGaifmanClose {σ : RelLanguage} (M : RelStructure σ)
   ∀ i : Fin n, GaifmanDistanceLe M (ρ i) (τ i) r
 
 /--
+Forward monotonicity for the distance-bound relation.
+
+If two elements are connected by a walk of length at most `r`, then they are
+also connected by a walk of length at most any larger radius `s`.
+-/
+theorem gaifman_distance_le_mono {σ : RelLanguage} (M : RelStructure σ)
+    {x y : M.carrier} {r s : Nat} (hrs : r ≤ s) :
+    GaifmanDistanceLe M x y r →
+      GaifmanDistanceLe M x y s := by
+  intro h
+  rcases h with ⟨n, hn, hwalk⟩
+  exact ⟨n, Nat.le_trans hn hrs, hwalk⟩
+
+/--
+Forward monotonicity for assignment Gaifman closeness.
+
+This is the directly provable direction from the current definition:
+`r ≤ s` converts `AssignmentGaifmanClose M r ρ τ` into
+`AssignmentGaifmanClose M s ρ τ`. It does not provide the reverse conversion.
+-/
+theorem assignment_gaifman_close_mono {σ : RelLanguage} (M : RelStructure σ)
+    {n r s : Nat} {ρ τ : Fin n → M.carrier} (hrs : r ≤ s) :
+    AssignmentGaifmanClose M r ρ τ →
+      AssignmentGaifmanClose M s ρ τ := by
+  intro hclose i
+  exact gaifman_distance_le_mono M hrs (hclose i)
+
+/--
 An input surface saying that a formula is invariant under Gaifman-close
 assignments at a fixed radius.
 
