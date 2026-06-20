@@ -1,0 +1,19 @@
+{
+  "id": "POINTED_RADIUS_BALL_EQUIV_TO_CR2_2026_06_19",
+  "repo": "cslib-fmt",
+  "head": "fe59b3a02e1e1bcf15a5e933a5dce3b3ffeb2852",
+  "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "theorem": "pointed_radius_ball_equiv_to_cr2",
+  "statement": "PointedRadiusBallEquiv 𝒜 ℬ r a b → Cr2 𝒜 ℬ r a b",
+  "proof_path": [
+    "PointedRadiusBallEquiv 𝒜 ℬ r a b",
+    "PlainInducedRadiusBallIso 𝒜 ℬ r a b",
+    "Cr2 𝒜 ℬ r a b"
+  ],
+  "uses": [
+    "pointed_radius_ball_equiv_to_plain_induced_radius_ball_isomorphism",
+    "plain_induced_radius_ball_isomorphism_to_cr2"
+  ],
+  "forbidden_wrapper_not_added": "ballIso_to_cr2",
+  "boundary": "BOUNDARY := ¬ cr2_unconditional_constructor"
+}

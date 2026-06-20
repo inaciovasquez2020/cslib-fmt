@@ -509,6 +509,24 @@ theorem plain_induced_radius_ball_isomorphism_to_cr2
   exact restricted_ef_game_local_type_invariant_input_surface_to_cr2
     (plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_invariant_input_surface h)
 
+
+/--
+A constructor-source target for `Cr2` from an already available pointed radius-ball
+equivalence.
+
+This is strictly stronger than another wrapper theorem `BallIso → Cr2`, because it
+uses an existing producer of `PlainInducedRadiusBallIso` and then the landed
+`plain_induced_radius_ball_isomorphism_to_cr2` theorem.
+-/
+theorem pointed_radius_ball_equiv_to_cr2
+    {α β : Type}
+    {𝒜 : Struct α} {ℬ : Struct β}
+    {r : Nat} {a : α} {b : β}
+    (h : PointedRadiusBallEquiv 𝒜 ℬ r a b) :
+    Cr2 𝒜 ℬ r a b := by
+  exact plain_induced_radius_ball_isomorphism_to_cr2
+    (pointed_radius_ball_equiv_to_plain_induced_radius_ball_isomorphism h)
+
 /--
 A restricted constructor target weaker than `cr2_unconditional_constructor`.
 
