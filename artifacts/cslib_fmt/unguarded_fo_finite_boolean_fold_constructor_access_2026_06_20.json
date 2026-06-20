@@ -1,0 +1,32 @@
+{
+  "artifact": "unguarded_fo_finite_boolean_fold_constructor_access_2026_06_20",
+  "status": "FINITE_BOOLEAN_FAMILY_FOLD_CONSTRUCTOR_ACCESS_LEMMAS",
+  "base_commit": "c73e367",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "added_objects": [
+    "finite_boolean_family_fold_atom_constructor_access",
+    "finite_boolean_family_fold_neg_constructor_access",
+    "finite_boolean_family_fold_conj_constructor_access",
+    "finite_boolean_family_fold_disj_constructor_access"
+  ],
+  "bounded_scope": [
+    "theorem statements remain over FiniteBooleanFamilyExpr",
+    "expression-index scoped atom constructor access only",
+    "expression-index scoped neg constructor access only",
+    "expression-index scoped conj constructor access only",
+    "expression-index scoped disj constructor access only",
+    "constructor access is definitional unfolding of the explicit finite Boolean fold",
+    "not arbitrary bounded-fragment closure"
+  ],
+  "does_not_prove": [
+    "arbitrary bounded-fragment closure",
+    "formula-radius construction theorem",
+    "existence of atomic locality inputs",
+    "radius monotonicity",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}

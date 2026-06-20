@@ -889,6 +889,81 @@ theorem finite_boolean_family_fold_target_fragment_access
       (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1.target.fragment := by
   rfl
 
+
+
+/- Finite Boolean fold expression-indexed constructor access lemmas. -/
+
+/-- Access the atom constructor case of the expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_atom_constructor_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (i : ι) :
+    finite_boolean_family_fold env sharedRadius henv (FiniteBooleanFamilyExpr.atom i) =
+      env i := by
+  rfl
+
+/-- Access the negation constructor case of the expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_neg_constructor_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    finite_boolean_family_fold env sharedRadius henv (FiniteBooleanFamilyExpr.neg expr) =
+      neg_shared_radius_target_family
+        (finite_boolean_family_fold env sharedRadius henv expr) := by
+  rfl
+
+/-- Access the conjunction constructor case of the expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_conj_constructor_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι) :
+    let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv left
+    let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv right
+    let P : SharedRadiusTargetFamilyPair M n :=
+      { left := F₁.1
+        right := F₂.1
+        same_shared_radius := by rw [F₁.2, F₂.2] }
+    finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.conj left right) =
+        conj_shared_radius_target_family P := by
+  rfl
+
+/-- Access the disjunction constructor case of the expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_disj_constructor_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι) :
+    let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv left
+    let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv right
+    let P : SharedRadiusTargetFamilyPair M n :=
+      { left := F₁.1
+        right := F₂.1
+        same_shared_radius := by rw [F₁.2, F₂.2] }
+    finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.disj left right) =
+        disj_shared_radius_target_family P := by
+  rfl
+
 end UnguardedFO
 end FMT
 end CSLIB
