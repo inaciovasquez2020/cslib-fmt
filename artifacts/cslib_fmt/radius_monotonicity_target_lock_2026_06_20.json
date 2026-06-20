@@ -1,0 +1,38 @@
+{
+  "status": "RADIUS_MONOTONICITY_TARGET_LOCK_ONLY",
+  "date": "2026-06-20",
+  "repo": "cslib-fmt",
+  "object": "RadiusMonotonicityTarget",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "progress_id": "cslib_fmt_radius_monotonicity_target_lock_2026_06_20",
+  "claims": [
+    "The repository contains a target shell for radius monotonicity of unguarded FO locality input surfaces.",
+    "The target shell records the obstruction needed before max-radius Boolean constructors can be discharged.",
+    "The target shell records the shape of lifting an input surface from radius r to a larger radius s."
+  ],
+  "nonclaims": [
+    "Does not prove radius monotonicity.",
+    "Does not prove assignment-close monotonicity.",
+    "Does not prove max-radius conjunction closure.",
+    "Does not prove max-radius disjunction closure.",
+    "Does not prove existential quantifier handling.",
+    "Does not prove arbitrary formula-radius construction.",
+    "Does not prove Gaifman locality for unguarded first-order logic.",
+    "Does not prove Fagin's theorem.",
+    "Does not prove the 0-1 Law.",
+    "Does not prove general finite model theory closure."
+  ],
+  "required_lean_markers": [
+    "structure RadiusMonotonicityTarget",
+    "monotonicity_obligation",
+    "expected_lift_shape",
+    "r ≤ s",
+    "UnguardedFOLocalityInputSurface M φ r"
+  ],
+  "forbidden_live_markers": [
+    "axiom",
+    "opaque",
+    "sorry",
+    "admit"
+  ]
+}
