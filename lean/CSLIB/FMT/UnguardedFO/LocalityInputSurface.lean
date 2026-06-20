@@ -474,6 +474,17 @@ constructor package after the individual negation, conjunction, and disjunction
 constructors have been introduced. It does not construct max-radius joins,
 handle quantifiers, or prove arbitrary formula recursion.
 -/
+
+theorem unguarded_fo_disj_common_smaller_radius_constructor {σ : RelLanguage}
+    (M : RelStructure σ) {n rφ rψ s : Nat} {φ ψ : Formula σ n}
+    (hsφ : s ≤ rφ) (hsψ : s ≤ rψ)
+    (hφ : UnguardedFOLocalityInputSurface M φ rφ)
+    (hψ : UnguardedFOLocalityInputSurface M ψ rψ) :
+    UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) s := by
+  exact unguarded_fo_disj_same_radius_constructor M
+    (unguarded_fo_locality_input_surface_weaken_radius M hsφ hφ)
+    (unguarded_fo_locality_input_surface_weaken_radius M hsψ hψ)
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :

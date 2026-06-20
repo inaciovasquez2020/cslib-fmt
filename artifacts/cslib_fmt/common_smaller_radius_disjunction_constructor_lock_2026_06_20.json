@@ -1,0 +1,13 @@
+{
+  "artifact": "COMMON_SMALLER_RADIUS_DISJUNCTION_CONSTRUCTOR_LOCK",
+  "date": "2026-06-20",
+  "status": "LOCK_ONLY",
+  "head_prefix": "840effd",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declaration": "theorem unguarded_fo_disj_common_smaller_radius_constructor",
+  "depends_on": [
+    "theorem unguarded_fo_disj_same_radius_constructor",
+    "theorem unguarded_fo_locality_input_surface_weaken_radius"
+  ],
+  "boundary": "BOUNDARY := ¬ arbitrary_boolean_common_smaller_radius_constructor"
+}
