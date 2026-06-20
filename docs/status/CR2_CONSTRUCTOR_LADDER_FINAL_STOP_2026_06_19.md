@@ -18,3 +18,7 @@ PATCH_DECISION := no new theorem.
 FORBIDDEN_WRAPPER_NOT_ADDED := `ballIso_to_cr2`
 
 BOUNDARY := ¬ cr2_unconditional_constructor
+
+### Cr2 constructor ladder final stop
+
+- `CR2_CONSTRUCTOR_LADDER_FINAL_STOP_2026_06_19`: bounded Cr2 constructor ladder stops at `LocalIso`; closed conditional chain is `PlainInducedRadiusBallIso → Cr2`, `PointedRadiusBallEquiv → PlainInducedRadiusBallIso → Cr2`, and `LocalIso → BallIso → PointedRadiusBallEquiv → Cr2`; boundary remains `¬ cr2_unconditional_constructor`.
