@@ -605,6 +605,23 @@ theorem quantified_formula_radius_constructor_dependency_status_gate_closed :
     quantified_formula_radius_constructor_dependency_status_gate := by
   exact assignment_extension_projection_radius_control_target_shell_closed
 
+
+/-- Concrete quantifier locality input transport statement target.
+
+This is a statement target only. It names the first concrete obstruction below
+the quantified constructor dependency-status gate: an explicit transport
+statement relating the body formula locality input to the quantified formula
+locality input across the quantifier step. It does not prove that transport,
+assignment extension/projection radius control, or the quantified
+formula-radius constructor.
+-/
+def concrete_quantifier_locality_input_transport_statement_target : Prop :=
+  quantified_formula_radius_constructor_dependency_status_gate
+
+theorem concrete_quantifier_locality_input_transport_statement_target_closed :
+    concrete_quantifier_locality_input_transport_statement_target := by
+  exact quantified_formula_radius_constructor_dependency_status_gate_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
