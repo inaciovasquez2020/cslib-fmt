@@ -559,6 +559,21 @@ theorem quantified_formula_radius_constructor_target_shell_closed :
     quantified_formula_radius_constructor_target_shell := by
   exact atomic_formula_radius_input_connection_status_closed
 
+
+/-- Quantifier locality input transport target shell.
+
+This is a target shell only. It records the weakest next dependency from the
+quantified constructor dependency ledger: transporting locality input across
+the quantifier step. It does not prove assignment extension/projection radius
+control or the quantified formula-radius constructor.
+-/
+def quantifier_locality_input_transport_target_shell : Prop :=
+  quantified_formula_radius_constructor_target_shell
+
+theorem quantifier_locality_input_transport_target_shell_closed :
+    quantifier_locality_input_transport_target_shell := by
+  exact quantified_formula_radius_constructor_target_shell_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :

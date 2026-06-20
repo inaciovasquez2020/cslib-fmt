@@ -1,0 +1,18 @@
+{
+  "artifact": "QUANTIFIER_LOCALITY_INPUT_TRANSPORT_TARGET_SHELL",
+  "date": "2026-06-20",
+  "status": "TARGET_SHELL_ONLY",
+  "head_prefix": "3fa55ad",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def quantifier_locality_input_transport_target_shell",
+    "theorem quantifier_locality_input_transport_target_shell_closed"
+  ],
+  "depends_on": [
+    "def quantified_formula_radius_constructor_target_shell",
+    "theorem quantified_formula_radius_constructor_target_shell_closed",
+    "QUANTIFIED_CONSTRUCTOR_DEPENDENCY_LEDGER"
+  ],
+  "target": "quantifier_locality_input_transport",
+  "boundary": "BOUNDARY := ¬ quantifier_locality_input_transport"
+}
