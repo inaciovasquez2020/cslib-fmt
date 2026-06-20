@@ -1,0 +1,62 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac cr2_unconditional_constructor",
+    "BOUNDARY := \u00ac arbitrary Cr2 witness",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac repository-level final FMT closure"
+  ],
+  "closed_packet": [
+    "bounded surface verified lemma certificate",
+    "noncomputable audit",
+    "guarded locality boundary conditional lemma",
+    "Cr2 exact target surface",
+    "Cr2 conditional discharge of existing guarded-locality input",
+    "Cr2 unconditional constructor gap certificate",
+    "Cr2 restricted constructor target"
+  ],
+  "commit": "d80193e",
+  "id": "D80193E_CR2_RESTRICTED_CONSTRUCTOR_STATUS_LOCK_2026_06_19",
+  "lean_theorem_added": "restricted_ef_game_local_type_invariant_input_surface_to_cr2",
+  "remaining_blocker": "cr2_unconditional_constructor",
+  "remote_sync": "HEAD and origin/main both resolve to d80193e",
+  "required_files": [
+    "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+    "artifacts/cslib_fmt/bounded_surface_verified_lemma_certificate_2026_06_19.json",
+    "artifacts/cslib_fmt/cr2_discharges_guarded_locality_input_2026_06_19.json",
+    "artifacts/cslib_fmt/cr2_exact_target_surface_2026_06_19.json",
+    "artifacts/cslib_fmt/cr2_restricted_constructor_target_2026_06_19.json",
+    "artifacts/cslib_fmt/cr2_unconditional_constructor_gap_2026_06_19.json",
+    "artifacts/cslib_fmt/guarded_locality_boundary_conditional_lemma_2026_06_19.json",
+    "artifacts/cslib_fmt/noncomputable_audit_2026_06_19.json",
+    "docs/status/BOUNDED_SURFACE_VERIFIED_LEMMA_CERTIFICATE_2026_06_19.md",
+    "docs/status/CR2_DISCHARGES_GUARDED_LOCALITY_INPUT_2026_06_19.md",
+    "docs/status/CR2_EXACT_TARGET_SURFACE_2026_06_19.md",
+    "docs/status/CR2_RESTRICTED_CONSTRUCTOR_TARGET_2026_06_19.md",
+    "docs/status/CR2_UNCONDITIONAL_CONSTRUCTOR_GAP_2026_06_19.md",
+    "docs/status/GUARDED_LOCALITY_BOUNDARY_CONDITIONAL_LEMMA_2026_06_19.md",
+    "docs/status/NONCOMPUTABLE_AUDIT_2026_06_19.md",
+    "scripts/check_bounded_surface_verified_lemma_certificate.py",
+    "scripts/check_cr2_discharges_guarded_locality_input.py",
+    "scripts/check_cr2_exact_target_surface.py",
+    "scripts/check_cr2_restricted_constructor_target.py",
+    "scripts/check_cr2_unconditional_constructor_gap.py",
+    "scripts/check_guarded_locality_boundary_conditional_lemma.py",
+    "scripts/check_noncomputable_audit.py",
+    "tests/test_bounded_surface_verified_lemma_certificate.py",
+    "tests/test_cr2_discharges_guarded_locality_input.py",
+    "tests/test_cr2_exact_target_surface.py",
+    "tests/test_cr2_restricted_constructor_target.py",
+    "tests/test_cr2_unconditional_constructor_gap.py",
+    "tests/test_guarded_locality_boundary_conditional_lemma.py",
+    "tests/test_noncomputable_audit.py"
+  ],
+  "status": "pushed status lock for Cr2 restricted constructor target",
+  "validated_before_lock": [
+    "targeted certificate rollup: 7 passed",
+    "full pytest: 124 passed",
+    "lake build: completed successfully"
+  ]
+}
