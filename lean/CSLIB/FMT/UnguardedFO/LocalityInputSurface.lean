@@ -574,6 +574,21 @@ theorem quantifier_locality_input_transport_target_shell_closed :
     quantifier_locality_input_transport_target_shell := by
   exact quantified_formula_radius_constructor_target_shell_closed
 
+
+/-- Assignment extension/projection radius-control target shell.
+
+This is a target shell only. It records the next dependency after quantifier
+locality input transport: radius control across the assignment
+extension/projection step used by quantifier semantics. It does not prove the
+control lemma or the quantified formula-radius constructor.
+-/
+def assignment_extension_projection_radius_control_target_shell : Prop :=
+  quantifier_locality_input_transport_target_shell
+
+theorem assignment_extension_projection_radius_control_target_shell_closed :
+    assignment_extension_projection_radius_control_target_shell := by
+  exact quantifier_locality_input_transport_target_shell_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :

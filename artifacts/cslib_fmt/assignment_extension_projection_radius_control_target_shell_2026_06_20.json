@@ -1,0 +1,18 @@
+{
+  "artifact": "ASSIGNMENT_EXTENSION_PROJECTION_RADIUS_CONTROL_TARGET_SHELL",
+  "date": "2026-06-20",
+  "status": "TARGET_SHELL_ONLY",
+  "head_prefix": "e6d562c",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def assignment_extension_projection_radius_control_target_shell",
+    "theorem assignment_extension_projection_radius_control_target_shell_closed"
+  ],
+  "depends_on": [
+    "def quantifier_locality_input_transport_target_shell",
+    "theorem quantifier_locality_input_transport_target_shell_closed",
+    "QUANTIFIED_CONSTRUCTOR_DEPENDENCY_LEDGER"
+  ],
+  "target": "assignment_extension_or_projection_radius_control",
+  "boundary": "BOUNDARY := ¬ assignment_extension_or_projection_radius_control"
+}
