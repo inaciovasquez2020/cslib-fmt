@@ -502,6 +502,30 @@ structure RadiusMonotonicityTarget {σ : RelLanguage}
       UnguardedFOLocalityInputSurface M φ r →
       Prop
 
+
+/--
+Target shell for monotonicity of assignment Gaifman closeness.
+
+This surface records the immediate dependency needed by radius monotonicity of
+locality input surfaces: converting a larger-radius assignment-close hypothesis
+into the smaller-radius assignment-close hypothesis required by a locality input
+surface. It is target-only. It does not prove the conversion, radius
+monotonicity, max-radius Boolean closure, quantifier handling, or arbitrary
+formula recursion.
+-/
+structure AssignmentGaifmanCloseMonotonicityTarget {σ : RelLanguage}
+    (M : RelStructure σ) where
+  close_monotonicity_obligation :
+    ∀ {n r s : Nat} {ρ τ : Fin n → M.carrier},
+      r ≤ s →
+      AssignmentGaifmanClose M s ρ τ →
+      Prop
+  expected_close_lift_shape :
+    ∀ {n r s : Nat} {ρ τ : Fin n → M.carrier},
+      r ≤ s →
+      AssignmentGaifmanClose M s ρ τ →
+      Prop
+
 end UnguardedFO
 end FMT
 end CSLIB
