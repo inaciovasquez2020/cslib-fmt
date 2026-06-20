@@ -1,0 +1,39 @@
+{
+  "after_head": "9bf9fe7",
+  "date": "2026-06-20",
+  "depends_on_committed_targets": [
+    "equality_atom_locality_input_of_assignment_eq",
+    "relation_atom_locality_input_of_interp_iff"
+  ],
+  "does_not_claim": [
+    "unconditional atomic_formula_locality_input_exists",
+    "unconditional equality atom locality",
+    "unconditional relation atom locality",
+    "assignment preservation under AssignmentGaifmanClose",
+    "relation tuple interpretation preservation under AssignmentGaifmanClose",
+    "Boolean recursion",
+    "quantifier recursion",
+    "Gaifman locality"
+  ],
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "ledgered_invariants": [
+    {
+      "blocks": "unconditional equality atom locality",
+      "name": "equality_assignment_preservation_at_radius_zero",
+      "needed_for": "equality_atom_locality_input_of_assignment_eq",
+      "statement": "∀ ρ τ : Fin n → M.carrier, AssignmentGaifmanClose M 0 ρ τ → ρ x = τ x ∧ ρ y = τ y",
+      "status": "MISSING_UNPROVED_INVARIANT"
+    },
+    {
+      "blocks": "unconditional relation atom locality",
+      "name": "relation_tuple_interpretation_preservation_at_radius_r",
+      "needed_for": "relation_atom_locality_input_of_interp_iff",
+      "statement": "∀ ρ τ : Fin n → M.carrier, AssignmentGaifmanClose M r ρ τ → (M.interp R (fun i => ρ (args i)) ↔ M.interp R (fun i => τ (args i)))",
+      "status": "MISSING_UNPROVED_INVARIANT"
+    }
+  ],
+  "next_admissible_object": "AssignmentGaifmanClosePreservationTargetOrTupleInterpretationPreservationTarget",
+  "object": "UnguardedFOAtomicAssignmentTuplePreservationInvariantLedger",
+  "recursion_gate": "Boolean or quantifier recursion is inadmissible until atomic preservation invariants are classified.",
+  "status": "ATOMIC_INVARIANT_LEDGER_ONLY_NO_PRESERVATION_PROOF"
+}
