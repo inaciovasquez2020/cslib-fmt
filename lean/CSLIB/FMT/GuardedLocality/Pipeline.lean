@@ -587,6 +587,22 @@ theorem cr2_reflexive_constructor
     Cr2 𝒜 𝒜 r a a := by
   exact ⟨⟨fun φ => Iff.rfl⟩⟩
 
+/--
+A constructor from the existing restricted guarded local-type equivalence surface
+to `Cr2`.
+
+This is stronger than the reflexive constructor and weaker than an arbitrary
+unconditional `Cr2` constructor: it requires the already-defined bounded
+restricted local-type equivalence hypothesis.
+-/
+theorem restricted_guarded_local_type_equivalent_to_cr2
+    {α β : Type}
+    (𝒜 : Struct α) (ℬ : Struct β)
+    {r : Nat} {a : α} {b : β}
+    (h : RestrictedGuardedLocalTypeEquivalent 𝒜 ℬ r a b) :
+    Cr2 𝒜 ℬ r a b := by
+  exact ⟨restricted_guarded_local_type_equivalent_to_restricted_ef_game_local_type_invariant_input_surface 𝒜 ℬ h⟩
+
 end GuardedLocality
 end FMT
 end CSLIB

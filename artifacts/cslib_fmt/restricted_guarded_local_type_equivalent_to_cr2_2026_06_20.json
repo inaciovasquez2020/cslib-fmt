@@ -1,0 +1,27 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "conditional theorem",
+  "id": "RESTRICTED_GUARDED_LOCAL_TYPE_EQUIVALENT_TO_CR2_2026_06_20",
+  "input_surface": "RestrictedGuardedLocalTypeEquivalent",
+  "nonclaims": [
+    "No arbitrary Cr2 witness is constructed.",
+    "No unguarded FO locality theorem is claimed.",
+    "No full Gaifman locality theorem is claimed.",
+    "No Fagin theorem or 0-1 Law result is claimed.",
+    "No global finite-model-theory final theorem is claimed.",
+    "No external-validation result is claimed."
+  ],
+  "output_surface": "Cr2",
+  "proof_route": "RestrictedGuardedLocalTypeEquivalent \u2192 RestrictedEFGameLocalTypeInvariantInputSurface \u2192 Cr2",
+  "remaining_gap": "An arbitrary cross-structure Cr2 constructor without a restricted guarded local-type equivalence hypothesis remains unproved.",
+  "source_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "status": "restricted guarded local-type equivalence to Cr2 constructor",
+  "theorem": "restricted_guarded_local_type_equivalent_to_cr2"
+}
