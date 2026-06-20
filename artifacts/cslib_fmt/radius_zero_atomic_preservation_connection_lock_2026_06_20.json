@@ -1,0 +1,23 @@
+{
+  "artifact": "radius_zero_atomic_preservation_connection_lock_2026_06_20",
+  "date": "2026-06-20",
+  "after_head": "dbb8166",
+  "object": "RadiusZeroAtomicPreservationConnectionLock",
+  "status": "RADIUS_ZERO_ATOMIC_PRESERVATION_CONNECTION_PROVED",
+  "radius": 0,
+  "connected_theorems": [
+    "assignment_gaifman_close_radius_zero_preservation",
+    "equality_atom_locality_input_radius_zero",
+    "relation_atom_locality_input_radius_zero"
+  ],
+  "scope": "atomic-only radius-zero preservation connection",
+  "does_not_claim": [
+    "Boolean recursion",
+    "quantifier recursion",
+    "positive-radius atomic preservation",
+    "arbitrary formula locality",
+    "formula radius construction",
+    "full Gaifman locality"
+  ],
+  "next_admissible_object": "RadiusZeroAtomicConnectionStatusLockOrBooleanRecursionGate"
+}
