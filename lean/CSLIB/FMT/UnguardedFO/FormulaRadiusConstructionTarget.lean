@@ -1082,6 +1082,83 @@ theorem finite_boolean_family_fold_disj_right_shared_radius_input_access
     finite_boolean_family_fold_radius_access env sharedRadius henv right,
   ]
 
+
+
+/- Finite Boolean fold expression-indexed target-fragment input access lemmas. -/
+
+/-- Access the atom input target fragment through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_atom_target_fragment_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (i : ι) :
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.atom i)).target.fragment =
+        (env i).target.fragment := by
+  rfl
+
+/-- Access the negation input target fragment through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_neg_target_fragment_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.neg expr)).target.fragment =
+        neg_shared_radius_target_family_fragment
+          (finite_boolean_family_fold env sharedRadius henv expr) := by
+  rfl
+
+/-- Access the conjunction input target fragment through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_conj_target_fragment_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι) :
+    let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv left
+    let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv right
+    let P : SharedRadiusTargetFamilyPair M n :=
+      { left := F₁.1
+        right := F₂.1
+        same_shared_radius := by rw [F₁.2, F₂.2] }
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.conj left right)).target.fragment =
+        conj_shared_radius_target_family_fragment P := by
+  rfl
+
+/-- Access the disjunction input target fragment through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_disj_target_fragment_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι) :
+    let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv left
+    let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv right
+    let P : SharedRadiusTargetFamilyPair M n :=
+      { left := F₁.1
+        right := F₂.1
+        same_shared_radius := by rw [F₁.2, F₂.2] }
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.disj left right)).target.fragment =
+        disj_shared_radius_target_family_fragment P := by
+  rfl
+
 end UnguardedFO
 end FMT
 end CSLIB
