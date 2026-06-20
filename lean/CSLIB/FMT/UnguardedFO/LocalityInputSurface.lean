@@ -114,6 +114,16 @@ structure UnguardedFOLocalityInputSurface {σ : RelLanguage}
       (Holds M ρ φ ↔ Holds M τ φ)
 
 /--
+Atomic locality input is currently only a named alias for the existing
+unguarded FO locality input surface.
+
+This does not prove atomic locality and does not add a new invariant.
+-/
+abbrev AtomicLocalityInput {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (φ : Formula σ n) (radius : Nat) : Prop :=
+  UnguardedFOLocalityInputSurface M φ radius
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
