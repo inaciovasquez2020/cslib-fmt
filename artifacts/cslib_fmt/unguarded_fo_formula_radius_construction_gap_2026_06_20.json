@@ -1,0 +1,41 @@
+{
+  "artifact": "unguarded_fo_formula_radius_construction_gap_2026_06_20",
+  "status": "FORMULA_RADIUS_CONSTRUCTION_GAP_TARGET",
+  "base_commit": "fd70327",
+  "scope": "status/documentation scoped gap target; no new Lean theorem",
+  "previous_chain_stop": "FINITE_BOOLEAN_FOLD_ACCESS_STATUS_LOCK",
+  "weakest_gap": "atomic locality input existence",
+  "ranked_gaps": [
+    "atomic locality input existence",
+    "constructor-local radius propagation specification",
+    "formula syntax recursion target for all Formula constructors",
+    "radius monotonicity or explicit radius equality transport",
+    "fragment-membership bridge from recursive construction outputs",
+    "full formula-radius construction theorem"
+  ],
+  "bounded_next_target": "surface an atomic locality input existence target before attempting recursive formula-radius construction",
+  "admissible_next_layer": [
+    "define a status-only atomic locality input existence target",
+    "do not assert existence for arbitrary atoms",
+    "do not introduce a recursive formula-radius theorem",
+    "do not generalize finite Boolean fold access to arbitrary fragments"
+  ],
+  "blocked_theorem": "formula-radius construction theorem for arbitrary unguarded FO formulas",
+  "blocked_reason": [
+    "finite Boolean fold access is expression-index scoped only",
+    "atomic locality input existence is not yet provided",
+    "no global recursive radius assignment over all Formula constructors is proved",
+    "no monotonicity/transport layer for changing radii is proved"
+  ],
+  "does_not_prove": [
+    "atomic locality input existence",
+    "formula-radius construction theorem",
+    "arbitrary bounded-fragment closure",
+    "radius monotonicity",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}
