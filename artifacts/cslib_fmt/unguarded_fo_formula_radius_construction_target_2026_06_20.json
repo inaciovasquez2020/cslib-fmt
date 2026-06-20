@@ -1,0 +1,41 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality theorem",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac formula-radius construction theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "construction target surface with extraction lemmas",
+  "definitions": [
+    "FormulaQuantifierDepth",
+    "BoundedSyntacticFragment",
+    "FormulaRadiusConstructionTarget"
+  ],
+  "depends_on": [
+    "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+    "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+    "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean"
+  ],
+  "extraction_lemmas": [
+    "formula_radius_construction_target_has_radius",
+    "formula_radius_construction_target_radius_le",
+    "formula_radius_construction_target_input"
+  ],
+  "id": "UNGUARDED_FO_FORMULA_RADIUS_CONSTRUCTION_TARGET_2026_06_20",
+  "next_target": "bounded-fragment atomic and Boolean radius constructors",
+  "nonclaims": [
+    "Does not claim general FMT closure.",
+    "Does not claim Fagin theorem.",
+    "Does not claim 0-1 Law.",
+    "Does not claim full Gaifman locality.",
+    "Does not claim unguarded FO locality theorem.",
+    "Does not claim formula-radius construction theorem.",
+    "Does not claim external validation."
+  ],
+  "source_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "standalone_reason": "Current package layout has no importable CSLIB module root; this frontier layer is direct-checked as a standalone module.",
+  "status": "formula-radius construction target added for bounded syntactic fragments"
+}
