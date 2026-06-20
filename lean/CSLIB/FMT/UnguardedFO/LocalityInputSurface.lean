@@ -416,6 +416,26 @@ theorem unguarded_fo_conj_same_radius_constructor {σ : RelLanguage}
 
 
 /--
+Conjunction constructor at a common smaller radius.
+
+If `φ` is available at radius `rφ` and `ψ` is available at radius `rψ`, then
+their conjunction is available at any common smaller radius `s` with
+`s ≤ rφ` and `s ≤ rψ`. This is not max-radius closure.
+-/
+theorem unguarded_fo_conj_common_smaller_radius_constructor
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n rφ rψ s : Nat} {φ ψ : Formula σ n}
+    (hsφ : s ≤ rφ) (hsψ : s ≤ rψ)
+    (hφ : UnguardedFOLocalityInputSurface M φ rφ)
+    (hψ : UnguardedFOLocalityInputSurface M ψ rψ) :
+    UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) s := by
+  exact
+    unguarded_fo_conj_same_radius_constructor M
+      (unguarded_fo_locality_input_surface_weaken_radius M hsφ hφ)
+      (unguarded_fo_locality_input_surface_weaken_radius M hsψ hψ)
+
+
+/--
 Same-radius constructor for disjunction from two already supplied locality input
 surfaces.
 
