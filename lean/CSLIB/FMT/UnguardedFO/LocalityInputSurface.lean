@@ -142,6 +142,23 @@ structure UnguardedFOLocalityInputSurface {σ : RelLanguage}
       (Holds M ρ φ ↔ Holds M τ φ)
 
 /--
+Smaller-radius weakening for locality input surfaces.
+
+If a formula is invariant under assignment closeness at radius `r`, then it is
+also invariant under assignment closeness at any smaller radius `s ≤ r`. This is
+the direction compatible with `assignment_gaifman_close_mono`.
+-/
+theorem unguarded_fo_locality_input_surface_weaken_radius
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r s : Nat} {φ : Formula σ n} (hsr : s ≤ r) :
+    UnguardedFOLocalityInputSurface M φ r →
+      UnguardedFOLocalityInputSurface M φ s := by
+  intro hφ
+  refine ⟨?_⟩
+  intro ρ τ hclose
+  exact hφ.invariant ρ τ (assignment_gaifman_close_mono M hsr hclose)
+
+/--
 Atomic locality input is currently only a named alias for the existing
 unguarded FO locality input surface.
 
