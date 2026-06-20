@@ -1,0 +1,22 @@
+{
+  "artifact": "ASSIGNMENT_EXTENSION_PROJECTION_RADIUS_CONTROL_STATEMENT_TARGET",
+  "date": "2026-06-20",
+  "status": "STATEMENT_TARGET_ONLY",
+  "head_prefix": "66a5b44",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "ladder_position": "2/10",
+  "bounded_progress_percent": "20%",
+  "required_declarations": [
+    "def assignment_extension_projection_radius_control_statement_target",
+    "theorem assignment_extension_projection_radius_control_statement_target_closed"
+  ],
+  "depends_on": [
+    "def concrete_quantifier_locality_input_transport_statement_target",
+    "theorem concrete_quantifier_locality_input_transport_statement_target_closed",
+    "def assignment_extension_projection_radius_control_target_shell",
+    "theorem assignment_extension_projection_radius_control_target_shell_closed",
+    "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_NEXT_WEAKEST_OBSTRUCTION_CLASSIFICATION"
+  ],
+  "target": "assignment_extension_projection_radius_control_statement",
+  "boundary": "BOUNDARY := ¬ assignment_extension_projection_radius_control_statement"
+}
