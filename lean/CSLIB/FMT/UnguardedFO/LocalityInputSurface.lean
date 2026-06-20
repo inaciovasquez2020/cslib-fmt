@@ -426,6 +426,29 @@ structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
       UnguardedFOLocalityInputSurface M ψ r →
       UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) r
 
+
+/--
+Constructor for the shared-radius Boolean rollup target from the three
+same-radius Boolean constructor lemmas already proved.
+
+This is a package constructor only. It does not construct max-radius joins,
+handle quantifiers, or prove arbitrary formula recursion.
+-/
+theorem shared_radius_boolean_constructor_rollup {σ : RelLanguage}
+    (M : RelStructure σ) :
+    SharedRadiusBooleanConstructorRollupTarget M := by
+  exact {
+    neg := by
+      intro n r φ hφ
+      exact unguarded_fo_neg_radius_constructor M hφ
+    conj := by
+      intro n r φ ψ hφ hψ
+      exact unguarded_fo_conj_same_radius_constructor M hφ hψ
+    disj := by
+      intro n r φ ψ hφ hψ
+      exact unguarded_fo_disj_same_radius_constructor M hφ hψ
+  }
+
 end UnguardedFO
 end FMT
 end CSLIB
