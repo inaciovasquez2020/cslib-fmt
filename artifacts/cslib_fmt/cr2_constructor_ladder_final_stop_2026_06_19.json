@@ -1,0 +1,18 @@
+{
+  "id": "CR2_CONSTRUCTOR_LADDER_FINAL_STOP_2026_06_19",
+  "repo": "cslib-fmt",
+  "head_at_validation": "5184844fb0c648b4099a2fc2b5d6122e2bc86026",
+  "closed_conditional_chain": [
+    "PlainInducedRadiusBallIso → Cr2",
+    "PointedRadiusBallEquiv → PlainInducedRadiusBallIso → Cr2",
+    "LocalIso → BallIso → PointedRadiusBallEquiv → Cr2"
+  ],
+  "stopping_lock_inputs": [
+    "artifacts/cslib_fmt/no_earlier_localiso_constructor_source_2026_06_19.json",
+    "artifacts/cslib_fmt/no_external_below_localiso_constructor_source_2026_06_19.json"
+  ],
+  "ladder_status": "bounded Cr2 constructor ladder stops at LocalIso",
+  "patch_decision": "no_new_theorem",
+  "forbidden_wrapper_not_added": "ballIso_to_cr2",
+  "boundary": "BOUNDARY := ¬ cr2_unconditional_constructor"
+}
