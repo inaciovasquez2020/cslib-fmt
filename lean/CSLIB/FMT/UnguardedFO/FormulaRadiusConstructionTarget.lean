@@ -1254,6 +1254,34 @@ theorem finite_boolean_family_fold_disj_target_locality_input_access
         (finite_boolean_family_fold_disj_fragment_member
           env sharedRadius henv left right φ ψ hφ hψ)
 
+
+
+/- Compact finite Boolean fold expression-indexed access rollup. -/
+
+/-- Compact access rollup for the expression-indexed finite Boolean fold. -/
+theorem finite_boolean_family_fold_access_rollup
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv expr).sharedRadius = sharedRadius ∧
+    (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1 =
+      finite_boolean_family_fold env sharedRadius henv expr ∧
+    (finite_boolean_family_fold env sharedRadius henv expr).target =
+      (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1.target ∧
+    (finite_boolean_family_fold env sharedRadius henv expr).target.fragment =
+      (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1.target.fragment := by
+  exact
+    ⟨ finite_boolean_family_fold_radius_access env sharedRadius henv expr
+    , finite_boolean_family_fold_with_radius_value_access env sharedRadius henv expr
+    , finite_boolean_family_fold_target_access env sharedRadius henv expr
+    , finite_boolean_family_fold_target_fragment_access env sharedRadius henv expr
+    ⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
