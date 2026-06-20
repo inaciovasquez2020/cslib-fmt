@@ -1,0 +1,20 @@
+{
+  "artifact": "COMMON_SMALLER_RADIUS_CONJUNCTION_CONSTRUCTOR_LOCK",
+  "status": "COMMON_SMALLER_RADIUS_CONJUNCTION_CONSTRUCTOR_LOCK_OK",
+  "base_commit": "b5231f7",
+  "base_commit_subject": "theorem: add common smaller-radius conjunction constructor",
+  "lean_source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_declaration": "unguarded_fo_conj_common_smaller_radius_constructor",
+  "predecessor_declaration": "unguarded_fo_conj_same_radius_constructor",
+  "claim": "The common smaller-radius conjunction constructor is present in the Lean locality input surface and is the next locked constructor after the same-radius conjunction constructor.",
+  "does_not_prove": [
+    "common smaller-radius disjunction constructor",
+    "negation constructor",
+    "quantifier recursion gate admissibility",
+    "Boolean recursion gate completion",
+    "full unguarded FO locality",
+    "general finite model theorem"
+  ],
+  "next_bounded_choice": "Add the common smaller-radius disjunction analogue only after this conjunction constructor lock is committed.",
+  "boundary": "BOUNDARY := \u00ac common_smaller_radius_disjunction_constructor"
+}
