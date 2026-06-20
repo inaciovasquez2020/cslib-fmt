@@ -1,0 +1,26 @@
+{
+  "artifact": "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_DEPENDENCY_STATUS_GATE",
+  "date": "2026-06-20",
+  "status": "DEPENDENCY_STATUS_GATE_ONLY",
+  "head_prefix": "06ecb91",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def quantified_formula_radius_constructor_dependency_status_gate",
+    "theorem quantified_formula_radius_constructor_dependency_status_gate_closed"
+  ],
+  "depends_on": [
+    "def assignment_extension_projection_radius_control_target_shell",
+    "theorem assignment_extension_projection_radius_control_target_shell_closed",
+    "def quantifier_locality_input_transport_target_shell",
+    "theorem quantifier_locality_input_transport_target_shell_closed",
+    "def quantified_formula_radius_constructor_target_shell",
+    "theorem quantified_formula_radius_constructor_target_shell_closed",
+    "QUANTIFIED_CONSTRUCTOR_DEPENDENCY_LEDGER"
+  ],
+  "closed_dependency_targets": [
+    "quantifier_locality_input_transport_target_shell",
+    "assignment_extension_projection_radius_control_target_shell"
+  ],
+  "target": "quantified_formula_radius_constructor",
+  "boundary": "BOUNDARY := ¬ quantified_formula_radius_constructor"
+}

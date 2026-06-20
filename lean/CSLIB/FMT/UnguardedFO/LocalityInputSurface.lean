@@ -589,6 +589,22 @@ theorem assignment_extension_projection_radius_control_target_shell_closed :
     assignment_extension_projection_radius_control_target_shell := by
   exact quantifier_locality_input_transport_target_shell_closed
 
+
+/-- Quantified formula-radius constructor dependency-status gate.
+
+This is a dependency-status gate only. It records that the quantified
+constructor target shell has both currently classified dependency target shells:
+quantifier locality input transport and assignment extension/projection
+radius-control. It does not prove either dependency or the quantified
+formula-radius constructor.
+-/
+def quantified_formula_radius_constructor_dependency_status_gate : Prop :=
+  assignment_extension_projection_radius_control_target_shell
+
+theorem quantified_formula_radius_constructor_dependency_status_gate_closed :
+    quantified_formula_radius_constructor_dependency_status_gate := by
+  exact assignment_extension_projection_radius_control_target_shell_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
