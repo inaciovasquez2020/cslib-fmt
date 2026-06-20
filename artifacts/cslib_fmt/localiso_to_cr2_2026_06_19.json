@@ -1,0 +1,21 @@
+{
+  "id": "LOCALISO_TO_CR2_2026_06_19",
+  "repo": "cslib-fmt",
+  "head_at_validation": "7fb946a5f2090e557ba51d24b3be735600c980b9",
+  "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "theorem": "localIso_to_cr2",
+  "statement": "LocalIso 𝒜 ℬ r a b → Cr2 𝒜 ℬ r a b",
+  "proof_path": [
+    "LocalIso 𝒜 ℬ r a b",
+    "BallIso 𝒜 ℬ r a b",
+    "PointedRadiusBallEquiv 𝒜 ℬ r a b",
+    "Cr2 𝒜 ℬ r a b"
+  ],
+  "uses": [
+    "localIso_to_ballIso",
+    "ballIso_to_pointed_radius_ball_equiv",
+    "pointed_radius_ball_equiv_to_cr2"
+  ],
+  "forbidden_wrapper_not_added": "ballIso_to_cr2",
+  "boundary": "BOUNDARY := ¬ cr2_unconditional_constructor"
+}

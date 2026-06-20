@@ -527,6 +527,24 @@ theorem pointed_radius_ball_equiv_to_cr2
   exact plain_induced_radius_ball_isomorphism_to_cr2
     (pointed_radius_ball_equiv_to_plain_induced_radius_ball_isomorphism h)
 
+
+/--
+A local-isomorphism constructor-source target for `Cr2`.
+
+This avoids adding the forbidden BallIso wrapper theorem; it uses the
+already-existing producer chain
+`LocalIso → BallIso → PointedRadiusBallEquiv → Cr2`.
+-/
+theorem localIso_to_cr2
+    {α β : Type}
+    {𝒜 : Struct α} {ℬ : Struct β}
+    {r : Nat} {a : α} {b : β}
+    (h : LocalIso 𝒜 ℬ r a b) :
+    Cr2 𝒜 ℬ r a b := by
+  exact pointed_radius_ball_equiv_to_cr2
+    (ballIso_to_pointed_radius_ball_equiv
+      (localIso_to_ballIso h))
+
 /--
 A restricted constructor target weaker than `cr2_unconditional_constructor`.
 
