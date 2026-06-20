@@ -479,6 +479,29 @@ structure MaxRadiusBooleanConstructorTarget {σ : RelLanguage}
       UnguardedFOLocalityInputSurface M φ r →
       Prop
 
+
+/--
+Target shell for radius monotonicity of locality input surfaces.
+
+This surface records the precise monotonicity obligation needed before
+max-radius Boolean constructors can be discharged: lifting a locality input
+surface from radius `r` to a larger radius `s`. It is target-only. It does not
+prove assignment-close monotonicity, max-radius Boolean closure, quantifier
+handling, or arbitrary formula recursion.
+-/
+structure RadiusMonotonicityTarget {σ : RelLanguage}
+    (M : RelStructure σ) where
+  monotonicity_obligation :
+    ∀ {n r s : Nat} {φ : Formula σ n},
+      r ≤ s →
+      UnguardedFOLocalityInputSurface M φ r →
+      Prop
+  expected_lift_shape :
+    ∀ {n r s : Nat} {φ : Formula σ n},
+      r ≤ s →
+      UnguardedFOLocalityInputSurface M φ r →
+      Prop
+
 end UnguardedFO
 end FMT
 end CSLIB
