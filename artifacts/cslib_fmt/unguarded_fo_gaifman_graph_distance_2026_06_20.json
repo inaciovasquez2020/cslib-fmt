@@ -1,0 +1,42 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "definition layer with basic verified lemmas",
+  "definitions": [
+    "RelationTupleContains",
+    "SameRelationTuple",
+    "GaifmanAdjacent",
+    "GaifmanWalk",
+    "GaifmanDistanceLe",
+    "GaifmanConnected",
+    "FiniteRelStructure",
+    "FiniteRelStructure.gaifmanAdjacent",
+    "FiniteRelStructure.gaifmanDistanceLe"
+  ],
+  "depends_on": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+  "id": "UNGUARDED_FO_GAIFMAN_GRAPH_DISTANCE_2026_06_20",
+  "next_target": "unguarded FO locality input surface",
+  "nonclaims": [
+    "Does not claim general FMT closure.",
+    "Does not claim Fagin theorem.",
+    "Does not claim 0-1 Law.",
+    "Does not claim full Gaifman locality.",
+    "Does not claim unguarded FO locality.",
+    "Does not claim external validation."
+  ],
+  "source_file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+  "status": "Gaifman graph and distance layer added",
+  "verified_lemmas": [
+    "same_relation_tuple_symmetric",
+    "gaifman_adjacent_symmetric",
+    "gaifman_distanceLe_refl",
+    "gaifman_connected_refl",
+    "finite_gaifman_distanceLe_refl"
+  ]
+}
