@@ -178,6 +178,20 @@ theorem relation_atom_locality_input_of_interp_iff
   exact hinterp ρ τ hclose
 
 /--
+Target shell for assignment preservation under the current assignment
+Gaifman-closeness relation.
+
+This is a target object only. It does not prove that `AssignmentGaifmanClose`
+preserves assigned values.
+-/
+structure AssignmentGaifmanClosePreservationTarget {σ : RelLanguage}
+    (M : RelStructure σ) (r : Nat) (n : Nat) where
+  preserves :
+    ∀ ρ τ : Fin n → M.carrier,
+      AssignmentGaifmanClose M r ρ τ →
+      ∀ x : Fin n, ρ x = τ x
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
