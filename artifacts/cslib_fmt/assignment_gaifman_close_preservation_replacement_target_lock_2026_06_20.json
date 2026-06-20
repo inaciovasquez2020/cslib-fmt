@@ -1,0 +1,37 @@
+{
+  "after_head": "2075380",
+  "date": "2026-06-20",
+  "does_not_claim": [
+    "AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTarget inhabited",
+    "radius-zero preservation proved",
+    "exact assignment close branch proved",
+    "unconditional equality atom locality",
+    "unconditional relation atom locality",
+    "unconditional atomic_formula_locality_input_exists",
+    "Boolean recursion",
+    "quantifier recursion",
+    "Gaifman locality"
+  ],
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_target": {
+    "name": "AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTarget",
+    "kind": "replacement_target_shell_only",
+    "status": "TARGET_ONLY_NO_BRANCH_PROOF",
+    "branches": [
+      {
+        "name": "radius_zero_preservation",
+        "statement_shape": "∀ ρ τ : Fin n → M.carrier, AssignmentGaifmanClose M 0 ρ τ → ∀ x : Fin n, ρ x = τ x",
+        "proved": false
+      },
+      {
+        "name": "exact_assignment_close",
+        "statement_shape": "exact_assignment_close ρ τ ↔ ∀ x : Fin n, ρ x = τ x",
+        "proved": false
+      }
+    ]
+  },
+  "object": "AssignmentGaifmanClosePreservationReplacementTargetLock",
+  "recursion_gate": "Boolean or quantifier recursion remains inadmissible until one replacement branch is classified and connected to atomic preservation.",
+  "status": "ASSIGNMENT_GAIFMAN_CLOSE_PRESERVATION_REPLACEMENT_TARGET_LOCK_ONLY",
+  "next_admissible_object": "RadiusZeroPreservationBranchClassificationOrExactAssignmentCloseAtomicInputTarget"
+}
