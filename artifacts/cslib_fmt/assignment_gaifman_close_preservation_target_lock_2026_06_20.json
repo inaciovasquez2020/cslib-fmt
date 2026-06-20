@@ -1,0 +1,29 @@
+{
+  "after_head": "0031af2",
+  "date": "2026-06-20",
+  "does_not_claim": [
+    "AssignmentGaifmanClosePreservationTarget inhabited",
+    "assignment preservation under AssignmentGaifmanClose",
+    "unconditional equality atom locality",
+    "unconditional relation atom locality",
+    "unconditional atomic_formula_locality_input_exists",
+    "Boolean recursion",
+    "quantifier recursion",
+    "Gaifman locality"
+  ],
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_target": {
+    "name": "AssignmentGaifmanClosePreservationTarget",
+    "kind": "target_shell_only",
+    "statement_shape": "∀ ρ τ : Fin n → M.carrier, AssignmentGaifmanClose M r ρ τ → ∀ x : Fin n, ρ x = τ x",
+    "status": "TARGET_SHELL_ONLY_NO_PRESERVATION_PROOF"
+  },
+  "next_admissible_classification": [
+    "impossible_from_current_AssignmentGaifmanClose_definition",
+    "conditional_on_stronger_assignment_close_definition",
+    "provable_from_existing_definitions"
+  ],
+  "object": "AssignmentGaifmanClosePreservationTargetLock",
+  "recursion_gate": "Boolean or quantifier recursion remains inadmissible until AssignmentGaifmanClosePreservationTarget is classified as impossible, conditional, or provable from existing definitions.",
+  "status": "ASSIGNMENT_GAIFMAN_CLOSE_PRESERVATION_TARGET_LOCK_ONLY"
+}
