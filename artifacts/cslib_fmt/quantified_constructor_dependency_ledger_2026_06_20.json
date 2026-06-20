@@ -1,0 +1,33 @@
+{
+  "artifact": "QUANTIFIED_CONSTRUCTOR_DEPENDENCY_LEDGER",
+  "date": "2026-06-20",
+  "status": "DEPENDENCY_LEDGER_ONLY",
+  "head_prefix": "7922f15",
+  "target": "quantified_formula_radius_constructor_branch",
+  "upstream_closed_inputs": [
+    "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_TARGET_SHELL",
+    "FORMULA_RADIUS_CONSTRUCTION_WEAKEST_MISSING_BRANCH_CLASSIFICATION",
+    "ATOMIC_FORMULA_RADIUS_INPUT_CONNECTION_STATUS",
+    "FORMULA_RADIUS_CONSTRUCTION_GATE_STATUS_FROM_BOUNDED_BOOLEAN_RECURSION_GATE",
+    "BOUNDED_BOOLEAN_RECURSION_GATE_FROM_FINITE_BOOLEAN_FOLD_ACCESS_SURFACE"
+  ],
+  "required_missing_dependencies": [
+    {
+      "rank": 1,
+      "object": "quantifier_locality_input_transport",
+      "reason": "a quantified constructor must relate the locality input surface for the body formula to the locality input surface for the quantified formula"
+    },
+    {
+      "rank": 2,
+      "object": "assignment_extension_or_projection_radius_control",
+      "reason": "quantifier semantics changes the assignment context, so radius control must survive the variable-extension/projection step"
+    },
+    {
+      "rank": 3,
+      "object": "quantified_formula_radius_constructor",
+      "reason": "the constructor itself is downstream of the transport and assignment-radius control dependencies"
+    }
+  ],
+  "weakest_next_dependency": "quantifier_locality_input_transport",
+  "boundary": "BOUNDARY := ¬ quantified_formula_radius_constructor"
+}
