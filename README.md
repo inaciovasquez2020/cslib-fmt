@@ -72,3 +72,16 @@ Status: Distance/Factorization Surface Closed; General FMT Frontier Open.
 ## General FMT frontier boundary
 
 No Fagin theorem, 0-1 Law, global finite-model-theory final theorem, broad CSLIB adoption, direct Mathlib adoption, or Vardi endorsement/collaboration/coauthorship claim is asserted.
+
+## Current stopping point: smaller-radius locality surface weakening
+
+Status: `SMALLER_RADIUS_LOCALITY_SURFACE_WEAKENING`
+
+Current pushed stopping point:
+
+- `8866e78` — `theorem: add smaller-radius locality surface weakening`
+- touched Lean source: `lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean`
+
+Boundary: this is a smaller-radius locality surface weakening. It supersedes the prior README stopping pointer to `cbefa8d` as the current pushed head. It does not by itself prove radius monotonicity under the blocked assignment-close direction unless the corresponding theorem/checker explicitly records that closure.
+
+Next bounded choice: lock the smaller-radius locality weakening status if not already locked, then decide whether the Boolean/quantifier recursion gate is admissible from that weakened locality input.
