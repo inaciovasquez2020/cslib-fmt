@@ -48,4 +48,4 @@ It does not assert existence for arbitrary atoms.
 
 Still no atomic locality input existence, no formula-radius construction theorem, no arbitrary bounded-fragment closure, no radius monotonicity, no unguarded FO locality theorem, no full Gaifman locality, no Fagin theorem, no 0-1 Law, and no general FMT closure.
 
-NEXT_TARGET := add a named atomic locality input obligation surface without proving arbitrary atomic existence.
+NEXT_TARGET := stop before any atomic existence theorem unless a concrete downstream theorem forces a named conditional obligation surface.

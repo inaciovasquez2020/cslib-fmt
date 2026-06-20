@@ -16,7 +16,7 @@ assert artifact["status"] == "ATOMIC_LOCALITY_INPUT_EXISTENCE_TARGET_ONLY"
 assert artifact["scope"] == "status/documentation scoped target only; no new Lean theorem"
 assert artifact["previous_gap"] == "FORMULA_RADIUS_CONSTRUCTION_GAP_TARGET"
 assert artifact["weakest_missing_object"] == "atomic locality input existence"
-assert "NEXT_TARGET := add a named atomic locality input obligation surface without proving arbitrary atomic existence." in doc
+assert "NEXT_TARGET := stop before any atomic existence theorem" in doc
 
 required_target_shape = [
     "given an atomic formula, identify the exact locality input package that would be required",

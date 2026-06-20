@@ -1,7 +1,7 @@
 {
   "artifact": "unguarded_fo_atomic_locality_input_existence_target_2026_06_20",
   "status": "ATOMIC_LOCALITY_INPUT_EXISTENCE_TARGET_ONLY",
-  "base_commit": "a8f5dc8",
+  "base_commit": "8be8b09",
   "scope": "status/documentation scoped target only; no new Lean theorem",
   "previous_gap": "FORMULA_RADIUS_CONSTRUCTION_GAP_TARGET",
   "weakest_missing_object": "atomic locality input existence",
