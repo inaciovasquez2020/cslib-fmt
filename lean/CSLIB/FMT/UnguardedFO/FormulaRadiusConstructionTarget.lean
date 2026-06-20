@@ -326,6 +326,180 @@ def disj_radius_constructor
     (Nat.le_refl r)
     (disj_radius_input hφ hψ)
 
+/-! ### Shared-radius Boolean target-family closure -/
+
+/-- A formula-radius target family whose members all have an explicit shared radius input. -/
+structure SharedRadiusTargetFamily
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    (n : Nat) where
+  target : FormulaRadiusConstructionTarget M n
+  sharedRadius : Nat
+  shared_radius_bounded : sharedRadius ≤ target.radiusBound
+  constructs_at_shared_radius :
+    ∀ φ, target.fragment.member φ → UnguardedFOLocalityInputSurface M φ sharedRadius
+
+/-- A pair of target families with an explicit shared-radius invariant. -/
+structure SharedRadiusTargetFamilyPair
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    (n : Nat) where
+  left : SharedRadiusTargetFamily M n
+  right : SharedRadiusTargetFamily M n
+  same_shared_radius : left.sharedRadius = right.sharedRadius
+
+/-- Negation closure for the fragment of a shared-radius target family. -/
+def neg_shared_radius_target_family_fragment
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (F : SharedRadiusTargetFamily M n) :
+    BoundedSyntacticFragment σ n where
+  maxDepth := F.target.fragment.maxDepth
+  member θ := ∃ φ, F.target.fragment.member φ ∧ θ = Formula.neg φ
+  quantifier_depth_bounded := by
+    intro θ hθ
+    rcases hθ with ⟨φ, hφ, rfl⟩
+    simpa [FormulaQuantifierDepth] using
+      F.target.fragment.quantifier_depth_bounded φ hφ
+
+/-- Negation closure for a shared-radius target family. -/
+noncomputable def neg_shared_radius_target_family_constructor
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (F : SharedRadiusTargetFamily M n) :
+    FormulaRadiusConstructionTarget M n where
+  fragment := neg_shared_radius_target_family_fragment F
+  radiusBound := F.target.radiusBound
+  constructs := by
+    intro θ hθ
+    let φ := Classical.choose hθ
+    have hφ_spec := Classical.choose_spec hθ
+    have hinput :
+        UnguardedFOLocalityInputSurface M (Formula.neg φ) F.sharedRadius :=
+      neg_radius_input (F.constructs_at_shared_radius φ hφ_spec.1)
+    have hinputθ :
+        UnguardedFOLocalityInputSurface M θ F.sharedRadius := by
+      rw [hφ_spec.2]
+      exact hinput
+    exact ⟨F.sharedRadius, F.shared_radius_bounded, hinputθ⟩
+
+/-- Conjunction closure for the paired fragments of shared-radius target families. -/
+def conj_shared_radius_target_family_fragment
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n) :
+    BoundedSyntacticFragment σ n where
+  maxDepth := Nat.max P.left.target.fragment.maxDepth P.right.target.fragment.maxDepth
+  member θ :=
+    ∃ φ ψ,
+      P.left.target.fragment.member φ ∧
+      P.right.target.fragment.member ψ ∧
+      θ = Formula.conj φ ψ
+  quantifier_depth_bounded := by
+    intro θ hθ
+    rcases hθ with ⟨φ, ψ, hφ, hψ, rfl⟩
+    have hφ_depth := P.left.target.fragment.quantifier_depth_bounded φ hφ
+    have hψ_depth := P.right.target.fragment.quantifier_depth_bounded ψ hψ
+    exact (Nat.max_le).mpr ⟨
+      Nat.le_trans hφ_depth
+        (Nat.le_max_left P.left.target.fragment.maxDepth P.right.target.fragment.maxDepth),
+      Nat.le_trans hψ_depth
+        (Nat.le_max_right P.left.target.fragment.maxDepth P.right.target.fragment.maxDepth)⟩
+
+/-- Conjunction closure for a pair of shared-radius target families. -/
+noncomputable def conj_shared_radius_target_family_constructor
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n) :
+    FormulaRadiusConstructionTarget M n where
+  fragment := conj_shared_radius_target_family_fragment P
+  radiusBound := Nat.max P.left.target.radiusBound P.right.target.radiusBound
+  constructs := by
+    intro θ hθ
+    let φ := Classical.choose hθ
+    have hφ_spec := Classical.choose_spec hθ
+    let ψ := Classical.choose hφ_spec
+    have hψ_spec := Classical.choose_spec hφ_spec
+    have hφ_input := P.left.constructs_at_shared_radius φ hψ_spec.1
+    have hψ_input :
+        UnguardedFOLocalityInputSurface M ψ P.left.sharedRadius := by
+      simpa [P.same_shared_radius] using
+        P.right.constructs_at_shared_radius ψ hψ_spec.2.1
+    have hinput :
+        UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) P.left.sharedRadius :=
+      conj_radius_input hφ_input hψ_input
+    have hinputθ :
+        UnguardedFOLocalityInputSurface M θ P.left.sharedRadius := by
+      rw [hψ_spec.2.2]
+      exact hinput
+    exact ⟨
+      P.left.sharedRadius,
+      Nat.le_trans P.left.shared_radius_bounded
+        (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound),
+      hinputθ⟩
+
+/-- Disjunction closure for the paired fragments of shared-radius target families. -/
+def disj_shared_radius_target_family_fragment
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n) :
+    BoundedSyntacticFragment σ n where
+  maxDepth := Nat.max P.left.target.fragment.maxDepth P.right.target.fragment.maxDepth
+  member θ :=
+    ∃ φ ψ,
+      P.left.target.fragment.member φ ∧
+      P.right.target.fragment.member ψ ∧
+      θ = Formula.disj φ ψ
+  quantifier_depth_bounded := by
+    intro θ hθ
+    rcases hθ with ⟨φ, ψ, hφ, hψ, rfl⟩
+    have hφ_depth := P.left.target.fragment.quantifier_depth_bounded φ hφ
+    have hψ_depth := P.right.target.fragment.quantifier_depth_bounded ψ hψ
+    exact (Nat.max_le).mpr ⟨
+      Nat.le_trans hφ_depth
+        (Nat.le_max_left P.left.target.fragment.maxDepth P.right.target.fragment.maxDepth),
+      Nat.le_trans hψ_depth
+        (Nat.le_max_right P.left.target.fragment.maxDepth P.right.target.fragment.maxDepth)⟩
+
+/-- Disjunction closure for a pair of shared-radius target families. -/
+noncomputable def disj_shared_radius_target_family_constructor
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n) :
+    FormulaRadiusConstructionTarget M n where
+  fragment := disj_shared_radius_target_family_fragment P
+  radiusBound := Nat.max P.left.target.radiusBound P.right.target.radiusBound
+  constructs := by
+    intro θ hθ
+    let φ := Classical.choose hθ
+    have hφ_spec := Classical.choose_spec hθ
+    let ψ := Classical.choose hφ_spec
+    have hψ_spec := Classical.choose_spec hφ_spec
+    have hφ_input := P.left.constructs_at_shared_radius φ hψ_spec.1
+    have hψ_input :
+        UnguardedFOLocalityInputSurface M ψ P.left.sharedRadius := by
+      simpa [P.same_shared_radius] using
+        P.right.constructs_at_shared_radius ψ hψ_spec.2.1
+    have hinput :
+        UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) P.left.sharedRadius :=
+      disj_radius_input hφ_input hψ_input
+    have hinputθ :
+        UnguardedFOLocalityInputSurface M θ P.left.sharedRadius := by
+      rw [hψ_spec.2.2]
+      exact hinput
+    exact ⟨
+      P.left.sharedRadius,
+      Nat.le_trans P.left.shared_radius_bounded
+        (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound),
+      hinputθ⟩
+
+
 
 
 

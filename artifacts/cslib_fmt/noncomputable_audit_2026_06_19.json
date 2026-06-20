@@ -98,9 +98,30 @@
       "file": "FMT/Types/Factorization.lean",
       "line": 9,
       "name": "factorsThrough_of_eq"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 367,
+      "name": "neg_shared_radius_target_family_constructor"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 413,
+      "name": "conj_shared_radius_target_family_constructor"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 470,
+      "name": "disj_shared_radius_target_family_constructor"
     }
   ],
-  "entry_count": 13,
+  "entry_count": 16,
   "id": "NONCOMPUTABLE_AUDIT_2026_06_19",
   "nonclaims": [
     "No constructivization obligation is created.",

@@ -10,7 +10,7 @@ This is an internal audit of remaining `noncomputable def` declarations.
 
 ## Result
 
-- `entry_count`: `13`
+- `entry_count`: `16`
 
 ## Entries
 
@@ -27,6 +27,9 @@ This is an internal audit of remaining `noncomputable def` declarations.
 - `FMT/Invariants/GenuineCycleRankV2.lean:8` `genuineCycleRankV2` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
 - `FMT/Invariants/GenuineCycleRankV2.lean:14` `genuineCycleSpaceOfGraphV2` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
 - `FMT/Types/Factorization.lean:9` `factorsThrough_of_eq` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
+- `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:367` `neg_shared_radius_target_family_constructor` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
+- `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:413` `conj_shared_radius_target_family_constructor` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
+- `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:470` `disj_shared_radius_target_family_constructor` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
 
 ## Policy
 
