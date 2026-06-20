@@ -1,0 +1,24 @@
+{
+  "artifact": "assignment_gaifman_close_radius_zero_preservation_branch_lock_2026_06_20",
+  "date": "2026-06-20",
+  "after_head": "a50b124",
+  "object": "AssignmentGaifmanCloseRadiusZeroPreservationBranchLock",
+  "status": "RADIUS_ZERO_PRESERVATION_BRANCH_PROVED",
+  "proved_theorems": [
+    "gaifman_distance_le_zero_eq",
+    "assignment_gaifman_close_radius_zero_preservation"
+  ],
+  "proved_branch": "radius_zero_preservation",
+  "replacement_target": "AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTarget",
+  "does_not_claim": [
+    "exact_assignment_close branch proved",
+    "unconditional positive-radius assignment equality",
+    "unconditional equality atom locality",
+    "unconditional relation atom locality",
+    "unconditional atomic_formula_locality_input_exists",
+    "Boolean recursion",
+    "quantifier recursion",
+    "Gaifman locality"
+  ],
+  "recursion_gate": "Boolean or quantifier recursion remains inadmissible until the proved radius-zero branch is connected to atomic preservation."
+}
