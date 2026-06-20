@@ -1,0 +1,34 @@
+{
+  "artifact": "unguarded_fo_finite_boolean_fold_shared_radius_input_access_2026_06_20",
+  "status": "FINITE_BOOLEAN_FAMILY_FOLD_SHARED_RADIUS_INPUT_ACCESS_LEMMAS",
+  "base_commit": "7014bd9",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "added_objects": [
+    "finite_boolean_family_fold_atom_shared_radius_input_access",
+    "finite_boolean_family_fold_neg_shared_radius_input_access",
+    "finite_boolean_family_fold_conj_left_shared_radius_input_access",
+    "finite_boolean_family_fold_conj_right_shared_radius_input_access",
+    "finite_boolean_family_fold_disj_left_shared_radius_input_access",
+    "finite_boolean_family_fold_disj_right_shared_radius_input_access"
+  ],
+  "bounded_scope": [
+    "theorem statements remain over FiniteBooleanFamilyExpr",
+    "expression-index scoped atom shared-radius input access only",
+    "expression-index scoped neg shared-radius input access only",
+    "expression-index scoped conj shared-radius input access only",
+    "expression-index scoped disj shared-radius input access only",
+    "shared-radius input access is derived from the explicit fold radius access lemmas",
+    "not arbitrary bounded-fragment closure"
+  ],
+  "does_not_prove": [
+    "arbitrary bounded-fragment closure",
+    "formula-radius construction theorem",
+    "existence of atomic locality inputs",
+    "radius monotonicity",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}
