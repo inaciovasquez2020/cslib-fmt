@@ -1,0 +1,16 @@
+{
+  "artifact": "FORMULA_RADIUS_CONSTRUCTION_GATE_STATUS_FROM_BOUNDED_BOOLEAN_RECURSION_GATE",
+  "date": "2026-06-20",
+  "status": "GATE_STATUS_ONLY",
+  "head_prefix": "acc4e05",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate",
+    "theorem formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed"
+  ],
+  "depends_on": [
+    "def bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface",
+    "theorem bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_closed"
+  ],
+  "boundary": "BOUNDARY := ¬ unguarded_fo_formula_radius_construction"
+}

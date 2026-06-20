@@ -514,6 +514,21 @@ theorem bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_c
     bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface := by
   exact finite_boolean_disjunction_fold_access_surface_closed
 
+
+/-- Formula-radius construction gate status from the bounded Boolean recursion gate.
+
+This is a status gate only. It records that the formula-radius construction
+frontier may now reference the bounded Boolean recursion gate, without proving
+arbitrary formula-radius construction, quantifier recursion, or full FO
+locality.
+-/
+def formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate : Prop :=
+  bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface
+
+theorem formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed :
+    formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate := by
+  exact bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
