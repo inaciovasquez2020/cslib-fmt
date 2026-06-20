@@ -1,0 +1,36 @@
+{
+  "after_head": "46b9e7e",
+  "date": "2026-06-20",
+  "does_not_claim": [
+    "unconditional atomic_formula_locality_input_exists",
+    "unconditional equality atom locality",
+    "unconditional relation atom locality",
+    "Boolean recursion",
+    "quantifier recursion",
+    "Gaifman locality"
+  ],
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_targets": [
+    {
+      "conclusion": "AtomicLocalityInput M (Formula.eq x y) 0",
+      "kind": "conditional_equality_atom_locality_input",
+      "name": "equality_atom_locality_input_of_assignment_eq",
+      "proved_unconditionally": false,
+      "required_invariant": "\u2200 \u03c1 \u03c4 : Fin n \u2192 M.carrier, AssignmentGaifmanClose M 0 \u03c1 \u03c4 \u2192 \u03c1 x = \u03c4 x \u2227 \u03c1 y = \u03c4 y"
+    },
+    {
+      "conclusion": "AtomicLocalityInput M (Formula.rel R args) r",
+      "kind": "conditional_relation_atom_locality_input",
+      "name": "relation_atom_locality_input_of_interp_iff",
+      "proved_unconditionally": false,
+      "required_invariant": "\u2200 \u03c1 \u03c4 : Fin n \u2192 M.carrier, AssignmentGaifmanClose M r \u03c1 \u03c4 \u2192 (M.interp R (fun i => \u03c1 (args i)) \u2194 M.interp R (fun i => \u03c4 (args i)))"
+    }
+  ],
+  "next_admissible_object": "AtomicLocalityInvariantLedgerOrAssignmentTuplePreservationTarget",
+  "object": "UnguardedFOConditionalAtomicLocalityTargetsLock",
+  "status": "CONDITIONAL_ATOMIC_TARGETS_ONLY_NO_UNCONDITIONAL_ATOMIC_LOCALITY",
+  "weakest_missing_invariants": [
+    "assignment equality for referenced equality variables under AssignmentGaifmanClose M 0",
+    "relation interpretation preservation for argument tuples under AssignmentGaifmanClose M r"
+  ]
+}
