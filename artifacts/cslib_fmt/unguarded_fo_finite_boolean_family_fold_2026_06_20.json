@@ -1,0 +1,30 @@
+{
+  "artifact": "unguarded_fo_finite_boolean_family_fold_2026_06_20",
+  "status": "FINITE_BOOLEAN_FAMILY_FOLD_EXPLICIT_SHARED_RADIUS",
+  "base_commit": "64709d9",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "added_objects": [
+    "FiniteBooleanFamilyExpr",
+    "finite_boolean_family_fold_with_radius",
+    "finite_boolean_family_fold",
+    "finite_boolean_family_fold_shared_radius"
+  ],
+  "bounded_scope": [
+    "explicit finite Boolean expression syntax over an index type",
+    "fold over indexed shared-radius target-family environment",
+    "shared-radius invariant preserved through each constructor step",
+    "explicit-radius scoped fold only",
+    "not arbitrary bounded-fragment closure"
+  ],
+  "does_not_prove": [
+    "formula-radius construction theorem",
+    "existence of atomic locality inputs",
+    "radius monotonicity",
+    "arbitrary bounded-fragment closure",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}

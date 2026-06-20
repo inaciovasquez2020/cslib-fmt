@@ -626,6 +626,90 @@ noncomputable def disj_shared_radius_target_family
       exact hinput
     exact hinputθ
 
+/-! ### Finite Boolean expression fold under an explicit shared-radius environment -/
+
+/-- Explicit finite Boolean expression syntax over an index type. -/
+inductive FiniteBooleanFamilyExpr (ι : Type) where
+  | atom : ι -> FiniteBooleanFamilyExpr ι
+  | neg : FiniteBooleanFamilyExpr ι -> FiniteBooleanFamilyExpr ι
+  | conj : FiniteBooleanFamilyExpr ι -> FiniteBooleanFamilyExpr ι -> FiniteBooleanFamilyExpr ι
+  | disj : FiniteBooleanFamilyExpr ι -> FiniteBooleanFamilyExpr ι -> FiniteBooleanFamilyExpr ι
+
+/--
+Fold an explicit finite Boolean expression over an indexed shared-radius environment.
+
+The subtype packages the evaluated family together with the invariant that its shared
+radius is the environment radius.
+-/
+noncomputable def finite_boolean_family_fold_with_radius
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius) :
+    FiniteBooleanFamilyExpr ι ->
+      {F : SharedRadiusTargetFamily M n // F.sharedRadius = sharedRadius}
+  | FiniteBooleanFamilyExpr.atom i =>
+      ⟨env i, henv i⟩
+  | FiniteBooleanFamilyExpr.neg e =>
+      let F := finite_boolean_family_fold_with_radius env sharedRadius henv e
+      ⟨neg_shared_radius_target_family F.1, by
+        change F.1.sharedRadius = sharedRadius
+        exact F.2⟩
+  | FiniteBooleanFamilyExpr.conj e₁ e₂ =>
+      let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv e₁
+      let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv e₂
+      let P : SharedRadiusTargetFamilyPair M n := {
+        left := F₁.1
+        right := F₂.1
+        same_shared_radius := by
+          rw [F₁.2, F₂.2]
+      }
+      ⟨conj_shared_radius_target_family P, by
+        change P.left.sharedRadius = sharedRadius
+        exact F₁.2⟩
+  | FiniteBooleanFamilyExpr.disj e₁ e₂ =>
+      let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv e₁
+      let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv e₂
+      let P : SharedRadiusTargetFamilyPair M n := {
+        left := F₁.1
+        right := F₂.1
+        same_shared_radius := by
+          rw [F₁.2, F₂.2]
+      }
+      ⟨disj_shared_radius_target_family P, by
+        change P.left.sharedRadius = sharedRadius
+        exact F₁.2⟩
+
+/-- The shared-radius target family obtained by folding an explicit finite Boolean expression. -/
+noncomputable def finite_boolean_family_fold
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    SharedRadiusTargetFamily M n :=
+  (finite_boolean_family_fold_with_radius env sharedRadius henv expr).1
+
+/-- The finite Boolean fold preserves the explicit shared-radius invariant. -/
+theorem finite_boolean_family_fold_shared_radius
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι) :
+    (finite_boolean_family_fold env sharedRadius henv expr).sharedRadius = sharedRadius :=
+  (finite_boolean_family_fold_with_radius env sharedRadius henv expr).2
+
+
 
 
 

@@ -10,7 +10,7 @@ This is an internal audit of remaining `noncomputable def` declarations.
 
 ## Result
 
-- `entry_count`: `19`
+- `entry_count`: `21`
 
 ## Entries
 
@@ -33,6 +33,8 @@ This is an internal audit of remaining `noncomputable def` declarations.
 - `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:540` `neg_shared_radius_target_family` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
 - `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:564` `conj_shared_radius_target_family` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
 - `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:597` `disj_shared_radius_target_family` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
+- `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:644` `finite_boolean_family_fold_with_radius` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
+- `lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:687` `finite_boolean_family_fold` — `justified-noncomputable`. Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.
 
 ## Policy
 
