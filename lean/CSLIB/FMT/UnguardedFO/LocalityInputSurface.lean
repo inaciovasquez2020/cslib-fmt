@@ -400,6 +400,32 @@ theorem unguarded_fo_disj_same_radius_constructor {σ : RelLanguage}
     | inl hφτ => exact Or.inl (hbaseφ.mpr hφτ)
     | inr hψτ => exact Or.inr (hbaseψ.mpr hψτ)
 
+
+/--
+Target shell bundling the three same-radius Boolean constructor obligations.
+
+This is a rollup target only. It records the shape of a shared-radius Boolean
+constructor package after the individual negation, conjunction, and disjunction
+constructors have been introduced. It does not construct max-radius joins,
+handle quantifiers, or prove arbitrary formula recursion.
+-/
+structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
+    (M : RelStructure σ) where
+  neg :
+    ∀ {n r : Nat} {φ : Formula σ n},
+      UnguardedFOLocalityInputSurface M φ r →
+      UnguardedFOLocalityInputSurface M (Formula.neg φ) r
+  conj :
+    ∀ {n r : Nat} {φ ψ : Formula σ n},
+      UnguardedFOLocalityInputSurface M φ r →
+      UnguardedFOLocalityInputSurface M ψ r →
+      UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) r
+  disj :
+    ∀ {n r : Nat} {φ ψ : Formula σ n},
+      UnguardedFOLocalityInputSurface M φ r →
+      UnguardedFOLocalityInputSurface M ψ r →
+      UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) r
+
 end UnguardedFO
 end FMT
 end CSLIB
