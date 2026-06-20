@@ -449,6 +449,36 @@ theorem shared_radius_boolean_constructor_rollup {σ : RelLanguage}
       exact unguarded_fo_disj_same_radius_constructor M hφ hψ
   }
 
+
+/--
+Target shell for max-radius Boolean constructors.
+
+This surface records the next obstruction after the same-radius Boolean rollup:
+combining formulas whose locality input surfaces are available at possibly
+different radii. It is target-only. It does not prove radius monotonicity,
+construct max-radius joins, handle quantifiers, or prove arbitrary formula
+recursion.
+-/
+structure MaxRadiusBooleanConstructorTarget {σ : RelLanguage}
+    (M : RelStructure σ) where
+  same_radius_rollup :
+    SharedRadiusBooleanConstructorRollupTarget M
+  conj_max_radius_obligation :
+    ∀ {n rφ rψ : Nat} {φ ψ : Formula σ n},
+      UnguardedFOLocalityInputSurface M φ rφ →
+      UnguardedFOLocalityInputSurface M ψ rψ →
+      Prop
+  disj_max_radius_obligation :
+    ∀ {n rφ rψ : Nat} {φ ψ : Formula σ n},
+      UnguardedFOLocalityInputSurface M φ rφ →
+      UnguardedFOLocalityInputSurface M ψ rψ →
+      Prop
+  radius_monotonicity_obligation :
+    ∀ {n r s : Nat} {φ : Formula σ n},
+      r ≤ s →
+      UnguardedFOLocalityInputSurface M φ r →
+      Prop
+
 end UnguardedFO
 end FMT
 end CSLIB
