@@ -280,6 +280,28 @@ structure HasUnguardedFOLocalityRadius {σ : RelLanguage}
   radius : Nat
   input : UnguardedFOLocalityInputSurface M φ radius
 
+/--
+Target shell for a bounded Boolean constructor layer at radius zero.
+
+This object records the next Boolean-recursion obligation after the
+radius-zero atomic connection. It is target-only: it does not prove Boolean
+recursion, quantifier recursion, arbitrary formula locality, or formula-radius
+construction.
+-/
+structure BoundedBooleanRadiusZeroConstructorTarget {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} where
+  atomic_eq :
+    ∀ x y : Fin n,
+      AtomicLocalityInput M (Formula.eq x y) 0
+  atomic_rel :
+    ∀ (R : σ.Rel) (args : Fin (σ.arity R) → Fin n),
+      AtomicLocalityInput M (Formula.rel R args) 0
+  boolean_constructor_obligation :
+    ∀ φ ψ : Formula σ n,
+      UnguardedFOLocalityInputSurface M φ 0 →
+      UnguardedFOLocalityInputSurface M ψ 0 →
+      Prop
+
 /-- Projection from the input surface to formula invariance. -/
 theorem unguarded_fo_locality_input_surface_invariant {σ : RelLanguage}
     (M : RelStructure σ) {n : Nat} (φ : Formula σ n) (r : Nat)
