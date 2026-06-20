@@ -1,0 +1,37 @@
+{
+  "artifact": "unguarded_fo_bounded_fragment_radius_constructors_2026_06_20",
+  "status": "BOUNDED_FRAGMENT_ATOMIC_BOOLEAN_RADIUS_CONSTRUCTORS",
+  "base_commit": "6894d3d",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "added_objects": [
+    "singleton_bounded_syntactic_fragment",
+    "atomic_bounded_syntactic_fragment",
+    "singleton_radius_construction_target",
+    "atomic_radius_constructor",
+    "neg_radius_input",
+    "neg_radius_constructor",
+    "conj_radius_input",
+    "conj_radius_constructor",
+    "disj_radius_input",
+    "disj_radius_constructor"
+  ],
+  "bounded_scope": [
+    "singleton bounded syntactic fragments",
+    "depth-zero singleton constructor from explicit locality input",
+    "Boolean preservation of explicit radius input for negation",
+    "Boolean preservation of shared explicit radius input for conjunction",
+    "Boolean preservation of shared explicit radius input for disjunction",
+    "singleton target constructors for Boolean formulas"
+  ],
+  "does_not_prove": [
+    "formula-radius construction theorem",
+    "existence of atomic locality inputs",
+    "radius monotonicity",
+    "closure of arbitrary bounded syntactic fragments",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}

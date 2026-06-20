@@ -159,6 +159,180 @@ theorem formula_radius_construction_target_input {σ : RelLanguage}
       (formula_radius_construction_target_has_radius M target φ hφ).radius := by
   exact (target.constructs φ hφ).property.right
 
+/-! ### Bounded-fragment atomic and Boolean radius constructors -/
+
+/-- A singleton bounded syntactic fragment. -/
+def singleton_bounded_syntactic_fragment
+    {σ : RelLanguage} {n : Nat}
+    (φ : Formula σ n)
+    (depthBound : Nat)
+    (hdepth : FormulaQuantifierDepth φ ≤ depthBound) :
+    BoundedSyntacticFragment σ n where
+  maxDepth := depthBound
+  member ψ := ψ = φ
+  quantifier_depth_bounded := by
+    intro ψ hψ
+    cases hψ
+    exact hdepth
+
+/-- A depth-zero singleton bounded syntactic fragment, covering atomic formulas and constants. -/
+def atomic_bounded_syntactic_fragment
+    {σ : RelLanguage} {n : Nat}
+    (φ : Formula σ n)
+    (hdepth : FormulaQuantifierDepth φ = 0) :
+    BoundedSyntacticFragment σ n :=
+  singleton_bounded_syntactic_fragment φ 0 (Nat.le_of_eq hdepth)
+
+/-- Build a radius construction target for a singleton bounded fragment from one explicit radius input. -/
+def singleton_radius_construction_target
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ : Formula σ n)
+    (depthBound radiusBound r : Nat)
+    (hdepth : FormulaQuantifierDepth φ ≤ depthBound)
+    (hr : r ≤ radiusBound)
+    (hinput : UnguardedFOLocalityInputSurface M φ r) :
+    FormulaRadiusConstructionTarget M n where
+  fragment := singleton_bounded_syntactic_fragment φ depthBound hdepth
+  radiusBound := radiusBound
+  constructs := by
+    intro ψ hψ
+    cases hψ
+    exact ⟨r, hr, hinput⟩
+
+/-- Atomic constructor: a depth-zero formula with an explicit locality input yields a singleton target. -/
+def atomic_radius_constructor
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ : Formula σ n)
+    (r : Nat)
+    (hdepth : FormulaQuantifierDepth φ = 0)
+    (hinput : UnguardedFOLocalityInputSurface M φ r) :
+    FormulaRadiusConstructionTarget M n :=
+  singleton_radius_construction_target M φ 0 r r
+    (Nat.le_of_eq hdepth)
+    (Nat.le_refl r)
+    hinput
+
+/-- Negation preserves an explicit radius input. -/
+theorem neg_radius_input
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {φ : Formula σ n}
+    {r : Nat}
+    (hφ : UnguardedFOLocalityInputSurface M φ r) :
+    UnguardedFOLocalityInputSurface M (Formula.neg φ) r := by
+  refine ⟨?_⟩
+  intro ρ τ hclose
+  exact ⟨
+    (fun hρ hτ => hρ ((hφ.invariant ρ τ hclose).mpr hτ)),
+    (fun hτ hρ => hτ ((hφ.invariant ρ τ hclose).mp hρ))⟩
+
+/-- Boolean negation constructor for a singleton bounded fragment. -/
+def neg_radius_constructor
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ : Formula σ n)
+    (r : Nat)
+    (hinput : UnguardedFOLocalityInputSurface M φ r) :
+    FormulaRadiusConstructionTarget M n :=
+  singleton_radius_construction_target M (Formula.neg φ)
+    (FormulaQuantifierDepth (Formula.neg φ))
+    r
+    r
+    (Nat.le_refl (FormulaQuantifierDepth (Formula.neg φ)))
+    (Nat.le_refl r)
+    (neg_radius_input hinput)
+
+/-- Conjunction preserves a shared explicit radius input. -/
+theorem conj_radius_input
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {φ ψ : Formula σ n}
+    {r : Nat}
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (hψ : UnguardedFOLocalityInputSurface M ψ r) :
+    UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) r := by
+  refine ⟨?_⟩
+  intro ρ τ hclose
+  exact ⟨
+    (fun hρ =>
+      ⟨(hφ.invariant ρ τ hclose).mp hρ.left,
+       (hψ.invariant ρ τ hclose).mp hρ.right⟩),
+    (fun hτ =>
+      ⟨(hφ.invariant ρ τ hclose).mpr hτ.left,
+       (hψ.invariant ρ τ hclose).mpr hτ.right⟩)⟩
+
+/-- Boolean conjunction constructor for a singleton bounded fragment with a shared radius. -/
+def conj_radius_constructor
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ ψ : Formula σ n)
+    (r : Nat)
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (hψ : UnguardedFOLocalityInputSurface M ψ r) :
+    FormulaRadiusConstructionTarget M n :=
+  singleton_radius_construction_target M (Formula.conj φ ψ)
+    (FormulaQuantifierDepth (Formula.conj φ ψ))
+    r
+    r
+    (Nat.le_refl (FormulaQuantifierDepth (Formula.conj φ ψ)))
+    (Nat.le_refl r)
+    (conj_radius_input hφ hψ)
+
+/-- Disjunction preserves a shared explicit radius input. -/
+theorem disj_radius_input
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {φ ψ : Formula σ n}
+    {r : Nat}
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (hψ : UnguardedFOLocalityInputSurface M ψ r) :
+    UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) r := by
+  refine ⟨?_⟩
+  intro ρ τ hclose
+  exact ⟨
+    (fun hρ => by
+      cases hρ with
+      | inl hφρ => exact Or.inl ((hφ.invariant ρ τ hclose).mp hφρ)
+      | inr hψρ => exact Or.inr ((hψ.invariant ρ τ hclose).mp hψρ)),
+    (fun hτ => by
+      cases hτ with
+      | inl hφτ => exact Or.inl ((hφ.invariant ρ τ hclose).mpr hφτ)
+      | inr hψτ => exact Or.inr ((hψ.invariant ρ τ hclose).mpr hψτ))⟩
+
+/-- Boolean disjunction constructor for a singleton bounded fragment with a shared radius. -/
+def disj_radius_constructor
+    {σ : RelLanguage}
+    (M : RelStructure σ)
+    {n : Nat}
+    (φ ψ : Formula σ n)
+    (r : Nat)
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (hψ : UnguardedFOLocalityInputSurface M ψ r) :
+    FormulaRadiusConstructionTarget M n :=
+  singleton_radius_construction_target M (Formula.disj φ ψ)
+    (FormulaQuantifierDepth (Formula.disj φ ψ))
+    r
+    r
+    (Nat.le_refl (FormulaQuantifierDepth (Formula.disj φ ψ)))
+    (Nat.le_refl r)
+    (disj_radius_input hφ hψ)
+
+
+
+
+
+
+
+
 end UnguardedFO
 end FMT
 end CSLIB
