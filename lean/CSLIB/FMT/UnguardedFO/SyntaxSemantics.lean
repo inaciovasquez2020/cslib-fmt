@@ -38,6 +38,12 @@ inductive Formula (σ : RelLanguage) : Nat → Type where
   | disj {n : Nat} : Formula σ n → Formula σ n → Formula σ n
   | ex {n : Nat} : Formula σ (n + 1) → Formula σ n
 
+/-- Atomic formulas are exactly equality atoms and relation atoms. -/
+def IsAtomicFormula {σ : RelLanguage} {n : Nat} : Formula σ n → Prop
+  | Formula.eq _ _ => True
+  | Formula.rel _ _ => True
+  | _ => False
+
 /-- A sentence is a formula with no free variables. -/
 abbrev Sentence (σ : RelLanguage) : Type :=
   Formula σ 0
