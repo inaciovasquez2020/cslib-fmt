@@ -1,0 +1,26 @@
+{
+  "id": "NO_EARLIER_LOCALISO_CONSTRUCTOR_SOURCE_2026_06_19",
+  "repo": "cslib-fmt",
+  "head_at_validation": "2971ff440d54e585e4b5adad2c6fae0ae936b652",
+  "search_scope": "lean/**/*.lean",
+  "target": "LocalIso 𝒜 ℬ r a b",
+  "all_localiso_producers": [
+    {
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "line": 233,
+      "kind": "theorem",
+      "name": "ballIso_to_localIso",
+      "codomain": "LocalIso 𝔄 𝔅 r a b",
+      "assumption_surfaces": [
+        "BallIso",
+        "LocalIso",
+        "Iso"
+      ]
+    }
+  ],
+  "weakest_existing_producer": "ballIso_to_localIso",
+  "classification": "back_wrapper_not_strictly_earlier_constructor_source",
+  "result": "NO_EARLIER_LOCALISO_CONSTRUCTOR_SOURCE",
+  "patch_decision": "no_new_theorem",
+  "boundary": "BOUNDARY := ¬ cr2_unconditional_constructor"
+}
