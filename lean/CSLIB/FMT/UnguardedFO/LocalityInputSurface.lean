@@ -235,6 +235,41 @@ theorem assignment_gaifman_close_radius_zero_preservation {σ : RelLanguage}
   exact gaifman_distance_le_zero_eq M (hclose x)
 
 /--
+Equality atoms have atomic-locality input at radius zero from the proved
+radius-zero assignment-preservation branch.
+-/
+theorem equality_atom_locality_input_radius_zero {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (x y : Fin n) :
+    AtomicLocalityInput M (Formula.eq x y) 0 := by
+  exact equality_atom_locality_input_of_assignment_eq M x y (by
+    intro ρ τ hclose
+    exact ⟨
+      assignment_gaifman_close_radius_zero_preservation M ρ τ hclose x,
+      assignment_gaifman_close_radius_zero_preservation M ρ τ hclose y
+    ⟩)
+
+/--
+Relation atoms have atomic-locality input at radius zero from the proved
+radius-zero assignment-preservation branch.
+-/
+theorem relation_atom_locality_input_radius_zero {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (R : σ.Rel)
+    (args : Fin (σ.arity R) → Fin n) :
+    AtomicLocalityInput M (Formula.rel R args) 0 := by
+  exact relation_atom_locality_input_of_interp_iff M R args 0 (by
+    intro ρ τ hclose
+    have hassign : ∀ x : Fin n, ρ x = τ x :=
+      assignment_gaifman_close_radius_zero_preservation M ρ τ hclose
+    have htuple : (fun i => ρ (args i)) = (fun i => τ (args i)) := by
+      funext i
+      exact hassign (args i)
+    constructor
+    · intro h
+      simpa [htuple] using h
+    · intro h
+      simpa [htuple] using h)
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
