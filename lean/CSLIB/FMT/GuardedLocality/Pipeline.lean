@@ -444,6 +444,82 @@ theorem plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_i
     RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b := by
   exact ⟨plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent 𝒜 ℬ h⟩
 
+/--
+A bounded boundary lemma for the guarded-locality pipeline.
+
+This lemma is conditional only: from the existing restricted EF-game/local-type
+input surface, every restricted guarded formula of the same rank is invariant.
+It does not claim unguarded FO locality, full Gaifman locality, Fagin, 0-1 Law,
+or repository-level final FMT closure.
+-/
+theorem guarded_locality_boundary_conditional_lemma
+    {α β : Type}
+    (𝒜 : Struct α) (ℬ : Struct β)
+    {r : Nat} {a : α} {b : β}
+    (h : RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b)
+    (φ : RestrictedGuardedFO r) :
+    restrictedSat 𝒜 a φ ↔ restrictedSat ℬ b φ := by
+  exact h.invariant φ
+
+/--
+`Cr2` is the named bounded input surface for attempting to discharge the
+restricted guarded-locality closure internally.
+
+This is an exact target surface only.  It is not an external validation claim,
+not an unguarded FO locality theorem, and not a repository-level FMT closure.
+A later theorem may use `Cr2` only by projecting its existing restricted
+EF-game/local-type invariant input surface.
+-/
+structure Cr2 {α β : Type}
+    (𝒜 : Struct α) (ℬ : Struct β)
+    (r : Nat) (a : α) (b : β) : Prop where
+  input :
+    RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b
+
+/--
+`Cr2` discharges the existing restricted EF-game/local-type input surface
+by projection.
+
+This is still conditional on a `Cr2` witness.  It does not construct `Cr2`
+for arbitrary structures, and it does not prove unguarded FO locality.
+-/
+theorem cr2_discharges_guarded_locality_input
+    {α β : Type}
+    (𝒜 : Struct α) (ℬ : Struct β)
+    {r : Nat} {a : α} {b : β}
+    (h : Cr2 𝒜 ℬ r a b) :
+    RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b := by
+  exact h.input
+
+
+/--
+A restricted constructor target weaker than `cr2_unconditional_constructor`.
+
+This does not construct `Cr2` for arbitrary structures, radius, and points.
+It only packages the already-existing restricted EF-game/local-type input
+surface as a `Cr2` witness.
+-/
+theorem restricted_ef_game_local_type_invariant_input_surface_to_cr2
+    {α β : Type}
+    {𝒜 : Struct α} {ℬ : Struct β}
+    {r : Nat} {a : α} {b : β}
+    (h : RestrictedEFGameLocalTypeInvariantInputSurface 𝒜 ℬ r a b) :
+    Cr2 𝒜 ℬ r a b := by
+  exact ⟨h⟩
+
+/--
+`Cr2` yields restricted guarded formula invariance through the already-existing
+bounded guarded-locality input surface.
+-/
+theorem cr2_restricted_guarded_formula_invariant
+    {α β : Type}
+    (𝒜 : Struct α) (ℬ : Struct β)
+    {r : Nat} {a : α} {b : β}
+    (h : Cr2 𝒜 ℬ r a b)
+    (φ : RestrictedGuardedFO r) :
+    restrictedSat 𝒜 a φ ↔ restrictedSat ℬ b φ := by
+  exact (cr2_discharges_guarded_locality_input 𝒜 ℬ h).invariant φ
+
 end GuardedLocality
 end FMT
 end CSLIB

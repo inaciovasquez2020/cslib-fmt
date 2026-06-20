@@ -1,0 +1,29 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "conditional theorem",
+  "conditional_boundary": "The discharge is conditional on a Cr2 witness; no arbitrary Cr2 constructor is claimed.",
+  "cr2_source": "structure Cr2",
+  "discharged_surface": "RestrictedEFGameLocalTypeInvariantInputSurface",
+  "id": "CR2_DISCHARGES_GUARDED_LOCALITY_INPUT_2026_06_19",
+  "nonclaims": [
+    "No arbitrary Cr2 witness is constructed.",
+    "No unguarded FO locality theorem is claimed.",
+    "No full Gaifman locality theorem is claimed.",
+    "No Fagin theorem or 0-1 Law result is claimed.",
+    "No global finite-model-theory final theorem is claimed.",
+    "No external-validation result is claimed."
+  ],
+  "source_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "status": "Cr2 discharges existing guarded-locality input conditionally",
+  "verified_theorems": [
+    "cr2_discharges_guarded_locality_input",
+    "cr2_restricted_guarded_formula_invariant"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "conditional theorem",
+  "formula_scope": "RestrictedGuardedFO r",
+  "hypothesis_surface": "RestrictedEFGameLocalTypeInvariantInputSurface",
+  "id": "GUARDED_LOCALITY_BOUNDARY_CONDITIONAL_LEMMA_2026_06_19",
+  "nonclaims": [
+    "No unguarded FO locality theorem is claimed.",
+    "No full Gaifman locality theorem is claimed.",
+    "No Fagin theorem or 0-1 Law result is claimed.",
+    "No repository-level final FMT closure is claimed.",
+    "No external validation claim is made."
+  ],
+  "semantic_scope": "restrictedSat invariance only",
+  "source_file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+  "status": "guarded locality boundary conditional lemma",
+  "supporting_existing_symbols": [
+    "RestrictedEFGameLocalTypeInvariantInputSurface",
+    "RestrictedGuardedLocalTypeEquivalent",
+    "RestrictedGuardedFO",
+    "restrictedSat"
+  ],
+  "theorem": "guarded_locality_boundary_conditional_lemma"
+}

@@ -1,0 +1,53 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "verified lemma",
+  "conditional_hypotheses_policy": "The certified hypotheses are exactly the parameters and assumptions appearing in each listed Lean declaration.",
+  "dependency_chain_policy": "The dependency chain is the Lean import list of the certified source file; this certificate does not claim repository-level closure beyond the listed declarations.",
+  "id": "BOUNDED_SURFACE_VERIFIED_LEMMA_CERTIFICATE_2026_06_19",
+  "nonclaims": [
+    "No general finite-model-theory closure is claimed.",
+    "No unguarded FO locality theorem is claimed.",
+    "No Fagin theorem or 0-1 Law result is claimed.",
+    "No external validation or adoption claim is made."
+  ],
+  "primary_audit": "THEOREM_SURFACE_AUDIT",
+  "scope": "scoped certificate for one bounded verified distance-theorem family only",
+  "source": {
+    "declarations": [
+      {
+        "kind": "theorem",
+        "name": "global_dist"
+      },
+      {
+        "kind": "theorem",
+        "name": "global_dist"
+      }
+    ],
+    "imports": [
+      {
+        "module": "FMT.Graph.DistSymm",
+        "possible_files": [
+          "FMT/Graph/DistSymm.lean",
+          "lean/FMT/Graph/DistSymm.lean"
+        ]
+      },
+      {
+        "module": "FMT.Graph.DistTriangle",
+        "possible_files": [
+          "FMT/Graph/DistTriangle.lean",
+          "lean/FMT/Graph/DistTriangle.lean"
+        ]
+      }
+    ],
+    "source_file": "FMT/Graph/GlobalDistanceTheorems.lean",
+    "source_module": "FMT.Graph.GlobalDistanceTheorems"
+  },
+  "status": "bounded surface verified lemma certificate"
+}

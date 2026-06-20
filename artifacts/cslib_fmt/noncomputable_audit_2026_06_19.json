@@ -1,0 +1,113 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "entries": [
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/DistDef.lean",
+      "line": 5,
+      "name": "dist"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/Distance.lean",
+      "line": 7,
+      "name": "dist"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/DistanceCore.lean",
+      "line": 6,
+      "name": "dist"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/Edge.lean",
+      "line": 17,
+      "name": "edgeCount"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "line": 27,
+      "name": "pairDistance"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "line": 47,
+      "name": "pairDistanceValues"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "line": 91,
+      "name": "finiteGraphDiameter"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/ShortestLength.lean",
+      "line": 6,
+      "name": "shortestLength"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Graph/UndirectedEdge.lean",
+      "line": 12,
+      "name": "undirectedEdgeCount"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Invariants/CycleQuotientProjection.lean",
+      "line": 11,
+      "name": "cycleQuotientProjection"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Invariants/GenuineCycleRankV2.lean",
+      "line": 8,
+      "name": "genuineCycleRankV2"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Invariants/GenuineCycleRankV2.lean",
+      "line": 14,
+      "name": "genuineCycleSpaceOfGraphV2"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "FMT/Types/Factorization.lean",
+      "line": 9,
+      "name": "factorsThrough_of_eq"
+    }
+  ],
+  "entry_count": 13,
+  "id": "NONCOMPUTABLE_AUDIT_2026_06_19",
+  "nonclaims": [
+    "No constructivization obligation is created.",
+    "No constructive replacement is claimed.",
+    "No repository-level final FMT closure is claimed."
+  ],
+  "policy": "Every discovered noncomputable def is recorded as justified-noncomputable unless an already-existing constructive witness is explicitly identified. No constructive witness is asserted by this audit.",
+  "scope": "remaining noncomputable def declarations under FMT.* / lean/CSLIB/FMT only",
+  "status": "noncomputable audit"
+}
