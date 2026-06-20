@@ -192,6 +192,25 @@ structure AssignmentGaifmanClosePreservationTarget {σ : RelLanguage}
       ∀ x : Fin n, ρ x = τ x
 
 /--
+Replacement target after classifying global assignment preservation as too
+strong for positive Gaifman radii.
+
+This target keeps the radius-zero preservation branch separate from the exact
+assignment-close branch. It is target-only and does not prove either branch.
+-/
+structure AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTarget
+    {σ : RelLanguage} (M : RelStructure σ) (n : Nat) where
+  radius_zero_preservation :
+    ∀ ρ τ : Fin n → M.carrier,
+      AssignmentGaifmanClose M 0 ρ τ →
+      ∀ x : Fin n, ρ x = τ x
+  exact_assignment_close :
+    (Fin n → M.carrier) → (Fin n → M.carrier) → Prop
+  exact_assignment_close_iff :
+    ∀ ρ τ : Fin n → M.carrier,
+      exact_assignment_close ρ τ ↔ ∀ x : Fin n, ρ x = τ x
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
