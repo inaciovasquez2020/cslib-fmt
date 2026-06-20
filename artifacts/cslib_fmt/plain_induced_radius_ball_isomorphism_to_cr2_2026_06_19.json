@@ -1,0 +1,25 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac cr2_unconditional_constructor",
+    "BOUNDARY := \u00ac arbitrary Cr2 witness",
+    "BOUNDARY := \u00ac unguarded FO locality",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac repository-level final FMT closure"
+  ],
+  "classification_stratum": "conditional_constructor_theorem",
+  "id": "PLAIN_INDUCED_RADIUS_BALL_ISOMORPHISM_TO_CR2_2026_06_19",
+  "proof_path": [
+    "PlainInducedRadiusBallIso",
+    "RestrictedEFGameLocalTypeInvariantInputSurface",
+    "Cr2"
+  ],
+  "reason": "The theorem starts from a concrete plain induced radius-ball isomorphism rather than an already-packaged restricted input witness, but it still requires that concrete hypothesis and does not construct Cr2 unconditionally.",
+  "source_surface": "PlainInducedRadiusBallIso",
+  "status": "intermediate Cr2 theorem target",
+  "strictly_stronger_than": "restricted_ef_game_local_type_invariant_input_surface_to_cr2",
+  "strictly_weaker_than": "cr2_unconditional_constructor",
+  "target_surface": "Cr2",
+  "theorem": "plain_induced_radius_ball_isomorphism_to_cr2"
+}

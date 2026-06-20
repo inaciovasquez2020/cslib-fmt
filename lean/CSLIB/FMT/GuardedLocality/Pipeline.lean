@@ -492,6 +492,23 @@ theorem cr2_discharges_guarded_locality_input
   exact h.input
 
 
+
+/--
+A concrete bounded constructor target stronger than restricted input packaging and
+weaker than `cr2_unconditional_constructor`.
+
+It converts a plain induced radius-ball isomorphism into `Cr2` through the
+already-existing restricted EF-game/local-type input surface.
+-/
+theorem plain_induced_radius_ball_isomorphism_to_cr2
+    {α β : Type}
+    {𝒜 : Struct α} {ℬ : Struct β}
+    {r : Nat} {a : α} {b : β}
+    (h : PlainInducedRadiusBallIso 𝒜 ℬ r a b) :
+    Cr2 𝒜 ℬ r a b := by
+  exact restricted_ef_game_local_type_invariant_input_surface_to_cr2
+    (plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_invariant_input_surface h)
+
 /--
 A restricted constructor target weaker than `cr2_unconditional_constructor`.
 
