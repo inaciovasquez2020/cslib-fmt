@@ -319,6 +319,29 @@ theorem has_unguarded_fo_locality_radius_input {σ : RelLanguage}
     UnguardedFOLocalityInputSurface M φ h.radius := by
   exact h.input
 
+
+/--
+Radius-preserving constructor for negation from an already supplied locality
+input surface.
+
+This is one Boolean constructor lemma only. It does not construct radius bounds
+for arbitrary formulas, handle quantifiers, or prove Gaifman locality.
+-/
+theorem unguarded_fo_neg_radius_constructor {σ : RelLanguage}
+    (M : RelStructure σ) {n r : Nat} {φ : Formula σ n}
+    (hφ : UnguardedFOLocalityInputSurface M φ r) :
+    UnguardedFOLocalityInputSurface M (Formula.neg φ) r := by
+  constructor
+  intro ρ τ hclose
+  have hbase :
+      Holds M ρ φ ↔ Holds M τ φ :=
+    unguarded_fo_locality_input_surface_invariant M φ r hφ ρ τ hclose
+  constructor
+  · intro hneg hτ
+    exact hneg (hbase.mpr hτ)
+  · intro hneg hρ
+    exact hneg (hbase.mp hρ)
+
 end UnguardedFO
 end FMT
 end CSLIB
