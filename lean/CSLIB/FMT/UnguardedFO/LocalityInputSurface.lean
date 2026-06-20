@@ -369,6 +369,37 @@ theorem unguarded_fo_conj_same_radius_constructor {σ : RelLanguage}
   · intro h
     exact And.intro (hbaseφ.mpr h.left) (hbaseψ.mpr h.right)
 
+
+/--
+Same-radius constructor for disjunction from two already supplied locality input
+surfaces.
+
+This is one Boolean constructor lemma only. It does not construct max-radius
+joins, handle quantifiers, or prove arbitrary formula recursion.
+-/
+theorem unguarded_fo_disj_same_radius_constructor {σ : RelLanguage}
+    (M : RelStructure σ) {n r : Nat} {φ ψ : Formula σ n}
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (hψ : UnguardedFOLocalityInputSurface M ψ r) :
+    UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) r := by
+  constructor
+  intro ρ τ hclose
+  have hbaseφ :
+      Holds M ρ φ ↔ Holds M τ φ :=
+    unguarded_fo_locality_input_surface_invariant M φ r hφ ρ τ hclose
+  have hbaseψ :
+      Holds M ρ ψ ↔ Holds M τ ψ :=
+    unguarded_fo_locality_input_surface_invariant M ψ r hψ ρ τ hclose
+  constructor
+  · intro h
+    cases h with
+    | inl hφρ => exact Or.inl (hbaseφ.mp hφρ)
+    | inr hψρ => exact Or.inr (hbaseψ.mp hψρ)
+  · intro h
+    cases h with
+    | inl hφτ => exact Or.inl (hbaseφ.mpr hφτ)
+    | inr hψτ => exact Or.inr (hbaseψ.mpr hψτ)
+
 end UnguardedFO
 end FMT
 end CSLIB
