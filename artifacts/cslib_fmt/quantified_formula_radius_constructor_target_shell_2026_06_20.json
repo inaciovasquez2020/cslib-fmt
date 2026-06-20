@@ -1,0 +1,18 @@
+{
+  "artifact": "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_TARGET_SHELL",
+  "date": "2026-06-20",
+  "status": "TARGET_SHELL_ONLY",
+  "head_prefix": "253ab4a",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def quantified_formula_radius_constructor_target_shell",
+    "theorem quantified_formula_radius_constructor_target_shell_closed"
+  ],
+  "depends_on": [
+    "def atomic_formula_radius_input_connection_status",
+    "theorem atomic_formula_radius_input_connection_status_closed",
+    "FORMULA_RADIUS_CONSTRUCTION_WEAKEST_MISSING_BRANCH_CLASSIFICATION"
+  ],
+  "target": "quantified_formula_radius_constructor_branch",
+  "boundary": "BOUNDARY := ¬ quantified_formula_radius_constructor"
+}

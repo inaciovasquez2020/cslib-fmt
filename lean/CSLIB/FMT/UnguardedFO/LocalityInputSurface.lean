@@ -544,6 +544,21 @@ theorem atomic_formula_radius_input_connection_status_closed :
     atomic_formula_radius_input_connection_status := by
   exact formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed
 
+
+/-- Quantified formula-radius constructor target shell.
+
+This is a target shell only. It records the next required constructor branch
+after the atomic input connection and bounded Boolean gate, without proving
+existential/universal quantifier radius construction or full unguarded FO
+formula-radius construction.
+-/
+def quantified_formula_radius_constructor_target_shell : Prop :=
+  atomic_formula_radius_input_connection_status
+
+theorem quantified_formula_radius_constructor_target_shell_closed :
+    quantified_formula_radius_constructor_target_shell := by
+  exact atomic_formula_radius_input_connection_status_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
