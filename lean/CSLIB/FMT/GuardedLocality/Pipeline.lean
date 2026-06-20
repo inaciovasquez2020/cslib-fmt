@@ -573,6 +573,20 @@ theorem cr2_restricted_guarded_formula_invariant
     restrictedSat 𝒜 a φ ↔ restrictedSat ℬ b φ := by
   exact (cr2_discharges_guarded_locality_input 𝒜 ℬ h).invariant φ
 
+/--
+A proved reflexive constructor for `Cr2`.
+
+This is the strongest immediate unconditional subcase: the same structure and
+same point satisfy the restricted guarded-locality input surface by reflexivity.
+It does not construct `Cr2` between arbitrary structures.
+-/
+theorem cr2_reflexive_constructor
+    {α : Type}
+    (𝒜 : Struct α)
+    (r : Nat) (a : α) :
+    Cr2 𝒜 𝒜 r a a := by
+  exact ⟨⟨fun φ => Iff.rfl⟩⟩
+
 end GuardedLocality
 end FMT
 end CSLIB
