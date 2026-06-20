@@ -1,0 +1,37 @@
+{
+  "boundaries": [
+    "BOUNDARY := \u00ac Fagin theorem",
+    "BOUNDARY := \u00ac 0-1 Law",
+    "BOUNDARY := \u00ac full Gaifman locality",
+    "BOUNDARY := \u00ac unguarded FO locality theorem",
+    "BOUNDARY := \u00ac global finite-model-theory final theorem",
+    "BOUNDARY := \u00ac external validation claim"
+  ],
+  "classification_stratum": "input surface with projection lemmas",
+  "definitions": [
+    "AssignmentGaifmanClose",
+    "UnguardedFOLocalityInputSurface",
+    "HasUnguardedFOLocalityRadius"
+  ],
+  "depends_on": [
+    "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+    "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean"
+  ],
+  "id": "UNGUARDED_FO_LOCALITY_INPUT_SURFACE_2026_06_20",
+  "next_target": "formula-radius construction target for bounded syntactic fragments",
+  "nonclaims": [
+    "Does not claim general FMT closure.",
+    "Does not claim Fagin theorem.",
+    "Does not claim 0-1 Law.",
+    "Does not claim full Gaifman locality.",
+    "Does not claim unguarded FO locality theorem.",
+    "Does not claim external validation."
+  ],
+  "projection_lemmas": [
+    "unguarded_fo_locality_input_surface_invariant",
+    "has_unguarded_fo_locality_radius_input"
+  ],
+  "source_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "standalone_reason": "Current package layout has no importable CSLIB module root; this frontier layer is direct-checked as a standalone module.",
+  "status": "unguarded FO locality input surface added"
+}
