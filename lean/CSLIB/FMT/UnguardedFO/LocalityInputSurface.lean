@@ -124,6 +124,37 @@ abbrev AtomicLocalityInput {σ : RelLanguage}
   UnguardedFOLocalityInputSurface M φ radius
 
 /--
+Equality atoms have an atomic-locality input at radius `0` once the current
+assignment-closeness relation preserves the two referenced variables.
+
+This is only the equality-atom target shell; it does not prove the required
+assignment-preservation invariant.
+-/
+theorem equality_atom_locality_input_of_assignment_eq
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (x y : Fin n)
+    (hxy :
+      ∀ ρ τ : Fin n → M.carrier,
+        AssignmentGaifmanClose M 0 ρ τ →
+        ρ x = τ x ∧ ρ y = τ y) :
+    AtomicLocalityInput M (Formula.eq x y) 0 := by
+  refine ⟨?_⟩
+  intro ρ τ hclose
+  rcases hxy ρ τ hclose with ⟨hx, hy⟩
+  change (ρ x = ρ y) ↔ (τ x = τ y)
+  constructor
+  · intro h
+    calc
+      τ x = ρ x := hx.symm
+      _ = ρ y := h
+      _ = τ y := hy
+  · intro h
+    calc
+      ρ x = τ x := hx
+      _ = τ y := h
+      _ = ρ y := hy.symm
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
