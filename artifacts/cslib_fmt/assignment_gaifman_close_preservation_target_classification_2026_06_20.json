@@ -1,0 +1,23 @@
+{
+  "after_head": "e8a8408",
+  "classification": "IMPOSSIBLE_AS_UNCONDITIONAL_GLOBAL_TARGET_FROM_CURRENT_DEFINITIONS",
+  "date": "2026-06-20",
+  "does_not_claim": [
+    "AssignmentGaifmanClosePreservationTarget inhabited",
+    "assignment equality follows from AssignmentGaifmanClose",
+    "unconditional equality atom locality",
+    "unconditional relation atom locality",
+    "unconditional atomic_formula_locality_input_exists",
+    "Boolean recursion",
+    "quantifier recursion",
+    "Gaifman locality"
+  ],
+  "exact_structural_obstruction": "AssignmentGaifmanClose is a pointwise bounded Gaifman-distance condition, not an assignment-equality condition. For positive radius, distinct adjacent elements may be Gaifman-close while not equal, so the target field ∀ x : Fin n, ρ x = τ x is stronger than current closeness data.",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_target": "AssignmentGaifmanClosePreservationTarget",
+  "object": "AssignmentGaifmanClosePreservationTargetClassification",
+  "status": "CLASSIFIED_IMPOSSIBLE_AS_UNCONDITIONAL_GLOBAL_TARGET",
+  "weakest_strengthened_assignment_close_definition": "AssignmentExactOnFreeVariables M ρ τ := ∀ x : Fin n, ρ x = τ x",
+  "weakest_admissible_replacement_target": "AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTarget",
+  "recursion_gate": "Boolean or quantifier recursion remains inadmissible until atomic preservation is rebuilt using a valid replacement invariant."
+}
