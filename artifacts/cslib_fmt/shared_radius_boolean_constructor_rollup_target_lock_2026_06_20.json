@@ -1,0 +1,39 @@
+{
+  "status": "SHARED_RADIUS_BOOLEAN_CONSTRUCTOR_ROLLUP_TARGET_LOCK_ONLY",
+  "date": "2026-06-20",
+  "repo": "cslib-fmt",
+  "object": "SharedRadiusBooleanConstructorRollupTarget",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "progress_id": "cslib_fmt_shared_radius_boolean_rollup_target_lock_2026_06_20",
+  "claims": [
+    "The repository contains a target shell bundling same-radius Boolean constructor obligations for negation, conjunction, and disjunction.",
+    "The target shell is stated after the individual same-radius Boolean constructors have been introduced.",
+    "The target shell records shared-radius Boolean constructor shape only."
+  ],
+  "nonclaims": [
+    "Does not prove a rollup constructor theorem.",
+    "Does not prove shared-radius Boolean family recursion.",
+    "Does not prove max-radius Boolean recursion.",
+    "Does not prove existential quantifier handling.",
+    "Does not prove arbitrary formula-radius construction.",
+    "Does not prove Gaifman locality for unguarded first-order logic.",
+    "Does not prove Fagin's theorem.",
+    "Does not prove the 0-1 Law.",
+    "Does not prove general finite model theory closure."
+  ],
+  "required_lean_markers": [
+    "structure SharedRadiusBooleanConstructorRollupTarget",
+    "neg :",
+    "conj :",
+    "disj :",
+    "UnguardedFOLocalityInputSurface M (Formula.neg φ) r",
+    "UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) r",
+    "UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) r"
+  ],
+  "forbidden_live_markers": [
+    "axiom",
+    "opaque",
+    "sorry",
+    "admit"
+  ]
+}
