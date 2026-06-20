@@ -1,0 +1,32 @@
+{
+  "artifact": "unguarded_fo_finite_boolean_fold_membership_2026_06_20",
+  "status": "FINITE_BOOLEAN_FAMILY_FOLD_FRAGMENT_MEMBERSHIP_LEMMAS",
+  "base_commit": "117f02a",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+  "added_objects": [
+    "finite_boolean_family_fold_atom_fragment_member",
+    "finite_boolean_family_fold_neg_fragment_member",
+    "finite_boolean_family_fold_conj_fragment_member",
+    "finite_boolean_family_fold_disj_fragment_member"
+  ],
+  "bounded_scope": [
+    "theorem statements remain over FiniteBooleanFamilyExpr",
+    "atom fold output preserves indexed family fragment membership",
+    "negation fold output preserves membership for Formula.neg",
+    "conjunction fold output preserves membership for Formula.conj",
+    "disjunction fold output preserves membership for Formula.disj",
+    "expression-index scoped fold-output membership only",
+    "not arbitrary bounded-fragment closure"
+  ],
+  "does_not_prove": [
+    "arbitrary bounded-fragment closure",
+    "formula-radius construction theorem",
+    "existence of atomic locality inputs",
+    "radius monotonicity",
+    "unguarded FO locality theorem",
+    "full Gaifman locality",
+    "Fagin theorem",
+    "0-1 Law",
+    "general FMT closure"
+  ]
+}

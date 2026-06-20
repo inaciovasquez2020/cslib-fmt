@@ -719,6 +719,100 @@ theorem finite_boolean_family_fold_shared_radius
 
 
 
+
+
+/-! ### Finite Boolean fold-output fragment-membership lemmas -/
+
+/-- Atom fold outputs preserve the indexed family fragment membership. -/
+theorem finite_boolean_family_fold_atom_fragment_member
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (i : ι)
+    (φ : Formula σ n)
+    (hφ : (env i).target.fragment.member φ) :
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.atom i)).target.fragment.member φ := by
+  simpa [finite_boolean_family_fold, finite_boolean_family_fold_with_radius] using hφ
+
+/-- Negation fold outputs preserve membership for the generated negated formula. -/
+theorem finite_boolean_family_fold_neg_fragment_member
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι)
+    (φ : Formula σ n)
+    (hφ :
+      (finite_boolean_family_fold env sharedRadius henv expr).target.fragment.member φ) :
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.neg expr)).target.fragment.member (Formula.neg φ) := by
+  change
+    (neg_shared_radius_target_family_fragment
+      (finite_boolean_family_fold env sharedRadius henv expr)).member (Formula.neg φ)
+  exact ⟨φ, hφ, rfl⟩
+
+/-- Conjunction fold outputs preserve membership for the generated conjoined formula. -/
+theorem finite_boolean_family_fold_conj_fragment_member
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι)
+    (φ ψ : Formula σ n)
+    (hφ :
+      (finite_boolean_family_fold env sharedRadius henv left).target.fragment.member φ)
+    (hψ :
+      (finite_boolean_family_fold env sharedRadius henv right).target.fragment.member ψ) :
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.conj left right)).target.fragment.member
+        (Formula.conj φ ψ) := by
+  let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv left
+  let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv right
+  let P : SharedRadiusTargetFamilyPair M n :=
+    { left := F₁.1
+      right := F₂.1
+      same_shared_radius := by rw [F₁.2, F₂.2] }
+  change (conj_shared_radius_target_family_fragment P).member (Formula.conj φ ψ)
+  exact ⟨φ, ψ, hφ, hψ, rfl⟩
+
+/-- Disjunction fold outputs preserve membership for the generated disjoined formula. -/
+theorem finite_boolean_family_fold_disj_fragment_member
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι)
+    (φ ψ : Formula σ n)
+    (hφ :
+      (finite_boolean_family_fold env sharedRadius henv left).target.fragment.member φ)
+    (hψ :
+      (finite_boolean_family_fold env sharedRadius henv right).target.fragment.member ψ) :
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.disj left right)).target.fragment.member
+        (Formula.disj φ ψ) := by
+  let F₁ := finite_boolean_family_fold_with_radius env sharedRadius henv left
+  let F₂ := finite_boolean_family_fold_with_radius env sharedRadius henv right
+  let P : SharedRadiusTargetFamilyPair M n :=
+    { left := F₁.1
+      right := F₂.1
+      same_shared_radius := by rw [F₁.2, F₂.2] }
+  change (disj_shared_radius_target_family_fragment P).member (Formula.disj φ ψ)
+  exact ⟨φ, ψ, hφ, hψ, rfl⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
