@@ -1,0 +1,68 @@
+{
+  "artifact": "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_NEXT_WEAKEST_OBSTRUCTION_CLASSIFICATION",
+  "date": "2026-06-20",
+  "status": "CLASSIFICATION_ONLY",
+  "head_prefix": "4f84565",
+  "target": "quantified_formula_radius_constructor",
+  "closed_inputs": [
+    "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_DEPENDENCY_STATUS_GATE",
+    "ASSIGNMENT_EXTENSION_PROJECTION_RADIUS_CONTROL_TARGET_SHELL",
+    "QUANTIFIER_LOCALITY_INPUT_TRANSPORT_TARGET_SHELL",
+    "QUANTIFIED_CONSTRUCTOR_DEPENDENCY_LEDGER",
+    "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_TARGET_SHELL"
+  ],
+  "ranked_obstructions": [
+    {
+      "rank": 1,
+      "object": "concrete_quantifier_locality_input_transport_statement",
+      "reason": "the current transport object is only a target shell; the quantified constructor needs an explicit Lean statement relating the body locality surface to the quantified formula locality surface"
+    },
+    {
+      "rank": 2,
+      "object": "assignment_extension_projection_radius_control_statement",
+      "reason": "the current assignment control object is only a target shell; the quantified constructor needs a concrete radius-control statement for variable extension/projection"
+    },
+    {
+      "rank": 3,
+      "object": "quantifier_formula_constructor_shape_identification",
+      "reason": "the proof must identify the exact Formula constructor surface used for quantified formulas before a constructor theorem can be stated precisely"
+    },
+    {
+      "rank": 4,
+      "object": "quantifier_assignment_semantics_bridge",
+      "reason": "the constructor needs a bridge between quantified formula semantics and the assignment-extension/projection operation"
+    },
+    {
+      "rank": 5,
+      "object": "radius_preservation_under_quantifier_assignment_move",
+      "reason": "the quantified step needs preservation of the chosen radius across the assignment move"
+    },
+    {
+      "rank": 6,
+      "object": "locality_surface_transport_from_body_to_quantified_formula",
+      "reason": "after assignment radius control, the locality input surface itself must be transported from the body formula to the quantified formula"
+    },
+    {
+      "rank": 7,
+      "object": "existential_quantifier_constructor_branch",
+      "reason": "the existential branch is one quantified constructor branch downstream of the transport and assignment-control statements"
+    },
+    {
+      "rank": 8,
+      "object": "universal_quantifier_constructor_branch",
+      "reason": "the universal branch is either separate or derived through negation depending on the repository's formula syntax and available constructors"
+    },
+    {
+      "rank": 9,
+      "object": "quantified_formula_radius_constructor",
+      "reason": "the named constructor is downstream of the concrete transport/control statements and the existential/universal branch handling"
+    },
+    {
+      "rank": 10,
+      "object": "formula_structural_recursion_assembler",
+      "reason": "the global formula-radius construction remains downstream after the quantified constructor is available"
+    }
+  ],
+  "weakest_next_obstruction": "concrete_quantifier_locality_input_transport_statement",
+  "boundary": "BOUNDARY := ¬ quantified_formula_radius_constructor"
+}
