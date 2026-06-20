@@ -1159,6 +1159,101 @@ theorem finite_boolean_family_fold_disj_target_fragment_input_access
         disj_shared_radius_target_family_fragment P := by
   rfl
 
+
+
+/- Finite Boolean fold expression-indexed target-locality input access lemmas. -/
+
+/-- Access the atom target-locality input through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_atom_target_locality_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (i : ι)
+    (φ : Formula σ n)
+    (hφ : (env i).target.fragment.member φ) :
+    UnguardedFOLocalityInputSurface M φ
+      (finite_boolean_family_fold env sharedRadius henv
+        (FiniteBooleanFamilyExpr.atom i)).sharedRadius := by
+  simpa [finite_boolean_family_fold_atom_constructor_access] using
+    (env i).constructs_at_shared_radius φ hφ
+
+/-- Access the negation target-locality input through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_neg_target_locality_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (expr : FiniteBooleanFamilyExpr ι)
+    (φ : Formula σ n)
+    (hφ :
+      (finite_boolean_family_fold env sharedRadius henv expr).target.fragment.member φ) :
+    UnguardedFOLocalityInputSurface M (Formula.neg φ)
+      (finite_boolean_family_fold env sharedRadius henv
+        (FiniteBooleanFamilyExpr.neg expr)).sharedRadius := by
+  exact
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.neg expr)).constructs_at_shared_radius
+        (Formula.neg φ)
+        (finite_boolean_family_fold_neg_fragment_member
+          env sharedRadius henv expr φ hφ)
+
+/-- Access the conjunction target-locality input through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_conj_target_locality_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι)
+    (φ ψ : Formula σ n)
+    (hφ :
+      (finite_boolean_family_fold env sharedRadius henv left).target.fragment.member φ)
+    (hψ :
+      (finite_boolean_family_fold env sharedRadius henv right).target.fragment.member ψ) :
+    UnguardedFOLocalityInputSurface M (Formula.conj φ ψ)
+      (finite_boolean_family_fold env sharedRadius henv
+        (FiniteBooleanFamilyExpr.conj left right)).sharedRadius := by
+  exact
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.conj left right)).constructs_at_shared_radius
+        (Formula.conj φ ψ)
+        (finite_boolean_family_fold_conj_fragment_member
+          env sharedRadius henv left right φ ψ hφ hψ)
+
+/-- Access the disjunction target-locality input through the expression-indexed fold. -/
+theorem finite_boolean_family_fold_disj_target_locality_input_access
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    {ι : Type}
+    (env : ι -> SharedRadiusTargetFamily M n)
+    (sharedRadius : Nat)
+    (henv : ∀ i, (env i).sharedRadius = sharedRadius)
+    (left right : FiniteBooleanFamilyExpr ι)
+    (φ ψ : Formula σ n)
+    (hφ :
+      (finite_boolean_family_fold env sharedRadius henv left).target.fragment.member φ)
+    (hψ :
+      (finite_boolean_family_fold env sharedRadius henv right).target.fragment.member ψ) :
+    UnguardedFOLocalityInputSurface M (Formula.disj φ ψ)
+      (finite_boolean_family_fold env sharedRadius henv
+        (FiniteBooleanFamilyExpr.disj left right)).sharedRadius := by
+  exact
+    (finite_boolean_family_fold env sharedRadius henv
+      (FiniteBooleanFamilyExpr.disj left right)).constructs_at_shared_radius
+        (Formula.disj φ ψ)
+        (finite_boolean_family_fold_disj_fragment_member
+          env sharedRadius henv left right φ ψ hφ hψ)
+
 end UnguardedFO
 end FMT
 end CSLIB
