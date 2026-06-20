@@ -1,0 +1,25 @@
+{
+  "artifact": "boolean_recursion_gate_after_radius_zero_atomic_connection_2026_06_20",
+  "date": "2026-06-20",
+  "after_head": "ea50536",
+  "object": "BooleanRecursionGateAfterRadiusZeroAtomicConnection",
+  "status": "BOOLEAN_RECURSION_GATE_TOUCHED_STATUS_TEST_ONLY",
+  "prerequisite_lock": "RADIUS_ZERO_ATOMIC_PRESERVATION_CONNECTION_PROVED",
+  "available_atomic_radius": 0,
+  "available_atomic_theorems": [
+    "equality_atom_locality_input_radius_zero",
+    "relation_atom_locality_input_radius_zero"
+  ],
+  "gate_question": "Can Boolean recursion now be attempted from the radius-zero atomic preservation connection?",
+  "classification": "GATE_OPEN_FOR_BOUNDED_BOOLEAN_STATUS_TEST_ONLY",
+  "weakest_missing_for_formula_recursion": "A proved Boolean constructor layer preserving a shared radius across formula constructors.",
+  "does_not_claim": [
+    "Boolean recursion theorem proved",
+    "quantifier recursion theorem proved",
+    "arbitrary formula locality",
+    "formula radius construction",
+    "positive-radius atomic preservation",
+    "full Gaifman locality"
+  ],
+  "next_admissible_object": "BoundedBooleanRadiusZeroConstructorTarget"
+}
