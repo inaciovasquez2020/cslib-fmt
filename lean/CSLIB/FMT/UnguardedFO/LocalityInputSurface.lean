@@ -224,6 +224,17 @@ theorem gaifman_distance_le_zero_eq {σ : RelLanguage} (M : RelStructure σ)
   rfl
 
 /--
+The radius-zero branch of assignment Gaifman-closeness preserves assignments.
+-/
+theorem assignment_gaifman_close_radius_zero_preservation {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} :
+    ∀ ρ τ : Fin n → M.carrier,
+      AssignmentGaifmanClose M 0 ρ τ →
+      ∀ x : Fin n, ρ x = τ x := by
+  intro ρ τ hclose x
+  exact gaifman_distance_le_zero_eq M (hclose x)
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
