@@ -211,6 +211,19 @@ structure AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTa
       exact_assignment_close ρ τ ↔ ∀ x : Fin n, ρ x = τ x
 
 /--
+Radius-zero Gaifman distance collapses to equality.
+-/
+theorem gaifman_distance_le_zero_eq {σ : RelLanguage} (M : RelStructure σ)
+    {x y : M.carrier} :
+    GaifmanDistanceLe M x y 0 → x = y := by
+  intro h
+  rcases h with ⟨n, hn, hwalk⟩
+  have hn0 : n = 0 := Nat.eq_zero_of_le_zero hn
+  subst n
+  cases hwalk
+  rfl
+
+/--
 A formula has some Gaifman-locality radius on a fixed structure.
 
 This packages existence of a radius and its input surface only; it does not
