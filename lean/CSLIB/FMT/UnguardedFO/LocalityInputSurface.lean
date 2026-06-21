@@ -1491,6 +1491,28 @@ structure AssignmentGaifmanCloseMonotonicityTarget {σ : RelLanguage}
       AssignmentGaifmanClose M s ρ τ →
       Prop
 
+
+/-- Assignment-close monotonicity formula-radius dependency status.
+
+This is only a status/classification edge. It records that, after the concrete
+quantifier transport frontier, the weakest named dependency before radius
+monotonicity and max-radius Boolean construction is the assignment Gaifman-close
+monotonicity target shell. It does not prove assignment-close monotonicity,
+radius monotonicity, max-radius Boolean closure, quantifier handling, arbitrary
+formula recursion, or full formula-radius construction.
+-/
+def assignment_gaifman_close_monotonicity_formula_radius_dependency_status : Prop :=
+  concrete_quantifier_transport_formula_radius_frontier_status ∧
+    (∀ {σ : RelLanguage} (M : RelStructure σ),
+      Nonempty (AssignmentGaifmanCloseMonotonicityTarget M → Prop))
+
+theorem assignment_gaifman_close_monotonicity_formula_radius_dependency_status_closed :
+    assignment_gaifman_close_monotonicity_formula_radius_dependency_status := by
+  constructor
+  · exact concrete_quantifier_transport_formula_radius_frontier_status_closed
+  · intro σ M
+    exact ⟨fun _hTarget => True⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
