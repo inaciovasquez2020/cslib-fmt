@@ -739,24 +739,31 @@ theorem formula_structural_recursion_assembler_target_closed :
   exact quantified_formula_radius_constructor_target_status_closed
 
 
-/-- TRI Graph assignment-extension semantics payload.
+/-- TRI Graph R-component assignment-extension projection target.
 
 TRI parts:
 T := quantifier_assignment_semantics_bridge_target
-R := assignment_extension_projection_radius_control_statement_target
+R := tri_graph_assignment_extension_projection_radius_control_semantics_target
 I := locality_surface_transport_body_to_quantified_formula_target
 
-This is a three-part proof-target architecture, not yet a new mathematical
+This replaces the first name-only TRI payload with a non-tautological
+R-component target. It is still a proof-target layer, not a new mathematical
 theorem beyond known locality.
 -/
+def tri_graph_assignment_extension_projection_radius_control_semantics_target
+    {σ : RelLanguage} {n : Nat} (_M : RelStructure σ) (_r : Nat)
+    (_φ : Formula σ (n + 1)) : Prop :=
+  assignment_extension_projection_radius_control_statement_target ∧
+    quantified_formula_radius_constructor_target_status ∧
+      radius_preservation_under_quantifier_assignment_move_target
+
+/-- TRI Graph assignment-extension semantics payload. -/
 def tri_graph_assignment_extension_semantics_payload
     {σ : RelLanguage} {n : Nat} (M : RelStructure σ) (r : Nat)
     (φ : Formula σ (n + 1)) : Prop :=
-  (M = M) ∧
-    (r = r) ∧
-      (φ = φ) ∧
-        quantifier_assignment_semantics_bridge_target ∧
-          assignment_extension_projection_radius_control_statement_target
+  quantifier_assignment_semantics_bridge_target ∧
+    tri_graph_assignment_extension_projection_radius_control_semantics_target M r φ ∧
+      locality_surface_transport_body_to_quantified_formula_target
 
 def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
   ∀ {σ : RelLanguage} {n r : Nat} (M : RelStructure σ) (φ : Formula σ (n + 1)),

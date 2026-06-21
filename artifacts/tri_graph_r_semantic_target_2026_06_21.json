@@ -1,0 +1,21 @@
+{
+  "status": "TRI_GRAPH_R_SEMANTIC_TARGET",
+  "parent_status": "TRI_GRAPH_NAME_LAYER_ONLY",
+  "tri_graph_name_layer_only": false,
+  "new_component": "R",
+  "new_target": "tri_graph_assignment_extension_projection_radius_control_semantics_target",
+  "replaces_tautological_payload_fields": [
+    "M = M",
+    "r = r",
+    "phi = phi"
+  ],
+  "requires_targets": [
+    "assignment_extension_projection_radius_control_statement_target",
+    "quantified_formula_radius_constructor_target_status",
+    "radius_preservation_under_quantifier_assignment_move_target"
+  ],
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "01649c4",
+  "boundary": "R-component semantic target layer only; no assignment-extension theorem and no new locality theorem are claimed.",
+  "next_admissible_target": "Prove or further refine one real assignment-extension projection lemma instead of only packaging target propositions."
+}
