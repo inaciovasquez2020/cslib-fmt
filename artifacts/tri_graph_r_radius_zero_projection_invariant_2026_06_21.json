@@ -1,0 +1,13 @@
+{
+  "status": "TRI_GRAPH_R_RADIUS_ZERO_PROJECTION_INVARIANT",
+  "parent_status": "TRI_GRAPH_R_PROJECTION_LEMMA",
+  "invariant": "tri_graph_radius_zero_assignment_projection_invariant",
+  "closed_by": "tri_graph_radius_zero_assignment_projection_invariant_closed",
+  "uses_existing_theorem": "assignment_gaifman_close_radius_zero_preservation",
+  "source_relation": "AssignmentGaifmanClose",
+  "scope": "radius_zero_only",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "bad70c2",
+  "boundary": "Radius-zero assignment projection invariant only; no positive-radius assignment-extension theorem and no new locality theorem are claimed.",
+  "next_admissible_target": "Connect this radius-zero invariant to one quantifier assignment-extension projection statement."
+}

@@ -739,6 +739,22 @@ theorem formula_structural_recursion_assembler_target_closed :
   exact quantified_formula_radius_constructor_target_status_closed
 
 
+/-- Concrete R invariant: radius-zero assignment closeness projects to
+pointwise assignment equality. -/
+def tri_graph_radius_zero_assignment_projection_invariant
+    {σ : RelLanguage} {n : Nat} (M : RelStructure σ) : Prop :=
+  ∀ (ρ τ : Fin n → M.carrier),
+    AssignmentGaifmanClose M 0 ρ τ →
+      ∀ x : Fin n, ρ x = τ x
+
+/-- The concrete R invariant follows from the existing radius-zero assignment
+preservation theorem. -/
+theorem tri_graph_radius_zero_assignment_projection_invariant_closed
+    {σ : RelLanguage} {n : Nat} (M : RelStructure σ) :
+    tri_graph_radius_zero_assignment_projection_invariant (n := n) M := by
+  intro ρ τ hclose x
+  exact assignment_gaifman_close_radius_zero_preservation M ρ τ hclose x
+
 /-- TRI Graph R-component assignment-extension projection target.
 
 TRI parts:
@@ -747,15 +763,17 @@ R := tri_graph_assignment_extension_projection_radius_control_semantics_target
 I := locality_surface_transport_body_to_quantified_formula_target
 
 This replaces the first name-only TRI payload with a non-tautological
-R-component target. It is still a proof-target layer, not a new mathematical
-theorem beyond known locality.
+R-component target and now includes one proved radius-zero assignment projection
+invariant. It is still a proof-target layer, not a new mathematical theorem
+beyond known locality.
 -/
 def tri_graph_assignment_extension_projection_radius_control_semantics_target
-    {σ : RelLanguage} {n : Nat} (_M : RelStructure σ) (_r : Nat)
+    {σ : RelLanguage} {n : Nat} (M : RelStructure σ) (_r : Nat)
     (_φ : Formula σ (n + 1)) : Prop :=
   assignment_extension_projection_radius_control_statement_target ∧
-    quantified_formula_radius_constructor_target_status ∧
-      radius_preservation_under_quantifier_assignment_move_target
+    tri_graph_radius_zero_assignment_projection_invariant (n := n) M ∧
+      quantified_formula_radius_constructor_target_status ∧
+        radius_preservation_under_quantifier_assignment_move_target
 
 /-- R-projection lemma: TRI Graph R target exposes the assignment-extension
 projection radius-control target. -/
