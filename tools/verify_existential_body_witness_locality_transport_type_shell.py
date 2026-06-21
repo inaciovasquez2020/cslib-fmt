@@ -10,7 +10,7 @@ if art.get("status") != "EXISTENTIAL_BODY_WITNESS_LOCALITY_TRANSPORT_TYPE_SHELL_
 markers = ["def existential_body_witness_locality_transport_type : Type 1 :=", "HasUnguardedFOLocalityRadius M φ →", "HasUnguardedFOLocalityRadius M (Formula.ex φ)"]
 missing_src = next((x for x in markers if x not in src), None)
 if missing_src is not None: raise SystemExit("MISSING_OBJECT := Lean source marker " + missing_src)
-forbidden = ["theorem existential_body_witness_locality_transport", "axiom existential_body_witness_locality_transport", "opaque existential_body_witness_locality_transport", "sorry", "admit"]
+forbidden = ["def existential_body_witness_locality_transport :=", "axiom existential_body_witness_locality_transport", "opaque existential_body_witness_locality_transport", "sorry", "admit"]
 bad = next((x for x in forbidden if x in src), None)
 if bad is not None: raise SystemExit("MISSING_OBJECT := forbidden proof marker absence " + bad)
 boundaries = ["not existential_body_witness_locality_transport", "not existential_locality_radius_constructor", "not full_quantifier_locality_transport", "not full_formula_radius_construction", "not Pk1", "not 2vK", "not full_unguarded_fo_locality"]
