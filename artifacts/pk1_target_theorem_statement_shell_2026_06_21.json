@@ -1,0 +1,13 @@
+{
+  "status": "PK1_TARGET_THEOREM_STATEMENT_SHELL",
+  "parent_status": "PK1_QUANTIFIED_CONSTRUCTOR_BRANCH_FRONTIER_STATUS",
+  "target": "Pk1_unguarded_fo_locality_theorem_statement_shell",
+  "source_edge": "pk1_quantified_constructor_branch_frontier_status",
+  "uses_proofs": [
+    "pk1_quantified_constructor_branch_frontier_status_closed"
+  ],
+  "scope": "target_only_pk1_theorem_statement_shell",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "boundary": "Target-only Pk1 theorem statement shell. This does not prove Pk1, does not define or prove 2vK, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.",
+  "next_admissible_target": "Define 2vK only as a bridge target after this Pk1 statement shell is validated."
+}

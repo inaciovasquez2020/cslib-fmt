@@ -1,0 +1,13 @@
+{
+  "status": "TWOVK_BRIDGE_TARGET_SHELL",
+  "parent_status": "PK1_TARGET_THEOREM_STATEMENT_SHELL",
+  "target": "TwoVK_bridge_target_shell",
+  "source_edge": "Pk1_unguarded_fo_locality_theorem_statement_shell",
+  "uses_proofs": [
+    "Pk1_unguarded_fo_locality_theorem_statement_shell_closed"
+  ],
+  "scope": "target_only_2vK_bridge_shell",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "boundary": "Target-only 2vK bridge shell. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.",
+  "next_admissible_target": "Run combined validation before any stronger 2vK bridge statement or proof claim."
+}

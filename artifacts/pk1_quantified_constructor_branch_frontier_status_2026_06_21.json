@@ -1,0 +1,15 @@
+{
+  "status": "PK1_QUANTIFIED_CONSTRUCTOR_BRANCH_FRONTIER_STATUS",
+  "parent_status": "FORMULA_RADIUS_CONSTRUCTION_GATE_STRUCTURAL_RECURSION_EDGE",
+  "target": "pk1_quantified_constructor_branch_frontier_status",
+  "source_edge": "formula_radius_construction_gate_structural_recursion_edge",
+  "projected_dependency": "quantified_formula_radius_constructor_target_status",
+  "uses_proofs": [
+    "formula_radius_construction_gate_structural_recursion_edge_closed"
+  ],
+  "projection_path": "formula_radius_construction_gate_structural_recursion_edge_closed.2.1",
+  "scope": "one_pk1_quantified_constructor_branch_frontier_status_edge",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "boundary": "Status-only PK1 quantified-constructor branch frontier edge; this does not define or prove Pk1, 2vK, full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.",
+  "next_admissible_target": "Define a target-only Pk1 theorem statement shell after this status edge is validated."
+}

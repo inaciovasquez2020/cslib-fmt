@@ -935,6 +935,56 @@ theorem formula_radius_construction_gate_structural_recursion_edge_closed :
   constructor
   · exact formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed
   · exact formula_structural_recursion_assembler_target_closed
+/-- Pk1 quantified-constructor branch frontier status.
+
+This is a status edge only. It records that the post-gate formula-radius
+construction edge exposes the quantified-constructor branch as the next named
+frontier. It does not define or prove Pk1, 2vK, full formula-radius
+construction, full quantifier locality transport, or full unguarded FO locality.
+-/
+def pk1_quantified_constructor_branch_frontier_status : Prop :=
+  formula_radius_construction_gate_structural_recursion_edge ∧
+    quantified_formula_radius_constructor_target_status
+
+theorem pk1_quantified_constructor_branch_frontier_status_closed :
+    pk1_quantified_constructor_branch_frontier_status := by
+  have hGate : formula_radius_construction_gate_structural_recursion_edge :=
+    formula_radius_construction_gate_structural_recursion_edge_closed
+  constructor
+  · exact hGate
+  · exact hGate.2.1
+
+/-- Target-only Pk1 theorem statement shell.
+
+This names the repository's intended Pk1 unguarded FO locality theorem target
+only at the already validated quantified-constructor branch frontier. It does
+not prove Pk1, does not define any 2vK bridge, and does not claim full
+formula-radius construction, full quantifier locality transport, or full
+unguarded FO locality.
+-/
+def Pk1_unguarded_fo_locality_theorem_statement_shell : Prop :=
+  pk1_quantified_constructor_branch_frontier_status
+
+theorem Pk1_unguarded_fo_locality_theorem_statement_shell_closed :
+    Pk1_unguarded_fo_locality_theorem_statement_shell := by
+  exact pk1_quantified_constructor_branch_frontier_status_closed
+
+/-- Target-only 2vK bridge shell.
+
+This names the repository's intended 2vK bridge target only over the validated
+target-only Pk1 theorem statement shell. It does not prove 2vK, does not prove
+Pk1, and does not claim full formula-radius construction, full quantifier
+locality transport, or full unguarded FO locality.
+-/
+def TwoVK_bridge_target_shell : Prop :=
+  Pk1_unguarded_fo_locality_theorem_statement_shell
+
+theorem TwoVK_bridge_target_shell_closed :
+    TwoVK_bridge_target_shell := by
+  exact Pk1_unguarded_fo_locality_theorem_statement_shell_closed
+
+
+
 
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
