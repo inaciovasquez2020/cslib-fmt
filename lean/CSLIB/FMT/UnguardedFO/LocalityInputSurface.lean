@@ -1201,6 +1201,38 @@ theorem existential_body_distinct_witness_assignment_extension_invariance
 
 
 
+/-- Packaging target for the two already-proved existential-body assignment-extension
+invariance components. This records only the same-witness and already-`r`-close
+distinct-witness body-invariance components; it does not introduce the forbidden
+transport object, construct an existential radius, or close the existential
+constructor. -/
+theorem existential_body_assignment_extension_invariance_component_package :
+    (∀ {σ : RelLanguage} (M : RelStructure σ) {n r : Nat}
+        {φ : Formula σ (n + 1)},
+        UnguardedFOLocalityInputSurface M φ r →
+          ∀ (ρ τ : Fin n → M.carrier),
+            AssignmentGaifmanClose M r ρ τ →
+              ∀ (x : M.carrier),
+                Holds M (extendAssignment ρ x) φ ↔
+                  Holds M (extendAssignment τ x) φ) ∧
+      (∀ {σ : RelLanguage} (M : RelStructure σ) {n r : Nat}
+        {φ : Formula σ (n + 1)},
+        UnguardedFOLocalityInputSurface M φ r →
+          ∀ (ρ τ : Fin n → M.carrier),
+            AssignmentGaifmanClose M r ρ τ →
+              ∀ (x y : M.carrier),
+                GaifmanDistanceLe M x y r →
+                  (Holds M (extendAssignment ρ x) φ ↔
+                    Holds M (extendAssignment τ y) φ)) := by
+  constructor
+  · intro σ M n r φ hφ ρ τ hclose x
+    exact existential_body_same_witness_assignment_extension_invariance
+      M hφ ρ τ hclose x
+  · intro σ M n r φ hφ ρ τ hclose x y
+    exact existential_body_distinct_witness_assignment_extension_invariance
+      M hφ ρ τ hclose x y
+
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
