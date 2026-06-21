@@ -1177,6 +1177,28 @@ theorem existential_body_same_witness_assignment_extension_invariance
     (extendAssignment ρ x) (extendAssignment τ x) hext
 
 
+/-- Distinct-witness assignment-extension invariance for the existential body only.
+This proves the body-invariance target for extended assignments when the two
+witnesses are already known to be `r`-close. It does not prove or name the
+body-witness locality transport object and does not construct an existential
+radius. -/
+theorem existential_body_distinct_witness_assignment_extension_invariance
+    {σ : RelLanguage} (M : RelStructure σ) {n r : Nat}
+    {φ : Formula σ (n + 1)}
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (ρ τ : Fin n → M.carrier)
+    (hclose : AssignmentGaifmanClose M r ρ τ)
+    (x y : M.carrier)
+    (hxy : GaifmanDistanceLe M x y r) :
+    Holds M (extendAssignment ρ x) φ ↔
+      Holds M (extendAssignment τ y) φ := by
+  have hext :
+      AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y) := by
+    exact tri_graph_positive_radius_assignment_extension_projection hclose hxy
+  exact unguarded_fo_locality_input_surface_invariant M φ r hφ
+    (extendAssignment ρ x) (extendAssignment τ y) hext
+
+
 
 
 /--
