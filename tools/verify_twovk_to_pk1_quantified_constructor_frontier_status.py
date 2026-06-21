@@ -30,8 +30,10 @@ parent_pos = src_text.index(f"theorem {parent_closed}")
 target_pos = src_text.index(f"def {target}")
 assert parent_pos < target_pos
 
-target_end = src_text.find("\nend UnguardedFO", target_pos)
-assert target_end != -1, "could not find namespace end marker after frontier projection status"
+target_end = src_text.find("\n/--", target_pos + 1)
+if target_end == -1:
+    target_end = src_text.find("\nend UnguardedFO", target_pos)
+assert target_end != -1, "could not find target block end after quantified constructor frontier status"
 target_block = src_text[target_pos:target_end]
 
 for needle in [

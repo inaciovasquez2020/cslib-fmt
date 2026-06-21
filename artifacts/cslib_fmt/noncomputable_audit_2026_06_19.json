@@ -154,9 +154,23 @@
       "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
       "line": 687,
       "name": "finite_boolean_family_fold"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 1552,
+      "name": "unguarded_fo_formula_radius_construction"
+    },
+    {
+      "classification": "justified-noncomputable",
+      "explanation": "Recorded as an existing noncomputable definition. This audit does not assert a constructive witness and therefore does not create a constructivization obligation.",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 1591,
+      "name": "full_formula_radius_construction_closed"
     }
   ],
-  "entry_count": 21,
+  "entry_count": 23,
   "id": "NONCOMPUTABLE_AUDIT_2026_06_19",
   "nonclaims": [
     "No constructivization obligation is created.",

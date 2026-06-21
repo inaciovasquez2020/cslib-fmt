@@ -1,0 +1,14 @@
+{
+  "status": "FULL_FORMULA_RADIUS_CONSTRUCTION_CLOSED",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "objects": [
+    "unguarded_fo_top_locality_input",
+    "unguarded_fo_bot_locality_input",
+    "unguarded_fo_formula_radius_construction",
+    "full_formula_radius_construction",
+    "full_formula_radius_construction_closed",
+    "full_formula_radius_construction_status",
+    "full_formula_radius_construction_status_closed"
+  ],
+  "boundary": "repository-internal formula-radius construction only; no Fagin theorem, 0-1 law, or external finite-model-theory closure"
+}

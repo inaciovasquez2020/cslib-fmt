@@ -1513,6 +1513,94 @@ theorem assignment_gaifman_close_monotonicity_formula_radius_dependency_status_c
   · intro σ M
     exact ⟨fun _hTarget => True⟩
 
+
+/--
+Locality input for `top` at radius zero.
+
+This is a base-case constructor for structural formula-radius recursion. It does
+not use any global Gaifman locality theorem.
+-/
+theorem unguarded_fo_top_locality_input {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} :
+    UnguardedFOLocalityInputSurface M (Formula.top (n := n)) 0 := by
+  constructor
+  intro _ρ _τ _hclose
+  exact Iff.rfl
+
+/--
+Locality input for `bot` at radius zero.
+
+This is a base-case constructor for structural formula-radius recursion. It does
+not use any global Gaifman locality theorem.
+-/
+theorem unguarded_fo_bot_locality_input {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} :
+    UnguardedFOLocalityInputSurface M (Formula.bot (n := n)) 0 := by
+  constructor
+  intro _ρ _τ _hclose
+  exact Iff.rfl
+
+/--
+Formula-radius construction by structural recursion.
+
+This constructs some locality radius for every formula in the repository's
+current unguarded FO input surface. Boolean conjunction and disjunction use a
+common smaller radius, avoiding any max-radius or upward-radius monotonicity
+claim. The existential case uses the already-closed existential locality-radius
+constructor.
+-/
+noncomputable def unguarded_fo_formula_radius_construction {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (φ : Formula σ n) :
+    HasUnguardedFOLocalityRadius M φ := by
+  induction φ with
+  | top =>
+      exact ⟨0, unguarded_fo_top_locality_input M⟩
+  | bot =>
+      exact ⟨0, unguarded_fo_bot_locality_input M⟩
+  | eq x y =>
+      exact ⟨0, equality_atom_locality_input_radius_zero M x y⟩
+  | rel R args =>
+      exact ⟨0, relation_atom_locality_input_radius_zero M R args⟩
+  | neg φ ih =>
+      exact ⟨ih.radius, unguarded_fo_neg_radius_constructor M ih.input⟩
+  | conj φ ψ ihφ ihψ =>
+      exact
+        ⟨Nat.min ihφ.radius ihψ.radius,
+          unguarded_fo_conj_common_smaller_radius_constructor M
+            (Nat.min_le_left ihφ.radius ihψ.radius)
+            (Nat.min_le_right ihφ.radius ihψ.radius)
+            ihφ.input
+            ihψ.input⟩
+  | disj φ ψ ihφ ihψ =>
+      exact
+        ⟨Nat.min ihφ.radius ihψ.radius,
+          unguarded_fo_disj_common_smaller_radius_constructor M
+            (Nat.min_le_left ihφ.radius ihψ.radius)
+            (Nat.min_le_right ihφ.radius ihψ.radius)
+            ihφ.input
+            ihψ.input⟩
+  | ex φ ih =>
+      exact existential_locality_radius_constructor M ih
+
+/-- Repository-level full formula-radius construction object. -/
+def full_formula_radius_construction : Type 1 :=
+  ∀ {σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n),
+    HasUnguardedFOLocalityRadius M φ
+
+/-- The full formula-radius construction object is closed by structural recursion. -/
+noncomputable def full_formula_radius_construction_closed :
+    full_formula_radius_construction := by
+  intro σ M n φ
+  exact unguarded_fo_formula_radius_construction M φ
+
+/-- Prop-valued closure status for the full formula-radius construction object. -/
+def full_formula_radius_construction_status : Prop :=
+  Nonempty full_formula_radius_construction
+
+theorem full_formula_radius_construction_status_closed :
+    full_formula_radius_construction_status := by
+  exact ⟨full_formula_radius_construction_closed⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
