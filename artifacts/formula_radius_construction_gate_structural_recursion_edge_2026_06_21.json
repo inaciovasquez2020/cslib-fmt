@@ -1,0 +1,16 @@
+{
+  "status": "FORMULA_RADIUS_CONSTRUCTION_GATE_STRUCTURAL_RECURSION_EDGE",
+  "parent_status": "FORMULA_STRUCTURAL_RECURSION_POSITIVE_RADIUS_EDGE",
+  "target": "formula_radius_construction_gate_structural_recursion_edge",
+  "preserves_dependency": "formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate",
+  "new_dependency": "formula_structural_recursion_assembler_target",
+  "uses_proofs": [
+    "formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed",
+    "formula_structural_recursion_assembler_target_closed"
+  ],
+  "scope": "one_formula_radius_gate_edge_refinement",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "279e13c",
+  "boundary": "Formula-radius construction gate edge only; this does not prove full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.",
+  "next_admissible_target": "Use this gate edge to inspect the weakest remaining formula-radius construction branch."
+}
