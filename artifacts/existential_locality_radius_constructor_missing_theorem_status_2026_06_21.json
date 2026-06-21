@@ -1,0 +1,27 @@
+{
+  "status": "EXISTENTIAL_LOCALITY_RADIUS_CONSTRUCTOR_MISSING_THEOREM_STATUS_ONLY",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "status_def": "existential_locality_radius_constructor_missing_theorem_status",
+  "closed_theorem": "existential_locality_radius_constructor_missing_theorem_status_closed",
+  "depends_on": [
+    "TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status",
+    "TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_closed"
+  ],
+  "missing_theorem_shape": "forall {sigma : RelLanguage} (M : RelStructure sigma) {n : Nat} {phi : Formula sigma (n + 1)}, HasUnguardedFOLocalityRadius M phi -> HasUnguardedFOLocalityRadius M (Formula.ex phi)",
+  "does_not_prove": [
+    "existential locality-radius constructor",
+    "2vK",
+    "Pk1",
+    "full formula-radius construction",
+    "full quantifier locality transport",
+    "full unguarded FO locality"
+  ],
+  "boundary": [
+    "not existential_locality_radius_constructor",
+    "not 2vK",
+    "not Pk1",
+    "not full_formula_radius_construction",
+    "not full_quantifier_locality_transport",
+    "not full_unguarded_fo_locality"
+  ]
+}

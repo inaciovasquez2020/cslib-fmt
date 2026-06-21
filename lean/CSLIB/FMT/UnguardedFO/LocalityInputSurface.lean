@@ -1116,6 +1116,22 @@ theorem TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_clo
   · exact hStatus
   · exact hStatus.2.2
 
+/-- Missing existential locality-radius constructor theorem status.
+
+This status-lock names the weakest missing theorem after the proof-bearing
+quantifier assignment radius-control statement has been exposed. The missing
+theorem would construct locality for `Formula.ex φ` from locality of the body
+formula. This status does not prove that constructor, does not prove Pk1 or
+2vK, and does not claim full formula-radius construction, full quantifier
+locality transport, or full unguarded FO locality.
+-/
+def existential_locality_radius_constructor_missing_theorem_status : Prop :=
+  TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status
+
+theorem existential_locality_radius_constructor_missing_theorem_status_closed :
+    existential_locality_radius_constructor_missing_theorem_status := by
+  exact TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_closed
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
