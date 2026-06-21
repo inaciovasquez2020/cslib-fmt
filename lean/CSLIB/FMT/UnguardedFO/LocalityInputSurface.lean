@@ -1252,6 +1252,17 @@ def existential_body_witness_locality_transport_type_constructor :
         M hBody.input ρ τ hclose x).mpr hx⟩
 
 
+
+/-- Named existential locality-radius constructor.
+
+This aliases the already proved body-witness locality transport constructor under
+the constructor name used by the frontier. It does not close full quantifier
+locality transport, `Pk1`, `2vK`, or full unguarded FO locality.
+-/
+def existential_locality_radius_constructor :
+    existential_body_witness_locality_transport_type :=
+  existential_body_witness_locality_transport_type_constructor
+
 /-- Distinct-witness assignment-extension invariance for the existential body only.
 This proves the body-invariance target for extended assignments when the two
 witnesses are already known to be `r`-close. It does not prove or name the
