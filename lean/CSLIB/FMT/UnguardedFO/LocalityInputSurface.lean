@@ -725,18 +725,6 @@ theorem quantified_formula_radius_constructor_target_status_closed :
   exact universal_quantifier_constructor_branch_classification_target_closed
 
 
-/-- Formula structural recursion assembler target.
-
-This is a target object only. It records the structural recursion assembler target downstream of the quantified formula-radius constructor target status. It does not prove
-the target, the quantified formula-radius constructor, or full unguarded FO
-formula-radius construction.
--/
-def formula_structural_recursion_assembler_target : Prop :=
-  quantified_formula_radius_constructor_target_status
-
-theorem formula_structural_recursion_assembler_target_closed :
-    formula_structural_recursion_assembler_target := by
-  exact quantified_formula_radius_constructor_target_status_closed
 
 
 /-- Concrete R invariant: radius-zero assignment closeness projects to
@@ -912,6 +900,22 @@ theorem trebuchet_variant_full_unguarded_fo_formula_radius_construction :
     exact
       (tri_graph_payload_positive_radius_assignment_extension_projection_with_transport_target
         hTriGraph ρ τ x y hbase hxy).1
+
+/-- Formula structural recursion assembler target.
+
+This downstream edge now carries both the quantified-formula constructor target
+and the proof-bearing quantifier assignment radius-control statement, including
+the positive-radius assignment-extension projection.
+-/
+def formula_structural_recursion_assembler_target : Prop :=
+  quantified_formula_radius_constructor_target_status ∧
+    proof_bearing_quantifier_assignment_radius_control_statement
+
+theorem formula_structural_recursion_assembler_target_closed :
+    formula_structural_recursion_assembler_target := by
+  constructor
+  · exact quantified_formula_radius_constructor_target_status_closed
+  · exact trebuchet_variant_full_unguarded_fo_formula_radius_construction
 
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where

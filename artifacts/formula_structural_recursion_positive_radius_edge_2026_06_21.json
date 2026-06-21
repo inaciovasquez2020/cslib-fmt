@@ -1,0 +1,13 @@
+{
+  "status": "FORMULA_STRUCTURAL_RECURSION_POSITIVE_RADIUS_EDGE",
+  "parent_status": "PROOF_BEARING_QUANTIFIER_POSITIVE_RADIUS_PROJECTION_EDGE",
+  "target": "formula_structural_recursion_assembler_target",
+  "old_dependency": "quantified_formula_radius_constructor_target_status",
+  "new_dependency": "proof_bearing_quantifier_assignment_radius_control_statement",
+  "uses_proof": "trebuchet_variant_full_unguarded_fo_formula_radius_construction",
+  "scope": "one_downstream_target_edge_replacement",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "390ae63",
+  "boundary": "Formula structural recursion target-edge refinement only; this does not prove full formula-radius construction or full unguarded FO locality.",
+  "next_admissible_target": "Use this strengthened assembler target to refine the formula-radius construction gate."
+}
