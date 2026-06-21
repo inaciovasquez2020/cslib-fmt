@@ -1,0 +1,11 @@
+{
+  "status": "TRI_GRAPH_R_PROJECTION_LEMMA",
+  "parent_status": "TRI_GRAPH_R_SEMANTIC_TARGET",
+  "lemma": "tri_graph_r_target_to_assignment_extension_projection_radius_control",
+  "source_target": "tri_graph_assignment_extension_projection_radius_control_semantics_target",
+  "projected_target": "assignment_extension_projection_radius_control_statement_target",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "1336435",
+  "boundary": "Projection lemma only; it extracts the R assignment-extension target from the TRI Graph R package and does not prove the assignment-extension theorem itself.",
+  "next_admissible_target": "Replace the projected assignment-extension target shell with a more concrete assignment-extension invariant."
+}

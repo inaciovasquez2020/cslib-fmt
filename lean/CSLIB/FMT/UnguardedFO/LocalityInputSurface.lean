@@ -757,6 +757,16 @@ def tri_graph_assignment_extension_projection_radius_control_semantics_target
     quantified_formula_radius_constructor_target_status ∧
       radius_preservation_under_quantifier_assignment_move_target
 
+/-- R-projection lemma: TRI Graph R target exposes the assignment-extension
+projection radius-control target. -/
+theorem tri_graph_r_target_to_assignment_extension_projection_radius_control
+    {σ : RelLanguage} {n : Nat} {M : RelStructure σ} {r : Nat}
+    {φ : Formula σ (n + 1)} :
+    tri_graph_assignment_extension_projection_radius_control_semantics_target M r φ →
+      assignment_extension_projection_radius_control_statement_target := by
+  intro hR
+  exact hR.1
+
 /-- TRI Graph assignment-extension semantics payload. -/
 def tri_graph_assignment_extension_semantics_payload
     {σ : RelLanguage} {n : Nat} (M : RelStructure σ) (r : Nat)
