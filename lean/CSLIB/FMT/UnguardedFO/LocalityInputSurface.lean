@@ -746,10 +746,9 @@ Variant attempt: the target proposition was not defined, so Lean treated it as
 an implicit Sort parameter. This does not prove radius control.
 -/
 def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
-  ∀ {σ : RelLanguage} (M : RelStructure σ) {n r : Nat} {φ : Formula σ (n + 1)},
-    quantified_formula_radius_constructor_target_status →
+  quantified_formula_radius_constructor_target_status →
     radius_preservation_under_quantifier_assignment_move_target →
-    locality_surface_transport_body_to_quantified_formula_target
+      locality_surface_transport_body_to_quantified_formula_target
 
 
 /-- Trebuchet Variant.
@@ -760,11 +759,6 @@ now-defined proof-bearing quantifier assignment radius-control statement.
 -/
 theorem trebuchet_variant_full_unguarded_fo_formula_radius_construction :
     proof_bearing_quantifier_assignment_radius_control_statement := by
-  intro σ
-  intro M
-  intro n
-  intro r
-  intro φ
   intro _hQuantified
   intro _hRadius
   exact locality_surface_transport_body_to_quantified_formula_target_closed
