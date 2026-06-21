@@ -1132,6 +1132,20 @@ theorem existential_locality_radius_constructor_missing_theorem_status_closed :
     existential_locality_radius_constructor_missing_theorem_status := by
   exact TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_closed
 
+/-- Type shell for the body-witness transport needed by the existential
+locality-radius constructor.
+
+The attempted `Prop` shell is not universe-correct because the quantified
+`HasUnguardedFOLocalityRadius` target lives in a higher sort. This shell records
+the expressible type of the missing object without constructing it and without
+proving the existential locality-radius constructor.
+-/
+def existential_body_witness_locality_transport_type : Type 1 :=
+  ∀ {σ : RelLanguage} (M : RelStructure σ)
+      {n : Nat} {φ : Formula σ (n + 1)},
+    HasUnguardedFOLocalityRadius M φ →
+      HasUnguardedFOLocalityRadius M (Formula.ex φ)
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
