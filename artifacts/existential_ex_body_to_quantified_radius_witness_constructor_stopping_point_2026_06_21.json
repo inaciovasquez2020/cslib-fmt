@@ -1,0 +1,33 @@
+{
+  "status": "EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT_ONLY",
+  "base_commit": "387bbc9",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "weakest_missing_object": "existential_ex_body_to_quantified_radius_witness_constructor",
+  "first_failed_transport_error": "h\u03c6 has type HasUnguardedFOLocalityRadius M \u03c6 but target requires HasUnguardedFOLocalityRadius M \u03c6.ex",
+  "required_constructor_shape": "Transform a witness of HasUnguardedFOLocalityRadius M phi into a witness of HasUnguardedFOLocalityRadius M (Formula.ex phi), preserving the radius/witness fields required by the definition.",
+  "required_for": [
+    "existential_body_witness_locality_transport",
+    "existential_locality_radius_constructor"
+  ],
+  "does_not_prove": [
+    "existential_ex_body_to_quantified_radius_witness_constructor",
+    "existential_body_witness_locality_transport",
+    "existential_locality_radius_constructor",
+    "full_quantifier_locality_transport",
+    "full_formula_radius_construction",
+    "Pk1",
+    "2vK",
+    "full_unguarded_fo_locality"
+  ],
+  "boundary": [
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
+    "not existential_body_witness_locality_transport",
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
+  ],
+  "stopping_point": "Stop here; next session may state only the constructor shell for existential_ex_body_to_quantified_radius_witness_constructor."
+}
