@@ -1,0 +1,16 @@
+{
+  "artifact": "QUANTIFIED_CONSTRUCTOR_REMAINING_LADDER_COMPLETION",
+  "date": "2026-06-21",
+  "status": "TARGET_LADDER_COMPLETION_ONLY",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "completed_targets": [
+    "quantifier_assignment_semantics_bridge_target",
+    "radius_preservation_under_quantifier_assignment_move_target",
+    "locality_surface_transport_body_to_quantified_formula_target",
+    "existential_quantifier_constructor_branch_target",
+    "universal_quantifier_constructor_branch_classification_target",
+    "quantified_formula_radius_constructor_target_status",
+    "formula_structural_recursion_assembler_target"
+  ],
+  "boundary": "BOUNDARY := ¬ unguarded_fo_formula_radius_construction"
+}

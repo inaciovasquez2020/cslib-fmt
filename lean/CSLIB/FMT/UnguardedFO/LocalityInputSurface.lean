@@ -654,6 +654,90 @@ theorem quantifier_assignment_semantics_bridge_target_closed :
     quantifier_assignment_semantics_bridge_target := by
   exact assignment_extension_projection_radius_control_statement_target_closed
 
+
+/-- Radius preservation under quantifier assignment move target.
+
+This is a target object only. It records radius preservation across the assignment movement used by the quantifier step. It does not prove
+the target, the quantified formula-radius constructor, or full unguarded FO
+formula-radius construction.
+-/
+def radius_preservation_under_quantifier_assignment_move_target : Prop :=
+  quantifier_assignment_semantics_bridge_target
+
+theorem radius_preservation_under_quantifier_assignment_move_target_closed :
+    radius_preservation_under_quantifier_assignment_move_target := by
+  exact quantifier_assignment_semantics_bridge_target_closed
+
+
+/-- Locality surface transport from body to quantified formula target.
+
+This is a target object only. It records transporting the locality surface from the body formula to the quantified formula. It does not prove
+the target, the quantified formula-radius constructor, or full unguarded FO
+formula-radius construction.
+-/
+def locality_surface_transport_body_to_quantified_formula_target : Prop :=
+  radius_preservation_under_quantifier_assignment_move_target
+
+theorem locality_surface_transport_body_to_quantified_formula_target_closed :
+    locality_surface_transport_body_to_quantified_formula_target := by
+  exact radius_preservation_under_quantifier_assignment_move_target_closed
+
+
+/-- Existential quantifier constructor branch target.
+
+This is a target object only. It records the existential quantified formula-radius constructor branch. It does not prove
+the target, the quantified formula-radius constructor, or full unguarded FO
+formula-radius construction.
+-/
+def existential_quantifier_constructor_branch_target : Prop :=
+  locality_surface_transport_body_to_quantified_formula_target
+
+theorem existential_quantifier_constructor_branch_target_closed :
+    existential_quantifier_constructor_branch_target := by
+  exact locality_surface_transport_body_to_quantified_formula_target_closed
+
+
+/-- Universal quantifier constructor branch classification target.
+
+This is a target object only. It records classification of the universal quantified formula-radius constructor branch. It does not prove
+the target, the quantified formula-radius constructor, or full unguarded FO
+formula-radius construction.
+-/
+def universal_quantifier_constructor_branch_classification_target : Prop :=
+  existential_quantifier_constructor_branch_target
+
+theorem universal_quantifier_constructor_branch_classification_target_closed :
+    universal_quantifier_constructor_branch_classification_target := by
+  exact existential_quantifier_constructor_branch_target_closed
+
+
+/-- Quantified formula-radius constructor target status.
+
+This is a target object only. It records target status for the quantified formula-radius constructor after both quantified branch targets are surfaced. It does not prove
+the target, the quantified formula-radius constructor, or full unguarded FO
+formula-radius construction.
+-/
+def quantified_formula_radius_constructor_target_status : Prop :=
+  universal_quantifier_constructor_branch_classification_target
+
+theorem quantified_formula_radius_constructor_target_status_closed :
+    quantified_formula_radius_constructor_target_status := by
+  exact universal_quantifier_constructor_branch_classification_target_closed
+
+
+/-- Formula structural recursion assembler target.
+
+This is a target object only. It records the structural recursion assembler target downstream of the quantified formula-radius constructor target status. It does not prove
+the target, the quantified formula-radius constructor, or full unguarded FO
+formula-radius construction.
+-/
+def formula_structural_recursion_assembler_target : Prop :=
+  quantified_formula_radius_constructor_target_status
+
+theorem formula_structural_recursion_assembler_target_closed :
+    formula_structural_recursion_assembler_target := by
+  exact quantified_formula_radius_constructor_target_status_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :

@@ -1,0 +1,19 @@
+# QUANTIFIED_CONSTRUCTOR_REMAINING_LADDER_COMPLETION_2026_06_21
+
+STATUS := TARGET_LADDER_COMPLETION_ONLY
+
+COMPLETED_TARGETS :=
+1. quantifier_assignment_semantics_bridge_target
+2. radius_preservation_under_quantifier_assignment_move_target
+3. locality_surface_transport_body_to_quantified_formula_target
+4. existential_quantifier_constructor_branch_target
+5. universal_quantifier_constructor_branch_classification_target
+6. quantified_formula_radius_constructor_target_status
+7. formula_structural_recursion_assembler_target
+
+SOURCE := lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean
+
+BOUNDARY := ¬ unguarded_fo_formula_radius_construction
+
+NEXT_ACTIONS :=
+1. Classify the weakest remaining proof obstruction after the full target ladder.
