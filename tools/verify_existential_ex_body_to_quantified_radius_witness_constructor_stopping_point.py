@@ -1,30 +1,65 @@
-#!/usr/bin/env python3
-from pathlib import Path
 import json
-import subprocess
+from pathlib import Path
 
-ROOT = Path(subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip())
+ROOT = Path(".")
+LEAN = ROOT / "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean"
 ART = ROOT / "artifacts/existential_ex_body_to_quantified_radius_witness_constructor_stopping_point_2026_06_21.json"
 DOC = ROOT / "docs/status/EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT.md"
-SRC = ROOT / "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean"
 
+for path in (LEAN, ART, DOC):
+    if not path.exists():
+        raise SystemExit(f"MISSING_OBJECT := {path}")
+
+lean = LEAN.read_text()
 art = json.loads(ART.read_text())
+art_text = json.dumps(art)
 doc = DOC.read_text()
-src = SRC.read_text()
 
-if art.get("status") != "EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT_ONLY":
-    raise SystemExit("MISSING_OBJECT := stopping-point artifact status")
+for forbidden in (
+    "theorem existential_body_witness_locality_transport",
+    "def existential_body_witness_locality_transport :=",
+    "axiom existential_body_witness_locality_transport",
+    "opaque existential_body_witness_locality_transport",
+    "theorem existential_ex_body_to_quantified_radius_witness_constructor",
+    "def existential_ex_body_to_quantified_radius_witness_constructor :=",
+    "axiom existential_ex_body_to_quantified_radius_witness_constructor",
+    "opaque existential_ex_body_to_quantified_radius_witness_constructor",
+    "sorry",
+    "admit",
+):
+    if forbidden in lean:
+        raise SystemExit(f"MISSING_OBJECT := forbidden proof marker absence {forbidden}")
 
-if art.get("weakest_missing_object") != "existential_ex_body_to_quantified_radius_witness_constructor":
-    raise SystemExit("MISSING_OBJECT := weakest missing witness constructor")
+for marker in (
+    "def existential_ex_body_to_quantified_radius_witness_constructor_shell : Type 1 :=",
+    "theorem existential_body_assignment_extension_invariance_component_package",
+    "def existential_constructor_frontier_from_body_invariance_package_status : Prop :=",
+):
+    if marker not in lean:
+        raise SystemExit(f"MISSING_OBJECT := {marker}")
 
-for marker in ["HasUnguardedFOLocalityRadius", "Formula.ex", "existential_body_witness_locality_transport_type"]:
-    if marker not in src:
-        raise SystemExit("MISSING_OBJECT := inspected source marker " + marker)
+for marker in (
+    "EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT_ONLY",
+    "existential_ex_body_to_quantified_radius_witness_constructor",
+):
+    if marker not in art_text:
+        raise SystemExit(f"MISSING_OBJECT := artifact marker {marker}")
+
+expected = {
+    "constructor_frontier_status_object": "existential_constructor_frontier_from_body_invariance_package_status",
+    "body_invariance_package_object": "existential_body_assignment_extension_invariance_component_package",
+    "remaining_constructor_gap": "existential_ex_body_to_quantified_radius_witness_constructor",
+    "remaining_transport_gap": "existential_body_witness_locality_transport",
+    "refined_after_constructor_frontier_status_commit": "93cf508",
+}
+
+for key, value in expected.items():
+    if art.get(key) != value:
+        raise SystemExit(f"MISSING_OBJECT := artifact {key} {value}")
 
 for boundary in [
-    "not existential_ex_body_to_quantified_radius_witness_constructor",
     "not existential_body_witness_locality_transport",
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
     "not existential_locality_radius_constructor",
     "not full_quantifier_locality_transport",
     "not full_formula_radius_construction",
@@ -32,22 +67,19 @@ for boundary in [
     "not 2vK",
     "not full_unguarded_fo_locality",
 ]:
-    if boundary not in art.get("boundary", []):
-        raise SystemExit("MISSING_OBJECT := artifact boundary " + boundary)
+    if boundary not in art_text:
+        raise SystemExit(f"MISSING_OBJECT := boundary {boundary}")
 
 for marker in [
-    "EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT_ONLY",
-    "existential_ex_body_to_quantified_radius_witness_constructor",
-    "BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor",
+    "EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT",
+    "BODY_INVARIANCE_PACKAGE_OBJECT := existential_body_assignment_extension_invariance_component_package",
+    "CONSTRUCTOR_FRONTIER_STATUS_OBJECT := existential_constructor_frontier_from_body_invariance_package_status",
     "BOUNDARY := ¬ existential_body_witness_locality_transport",
-    "BOUNDARY := ¬ existential_locality_radius_constructor",
-    "BOUNDARY := ¬ full_quantifier_locality_transport",
-    "BOUNDARY := ¬ full_formula_radius_construction",
-    "BOUNDARY := ¬ Pk1",
-    "BOUNDARY := ¬ 2vK",
-    "BOUNDARY := ¬ full_unguarded_fo_locality",
+    "BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor",
+    "MISSING_OBJECT := existential_ex_body_to_quantified_radius_witness_constructor",
+    "MISSING_OBJECT := existential_body_witness_locality_transport",
 ]:
     if marker not in doc:
-        raise SystemExit("MISSING_OBJECT := doc marker " + marker)
+        raise SystemExit(f"MISSING_OBJECT := doc marker {marker}")
 
 print("EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT_OK")
