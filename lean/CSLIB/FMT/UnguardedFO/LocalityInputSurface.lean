@@ -806,6 +806,23 @@ theorem tri_graph_positive_radius_assignment_extension_projection
       have hj : j < n := Nat.lt_of_succ_lt_succ hi
       simpa [extendAssignment] using hbase ⟨j, hj⟩
 
+/-- TRI Graph R threading for positive-radius assignment-extension projection.
+
+This exposes the positive-radius assignment-extension projection from a TRI
+Graph R package. The underlying proof is the standalone assignment-extension
+projection lemma; the R package is threaded as the interface precondition.
+-/
+theorem tri_graph_r_target_to_positive_radius_assignment_extension_projection
+    {σ : RelLanguage} {n r : Nat} {M : RelStructure σ}
+    {φ : Formula σ (n + 1)} :
+    tri_graph_assignment_extension_projection_radius_control_semantics_target M r φ →
+      ∀ (ρ τ : Fin n → M.carrier) (x y : M.carrier),
+        AssignmentGaifmanClose M r ρ τ →
+          GaifmanDistanceLe M x y r →
+            AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y) := by
+  intro _hR ρ τ x y hbase hxy
+  exact tri_graph_positive_radius_assignment_extension_projection hbase hxy
+
 /-- Radius-zero quantifier assignment-extension projection.
 
 If the base assignments are radius-zero Gaifman-close and the newly-bound

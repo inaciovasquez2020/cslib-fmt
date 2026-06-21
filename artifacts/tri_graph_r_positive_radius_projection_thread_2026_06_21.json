@@ -1,0 +1,13 @@
+{
+  "status": "TRI_GRAPH_R_POSITIVE_RADIUS_PROJECTION_THREAD",
+  "parent_status": "TRI_GRAPH_POSITIVE_RADIUS_ASSIGNMENT_EXTENSION_PROJECTION",
+  "theorem": "tri_graph_r_target_to_positive_radius_assignment_extension_projection",
+  "uses_theorem": "tri_graph_positive_radius_assignment_extension_projection",
+  "interface_precondition": "tri_graph_assignment_extension_projection_radius_control_semantics_target M r phi",
+  "output": "AssignmentGaifmanClose M r (extendAssignment rho x) (extendAssignment tau y)",
+  "scope": "positive_radius_and_radius_zero_uniform",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "0233be6",
+  "boundary": "TRI Graph R interface-threading theorem only; it does not prove quantifier locality transport or full unguarded FO locality.",
+  "next_admissible_target": "Use this threaded projection to refine the quantifier transport target."
+}
