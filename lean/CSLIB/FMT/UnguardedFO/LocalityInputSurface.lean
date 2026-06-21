@@ -855,6 +855,29 @@ def tri_graph_assignment_extension_semantics_payload
     tri_graph_assignment_extension_projection_radius_control_semantics_target M r φ ∧
       locality_surface_transport_body_to_quantified_formula_target
 
+/-- TRI Graph payload refinement for positive-radius assignment extension
+and the existing transport target.
+
+This combines the proved positive-radius assignment-extension projection exposed
+through the TRI Graph R component with the already-packaged locality transport
+target from the full TRI Graph payload.
+-/
+theorem tri_graph_payload_positive_radius_assignment_extension_projection_with_transport_target
+    {σ : RelLanguage} {n r : Nat} {M : RelStructure σ}
+    {φ : Formula σ (n + 1)} :
+    tri_graph_assignment_extension_semantics_payload M r φ →
+      ∀ (ρ τ : Fin n → M.carrier) (x y : M.carrier),
+        AssignmentGaifmanClose M r ρ τ →
+          GaifmanDistanceLe M x y r →
+            AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y) ∧
+              locality_surface_transport_body_to_quantified_formula_target := by
+  intro hPayload ρ τ x y hbase hxy
+  constructor
+  · exact
+      tri_graph_r_target_to_positive_radius_assignment_extension_projection
+        hPayload.2.1 ρ τ x y hbase hxy
+  · exact hPayload.2.2
+
 def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
   ∀ {σ : RelLanguage} {n r : Nat} (M : RelStructure σ) (φ : Formula σ (n + 1)),
     tri_graph_assignment_extension_semantics_payload M r φ →

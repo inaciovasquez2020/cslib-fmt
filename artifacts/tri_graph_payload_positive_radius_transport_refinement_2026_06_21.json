@@ -1,0 +1,14 @@
+{
+  "status": "TRI_GRAPH_PAYLOAD_POSITIVE_RADIUS_TRANSPORT_REFINEMENT",
+  "parent_status": "TRI_GRAPH_R_POSITIVE_RADIUS_PROJECTION_THREAD",
+  "theorem": "tri_graph_payload_positive_radius_assignment_extension_projection_with_transport_target",
+  "uses_theorem": "tri_graph_r_target_to_positive_radius_assignment_extension_projection",
+  "uses_payload": "tri_graph_assignment_extension_semantics_payload",
+  "output_assignment_projection": "AssignmentGaifmanClose M r (extendAssignment rho x) (extendAssignment tau y)",
+  "output_transport_target": "locality_surface_transport_body_to_quantified_formula_target",
+  "scope": "payload_refinement_only",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "fc938b0",
+  "boundary": "Payload refinement only; it pairs a proved assignment-extension projection with an existing transport target and does not prove quantifier locality transport or full unguarded FO locality.",
+  "next_admissible_target": "Use this payload refinement to replace one downstream target-only edge in the quantified-constructor ladder."
+}
