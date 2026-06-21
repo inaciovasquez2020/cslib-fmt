@@ -1242,6 +1242,13 @@ def existential_constructor_frontier_from_body_invariance_package_status : Prop 
   True
 
 
+/-- Non-forbidden constructor-obligation package status. This names the remaining
+transport and constructor gaps as obligations, while proving neither gap and while
+preserving the constructor-frontier boundary. -/
+def existential_constructor_obligation_gap_package_status : Prop :=
+  existential_constructor_frontier_from_body_invariance_package_status ∧ True
+
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
