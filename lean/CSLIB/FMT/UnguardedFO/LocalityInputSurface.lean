@@ -1025,6 +1025,29 @@ theorem TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status_closed 
   · exact hStatus
   · exact hStatus.2
 
+/-- Direct projection from the 2vK-to-Pk1 quantified-constructor frontier
+status edge to the formula-radius gate structural-recursion edge.
+
+This is only a status/projection edge. It records that the carried Pk1
+quantified-constructor branch frontier exposes the already validated
+formula-radius construction gate structural-recursion edge. It does not prove
+2vK, does not prove Pk1, and does not claim full formula-radius construction,
+full quantifier locality transport, or full unguarded FO locality.
+-/
+def TwoVK_to_Pk1_frontier_to_formula_radius_gate_status : Prop :=
+  TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status ∧
+    formula_radius_construction_gate_structural_recursion_edge
+
+theorem TwoVK_to_Pk1_frontier_to_formula_radius_gate_status_closed :
+    TwoVK_to_Pk1_frontier_to_formula_radius_gate_status := by
+  have hStatus :
+      TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status :=
+    TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status_closed
+  constructor
+  · exact hStatus
+  · exact hStatus.2.1
+
+
 
 
 
