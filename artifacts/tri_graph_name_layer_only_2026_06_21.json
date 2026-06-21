@@ -1,0 +1,13 @@
+{
+  "status": "TRI_GRAPH_NAME_LAYER_ONLY",
+  "tri_graph_name_layer_only": true,
+  "tri_graph_parts": {
+    "T": "quantifier_assignment_semantics_bridge_target",
+    "R": "assignment_extension_projection_radius_control_statement_target",
+    "I": "locality_surface_transport_body_to_quantified_formula_target"
+  },
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "7ebe267",
+  "boundary": "Named proof-target architecture only; no claim of a new mathematical theorem beyond known Gaifman/Hanf locality.",
+  "next_admissible_target": "Strengthen one TRI Graph component with actual assignment-extension semantics."
+}
