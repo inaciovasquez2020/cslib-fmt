@@ -1,0 +1,1019 @@
+{
+  "status": "FULL_FORMULA_RADIUS_DOWNSTREAM_OLD_BOUNDARY_AUDIT",
+  "date": "2026-06-21",
+  "source_commit": "e352dfa",
+  "closed_object": "full_formula_radius_construction",
+  "closed_object_status": "repository_internal_formula_radius_construction_only",
+  "scan_scope": [
+    "artifacts",
+    "docs/status",
+    "tools",
+    "tests"
+  ],
+  "excluded_current_closure_files": [
+    "artifacts/full_formula_radius_construction_2026_06_21.json",
+    "artifacts/full_formula_radius_downstream_old_boundary_audit_2026_06_21.json",
+    "docs/status/FULL_FORMULA_RADIUS_CONSTRUCTION.md",
+    "docs/status/FULL_FORMULA_RADIUS_DOWNSTREAM_OLD_BOUNDARY_AUDIT.md",
+    "tests/test_full_formula_radius_construction.py",
+    "tests/test_full_formula_radius_downstream_old_boundary_audit.py",
+    "tools/verify_full_formula_radius_construction.py",
+    "tools/verify_full_formula_radius_downstream_old_boundary_audit.py"
+  ],
+  "old_boundary_patterns": [
+    "full formula-radius construction",
+    "full_formula_radius_construction",
+    "\u00ac full_formula_radius_construction",
+    "no full formula-radius construction",
+    "does not prove full formula-radius construction",
+    "does not close full formula-radius construction",
+    "formula-radius construction remains open",
+    "formula radius construction remains open"
+  ],
+  "hit_count": 66,
+  "hits": [
+    {
+      "path": "artifacts/cslib_fmt/formula_radius_construction_weakest_missing_branch_classification_2026_06_20.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 16,
+          "text": "\"reason\": \"full formula-radius construction cannot be assembled from atomic input plus bounded Boolean recursion without a checked constructor branch for quantified formulas\""
+        }
+      ]
+    },
+    {
+      "path": "artifacts/cslib_fmt/noncomputable_audit_2026_06_19.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 170,
+          "text": "\"name\": \"full_formula_radius_construction_closed\""
+        }
+      ]
+    },
+    {
+      "path": "artifacts/cslib_fmt/unguarded_fo_formula_radius_construction_gap_2026_06_20.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 14,
+          "text": "\"full formula-radius construction theorem\""
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_body_assignment_extension_invariance_component_package_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 14,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_body_distinct_witness_assignment_extension_invariance_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 15,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_body_same_witness_assignment_extension_invariance_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 15,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_body_witness_locality_transport_type_shell_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 13,
+          "text": "\"full_formula_radius_construction\","
+        },
+        {
+          "line": 22,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_body_witness_transport_inhabitance_failure_lock_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 3,
+      "lines": [
+        {
+          "line": 10,
+          "text": "\"not full_formula_radius_construction\","
+        },
+        {
+          "line": 21,
+          "text": "\"full_formula_radius_construction\","
+        },
+        {
+          "line": 40,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_constructor_definition_inspection_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 20,
+          "text": "\"full_formula_radius_construction\","
+        },
+        {
+          "line": 29,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_constructor_frontier_from_body_invariance_package_status_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 14,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_constructor_obligation_gap_package_status_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 18,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_ex_body_to_quantified_radius_witness_constructor_shell_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 10,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_ex_body_to_quantified_radius_witness_constructor_stopping_point_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 3,
+      "lines": [
+        {
+          "line": 9,
+          "text": "\"not full_formula_radius_construction\","
+        },
+        {
+          "line": 19,
+          "text": "\"not full_formula_radius_construction\","
+        },
+        {
+          "line": 31,
+          "text": "\"full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/existential_locality_radius_constructor_missing_theorem_status_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction",
+        "full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 15,
+          "text": "\"full formula-radius construction\","
+        },
+        {
+          "line": 23,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/formula_radius_construction_gate_structural_recursion_edge_2026_06_21.json",
+      "matched_patterns": [
+        "does not prove full formula-radius construction",
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 14,
+          "text": "\"boundary\": \"Formula-radius construction gate edge only; this does not prove full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/formula_structural_recursion_positive_radius_edge_2026_06_21.json",
+      "matched_patterns": [
+        "does not prove full formula-radius construction",
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 11,
+          "text": "\"boundary\": \"Formula structural recursion target-edge refinement only; this does not prove full formula-radius construction or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/full_unguarded_fo_pk1_route_gap_rank_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 3,
+      "lines": [
+        {
+          "line": 20,
+          "text": "\"missing_object\": \"full_formula_radius_construction\","
+        },
+        {
+          "line": 40,
+          "text": "\"full_formula_radius_construction\","
+        },
+        {
+          "line": 48,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/pk1_quantified_constructor_branch_frontier_status_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 13,
+          "text": "\"boundary\": \"Status-only PK1 quantified-constructor branch frontier edge; this does not define or prove Pk1, 2vK, full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/pk1_target_theorem_statement_shell_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 11,
+          "text": "\"boundary\": \"Target-only Pk1 theorem statement shell. This does not prove Pk1, does not define or prove 2vK, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/twovk_bridge_target_shell_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 11,
+          "text": "\"boundary\": \"Target-only 2vK bridge shell. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/twovk_to_pk1_formula_radius_gate_structural_recursion_status_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 14,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/twovk_to_pk1_frontier_formula_radius_gate_status_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 13,
+          "text": "\"boundary\": \"Status-only projection from the 2vK-to-Pk1 quantified-constructor frontier status edge to the formula-radius gate structural-recursion edge. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/twovk_to_pk1_quantified_constructor_frontier_status_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 13,
+          "text": "\"boundary\": \"Status-only projection from the 2vK-to-Pk1 statement status edge to the Pk1 quantified-constructor branch frontier. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/twovk_to_pk1_statement_status_2026_06_21.json",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 12,
+          "text": "\"boundary\": \"Status-only direct bridge-strengthening edge from the 2vK target shell to the Pk1 statement shell. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.\","
+        }
+      ]
+    },
+    {
+      "path": "artifacts/twovk_to_pk1_structural_recursion_proof_bearing_quantifier_status_2026_06_21.json",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 14,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "docs/status/ATOMIC_FORMULA_RADIUS_INPUT_CONNECTION_STATUS_2026_06_20.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 23,
+          "text": "1. Classify the weakest missing branch between atomic input status and full formula-radius construction."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_BODY_ASSIGNMENT_EXTENSION_INVARIANCE_COMPONENT_PACKAGE.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 16,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_BODY_DISTINCT_WITNESS_ASSIGNMENT_EXTENSION_INVARIANCE.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 13,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_BODY_SAME_WITNESS_ASSIGNMENT_EXTENSION_INVARIANCE.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 13,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_BODY_WITNESS_LOCALITY_TRANSPORT_TYPE_SHELL.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 24,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 4,
+      "lines": [
+        {
+          "line": 38,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        },
+        {
+          "line": 56,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        },
+        {
+          "line": 77,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        },
+        {
+          "line": 99,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_CONSTRUCTOR_DEFINITION_INSPECTION.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 27,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_CONSTRUCTOR_FRONTIER_FROM_BODY_INVARIANCE_PACKAGE_STATUS.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 18,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_CONSTRUCTOR_OBLIGATION_GAP_PACKAGE_STATUS.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 19,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_SHELL.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 11,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_STOPPING_POINT.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 3,
+      "lines": [
+        {
+          "line": 45,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        },
+        {
+          "line": 65,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        },
+        {
+          "line": 89,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/EXISTENTIAL_LOCALITY_RADIUS_CONSTRUCTOR_MISSING_THEOREM_STATUS.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 30,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/FORMULA_RADIUS_CONSTRUCTION_GATE_STRUCTURAL_RECURSION_EDGE.md",
+      "matched_patterns": [
+        "does not prove full formula-radius construction",
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 7,
+          "text": "BOUNDARY := Gate-edge refinement only. This does not prove full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/FORMULA_RADIUS_CONSTRUCTION_WEAKEST_MISSING_BRANCH_CLASSIFICATION_2026_06_20.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 16,
+          "text": "- reason: full formula-radius construction cannot be assembled from atomic input plus bounded Boolean recursion without a checked constructor branch for quantified formulas."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/FORMULA_STRUCTURAL_RECURSION_POSITIVE_RADIUS_EDGE.md",
+      "matched_patterns": [
+        "does not prove full formula-radius construction",
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 7,
+          "text": "BOUNDARY := Target-edge refinement only. This does not prove full formula-radius construction or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/FULL_UNGUARDED_FO_PK1_ROUTE_GAP_RANK.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 12,
+          "text": "3. `full_formula_radius_construction`"
+        },
+        {
+          "line": 30,
+          "text": "BOUNDARY := \u00ac full_formula_radius_construction"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/PK1_QUANTIFIED_CONSTRUCTOR_BRANCH_FRONTIER_STATUS.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 9,
+          "text": "This does not define or prove Pk1, 2vK, full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/PK1_TARGET_THEOREM_STATEMENT_SHELL.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 9,
+          "text": "This does not prove Pk1, does not define or prove 2vK, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/TWOVK_BRIDGE_TARGET_SHELL.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 9,
+          "text": "This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/TWOVK_TO_PK1_FORMULA_RADIUS_GATE_STRUCTURAL_RECURSION_STATUS.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 16,
+          "text": "- `BOUNDARY := \u00ac full_formula_radius_construction`"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/TWOVK_TO_PK1_FRONTIER_FORMULA_RADIUS_GATE_STATUS.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 9,
+          "text": "This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/TWOVK_TO_PK1_QUANTIFIED_CONSTRUCTOR_FRONTIER_STATUS.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 9,
+          "text": "This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/TWOVK_TO_PK1_STATEMENT_STATUS.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 9,
+          "text": "This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality."
+        }
+      ]
+    },
+    {
+      "path": "docs/status/TWOVK_TO_PK1_STRUCTURAL_RECURSION_PROOF_BEARING_QUANTIFIER_STATUS.md",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 16,
+          "text": "- `BOUNDARY := \u00ac full_formula_radius_construction`"
+        }
+      ]
+    },
+    {
+      "path": "docs/status/UNGUARDED_FO_FORMULA_RADIUS_CONSTRUCTION_GAP_2026_06_20.md",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 26,
+          "text": "6. full formula-radius construction theorem"
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_existential_body_witness_locality_transport_type_shell.py",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 16,
+          "text": "boundaries = [\"not existential_body_witness_locality_transport\", \"not existential_locality_radius_constructor\", \"not full_quantifier_locality_transport\", \"not full_formula_radius_construction\", \"not Pk1\", \"not 2vK\", \"not full_unguarded_fo_locality\"]"
+        },
+        {
+          "line": 19,
+          "text": "doc_markers = [\"EXISTENTIAL_BODY_WITNESS_LOCALITY_TRANSPORT_TYPE_SHELL_ONLY\", \"def existential_body_witness_locality_transport_type : Type 1 :=\", \"BOUNDARY := \u00ac existential_body_witness_locality_transport\", \"BOUNDARY := \u00ac existential_locality_radius_constructor\", \"BOUNDARY := \u00ac full_quantifier_locality_transport\", \"BOUNDARY := \u00ac full_formula_radius_construction\", \"BOUNDARY := \u00ac Pk1\", \"BOUNDARY := \u00ac 2vK\", \"BOUNDARY := \u00ac full_unguarded_fo_locality\"]"
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_existential_body_witness_transport_inhabitance_failure_lock.py",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 69,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_existential_constructor_definition_inspection.py",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 23,
+          "text": "\"not full_formula_radius_construction\","
+        },
+        {
+          "line": 39,
+          "text": "\"BOUNDARY := \u00ac full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_existential_constructor_frontier_from_body_invariance_package_status.py",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 55,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_existential_ex_body_to_quantified_radius_witness_constructor_stopping_point.py",
+      "matched_patterns": [
+        "full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 66,
+          "text": "\"not full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_existential_locality_radius_constructor_missing_theorem_status.py",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 18,
+          "text": "boundaries = [\"not existential_locality_radius_constructor\", \"not 2vK\", \"not Pk1\", \"not full_formula_radius_construction\", \"not full_quantifier_locality_transport\", \"not full_unguarded_fo_locality\"]"
+        },
+        {
+          "line": 21,
+          "text": "markers = [\"EXISTENTIAL_LOCALITY_RADIUS_CONSTRUCTOR_MISSING_THEOREM_STATUS_ONLY\", \"BOUNDARY := \u00ac existential_locality_radius_constructor\", \"BOUNDARY := \u00ac 2vK\", \"BOUNDARY := \u00ac Pk1\", \"BOUNDARY := \u00ac full_formula_radius_construction\", \"BOUNDARY := \u00ac full_quantifier_locality_transport\", \"BOUNDARY := \u00ac full_unguarded_fo_locality\"]"
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_formula_radius_construction_gate_structural_recursion_edge.py",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 41,
+          "text": "assert \"full formula-radius construction\" in data[\"boundary\"]"
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_full_unguarded_fo_pk1_route_gap_rank.py",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 3,
+      "lines": [
+        {
+          "line": 11,
+          "text": "expected = [\"existential_locality_radius_constructor\", \"full_quantifier_locality_transport\", \"full_formula_radius_construction\", \"Pk1\", \"2vK\"]"
+        },
+        {
+          "line": 15,
+          "text": "boundaries = [\"not existential_locality_radius_constructor\", \"not full_quantifier_locality_transport\", \"not full_formula_radius_construction\", \"not Pk1\", \"not 2vK\", \"not full_unguarded_fo_locality\"]"
+        },
+        {
+          "line": 18,
+          "text": "markers = [\"FULL_UNGUARDED_FO_PK1_ROUTE_GAP_RANK_ONLY\", \"BOUNDARY := \u00ac existential_locality_radius_constructor\", \"BOUNDARY := \u00ac full_quantifier_locality_transport\", \"BOUNDARY := \u00ac full_formula_radius_construction\", \"BOUNDARY := \u00ac Pk1\", \"BOUNDARY := \u00ac 2vK\", \"BOUNDARY := \u00ac full_unguarded_fo_locality\"]"
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_pk1_quantified_constructor_branch_frontier_status.py",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 51,
+          "text": "assert \"full formula-radius construction\" in data[\"boundary\"]"
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_pk1_target_theorem_statement_shell.py",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 71,
+          "text": "\"full formula-radius construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_twovk_bridge_target_shell.py",
+      "matched_patterns": [
+        "full formula-radius construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 45,
+          "text": "\"full formula-radius construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_twovk_to_pk1_formula_radius_gate_structural_recursion_status.py",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 38,
+          "text": "\"BOUNDARY := \u00ac full_formula_radius_construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_twovk_to_pk1_frontier_formula_radius_gate_status.py",
+      "matched_patterns": [
+        "full formula-radius construction",
+        "full_formula_radius_construction"
+      ],
+      "line_count": 3,
+      "lines": [
+        {
+          "line": 57,
+          "text": "\"theorem full_formula_radius_construction\","
+        },
+        {
+          "line": 58,
+          "text": "\"def full_formula_radius_construction\","
+        },
+        {
+          "line": 69,
+          "text": "\"full formula-radius construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_twovk_to_pk1_quantified_constructor_frontier_status.py",
+      "matched_patterns": [
+        "full formula-radius construction",
+        "full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 56,
+          "text": "\"full_formula_radius_construction\","
+        },
+        {
+          "line": 65,
+          "text": "\"full formula-radius construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_twovk_to_pk1_statement_status.py",
+      "matched_patterns": [
+        "full formula-radius construction",
+        "full_formula_radius_construction"
+      ],
+      "line_count": 2,
+      "lines": [
+        {
+          "line": 54,
+          "text": "\"full_formula_radius_construction\","
+        },
+        {
+          "line": 63,
+          "text": "\"full formula-radius construction\","
+        }
+      ]
+    },
+    {
+      "path": "tools/verify_twovk_to_pk1_structural_recursion_proof_bearing_quantifier_status.py",
+      "matched_patterns": [
+        "full_formula_radius_construction",
+        "\u00ac full_formula_radius_construction"
+      ],
+      "line_count": 1,
+      "lines": [
+        {
+          "line": 35,
+          "text": "\"BOUNDARY := \u00ac full_formula_radius_construction\","
+        }
+      ]
+    }
+  ],
+  "boundary": "audit-only inventory of downstream status artifacts and verifier/test files that still mention the old full formula-radius construction boundary; does not rewrite historical status records"
+}
