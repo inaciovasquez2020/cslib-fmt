@@ -29,6 +29,7 @@ for marker in (
     "def existential_body_witness_locality_transport_type : Type 1 :=",
     "theorem existential_body_same_witness_assignment_extension_invariance",
     "theorem existential_body_distinct_witness_assignment_extension_invariance",
+    "theorem existential_body_assignment_extension_invariance_component_package",
 ):
     if marker not in lean:
         raise SystemExit(f"MISSING_OBJECT := {marker}")
@@ -46,9 +47,13 @@ if not isinstance(components, list):
 for component in (
     "existential_body_same_witness_assignment_extension_invariance",
     "existential_body_distinct_witness_assignment_extension_invariance",
+    "existential_body_assignment_extension_invariance_component_package",
 ):
     if component not in components:
         raise SystemExit(f"MISSING_OBJECT := proved weaker component {component}")
+
+if art.get("packaged_body_invariance_target") != "existential_body_assignment_extension_invariance_component_package":
+    raise SystemExit("MISSING_OBJECT := packaged body-invariance target recorded in lock artifact")
 
 if art.get("remaining_transport_gap") != "existential_body_witness_locality_transport":
     raise SystemExit("MISSING_OBJECT := remaining transport gap recorded in lock artifact")
@@ -73,6 +78,7 @@ for marker in [
     "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY",
     "PROVED_WEAKER_COMPONENT := existential_body_same_witness_assignment_extension_invariance",
     "PROVED_WEAKER_COMPONENT := existential_body_distinct_witness_assignment_extension_invariance",
+    "PACKAGED_BODY_INVARIANCE_TARGET := existential_body_assignment_extension_invariance_component_package",
     "BOUNDARY := ¬ existential_body_witness_locality_transport",
     "BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor",
     "MISSING_OBJECT := existential_body_witness_locality_transport",

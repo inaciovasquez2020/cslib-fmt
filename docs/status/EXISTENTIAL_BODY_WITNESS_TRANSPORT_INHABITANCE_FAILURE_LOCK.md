@@ -81,3 +81,25 @@ BOUNDARY := ¬ full_unguarded_fo_locality
 
 MISSING_OBJECT := existential_body_witness_locality_transport
 MISSING_OBJECT := existential_ex_body_to_quantified_radius_witness_constructor
+
+## Refactor after packaged body-invariance target
+
+ACHIEVED_COMPONENT := existential_body_assignment_extension_invariance_component_package_only
+
+PROVED_WEAKER_COMPONENT := existential_body_same_witness_assignment_extension_invariance
+PROVED_WEAKER_COMPONENT := existential_body_distinct_witness_assignment_extension_invariance
+PACKAGED_BODY_INVARIANCE_TARGET := existential_body_assignment_extension_invariance_component_package
+
+This refactor preserves the transport-inhabitance failure lock while recording the packaged two-component body-invariance target.
+
+BOUNDARY := ¬ existential_body_witness_locality_transport
+BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor
+BOUNDARY := ¬ existential_locality_radius_constructor
+BOUNDARY := ¬ full_quantifier_locality_transport
+BOUNDARY := ¬ full_formula_radius_construction
+BOUNDARY := ¬ Pk1
+BOUNDARY := ¬ 2vK
+BOUNDARY := ¬ full_unguarded_fo_locality
+
+MISSING_OBJECT := existential_body_witness_locality_transport
+MISSING_OBJECT := existential_ex_body_to_quantified_radius_witness_constructor
