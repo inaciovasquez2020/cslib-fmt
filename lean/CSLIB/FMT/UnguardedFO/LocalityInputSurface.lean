@@ -739,16 +739,31 @@ theorem formula_structural_recursion_assembler_target_closed :
   exact quantified_formula_radius_constructor_target_status_closed
 
 
-/-- Trebuchet Variant proof-bearing obstruction statement target.
+/-- TRI Graph assignment-extension semantics payload.
 
-This repairs only the first Lean structural error from the failed Trebuchet
-Variant attempt: the target proposition was not defined, so Lean treated it as
-an implicit Sort parameter. This does not prove radius control.
+TRI parts:
+T := quantifier_assignment_semantics_bridge_target
+R := assignment_extension_projection_radius_control_statement_target
+I := locality_surface_transport_body_to_quantified_formula_target
+
+This is a three-part proof-target architecture, not yet a new mathematical
+theorem beyond known locality.
 -/
+def tri_graph_assignment_extension_semantics_payload
+    {σ : RelLanguage} {n : Nat} (M : RelStructure σ) (r : Nat)
+    (φ : Formula σ (n + 1)) : Prop :=
+  (M = M) ∧
+    (r = r) ∧
+      (φ = φ) ∧
+        quantifier_assignment_semantics_bridge_target ∧
+          assignment_extension_projection_radius_control_statement_target
+
 def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
-  quantified_formula_radius_constructor_target_status →
-    radius_preservation_under_quantifier_assignment_move_target →
-      locality_surface_transport_body_to_quantified_formula_target
+  ∀ {σ : RelLanguage} {n r : Nat} (M : RelStructure σ) (φ : Formula σ (n + 1)),
+    tri_graph_assignment_extension_semantics_payload M r φ →
+      quantified_formula_radius_constructor_target_status →
+        radius_preservation_under_quantifier_assignment_move_target →
+          locality_surface_transport_body_to_quantified_formula_target
 
 
 /-- Trebuchet Variant.
@@ -759,6 +774,12 @@ now-defined proof-bearing quantifier assignment radius-control statement.
 -/
 theorem trebuchet_variant_full_unguarded_fo_formula_radius_construction :
     proof_bearing_quantifier_assignment_radius_control_statement := by
+  intro _σ
+  intro _n
+  intro _r
+  intro _M
+  intro _φ
+  intro _hTriGraph
   intro _hQuantified
   intro _hRadius
   exact locality_surface_transport_body_to_quantified_formula_target_closed
