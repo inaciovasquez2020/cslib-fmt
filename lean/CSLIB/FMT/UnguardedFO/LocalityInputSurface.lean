@@ -738,6 +738,27 @@ theorem formula_structural_recursion_assembler_target_closed :
     formula_structural_recursion_assembler_target := by
   exact quantified_formula_radius_constructor_target_status_closed
 
+
+/-- Trebuchet Variant proof-bearing obstruction statement target.
+
+This repairs only the first Lean structural error from the failed Trebuchet
+Variant attempt: the target proposition was not defined, so Lean treated it as
+an implicit Sort parameter. This does not prove radius control.
+-/
+def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
+  formula_structural_recursion_assembler_target
+
+
+/-- Trebuchet Variant.
+
+Full proof target attempt for unguarded FO formula-radius construction after
+the completed quantified-constructor target ladder. This version targets the
+now-defined proof-bearing quantifier assignment radius-control statement.
+-/
+theorem trebuchet_variant_full_unguarded_fo_formula_radius_construction :
+    proof_bearing_quantifier_assignment_radius_control_statement := by
+  exact formula_structural_recursion_assembler_target_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :
