@@ -897,6 +897,31 @@ def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
                   AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y)
 
 
+/-- Existential-body to quantified-radius witness constructor.
+
+This closes only the proof-bearing quantifier assignment radius-control
+statement by using the radius-preservation target as the locality transport
+target and the assignment-move eliminator for extended assignments. It does not
+close the existential locality-radius constructor, full quantifier locality
+transport, `Pk1`, `2vK`, or full unguarded FO locality.
+-/
+theorem existential_ex_body_to_quantified_radius_witness_constructor :
+    proof_bearing_quantifier_assignment_radius_control_statement := by
+  intro _σ
+  intro _n
+  intro _r
+  intro M
+  intro _φ
+  intro _hPayload
+  intro _hQuantifier
+  intro hRadius
+  constructor
+  · exact hRadius
+  · intro ρ τ x y hρτ hxy
+    exact radius_preservation_under_quantifier_assignment_move_target_eliminator
+      M hRadius ρ τ x y hρτ hxy
+
+
 /-- Trebuchet Variant.
 
 Full proof target attempt for unguarded FO formula-radius construction after
