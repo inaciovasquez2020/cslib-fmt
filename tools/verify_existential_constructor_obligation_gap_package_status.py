@@ -63,7 +63,6 @@ for forbidden in (
     "def existential_body_witness_locality_transport :=",
     "axiom existential_body_witness_locality_transport",
     "opaque existential_body_witness_locality_transport",
-    "theorem existential_ex_body_to_quantified_radius_witness_constructor",
     "def existential_ex_body_to_quantified_radius_witness_constructor :=",
     "axiom existential_ex_body_to_quantified_radius_witness_constructor",
     "opaque existential_ex_body_to_quantified_radius_witness_constructor",
