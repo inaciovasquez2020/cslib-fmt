@@ -1,0 +1,53 @@
+{
+  "status": "FULL_UNGUARDED_FO_PK1_ROUTE_GAP_RANK_ONLY",
+  "base_commit": "663d05f",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "ranked_gaps": [
+    {
+      "rank": 1,
+      "missing_object": "existential_locality_radius_constructor",
+      "required_shape": "forall {sigma : RelLanguage} (M : RelStructure sigma) {n : Nat} {phi : Formula sigma (n + 1)}, HasUnguardedFOLocalityRadius M phi -> HasUnguardedFOLocalityRadius M (Formula.ex phi)",
+      "current_status": "no"
+    },
+    {
+      "rank": 2,
+      "missing_object": "full_quantifier_locality_transport",
+      "required_closure": "Lean proves quantified formula locality transport, including existential quantification",
+      "current_status": "no"
+    },
+    {
+      "rank": 3,
+      "missing_object": "full_formula_radius_construction",
+      "required_closure": "Lean proves formula-radius construction by structural recursion over all relevant formula constructors",
+      "current_status": "no"
+    },
+    {
+      "rank": 4,
+      "missing_object": "Pk1",
+      "required_closure": "Lean proves the actual Pk1 theorem, not only a shell or status-lock",
+      "current_status": "candidate"
+    },
+    {
+      "rank": 5,
+      "missing_object": "2vK",
+      "required_closure": "Lean proves 2vK itself or a formally sufficient bridge from completed Pk1",
+      "current_status": "candidate"
+    }
+  ],
+  "does_not_prove": [
+    "existential_locality_radius_constructor",
+    "full_quantifier_locality_transport",
+    "full_formula_radius_construction",
+    "Pk1",
+    "2vK",
+    "full_unguarded_fo_locality"
+  ],
+  "boundary": [
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
+  ]
+}
