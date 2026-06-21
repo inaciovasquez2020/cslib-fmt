@@ -794,6 +794,25 @@ theorem tri_graph_positive_radius_assignment_extension_projection
       have hj : j < n := Nat.lt_of_succ_lt_succ hi
       simpa [extendAssignment] using hbase ⟨j, hj⟩
 
+
+/-- Eliminator/interface for the quantifier assignment-move
+radius-preservation target.
+
+This exposes the assignment-close preservation proposition needed by the
+existential quantified-radius constructor. It is discharged by the existing
+positive-radius assignment-extension projection. It does not close the
+existential constructor, existential locality-radius constructor, full
+quantifier locality transport, `Pk1`, `2vK`, or full unguarded FO locality.
+-/
+theorem radius_preservation_under_quantifier_assignment_move_target_eliminator
+    {σ : RelLanguage} (M : RelStructure σ) {n r : Nat}
+    (_hRadius : radius_preservation_under_quantifier_assignment_move_target)
+    (ρ τ : Fin n → M.carrier) (x y : M.carrier)
+    (hρτ : AssignmentGaifmanClose M r ρ τ)
+    (hxy : GaifmanDistanceLe M x y r) :
+    AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y) := by
+  exact tri_graph_positive_radius_assignment_extension_projection hρτ hxy
+
 /-- TRI Graph R threading for positive-radius assignment-extension projection.
 
 This exposes the positive-radius assignment-extension projection from a TRI
