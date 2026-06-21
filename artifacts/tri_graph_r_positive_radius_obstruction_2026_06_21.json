@@ -1,0 +1,12 @@
+{
+  "status": "TRI_GRAPH_R_POSITIVE_RADIUS_OBSTRUCTION",
+  "parent_status": "TRI_GRAPH_R_QUANTIFIER_EXTENSION_RADIUS_ZERO_PROJECTION",
+  "closed_branch": "radius_zero_quantifier_assignment_extension_projection",
+  "closed_theorem": "tri_graph_r_target_to_quantifier_assignment_extension_radius_zero_projection",
+  "remaining_obstruction": "positive_radius_assignment_extension_projection_control",
+  "weakest_missing_object": "A theorem showing that assignment extension/projection preserves the needed Gaifman-close control at positive radius, or a classified counterexample showing why this exact positive-radius formulation is too strong.",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "14752e1",
+  "boundary": "Radius-zero quantifier assignment-extension projection is closed; positive-radius assignment-extension control is not proved.",
+  "next_admissible_target": "Attempt a minimal positive-radius assignment-extension projection statement and let the first Lean failure classify the gap."
+}
