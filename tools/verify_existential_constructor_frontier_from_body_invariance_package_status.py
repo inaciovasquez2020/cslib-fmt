@@ -62,7 +62,7 @@ for boundary in [
 
 lean_text = LEAN.read_text()
 for forbidden in (
-    "theorem existential_body_witness_locality_transport",
+    "def existential_body_witness_locality_transport :=",
     "def existential_body_witness_locality_transport :=",
     "axiom existential_body_witness_locality_transport",
     "opaque existential_body_witness_locality_transport",
