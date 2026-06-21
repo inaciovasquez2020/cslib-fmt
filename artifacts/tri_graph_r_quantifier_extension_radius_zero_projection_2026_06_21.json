@@ -1,0 +1,12 @@
+{
+  "status": "TRI_GRAPH_R_QUANTIFIER_EXTENSION_RADIUS_ZERO_PROJECTION",
+  "parent_status": "TRI_GRAPH_R_RADIUS_ZERO_PROJECTION_INVARIANT",
+  "theorem": "tri_graph_r_target_to_quantifier_assignment_extension_radius_zero_projection",
+  "uses_invariant": "tri_graph_radius_zero_assignment_projection_invariant",
+  "uses_assignment_extension": "extendAssignment",
+  "scope": "radius_zero_only",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "fcfbaf4",
+  "boundary": "Radius-zero quantifier assignment-extension projection only; no positive-radius assignment-extension theorem and no new locality theorem are claimed.",
+  "next_admissible_target": "Use this projection theorem to refine the R payload or classify the remaining positive-radius obstruction."
+}

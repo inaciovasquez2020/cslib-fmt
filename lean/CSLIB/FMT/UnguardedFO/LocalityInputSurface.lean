@@ -785,6 +785,30 @@ theorem tri_graph_r_target_to_assignment_extension_projection_radius_control
   intro hR
   exact hR.1
 
+/-- Radius-zero quantifier assignment-extension projection.
+
+If the base assignments are radius-zero Gaifman-close and the newly-bound
+values are equal, then their quantifier-extended assignments are pointwise equal.
+-/
+theorem tri_graph_r_target_to_quantifier_assignment_extension_radius_zero_projection
+    {σ : RelLanguage} {n : Nat} {M : RelStructure σ} {r : Nat}
+    {φ : Formula σ (n + 1)} :
+    tri_graph_assignment_extension_projection_radius_control_semantics_target M r φ →
+      ∀ (ρ τ : Fin n → M.carrier) (x y : M.carrier),
+        AssignmentGaifmanClose M 0 ρ τ →
+          x = y →
+            ∀ i : Fin (n + 1), extendAssignment ρ x i = extendAssignment τ y i := by
+  intro hR ρ τ x y hclose hxy i
+  have hInv : tri_graph_radius_zero_assignment_projection_invariant (n := n) M := hR.2.1
+  rcases i with ⟨i, hi⟩
+  cases i with
+  | zero =>
+      simpa [extendAssignment] using hxy
+  | succ j =>
+      have hj : j < n := Nat.lt_of_succ_lt_succ hi
+      have hproj := hInv ρ τ hclose ⟨j, hj⟩
+      simpa [extendAssignment] using hproj
+
 /-- TRI Graph assignment-extension semantics payload. -/
 def tri_graph_assignment_extension_semantics_payload
     {σ : RelLanguage} {n : Nat} (M : RelStructure σ) (r : Nat)
