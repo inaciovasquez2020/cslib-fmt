@@ -1,0 +1,14 @@
+{
+  "status": "PROOF_BEARING_QUANTIFIER_POSITIVE_RADIUS_PROJECTION_EDGE",
+  "parent_status": "TRI_GRAPH_PAYLOAD_POSITIVE_RADIUS_TRANSPORT_REFINEMENT",
+  "statement": "proof_bearing_quantifier_assignment_radius_control_statement",
+  "proof": "trebuchet_variant_full_unguarded_fo_formula_radius_construction",
+  "uses_theorem": "tri_graph_payload_positive_radius_assignment_extension_projection_with_transport_target",
+  "added_output": "positive_radius_assignment_extension_projection",
+  "kept_output": "locality_surface_transport_body_to_quantified_formula_target",
+  "scope": "downstream_edge_refinement_only",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "7214e36",
+  "boundary": "Proof-bearing edge refinement only; this does not prove full quantifier locality transport, formula-radius construction, or full unguarded FO locality.",
+  "next_admissible_target": "Use the strengthened proof-bearing edge to classify the next quantified-constructor target dependency."
+}

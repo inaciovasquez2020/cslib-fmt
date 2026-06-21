@@ -883,7 +883,11 @@ def proof_bearing_quantifier_assignment_radius_control_statement : Prop :=
     tri_graph_assignment_extension_semantics_payload M r φ →
       quantified_formula_radius_constructor_target_status →
         radius_preservation_under_quantifier_assignment_move_target →
-          locality_surface_transport_body_to_quantified_formula_target
+          locality_surface_transport_body_to_quantified_formula_target ∧
+            ∀ (ρ τ : Fin n → M.carrier) (x y : M.carrier),
+              AssignmentGaifmanClose M r ρ τ →
+                GaifmanDistanceLe M x y r →
+                  AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y)
 
 
 /-- Trebuchet Variant.
@@ -899,10 +903,15 @@ theorem trebuchet_variant_full_unguarded_fo_formula_radius_construction :
   intro _r
   intro _M
   intro _φ
-  intro _hTriGraph
+  intro hTriGraph
   intro _hQuantified
   intro _hRadius
-  exact locality_surface_transport_body_to_quantified_formula_target_closed
+  constructor
+  · exact locality_surface_transport_body_to_quantified_formula_target_closed
+  · intro ρ τ x y hbase hxy
+    exact
+      (tri_graph_payload_positive_radius_assignment_extension_projection_with_transport_target
+        hTriGraph ρ τ x y hbase hxy).1
 
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
