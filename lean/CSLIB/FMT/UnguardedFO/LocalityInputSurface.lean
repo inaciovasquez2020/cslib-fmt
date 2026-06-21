@@ -1280,6 +1280,28 @@ def concrete_quantifier_locality_transport_named_interface_closed :
     concrete_quantifier_locality_transport_named_interface :=
   existential_locality_radius_constructor
 
+
+/-- Concrete quantifier transport to formula-radius frontier status.
+
+This is only a status/projection edge. It records that the existing
+formula-radius structural-recursion frontier can be viewed together with the
+now-inhabited concrete quantifier locality transport interface. It does not
+prove max-radius Boolean recursion, radius monotonicity, full formula-radius
+construction, `Pk1`, `2vK`, or full unguarded FO locality.
+-/
+def concrete_quantifier_transport_formula_radius_frontier_status : Prop :=
+  formula_radius_construction_gate_structural_recursion_edge ∧
+    formula_structural_recursion_assembler_target ∧
+      Nonempty concrete_quantifier_locality_transport_named_interface
+
+theorem concrete_quantifier_transport_formula_radius_frontier_status_closed :
+    concrete_quantifier_transport_formula_radius_frontier_status := by
+  constructor
+  · exact formula_radius_construction_gate_structural_recursion_edge_closed
+  · constructor
+    · exact formula_structural_recursion_assembler_target_closed
+    · exact ⟨concrete_quantifier_locality_transport_named_interface_closed⟩
+
 /-- Distinct-witness assignment-extension invariance for the existential body only.
 This proves the body-invariance target for extended assignments when the two
 witnesses are already known to be `r`-close. It does not prove or name the
