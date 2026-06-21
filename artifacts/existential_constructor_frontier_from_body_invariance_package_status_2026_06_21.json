@@ -1,0 +1,23 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_FRONTIER_FROM_BODY_INVARIANCE_PACKAGE_STATUS_ONLY",
+  "achieved": "existential_constructor_frontier_from_body_invariance_package_status_only",
+  "lean_object": "existential_constructor_frontier_from_body_invariance_package_status",
+  "source_status": "EXISTENTIAL_BODY_ASSIGNMENT_EXTENSION_INVARIANCE_COMPONENT_PACKAGE_ONLY",
+  "source_object": "existential_body_assignment_extension_invariance_component_package",
+  "frontier_target": "existential_ex_body_to_quantified_radius_witness_constructor",
+  "remaining_gap": "existential_ex_body_to_quantified_radius_witness_constructor",
+  "preserved_boundary": [
+    "not existential_body_witness_locality_transport",
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
+  ],
+  "does_not_prove": [
+    "existential_body_witness_locality_transport",
+    "existential_ex_body_to_quantified_radius_witness_constructor"
+  ]
+}

@@ -1233,6 +1233,15 @@ theorem existential_body_assignment_extension_invariance_component_package :
       M hφ ρ τ hclose x y
 
 
+/-- Constructor-frontier status target from the packaged existential-body
+assignment-extension invariance target to the remaining existential constructor
+gap. This status target records only the frontier: it does not prove or name the
+forbidden transport object and does not construct the existential radius
+constructor. -/
+def existential_constructor_frontier_from_body_invariance_package_status : Prop :=
+  True
+
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
