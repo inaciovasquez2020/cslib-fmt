@@ -1,0 +1,21 @@
+{
+  "status": "EXISTENTIAL_BODY_SAME_WITNESS_ASSIGNMENT_EXTENSION_INVARIANCE_ONLY",
+  "achieved": "existential_body_same_witness_assignment_extension_invariance_only",
+  "lean_object": "existential_body_same_witness_assignment_extension_invariance",
+  "depends_on": [
+    "existential_ex_body_to_quantified_radius_witness_constructor_shell",
+    "tri_graph_positive_radius_assignment_extension_projection",
+    "unguarded_fo_locality_input_surface_invariant"
+  ],
+  "boundary": [
+    "not existential_body_witness_locality_transport",
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
+  ],
+  "missing_object": "existential_body_witness_locality_transport"
+}

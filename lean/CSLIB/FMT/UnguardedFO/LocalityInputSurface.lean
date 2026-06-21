@@ -1155,6 +1155,30 @@ def existential_ex_body_to_quantified_radius_witness_constructor_shell : Type 1 
   existential_body_witness_locality_transport_type
 
 
+/-- Same-witness assignment-extension invariance for the existential body only.
+This proves the case where both extended assignments use the same witness. It does
+not prove the named body-witness locality transport object, does not construct an
+existential radius, and does not close the existential constructor. -/
+theorem existential_body_same_witness_assignment_extension_invariance
+    {σ : RelLanguage} (M : RelStructure σ) {n r : Nat}
+    {φ : Formula σ (n + 1)}
+    (hφ : UnguardedFOLocalityInputSurface M φ r)
+    (ρ τ : Fin n → M.carrier)
+    (hclose : AssignmentGaifmanClose M r ρ τ)
+    (x : M.carrier) :
+    Holds M (extendAssignment ρ x) φ ↔
+      Holds M (extendAssignment τ x) φ := by
+  have hxx : GaifmanDistanceLe M x x r := by
+    exact ⟨0, Nat.zero_le r, GaifmanWalk.nil x⟩
+  have hext :
+      AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ x) := by
+    exact tri_graph_positive_radius_assignment_extension_projection hclose hxx
+  exact unguarded_fo_locality_input_surface_invariant M φ r hφ
+    (extendAssignment ρ x) (extendAssignment τ x) hext
+
+
+
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
