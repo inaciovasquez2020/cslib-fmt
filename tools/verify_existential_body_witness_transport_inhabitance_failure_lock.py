@@ -25,14 +25,11 @@ for forbidden in (
     if forbidden in lean:
         raise SystemExit(f"MISSING_OBJECT := reverted failed proof marker absence {forbidden}")
 
-required_lean_markers = [
+for marker in (
     "def existential_body_witness_locality_transport_type : Type 1 :=",
     "theorem existential_body_same_witness_assignment_extension_invariance",
-    "theorem existential_body_witness_locality_transport" not in lean,
-]
-for marker in required_lean_markers:
-    if marker is True:
-        continue
+    "theorem existential_body_distinct_witness_assignment_extension_invariance",
+):
     if marker not in lean:
         raise SystemExit(f"MISSING_OBJECT := {marker}")
 
@@ -43,14 +40,21 @@ if art.get("weakest_missing_object") != "existential_ex_body_to_quantified_radiu
     raise SystemExit("MISSING_OBJECT := weakest missing constructor lock")
 
 components = art.get("proved_weaker_components")
-if not isinstance(components, list) or "existential_body_same_witness_assignment_extension_invariance" not in components:
-    raise SystemExit("MISSING_OBJECT := proved weaker same-witness component recorded in lock artifact")
+if not isinstance(components, list):
+    raise SystemExit("MISSING_OBJECT := proved weaker components list")
+
+for component in (
+    "existential_body_same_witness_assignment_extension_invariance",
+    "existential_body_distinct_witness_assignment_extension_invariance",
+):
+    if component not in components:
+        raise SystemExit(f"MISSING_OBJECT := proved weaker component {component}")
 
 if art.get("remaining_transport_gap") != "existential_body_witness_locality_transport":
     raise SystemExit("MISSING_OBJECT := remaining transport gap recorded in lock artifact")
 
-if art.get("remaining_distinct_witness_gap") != "distinct_witness_assignment_extension_invariance":
-    raise SystemExit("MISSING_OBJECT := distinct-witness gap recorded in lock artifact")
+if art.get("remaining_constructor_gap") != "existential_ex_body_to_quantified_radius_witness_constructor":
+    raise SystemExit("MISSING_OBJECT := remaining constructor gap recorded in lock artifact")
 
 for boundary in [
     "not existential_body_witness_locality_transport",
@@ -68,10 +72,11 @@ for boundary in [
 for marker in [
     "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY",
     "PROVED_WEAKER_COMPONENT := existential_body_same_witness_assignment_extension_invariance",
+    "PROVED_WEAKER_COMPONENT := existential_body_distinct_witness_assignment_extension_invariance",
     "BOUNDARY := ¬ existential_body_witness_locality_transport",
     "BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor",
     "MISSING_OBJECT := existential_body_witness_locality_transport",
-    "MISSING_OBJECT := distinct_witness_assignment_extension_invariance",
+    "MISSING_OBJECT := existential_ex_body_to_quantified_radius_witness_constructor",
 ]:
     if marker not in doc:
         raise SystemExit(f"MISSING_OBJECT := doc marker {marker}")
