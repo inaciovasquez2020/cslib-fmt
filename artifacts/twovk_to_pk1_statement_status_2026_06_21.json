@@ -1,0 +1,14 @@
+{
+  "status": "TWOVK_TO_PK1_STATEMENT_STATUS",
+  "parent_status": "TWOVK_BRIDGE_TARGET_SHELL",
+  "target": "TwoVK_bridge_target_to_Pk1_statement_status",
+  "source_edge": "TwoVK_bridge_target_shell",
+  "projected_dependency": "Pk1_unguarded_fo_locality_theorem_statement_shell",
+  "uses_proofs": [
+    "TwoVK_bridge_target_shell_closed"
+  ],
+  "scope": "one_direct_twovk_to_pk1_statement_status_edge",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "boundary": "Status-only direct bridge-strengthening edge from the 2vK target shell to the Pk1 statement shell. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.",
+  "next_admissible_target": "Run combined validation before any deeper projection toward the quantified-constructor branch frontier."
+}

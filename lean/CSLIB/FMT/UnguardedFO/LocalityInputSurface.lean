@@ -983,6 +983,28 @@ theorem TwoVK_bridge_target_shell_closed :
     TwoVK_bridge_target_shell := by
   exact Pk1_unguarded_fo_locality_theorem_statement_shell_closed
 
+/-- Direct bridge-strengthening status from the 2vK target shell to the Pk1
+statement shell.
+
+This is only a status/target edge. It records that the validated 2vK bridge
+target shell carries the validated Pk1 theorem statement shell as its immediate
+source target. It does not prove 2vK, does not prove Pk1, and does not claim
+full formula-radius construction, full quantifier locality transport, or full
+unguarded FO locality.
+-/
+def TwoVK_bridge_target_to_Pk1_statement_status : Prop :=
+  TwoVK_bridge_target_shell ∧
+    Pk1_unguarded_fo_locality_theorem_statement_shell
+
+theorem TwoVK_bridge_target_to_Pk1_statement_status_closed :
+    TwoVK_bridge_target_to_Pk1_statement_status := by
+  have hBridge : TwoVK_bridge_target_shell :=
+    TwoVK_bridge_target_shell_closed
+  constructor
+  · exact hBridge
+  · exact hBridge
+
+
 
 
 
