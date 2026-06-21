@@ -1,15 +1,16 @@
 {
-  "status": "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY",
-  "base_commit": "36910f6",
-  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
   "attempted_object": "existential_body_witness_locality_transport",
   "attempted_type": "existential_body_witness_locality_transport_type",
-  "failed_attempt_body": "intro sigma M n phi hphi; exact hphi",
-  "first_error": "Lean rejected direct reuse of body locality witness for Formula.ex target",
-  "weakest_missing_object": "existential_ex_body_to_quantified_radius_witness_constructor",
-  "required_for": [
-    "existential_body_witness_locality_transport",
-    "existential_locality_radius_constructor"
+  "base_commit": "36910f6",
+  "boundary": [
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
+    "not existential_body_witness_locality_transport",
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
   ],
   "does_not_prove": [
     "existential_ex_body_to_quantified_radius_witness_constructor",
@@ -21,14 +22,30 @@
     "2vK",
     "full_unguarded_fo_locality"
   ],
-  "boundary": [
-    "not existential_ex_body_to_quantified_radius_witness_constructor",
+  "failed_attempt_body": "intro sigma M n phi hphi; exact hphi",
+  "first_error": "Lean rejected direct reuse of body locality witness for Formula.ex target",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "proved_weaker_components": [
+    "existential_body_same_witness_assignment_extension_invariance"
+  ],
+  "refactor_boundary": [
     "not existential_body_witness_locality_transport",
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
     "not existential_locality_radius_constructor",
     "not full_quantifier_locality_transport",
     "not full_formula_radius_construction",
     "not Pk1",
     "not 2vK",
     "not full_unguarded_fo_locality"
-  ]
+  ],
+  "refined_after_commit": "7bb0a54",
+  "refined_after_status": "EXISTENTIAL_BODY_SAME_WITNESS_ASSIGNMENT_EXTENSION_INVARIANCE_ONLY",
+  "remaining_distinct_witness_gap": "distinct_witness_assignment_extension_invariance",
+  "remaining_transport_gap": "existential_body_witness_locality_transport",
+  "required_for": [
+    "existential_body_witness_locality_transport",
+    "existential_locality_radius_constructor"
+  ],
+  "status": "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY",
+  "weakest_missing_object": "existential_ex_body_to_quantified_radius_witness_constructor"
 }

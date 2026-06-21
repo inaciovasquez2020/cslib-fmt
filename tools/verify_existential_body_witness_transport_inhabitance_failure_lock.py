@@ -1,20 +1,79 @@
-#!/usr/bin/env python3
+import json
 from pathlib import Path
-import json, subprocess
-ROOT = Path(subprocess.check_output(["git", "rev-parse", "--show-toplevel"], text=True).strip())
-SRC = ROOT / "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean"
+
+ROOT = Path(".")
+LEAN = ROOT / "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean"
 ART = ROOT / "artifacts/existential_body_witness_transport_inhabitance_failure_lock_2026_06_21.json"
 DOC = ROOT / "docs/status/EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK.md"
-src = SRC.read_text(); art = json.loads(ART.read_text()); doc = DOC.read_text()
-if art.get("status") != "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY": raise SystemExit("MISSING_OBJECT := inhabitance failure-lock artifact status")
-if art.get("weakest_missing_object") != "existential_ex_body_to_quantified_radius_witness_constructor": raise SystemExit("MISSING_OBJECT := weakest missing constructor lock")
-forbidden = ["def existential_body_witness_locality_transport :=", "theorem existential_body_witness_locality_transport", "axiom existential_body_witness_locality_transport", "opaque existential_body_witness_locality_transport", "sorry", "admit"]
-bad = next((x for x in forbidden if x in src), None)
-if bad is not None: raise SystemExit("MISSING_OBJECT := reverted failed proof marker absence " + bad)
-boundaries = ["not existential_ex_body_to_quantified_radius_witness_constructor", "not existential_body_witness_locality_transport", "not existential_locality_radius_constructor", "not full_quantifier_locality_transport", "not full_formula_radius_construction", "not Pk1", "not 2vK", "not full_unguarded_fo_locality"]
-missing_boundary = next((x for x in boundaries if x not in art.get("boundary", [])), None)
-if missing_boundary is not None: raise SystemExit("MISSING_OBJECT := artifact boundary " + missing_boundary)
-doc_markers = ["EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY", "existential_ex_body_to_quantified_radius_witness_constructor", "BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor", "BOUNDARY := ¬ existential_body_witness_locality_transport", "BOUNDARY := ¬ existential_locality_radius_constructor", "BOUNDARY := ¬ full_quantifier_locality_transport", "BOUNDARY := ¬ full_formula_radius_construction", "BOUNDARY := ¬ Pk1", "BOUNDARY := ¬ 2vK", "BOUNDARY := ¬ full_unguarded_fo_locality"]
-missing_doc = next((x for x in doc_markers if x not in doc), None)
-if missing_doc is not None: raise SystemExit("MISSING_OBJECT := doc marker " + missing_doc)
+
+for path in (LEAN, ART, DOC):
+    if not path.exists():
+        raise SystemExit(f"MISSING_OBJECT := {path}")
+
+lean = LEAN.read_text()
+art = json.loads(ART.read_text())
+doc = DOC.read_text()
+
+for forbidden in (
+    "theorem existential_body_witness_locality_transport",
+    "def existential_body_witness_locality_transport :=",
+    "axiom existential_body_witness_locality_transport",
+    "opaque existential_body_witness_locality_transport",
+    "sorry",
+    "admit",
+):
+    if forbidden in lean:
+        raise SystemExit(f"MISSING_OBJECT := reverted failed proof marker absence {forbidden}")
+
+required_lean_markers = [
+    "def existential_body_witness_locality_transport_type : Type 1 :=",
+    "theorem existential_body_same_witness_assignment_extension_invariance",
+    "theorem existential_body_witness_locality_transport" not in lean,
+]
+for marker in required_lean_markers:
+    if marker is True:
+        continue
+    if marker not in lean:
+        raise SystemExit(f"MISSING_OBJECT := {marker}")
+
+if art.get("status") != "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY":
+    raise SystemExit("MISSING_OBJECT := original transport-inhabitance failure lock status")
+
+if art.get("weakest_missing_object") != "existential_ex_body_to_quantified_radius_witness_constructor":
+    raise SystemExit("MISSING_OBJECT := weakest missing constructor lock")
+
+components = art.get("proved_weaker_components")
+if not isinstance(components, list) or "existential_body_same_witness_assignment_extension_invariance" not in components:
+    raise SystemExit("MISSING_OBJECT := proved weaker same-witness component recorded in lock artifact")
+
+if art.get("remaining_transport_gap") != "existential_body_witness_locality_transport":
+    raise SystemExit("MISSING_OBJECT := remaining transport gap recorded in lock artifact")
+
+if art.get("remaining_distinct_witness_gap") != "distinct_witness_assignment_extension_invariance":
+    raise SystemExit("MISSING_OBJECT := distinct-witness gap recorded in lock artifact")
+
+for boundary in [
+    "not existential_body_witness_locality_transport",
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality",
+]:
+    if boundary not in json.dumps(art):
+        raise SystemExit(f"MISSING_OBJECT := boundary {boundary}")
+
+for marker in [
+    "EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_ONLY",
+    "PROVED_WEAKER_COMPONENT := existential_body_same_witness_assignment_extension_invariance",
+    "BOUNDARY := ¬ existential_body_witness_locality_transport",
+    "BOUNDARY := ¬ existential_ex_body_to_quantified_radius_witness_constructor",
+    "MISSING_OBJECT := existential_body_witness_locality_transport",
+    "MISSING_OBJECT := distinct_witness_assignment_extension_invariance",
+]:
+    if marker not in doc:
+        raise SystemExit(f"MISSING_OBJECT := doc marker {marker}")
+
 print("EXISTENTIAL_BODY_WITNESS_TRANSPORT_INHABITANCE_FAILURE_LOCK_OK")
