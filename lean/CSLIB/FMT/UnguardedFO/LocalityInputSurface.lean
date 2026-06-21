@@ -638,6 +638,22 @@ theorem assignment_extension_projection_radius_control_statement_target_closed :
     assignment_extension_projection_radius_control_statement_target := by
   exact concrete_quantifier_locality_input_transport_statement_target_closed
 
+
+/-- Quantifier assignment semantics bridge target.
+
+This is a bridge target only. It records the next obstruction after identifying
+the quantified formula constructor shape and naming assignment
+extension/projection radius-control: a bridge between quantified formula
+semantics and the assignment movement used by the quantifier step. It does not
+prove that bridge or the quantified formula-radius constructor.
+-/
+def quantifier_assignment_semantics_bridge_target : Prop :=
+  assignment_extension_projection_radius_control_statement_target
+
+theorem quantifier_assignment_semantics_bridge_target_closed :
+    quantifier_assignment_semantics_bridge_target := by
+  exact assignment_extension_projection_radius_control_statement_target_closed
+
 structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
     (M : RelStructure σ) where
   neg :

@@ -1,0 +1,19 @@
+{
+  "artifact": "QUANTIFIER_ASSIGNMENT_SEMANTICS_BRIDGE_TARGET",
+  "date": "2026-06-21",
+  "status": "BRIDGE_TARGET_ONLY",
+  "head_prefix": "5755a0e",
+  "source": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "required_declarations": [
+    "def quantifier_assignment_semantics_bridge_target",
+    "theorem quantifier_assignment_semantics_bridge_target_closed"
+  ],
+  "depends_on": [
+    "def assignment_extension_projection_radius_control_statement_target",
+    "theorem assignment_extension_projection_radius_control_statement_target_closed",
+    "QUANTIFIED_FORMULA_CONSTRUCTOR_SHAPE_IDENTIFICATION",
+    "QUANTIFIED_FORMULA_RADIUS_CONSTRUCTOR_NEXT_WEAKEST_OBSTRUCTION_CLASSIFICATION"
+  ],
+  "target": "quantifier_assignment_semantics_bridge",
+  "boundary": "BOUNDARY := ¬ quantifier_assignment_semantics_bridge"
+}
