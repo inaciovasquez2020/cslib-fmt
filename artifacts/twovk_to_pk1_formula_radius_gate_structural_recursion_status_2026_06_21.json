@@ -1,0 +1,18 @@
+{
+  "status": "TWOVK_TO_PK1_FORMULA_RADIUS_GATE_STRUCTURAL_RECURSION_STATUS_ONLY",
+  "kind": "status_projection_edge",
+  "lean_definition": "TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status",
+  "lean_theorem": "TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status_closed",
+  "source_status": "TWOVK_TO_PK1_FRONTIER_FORMULA_RADIUS_GATE_STATUS_ONLY",
+  "source_lean_definition": "TwoVK_to_Pk1_frontier_to_formula_radius_gate_status",
+  "gate_lean_definition": "formula_radius_construction_gate_structural_recursion_edge",
+  "target_lean_definition": "formula_structural_recursion_assembler_target",
+  "projection_requirement": "direct .1/.2 projection through formula_radius_construction_gate_structural_recursion_edge",
+  "boundary": [
+    "not 2vK",
+    "not Pk1",
+    "not full_formula_radius_construction",
+    "not full_quantifier_locality_transport",
+    "not full_unguarded_fo_locality"
+  ]
+}

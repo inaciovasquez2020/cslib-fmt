@@ -1071,6 +1071,28 @@ structure SharedRadiusBooleanConstructorRollupTarget {σ : RelLanguage}
       UnguardedFOLocalityInputSurface M (Formula.disj φ ψ) r
 
 
+
+/-- Direct projection from the 2vK-to-Pk1 formula-radius gate status edge to
+the carried structural-recursion assembler target.
+
+This is only a status/projection edge. It records that the validated
+formula-radius gate frontier exposes the already validated structural-recursion
+assembler target. It does not prove 2vK, does not prove Pk1, and does not claim
+full formula-radius construction, full quantifier locality transport, or full
+unguarded FO locality.
+-/
+def TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status : Prop :=
+  TwoVK_to_Pk1_frontier_to_formula_radius_gate_status ∧
+    formula_structural_recursion_assembler_target
+
+theorem TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status_closed :
+    TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status := by
+  have hStatus : TwoVK_to_Pk1_frontier_to_formula_radius_gate_status :=
+    TwoVK_to_Pk1_frontier_to_formula_radius_gate_status_closed
+  constructor
+  · exact hStatus
+  · exact hStatus.2.2
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
