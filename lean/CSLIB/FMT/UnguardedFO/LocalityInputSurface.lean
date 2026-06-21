@@ -1093,6 +1093,29 @@ theorem TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status_closed :
   · exact hStatus
   · exact hStatus.2.2
 
+
+/-- Direct projection from the 2vK-to-Pk1 structural-recursion status edge to
+the carried proof-bearing quantifier assignment radius-control statement.
+
+This is only a status/projection edge. It records that the validated
+structural-recursion assembler target exposes the already validated
+proof-bearing quantifier assignment radius-control statement. It does not prove
+2vK, does not prove Pk1, and does not claim full formula-radius construction,
+full quantifier locality transport, or full unguarded FO locality.
+-/
+def TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status : Prop :=
+  TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status ∧
+    proof_bearing_quantifier_assignment_radius_control_statement
+
+theorem TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_closed :
+    TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status := by
+  have hStatus :
+      TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status :=
+    TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status_closed
+  constructor
+  · exact hStatus
+  · exact hStatus.2.2
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.

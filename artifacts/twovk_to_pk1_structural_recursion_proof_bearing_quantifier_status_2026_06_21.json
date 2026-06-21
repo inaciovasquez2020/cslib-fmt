@@ -1,0 +1,18 @@
+{
+  "status": "TWOVK_TO_PK1_STRUCTURAL_RECURSION_PROOF_BEARING_QUANTIFIER_STATUS_ONLY",
+  "kind": "status_projection_edge",
+  "lean_definition": "TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status",
+  "lean_theorem": "TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_closed",
+  "source_status": "TWOVK_TO_PK1_FORMULA_RADIUS_GATE_STRUCTURAL_RECURSION_STATUS_ONLY",
+  "source_lean_definition": "TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status",
+  "intermediate_lean_definition": "formula_structural_recursion_assembler_target",
+  "target_lean_definition": "proof_bearing_quantifier_assignment_radius_control_statement",
+  "projection_requirement": "direct .1/.2 projection through formula_structural_recursion_assembler_target",
+  "boundary": [
+    "not 2vK",
+    "not Pk1",
+    "not full_formula_radius_construction",
+    "not full_quantifier_locality_transport",
+    "not full_unguarded_fo_locality"
+  ]
+}
