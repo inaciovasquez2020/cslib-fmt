@@ -1,0 +1,141 @@
+{
+  "artifact": "QUANTIFIED_FORMULA_CONSTRUCTOR_SHAPE_IDENTIFICATION",
+  "date": "2026-06-21",
+  "status": "IDENTIFICATION_ONLY",
+  "head_prefix": "e68945f",
+  "target": "quantifier_formula_constructor_shape_identification",
+  "identified_constructor_shape_candidates": [
+    "Formula.ex",
+    "Formula.neg"
+  ],
+  "constructor_declarations": [
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 37,
+      "text": "| ex {n : Nat} : Formula σ (n + 1) → Formula σ n"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 42,
+      "text": "| ex {n : Nat} : Formula σ (n + 1) → Formula σ n"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "line": 39,
+      "text": "| ex {n : Nat} : Formula σ (n + 1) → Formula σ n"
+    }
+  ],
+  "constructor_usages": [
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 52,
+      "text": "| _, ρ, Formula.neg φ => ¬ Holds M ρ φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 55,
+      "text": "| _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 378,
+      "text": "UnguardedFOLocalityInputSurface M (Formula.neg φ) r := by"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "line": 646,
+      "text": "UnguardedFOLocalityInputSurface M (Formula.neg φ) r"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 57,
+      "text": "| _, ρ, Formula.neg φ => ¬ Holds M ρ φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 60,
+      "text": "| _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 69,
+      "text": "| _, Formula.neg φ => FormulaQuantifierDepth φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 72,
+      "text": "| _, Formula.ex φ => FormulaQuantifierDepth φ + 1"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 227,
+      "text": "UnguardedFOLocalityInputSurface M (Formula.neg φ) r := by"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 243,
+      "text": "singleton_radius_construction_target M (Formula.neg φ)"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 244,
+      "text": "(FormulaQuantifierDepth (Formula.neg φ))"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 247,
+      "text": "(Nat.le_refl (FormulaQuantifierDepth (Formula.neg φ)))"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 359,
+      "text": "member θ := ∃ φ, F.target.fragment.member φ ∧ θ = Formula.neg φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 380,
+      "text": "UnguardedFOLocalityInputSurface M (Formula.neg φ) F.sharedRadius :="
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 555,
+      "text": "UnguardedFOLocalityInputSurface M (Formula.neg φ) F.sharedRadius :="
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 756,
+      "text": "(FiniteBooleanFamilyExpr.neg expr)).target.fragment.member (Formula.neg φ) := by"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 759,
+      "text": "(finite_boolean_family_fold env sharedRadius henv expr)).member (Formula.neg φ)"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 1197,
+      "text": "UnguardedFOLocalityInputSurface M (Formula.neg φ)"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "line": 1203,
+      "text": "(Formula.neg φ)"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "line": 68,
+      "text": "| _, ρ, Formula.neg φ => ¬ Holds M ρ φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "line": 71,
+      "text": "| _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ"
+    },
+    {
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "line": 105,
+      "text": "Holds M ρ (Formula.ex φ) ↔ ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ := by"
+    }
+  ],
+  "boundary": "BOUNDARY := ¬ quantified_formula_radius_constructor"
+}
