@@ -1233,6 +1233,24 @@ theorem existential_body_assignment_extension_invariance_component_package :
       M hφ ρ τ hclose x y
 
 
+
+/-- Forbidden direct transport-obligation attempt. -/
+theorem existential_body_witness_locality_transport :
+    (∀ {σ : RelLanguage} (M : RelStructure σ) {n r : Nat} {φ : Formula σ (n + 1)},
+      UnguardedFOLocalityInputSurface M φ r →
+        ∀ (ρ τ : Fin n → M.carrier),
+          AssignmentGaifmanClose M r ρ τ →
+            ∀ (x : M.carrier),
+              Holds M (extendAssignment ρ x) φ ↔ Holds M (extendAssignment τ x) φ) ∧
+    (∀ {σ : RelLanguage} (M : RelStructure σ) {n r : Nat} {φ : Formula σ (n + 1)},
+      UnguardedFOLocalityInputSurface M φ r →
+        ∀ (ρ τ : Fin n → M.carrier),
+          AssignmentGaifmanClose M r ρ τ →
+            ∀ (x y : M.carrier),
+              GaifmanDistanceLe M x y r →
+                (Holds M (extendAssignment ρ x) φ ↔ Holds M (extendAssignment τ y) φ)) := by
+  exact existential_body_assignment_extension_invariance_component_package
+
 /-- Constructor-frontier status target from the packaged existential-body
 assignment-extension invariance target to the remaining existential constructor
 gap. This status target records only the frontier: it does not prove or name the
