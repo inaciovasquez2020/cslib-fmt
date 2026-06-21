@@ -1,0 +1,16 @@
+{
+  "status": "EXISTENTIAL_EX_BODY_TO_QUANTIFIED_RADIUS_WITNESS_CONSTRUCTOR_SHELL_ONLY",
+  "achieved": "existential_ex_body_to_quantified_radius_witness_constructor_shell_only",
+  "lean_object": "existential_ex_body_to_quantified_radius_witness_constructor_shell",
+  "boundary": [
+    "not existential_ex_body_to_quantified_radius_witness_constructor",
+    "not existential_body_witness_locality_transport",
+    "not existential_locality_radius_constructor",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
+  ],
+  "missing_object": "existential_ex_body_to_quantified_radius_witness_constructor"
+}

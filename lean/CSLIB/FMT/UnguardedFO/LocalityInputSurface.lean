@@ -1146,6 +1146,15 @@ def existential_body_witness_locality_transport_type : Type 1 :=
     HasUnguardedFOLocalityRadius M φ →
       HasUnguardedFOLocalityRadius M (Formula.ex φ)
 
+/-- Shell-only status object for the missing existential `∃`-body to quantified-radius
+witness constructor. This records only the target interface; it does not prove or
+claim the constructor, body-witness locality transport, existential locality-radius
+construction, full quantifier locality transport, `Pk1`, `2vK`, or full unguarded
+FO locality. -/
+def existential_ex_body_to_quantified_radius_witness_constructor_shell : Type 1 :=
+  existential_body_witness_locality_transport_type
+
+
 /--
 Constructor for the shared-radius Boolean rollup target from the three
 same-radius Boolean constructor lemmas already proved.
