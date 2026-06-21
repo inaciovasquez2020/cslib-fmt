@@ -1,0 +1,34 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_DEFINITION_INSPECTION_ONLY",
+  "base_commit": "ae02b99",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "inspected_objects": [
+    "HasUnguardedFOLocalityRadius",
+    "Formula.ex"
+  ],
+  "inspection_hits": {
+    "HasUnguardedFOLocalityRadius": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:323:structure HasUnguardedFOLocalityRadius {σ : RelLanguage};lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:363:    (h : HasUnguardedFOLocalityRadius M φ) :;lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:102:structure HasUnguardedFOLocalityRadius {σ : RelLanguage};lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:140:    HasUnguardedFOLocalityRadius M φ :=;",
+    "Formula.ex": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:55:  | _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:1123:theorem would construct locality for `Formula.ex φ` from locality of the body;lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:60:  | _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ;lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:72:  | _, Formula.ex φ => FormulaQuantifierDepth φ + 1;lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean:71:  | _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ;lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean:105:    Holds M ρ (Formula.ex φ) ↔ ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ := by;",
+    "Formula_definition": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean:25:inductive GFormula : Nat → Type where;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:29:inductive Formula (σ : RelLanguage) : Nat → Type where;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:40:def extendAssignment {α : Type} {n : Nat};lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:585:def assignment_extension_projection_radius_control_target_shell : Prop :=;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:634:def assignment_extension_projection_radius_control_statement_target : Prop :=;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:692:def existential_quantifier_constructor_branch_target : Prop :=;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:758:def tri_graph_assignment_extension_projection_radius_control_semantics_target;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:839:def tri_graph_assignment_extension_semantics_payload;lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean:1128:def existential_locality_radius_constructor_missing_theorem_status : Prop :=;lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:34:inductive Formula (σ : RelLanguage) : Nat → Type where;lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean:45:def extendAssignment {α : Type} {n : Nat};lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean:31:inductive Formula (σ : RelLanguage) : Nat → Type where;lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean:52:def extendAssignment {α : Type} {n : Nat};"
+  },
+  "weakest_next_missing_object": "existential_body_witness_locality_transport",
+  "required_for": "existential_locality_radius_constructor",
+  "candidate_shape": "A Lean lemma transporting a body-locality witness for phi to a locality witness for Formula.ex phi, preserving the radius/witness data required by HasUnguardedFOLocalityRadius.",
+  "does_not_prove": [
+    "existential_locality_radius_constructor",
+    "full_quantifier_locality_transport",
+    "full_formula_radius_construction",
+    "Pk1",
+    "2vK",
+    "full_unguarded_fo_locality"
+  ],
+  "boundary": [
+    "not existential_locality_radius_constructor",
+    "not existential_body_witness_locality_transport",
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction",
+    "not Pk1",
+    "not 2vK",
+    "not full_unguarded_fo_locality"
+  ]
+}
