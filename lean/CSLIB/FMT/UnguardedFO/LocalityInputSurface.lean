@@ -1221,6 +1221,37 @@ theorem existential_body_same_witness_assignment_extension_invariance
     (extendAssignment ρ x) (extendAssignment τ x) hext
 
 
+/-- Direct constructor from a body locality-radius witness to the existential
+formula locality-radius witness.
+
+This uses the same body radius and same-witness assignment-extension invariance.
+It closes only the `existential_body_witness_locality_transport_type` interface;
+it does not close full quantifier locality transport, `Pk1`, `2vK`, or full
+unguarded FO locality.
+-/
+def existential_body_witness_locality_transport_type_constructor :
+    existential_body_witness_locality_transport_type := by
+  intro _σ
+  intro M
+  intro _n
+  intro _φ
+  intro hBody
+  refine ⟨hBody.radius, ?_⟩
+  constructor
+  intro ρ τ hclose
+  constructor
+  · intro hρ
+    rcases hρ with ⟨x, hx⟩
+    exact ⟨x,
+      (existential_body_same_witness_assignment_extension_invariance
+        M hBody.input ρ τ hclose x).mp hx⟩
+  · intro hτ
+    rcases hτ with ⟨x, hx⟩
+    exact ⟨x,
+      (existential_body_same_witness_assignment_extension_invariance
+        M hBody.input ρ τ hclose x).mpr hx⟩
+
+
 /-- Distinct-witness assignment-extension invariance for the existential body only.
 This proves the body-invariance target for extended assignments when the two
 witnesses are already known to be `r`-close. It does not prove or name the
