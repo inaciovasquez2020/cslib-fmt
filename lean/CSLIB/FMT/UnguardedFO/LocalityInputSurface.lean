@@ -1004,6 +1004,28 @@ theorem TwoVK_bridge_target_to_Pk1_statement_status_closed :
   · exact hBridge
   · exact hBridge
 
+/-- Direct projection from the 2vK-to-Pk1 statement status edge to the
+Pk1 quantified-constructor branch frontier.
+
+This is only a status/projection edge. It records that the carried target-only
+Pk1 statement shell exposes the already validated quantified-constructor branch
+frontier. It does not prove 2vK, does not prove Pk1, and does not claim full
+formula-radius construction, full quantifier locality transport, or full
+unguarded FO locality.
+-/
+def TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status : Prop :=
+  TwoVK_bridge_target_to_Pk1_statement_status ∧
+    pk1_quantified_constructor_branch_frontier_status
+
+theorem TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status_closed :
+    TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status := by
+  have hStatus : TwoVK_bridge_target_to_Pk1_statement_status :=
+    TwoVK_bridge_target_to_Pk1_statement_status_closed
+  constructor
+  · exact hStatus
+  · exact hStatus.2
+
+
 
 
 

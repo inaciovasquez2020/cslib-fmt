@@ -1,0 +1,15 @@
+{
+  "status": "TWOVK_TO_PK1_QUANTIFIED_CONSTRUCTOR_FRONTIER_STATUS",
+  "parent_status": "TWOVK_TO_PK1_STATEMENT_STATUS",
+  "target": "TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status",
+  "source_edge": "TwoVK_bridge_target_to_Pk1_statement_status",
+  "projected_dependency": "pk1_quantified_constructor_branch_frontier_status",
+  "uses_proofs": [
+    "TwoVK_bridge_target_to_Pk1_statement_status_closed"
+  ],
+  "projection_path": "TwoVK_bridge_target_to_Pk1_statement_status_closed.2",
+  "scope": "one_direct_projection_from_twovk_to_pk1_statement_status_to_pk1_quantified_constructor_frontier",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "boundary": "Status-only projection from the 2vK-to-Pk1 statement status edge to the Pk1 quantified-constructor branch frontier. This does not prove 2vK, does not prove Pk1, and does not claim full formula-radius construction, full quantifier locality transport, or full unguarded FO locality.",
+  "next_admissible_target": "Run combined validation before any deeper projection toward the formula-radius gate frontier."
+}
