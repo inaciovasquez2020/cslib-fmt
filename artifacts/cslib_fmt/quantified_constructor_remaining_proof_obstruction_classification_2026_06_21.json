@@ -1,0 +1,50 @@
+{
+  "artifact": "QUANTIFIED_CONSTRUCTOR_REMAINING_PROOF_OBSTRUCTION_CLASSIFICATION",
+  "date": "2026-06-21",
+  "status": "CLASSIFICATION_ONLY",
+  "head_prefix": "39d10a1",
+  "frontier": "after full quantified constructor target ladder",
+  "closed_target_ladder": [
+    "quantifier_assignment_semantics_bridge_target",
+    "radius_preservation_under_quantifier_assignment_move_target",
+    "locality_surface_transport_body_to_quantified_formula_target",
+    "existential_quantifier_constructor_branch_target",
+    "universal_quantifier_constructor_branch_classification_target",
+    "quantified_formula_radius_constructor_target_status",
+    "formula_structural_recursion_assembler_target"
+  ],
+  "ranked_remaining_proof_obstructions": [
+    {
+      "rank": 1,
+      "object": "proof_bearing_quantifier_assignment_radius_control_statement",
+      "reason": "the ladder currently contains target aliases only; the first proof-bearing obstruction is a concrete Lean statement proving radius control across quantifier assignment movement"
+    },
+    {
+      "rank": 2,
+      "object": "proof_bearing_quantifier_locality_input_transport",
+      "reason": "after radius control is stated/proved, locality input must be transported from the body formula to the quantified formula"
+    },
+    {
+      "rank": 3,
+      "object": "existential_quantifier_formula_radius_constructor_proof",
+      "reason": "the existential branch is downstream of assignment radius control and locality transport"
+    },
+    {
+      "rank": 4,
+      "object": "universal_quantifier_formula_radius_constructor_classification_or_proof",
+      "reason": "the universal branch must be proved directly or classified as derivable from existing syntax and Boolean constructors"
+    },
+    {
+      "rank": 5,
+      "object": "quantified_formula_radius_constructor_proof",
+      "reason": "the named quantified constructor proof is downstream of the existential/universal branch handling"
+    },
+    {
+      "rank": 6,
+      "object": "formula_structural_recursion_assembler_proof",
+      "reason": "the global assembler proof is downstream of all constructor proofs"
+    }
+  ],
+  "weakest_remaining_proof_obstruction": "proof_bearing_quantifier_assignment_radius_control_statement",
+  "boundary": "BOUNDARY := ¬ unguarded_fo_formula_radius_construction"
+}
