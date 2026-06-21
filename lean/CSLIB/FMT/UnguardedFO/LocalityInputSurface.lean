@@ -785,6 +785,27 @@ theorem tri_graph_r_target_to_assignment_extension_projection_radius_control
   intro hR
   exact hR.1
 
+/-- Positive-radius assignment-extension projection.
+
+If the base assignments are Gaifman-close at radius `r` and the newly-bound
+values are Gaifman-close at radius `r`, then the quantifier-extended assignments
+are Gaifman-close at radius `r`.
+-/
+theorem tri_graph_positive_radius_assignment_extension_projection
+    {σ : RelLanguage} {n r : Nat} {M : RelStructure σ}
+    {ρ τ : Fin n → M.carrier} {x y : M.carrier} :
+    AssignmentGaifmanClose M r ρ τ →
+      GaifmanDistanceLe M x y r →
+        AssignmentGaifmanClose M r (extendAssignment ρ x) (extendAssignment τ y) := by
+  intro hbase hxy i
+  rcases i with ⟨i, hi⟩
+  cases i with
+  | zero =>
+      simpa [extendAssignment] using hxy
+  | succ j =>
+      have hj : j < n := Nat.lt_of_succ_lt_succ hi
+      simpa [extendAssignment] using hbase ⟨j, hj⟩
+
 /-- Radius-zero quantifier assignment-extension projection.
 
 If the base assignments are radius-zero Gaifman-close and the newly-bound

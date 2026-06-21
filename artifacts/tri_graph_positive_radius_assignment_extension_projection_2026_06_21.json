@@ -1,0 +1,14 @@
+{
+  "status": "TRI_GRAPH_POSITIVE_RADIUS_ASSIGNMENT_EXTENSION_PROJECTION",
+  "parent_status": "TRI_GRAPH_R_POSITIVE_RADIUS_OBSTRUCTION",
+  "theorem": "tri_graph_positive_radius_assignment_extension_projection",
+  "input_base_close": "AssignmentGaifmanClose M r rho tau",
+  "input_new_value_close": "GaifmanDistanceLe M x y r",
+  "output_extended_close": "AssignmentGaifmanClose M r (extendAssignment rho x) (extendAssignment tau y)",
+  "uses_assignment_extension": "extendAssignment",
+  "scope": "positive_radius_and_radius_zero_uniform",
+  "lean_surface": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "locked_commit_parent": "f20b7b2",
+  "boundary": "Assignment-extension projection lemma only; this does not prove quantifier locality transport or full unguarded FO locality.",
+  "next_admissible_target": "Thread this positive-radius extension projection into the TRI Graph R payload or quantifier transport target."
+}
