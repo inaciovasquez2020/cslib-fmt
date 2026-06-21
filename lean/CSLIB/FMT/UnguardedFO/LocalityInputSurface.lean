@@ -1263,6 +1263,23 @@ def existential_locality_radius_constructor :
     existential_body_witness_locality_transport_type :=
   existential_body_witness_locality_transport_type_constructor
 
+
+/-- Concrete quantifier locality transport named interface.
+
+This names the concrete quantifier locality transport now carried by the
+existential locality-radius constructor. It is an interface object only: it does
+not close max-radius Boolean recursion, full formula-radius construction, `Pk1`,
+`2vK`, or full unguarded FO locality.
+-/
+def concrete_quantifier_locality_transport_named_interface : Type 1 :=
+  existential_body_witness_locality_transport_type
+
+/-- The concrete quantifier locality transport interface is inhabited by the
+existential locality-radius constructor. -/
+def concrete_quantifier_locality_transport_named_interface_closed :
+    concrete_quantifier_locality_transport_named_interface :=
+  existential_locality_radius_constructor
+
 /-- Distinct-witness assignment-extension invariance for the existential body only.
 This proves the body-invariance target for extended assignments when the two
 witnesses are already known to be `r`-close. It does not prove or name the
