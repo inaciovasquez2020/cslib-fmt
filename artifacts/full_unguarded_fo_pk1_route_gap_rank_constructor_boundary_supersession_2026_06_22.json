@@ -1,0 +1,29 @@
+{
+  "status": "FULL_UNGUARDED_FO_PK1_ROUTE_GAP_RANK_CONSTRUCTOR_BOUNDARY_SUPERSESSION_ONLY",
+  "source_historical_artifact": "artifacts/full_unguarded_fo_pk1_route_gap_rank_2026_06_21.json",
+  "source_historical_doc": "docs/status/FULL_UNGUARDED_FO_PK1_ROUTE_GAP_RANK.md",
+  "superseded_historical_missing_object": "not existential_locality_radius_constructor",
+  "current_lean_objects": [
+    "existential_locality_radius_constructor",
+    "full_formula_radius_construction_closed"
+  ],
+  "remaining_boundaries": [
+    "not full_quantifier_locality_transport",
+    "not full_formula_radius_construction route certification beyond current construction object",
+    "not Pk1 route closure",
+    "not 2vK route closure",
+    "not full unguarded FO locality"
+  ],
+  "bounded_meaning": "The older PK1 route gap-rank record is historical and its existential-locality-radius-constructor missing boundary is superseded by current Lean declarations and downstream use. This records supersession only and preserves the larger route-closure boundaries.",
+  "does_not_claim": [
+    "external acceptance",
+    "independent expert validation",
+    "mathematical certification",
+    "Fagin theorem",
+    "0-1 Law",
+    "Pk1 route closure",
+    "2vK route closure",
+    "full unguarded FO locality"
+  ],
+  "weakest_next_boundary": "full_quantifier_locality_transport_or_route_closure_boundary_audit"
+}
