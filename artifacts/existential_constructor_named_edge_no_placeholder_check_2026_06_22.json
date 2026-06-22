@@ -1,0 +1,33 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_NAMED_EDGE_NO_PLACEHOLDER_CHECK_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_named_edge_no_placeholder_check",
+  "source_commit": "dd45328",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_AI_ASSISTED_REVIEW_RESPONSE_ONLY",
+  "checked_lean_file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "checked_declarations": [
+    "existential_constructor_actual_downstream_theorem_use_status",
+    "existential_constructor_actual_downstream_theorem_use_status_closed"
+  ],
+  "forbidden_tokens_absent_from_named_edge": [
+    "sorry",
+    "admit",
+    "axiom",
+    "opaque"
+  ],
+  "ancestry_check": "cc60f9a_is_ancestor_of_HEAD",
+  "post_target_lean_change_check": "no_LocalityInputSurface_lean_change_between_cc60f9a_and_HEAD",
+  "claim": "named_edge_contains_no_placeholder_or_opaque_token_and_target_commit_is_on_current_ancestry",
+  "does_not_claim": [
+    "artifact_verified_external_review",
+    "independent_expert_validation",
+    "external_acceptance",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "artifact_accessible_independent_review"
+}
