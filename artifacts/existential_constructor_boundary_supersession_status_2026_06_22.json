@@ -1,0 +1,22 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_BOUNDARY_SUPERSESSION_STATUS_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_boundary_supersession_status",
+  "superseded_boundary": "existential_ex_body_to_quantified_radius_witness_constructor",
+  "claim": "previous_downstream_reuse_missing_object_superseded_by_current_Lean_surface",
+  "evidence_names": [
+    "existential_ex_body_to_quantified_radius_witness_constructor",
+    "existential_body_witness_locality_transport_type_constructor",
+    "existential_locality_radius_constructor",
+    "unguarded_fo_formula_radius_construction",
+    "full_formula_radius_construction_closed"
+  ],
+  "does_not_claim": [
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_external_acceptance",
+    "TwoVK_external_acceptance",
+    "new_mathematical_theorem_beyond_current_Lean_surface"
+  ],
+  "next_weakest_boundary": "external_independent_validation_or_new_downstream_theorem_use"
+}
