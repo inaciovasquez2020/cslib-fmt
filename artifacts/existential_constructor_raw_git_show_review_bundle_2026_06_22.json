@@ -1,0 +1,29 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_RAW_GIT_SHOW_REVIEW_BUNDLE_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_raw_git_show_review_bundle",
+  "source_commit": "ae19608",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_GEMINI_ARTIFACT_ACCESSIBLE_AI_ASSISTED_REVIEW_RESPONSE_ONLY",
+  "raw_git_show_command": "git show cc60f9a:lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "raw_bundle_type": "public_gist",
+  "raw_bundle_url": "https://gist.github.com/inaciovasquez2020/b6c65b26382cbd2be7a78f931baae8c0",
+  "review_issue_url": "https://github.com/inaciovasquez2020/cslib-fmt/issues/171",
+  "review_request_comment_posted": true,
+  "raw_file_sha256": "d3844b443893b9634f2a99db81276f017f715fe7fde38f65b86b0a874759256d",
+  "named_edge_excerpt_sha256": "0caefa48973704437b9d55e61da794ab874419bd6043111e540a12f4e19db20b",
+  "claim": "raw_git_show_artifact_bundle_and_review_request_only",
+  "does_not_claim": [
+    "external_acceptance",
+    "independent_expert_validation",
+    "reviewer_response",
+    "reviewer_confirmation",
+    "reviewer_reran_verifier",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "raw_git_show_artifact_verified_reviewer_response"
+}
