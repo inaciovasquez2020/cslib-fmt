@@ -1,0 +1,24 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_EXTERNAL_REVIEW_MESSAGE_SENT_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_external_review_message_sent",
+  "source_commit": "da3d0cb",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_EXTERNAL_REVIEW_MESSAGE_DRAFT_ONLY",
+  "channel_type": "github_issue",
+  "channel": "inaciovasquez2020/cslib-fmt",
+  "sent_url": "https://github.com/inaciovasquez2020/cslib-fmt/issues/171",
+  "sent": true,
+  "claim": "external_review_request_message_sent_only",
+  "does_not_claim": [
+    "external_acceptance",
+    "reviewer_response",
+    "reviewer_confirmation",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "independent_reviewer_response"
+}
