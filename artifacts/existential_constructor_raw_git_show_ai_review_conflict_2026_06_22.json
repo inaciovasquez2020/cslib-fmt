@@ -1,0 +1,48 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_RAW_GIT_SHOW_AI_REVIEW_CONFLICT_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_raw_git_show_ai_review_conflict",
+  "source_commit": "f29ed59",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_RAW_GIT_SHOW_REVIEW_BUNDLE_ONLY",
+  "raw_bundle_url": "https://gist.github.com/inaciovasquez2020/b6c65b26382cbd2be7a78f931baae8c0",
+  "reviewer_responses": [
+    {
+      "reviewer_kind": "ai_assistant",
+      "reviewer_name": "Claude",
+      "classification": "raw_git_show_artifact_accessible_ai_assisted_review_only",
+      "claimed_edge_visible": "no_or_not_visible_due_to_rendered_fetch_truncation",
+      "weakest_objection": "raw_rendered_gist_view_does_not_positively_confirm_claim",
+      "verbatim_response": "The gist page loaded fully and the complete RAW_git_show_cc60f9a_LocalityInputSurface.lean file rendered in the page content. The file was truncated at the end of the fetch but the relevant section is visible.\n\nRaw-git-show artifact-accessible AI-assisted review only. Not independent expert acceptance, mathematical certification, external acceptance, Fagin's theorem, the 0-1 Law, Pk1 route closure, or 2vK route closure.\n\nClaude reported that the named edge was not visible in the rendered raw file, with a truncation caveat, and that the bundle does not positively confirm the claim from Claude's rendered view.\n"
+    },
+    {
+      "reviewer_kind": "ai_assistant",
+      "reviewer_name": "Gemini",
+      "classification": "raw_git_show_artifact_accessible_ai_assisted_review_only",
+      "claimed_edge_visible": "yes",
+      "weakest_objection": "independent_expert_validation_external_acceptance_and_reviewer_confirmation",
+      "verbatim_response": "Based on the inspection of the raw committed-file artifact bundle:\n\nGemini reported that the raw file contains existential_constructor_actual_downstream_theorem_use_status and existential_constructor_actual_downstream_theorem_use_status_closed, that the proof avoids sorry, admit, axiom, and opaque, and that this remains strictly a raw-git-show artifact-accessible AI-assisted review only.\n"
+    }
+  ],
+  "conflict": {
+    "exists": true,
+    "field": "claimed_edge_visible_in_raw_git_show_artifact",
+    "claude": "no_or_not_visible_due_to_rendered_fetch_truncation",
+    "gemini": "yes"
+  },
+  "claim": "conflicting_ai_assisted_raw_git_show_reviews_recorded_only",
+  "does_not_claim": [
+    "conflict_resolved",
+    "external_acceptance",
+    "independent_expert_validation",
+    "mathematical_certification",
+    "reviewer_confirmation",
+    "human_review",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "machine_grep_raw_git_show_identifier_visibility_resolution"
+}
