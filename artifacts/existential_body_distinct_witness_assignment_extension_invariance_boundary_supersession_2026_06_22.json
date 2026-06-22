@@ -1,0 +1,28 @@
+{
+  "status": "EXISTENTIAL_BODY_DISTINCT_WITNESS_ASSIGNMENT_EXTENSION_INVARIANCE_BOUNDARY_SUPERSESSION_ONLY",
+  "source_historical_artifact": "artifacts/existential_body_distinct_witness_assignment_extension_invariance_2026_06_21.json",
+  "source_historical_doc": "docs/status/EXISTENTIAL_BODY_DISTINCT_WITNESS_ASSIGNMENT_EXTENSION_INVARIANCE.md",
+  "superseded_historical_missing_objects": [
+    "not existential_body_witness_locality_transport",
+    "not existential_locality_radius_constructor"
+  ],
+  "current_lean_objects": [
+    "existential_body_distinct_witness_assignment_extension_invariance",
+    "existential_body_assignment_extension_invariance_component_package",
+    "existential_body_witness_locality_transport",
+    "existential_locality_radius_constructor",
+    "full_formula_radius_construction_closed"
+  ],
+  "bounded_meaning": "The older distinct-witness assignment-extension invariance record is historical and its missing-constructor boundaries are superseded by current Lean declarations and downstream use. This records supersession only.",
+  "does_not_claim": [
+    "external acceptance",
+    "independent expert validation",
+    "mathematical certification",
+    "Fagin theorem",
+    "0-1 Law",
+    "Pk1 route closure",
+    "2vK route closure",
+    "full unguarded FO locality"
+  ],
+  "weakest_next_boundary": "next_historical_missing_constructor_record_supersession"
+}
