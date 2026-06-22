@@ -1,0 +1,22 @@
+{
+  "status": "EXISTENTIAL_LOCALITY_RADIUS_CONSTRUCTOR_MISSING_THEOREM_STATUS_BOUNDARY_SUPERSESSION_ONLY",
+  "source_historical_artifact": "artifacts/existential_locality_radius_constructor_missing_theorem_status_2026_06_21.json",
+  "source_historical_doc": "docs/status/EXISTENTIAL_LOCALITY_RADIUS_CONSTRUCTOR_MISSING_THEOREM_STATUS.md",
+  "superseded_historical_missing_object": "not existential_locality_radius_constructor",
+  "current_lean_objects": [
+    "existential_locality_radius_constructor",
+    "full_formula_radius_construction_closed"
+  ],
+  "bounded_meaning": "The older missing-theorem status is historical and its existential-locality-radius-constructor boundary is superseded by current Lean declarations and downstream use. This records supersession only.",
+  "does_not_claim": [
+    "external acceptance",
+    "independent expert validation",
+    "mathematical certification",
+    "Fagin theorem",
+    "0-1 Law",
+    "Pk1 route closure",
+    "2vK route closure",
+    "full unguarded FO locality"
+  ],
+  "weakest_next_boundary": "next_historical_missing_constructor_record_supersession"
+}
