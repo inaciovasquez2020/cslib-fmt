@@ -1,0 +1,43 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_ARTIFACT_VERIFIED_AI_ASSISTED_REVIEW_RESPONSE_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_artifact_verified_ai_assisted_review_response",
+  "source_commit": "0832baf",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_ARTIFACT_ACCESSIBLE_REVIEW_BUNDLE_ONLY",
+  "reviewer_kind": "ai_assistant",
+  "reviewer_name": "Claude",
+  "review_scope": "artifact_accessible_gist_bundle_review_only",
+  "bundle_url": "https://gist.github.com/inaciovasquez2020/0f0e7c0940dbcad7bbc1c90b5dd97ce5",
+  "answers": {
+    "lean_excerpt_contains_claimed_edge": "yes",
+    "named_edge_avoids_forbidden_tokens_in_excerpt": "yes",
+    "status_wording_bounded_to_internal_lean_verification": "yes",
+    "weakest_remaining_objection": "gap_between_gist_excerpt_and_live_file_at_review_target_commit"
+  },
+  "verified_by_ai_against_accessible_artifacts": [
+    "LEAN_NAMED_EDGE_EXCERPT_contains_named_def_and_theorem",
+    "excerpt_uses_constructor_and_exact_with_two_named_upstream_terms",
+    "excerpt_contains_no_sorry_admit_axiom_opaque_tokens",
+    "status_wording_stays_bounded_to_internal_Lean_verification"
+  ],
+  "not_verified_by_ai": [
+    "live_LocalityInputSurface_lean_at_cc60f9a",
+    "independent_rerun_of_verifier_script",
+    "independent_git_ancestry_check"
+  ],
+  "verbatim_response": "Artifact-accessible AI-assisted review only — not independent expert acceptance or mathematical certification.\n\n1. Does the Lean excerpt contain the claimed downstream theorem/status edge?\n\nYes. The gist includes LEAN_NAMED_EDGE_EXCERPT.lean, which contains both named declarations:\n\n- def existential_constructor_actual_downstream_theorem_use_status : Prop := full_formula_radius_construction_status ∧ Nonempty full_formula_radius_construction\n- theorem existential_constructor_actual_downstream_theorem_use_status_closed : existential_constructor_actual_downstream_theorem_use_status\n\nThe proof body uses constructor, then supplies the two upstream dependencies — full_formula_radius_construction_status_closed and ⟨full_formula_radius_construction_closed⟩ — exactly as claimed. The named edge is present.\n\n2. Does the named edge avoid sorry, admit, axiom, and opaque?\n\nIn the excerpt as published: yes. The proof uses only constructor, exact, and the two named upstream terms. None of the four forbidden tokens appear. The no-placeholder-check JSON and verifier script both assert this, and the excerpt is consistent with that assertion. The caveat is that this review reads the gist excerpt, not the live LocalityInputSurface.lean file at commit cc60f9a directly; the verifier script checks the live file, but I cannot run it.\n\n3. Does the status wording stay bounded to internal Lean verification only?\n\nYes, consistently across all files. The status label is EXISTENTIAL_CONSTRUCTOR_ACTUAL_DOWNSTREAM_THEOREM_USE_STATUS_ONLY. Every artifact's does_not_claim field explicitly excludes external acceptance, Fagin's theorem, the 0-1 Law, Pk1 route closure, and 2vK route closure. The WEAKEST_NEXT_BOUNDARY field in the status MD is external_independent_validation, and in the no-placeholder-check artifacts it is artifact_accessible_independent_review. The wording is well-bounded.\n\n4. What is the weakest remaining objection or missing boundary?\n\nThe weakest objection is a gap between the gist excerpt and the live file. The Lean excerpt in the gist is a manually curated snippet, not a raw git show cc60f9a:lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean. The verifier script does check the live file, but its passing is attested only by the bundle's own artifacts — I cannot independently re-run it or confirm the git ancestry check (cc60f9a_is_ancestor_of_HEAD) from outside the repository. The excerpt is therefore consistent with the claim but is not independently verifiable as identical to the committed file. A reviewer with repository access could close this gap with a single git show command; until then it is the boundary that remains open.\n",
+  "does_not_claim": [
+    "independent_expert_acceptance",
+    "mathematical_certification",
+    "external_acceptance",
+    "live_repository_verified_review",
+    "reviewer_reran_verifier",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "raw_git_show_or_live_repository_access_independent_review"
+}
