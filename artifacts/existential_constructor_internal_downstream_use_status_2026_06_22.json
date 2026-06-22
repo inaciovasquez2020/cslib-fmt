@@ -1,0 +1,25 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_INTERNAL_DOWNSTREAM_USE_STATUS_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_internal_downstream_use_status",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_NEXT_BOUNDARY_RANK_ONLY",
+  "selected_ranked_boundary": "new_downstream_theorem_use",
+  "downstream_use_kind": "status_use",
+  "uses_current_lean_surface_names": [
+    "existential_ex_body_to_quantified_radius_witness_constructor",
+    "existential_body_witness_locality_transport_type_constructor",
+    "existential_locality_radius_constructor",
+    "unguarded_fo_formula_radius_construction",
+    "full_formula_radius_construction_closed"
+  ],
+  "claim": "internal_downstream_status_use_of_current_existential_constructor_Lean_surface",
+  "does_not_claim": [
+    "new_mathematical_theorem",
+    "external_acceptance",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed"
+  ],
+  "weakest_next_boundary": "actual_new_downstream_theorem_use"
+}
