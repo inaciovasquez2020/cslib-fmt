@@ -1,0 +1,41 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_LIVE_REPO_REVIEW_REQUEST_AFTER_MACHINE_GREP_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_live_repo_review_request_after_machine_grep",
+  "source_commit": "0c5018d",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_MACHINE_GREP_RAW_GIT_SHOW_IDENTIFIER_VISIBILITY_RESOLUTION_ONLY",
+  "request_channel": "local_record_only",
+  "review_request_comment_posted": false,
+  "requested_command": "git show cc60f9a:lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean | grep -n \"existential_constructor_actual_downstream_theorem_use_status\"",
+  "machine_grep_result": {
+    "existential_constructor_actual_downstream_theorem_use_status": {
+      "found": true,
+      "line_numbers": [
+        1607
+      ]
+    },
+    "existential_constructor_actual_downstream_theorem_use_status_closed": {
+      "found": true,
+      "line_numbers": [
+        1610,
+        1611
+      ]
+    }
+  },
+  "claim": "live_repository_or_human_review_request_prepared_after_machine_grep_only",
+  "does_not_claim": [
+    "github_comment_posted",
+    "external_acceptance",
+    "independent_expert_validation",
+    "mathematical_certification",
+    "reviewer_confirmation",
+    "human_review_completed",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "live_repository_or_human_reviewer_response"
+}
