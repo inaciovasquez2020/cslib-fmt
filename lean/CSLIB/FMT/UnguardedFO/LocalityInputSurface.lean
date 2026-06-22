@@ -1601,6 +1601,19 @@ theorem full_formula_radius_construction_status_closed :
     full_formula_radius_construction_status := by
   exact ⟨full_formula_radius_construction_closed⟩
 
+/-- Actual downstream theorem/status edge using the closed full formula-radius construction object.
+This is an internal downstream Lean use of `full_formula_radius_construction_closed`. It does not claim external acceptance, Fagin's theorem, the 0-1 Law, Pk1 route closure, or 2vK route closure.
+-/
+def existential_constructor_actual_downstream_theorem_use_status : Prop :=
+  full_formula_radius_construction_status ∧ Nonempty full_formula_radius_construction
+
+theorem existential_constructor_actual_downstream_theorem_use_status_closed :
+    existential_constructor_actual_downstream_theorem_use_status := by
+  constructor
+  · exact full_formula_radius_construction_status_closed
+  · exact ⟨full_formula_radius_construction_closed⟩
+
+
 end UnguardedFO
 end FMT
 end CSLIB

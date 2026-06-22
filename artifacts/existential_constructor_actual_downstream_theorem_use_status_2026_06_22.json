@@ -1,0 +1,24 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_ACTUAL_DOWNSTREAM_THEOREM_USE_STATUS_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_actual_downstream_theorem_use_status",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_INTERNAL_DOWNSTREAM_USE_STATUS_ONLY",
+  "lean_declarations": [
+    "existential_constructor_actual_downstream_theorem_use_status",
+    "existential_constructor_actual_downstream_theorem_use_status_closed"
+  ],
+  "uses_lean_declarations": [
+    "full_formula_radius_construction_status_closed",
+    "full_formula_radius_construction_closed"
+  ],
+  "claim": "actual_internal_downstream_Lean_status_edge_using_full_formula_radius_construction_closed",
+  "does_not_claim": [
+    "external_acceptance",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "external_independent_validation"
+}
