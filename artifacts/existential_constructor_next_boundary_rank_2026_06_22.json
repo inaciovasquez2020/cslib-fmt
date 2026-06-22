@@ -1,0 +1,29 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_NEXT_BOUNDARY_RANK_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_next_boundary_rank",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_BOUNDARY_SUPERSESSION_STATUS_ONLY",
+  "ranked_boundaries": [
+    {
+      "rank": 1,
+      "boundary": "new_downstream_theorem_use",
+      "reason": "internal_and_executable_before_external_review",
+      "bounded_next_step": "add_one_downstream_theorem_or_status_use_of_the_current_Lean_surface"
+    },
+    {
+      "rank": 2,
+      "boundary": "external_independent_validation",
+      "reason": "depends_on_external_reviewer_or_public_acceptance_signal",
+      "bounded_next_step": "prepare_or_send_one_external_validation_packet_only_after_internal_reuse_is_ranked"
+    }
+  ],
+  "does_not_claim": [
+    "external_acceptance",
+    "Fagin_theorem",
+    "zero_one_law",
+    "new_mathematical_theorem",
+    "Pk1_route_closed",
+    "TwoVK_route_closed"
+  ],
+  "weakest_next_boundary": "new_downstream_theorem_use"
+}
