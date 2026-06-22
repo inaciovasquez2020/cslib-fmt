@@ -1,0 +1,51 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_MACHINE_GREP_RAW_GIT_SHOW_IDENTIFIER_VISIBILITY_RESOLUTION_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_machine_grep_raw_git_show_identifier_visibility_resolution",
+  "source_commit": "6954d09",
+  "review_target_commit": "cc60f9a",
+  "source_status": "EXISTENTIAL_CONSTRUCTOR_RAW_GIT_SHOW_AI_REVIEW_CONFLICT_ONLY",
+  "raw_git_show_command": "git show cc60f9a:lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+  "machine_grep_identifiers": {
+    "existential_constructor_actual_downstream_theorem_use_status": {
+      "found": true,
+      "line_numbers": [
+        1607,
+        1610,
+        1611
+      ]
+    },
+    "existential_constructor_actual_downstream_theorem_use_status_closed": {
+      "found": true,
+      "line_numbers": [
+        1610
+      ]
+    }
+  },
+  "named_edge_forbidden_tokens_absent": [
+    "sorry",
+    "admit",
+    "axiom",
+    "opaque"
+  ],
+  "conflict_resolution": {
+    "conflict_field": "claimed_edge_visible_in_raw_git_show_artifact",
+    "machine_resolution": "identifier_present_in_raw_git_show_output",
+    "claude_review_status": "not_supported_by_machine_grep_except_render_truncation_caveat",
+    "gemini_review_status": "supported_by_machine_grep"
+  },
+  "claim": "machine_grep_resolves_ai_visibility_conflict_to_identifier_present_in_raw_git_show_output",
+  "does_not_claim": [
+    "external_acceptance",
+    "independent_expert_validation",
+    "mathematical_certification",
+    "reviewer_confirmation",
+    "human_review",
+    "Fagin_theorem",
+    "zero_one_law",
+    "Pk1_route_closed",
+    "TwoVK_route_closed",
+    "new_external_mathematical_acceptance"
+  ],
+  "weakest_next_boundary": "independent_live_repository_or_human_review"
+}
