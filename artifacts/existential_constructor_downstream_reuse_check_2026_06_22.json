@@ -1,0 +1,19 @@
+{
+  "status": "EXISTENTIAL_CONSTRUCTOR_DOWNSTREAM_REUSE_CHECK_ONLY",
+  "date": "2026-06-22",
+  "object": "existential_constructor_downstream_reuse_check",
+  "upstream_objects": [
+    "existential_locality_radius_constructor",
+    "concrete_quantifier_locality_transport_named_interface",
+    "existential_constructor_obligation_gap_package_status"
+  ],
+  "claim": "downstream_reuse_check_only",
+  "does_not_claim": [
+    "existential_ex_body_to_quantified_radius_witness_constructor",
+    "existential_body_witness_locality_transport",
+    "full_formula_radius_constructor",
+    "Fagin_theorem",
+    "zero_one_law"
+  ],
+  "weakest_missing_object": "existential_ex_body_to_quantified_radius_witness_constructor"
+}
