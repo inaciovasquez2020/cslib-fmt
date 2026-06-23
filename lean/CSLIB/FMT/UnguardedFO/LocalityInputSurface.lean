@@ -1601,6 +1601,19 @@ theorem full_formula_radius_construction_status_closed :
     full_formula_radius_construction_status := by
   exact ⟨full_formula_radius_construction_closed⟩
 
+/-- Radius-zero collapse of the current formula-radius construction surface.
+Every formula in the repository current unguarded FO input surface has locality
+input at radius zero. This is internal to the current assignment-close definition;
+it does not prove standard Gaifman locality, Fagin theorem, the 0-1 Law, Pk1,
+2vK, or any external finite-model-theory closure theorem.
+-/
+theorem unguarded_fo_formula_radius_zero_locality_input {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (φ : Formula σ n) :
+    UnguardedFOLocalityInputSurface M φ 0 := by
+  have h : HasUnguardedFOLocalityRadius M φ :=
+    unguarded_fo_formula_radius_construction M φ
+  exact unguarded_fo_locality_input_surface_weaken_radius M (Nat.zero_le h.radius) h.input
+
 /-- Actual downstream theorem/status edge using the closed full formula-radius construction object.
 This is an internal downstream Lean use of `full_formula_radius_construction_closed`. It does not claim external acceptance, Fagin's theorem, the 0-1 Law, Pk1 route closure, or 2vK route closure.
 -/
