@@ -1,0 +1,26 @@
+{
+  "artifact": "cslib_finite_graph_certificate_adapter",
+  "date": "2026-06-23",
+  "status": "bounded_cslib_facing_compatibility_object",
+  "outside_repo": "leanprover/cslib",
+  "base_evidence_commit": "006adf9",
+  "object_kind": "finite_graph_certificate_adapter_schema",
+  "compatibility_claim": "This object records a bounded CSLib-facing adapter schema for finite graph certificate data.",
+  "adapter_fields": {
+    "vertices": "finite vertex carrier",
+    "edges": "finite edge relation encoded as endpoint pairs",
+    "certificate": "bounded external-validation payload checked by this repository",
+    "ok_token": "single verifier output token"
+  },
+  "non_claims": [
+    "No upstream CSLib import is claimed.",
+    "No upstream acceptance is claimed.",
+    "No maintainer review is claimed.",
+    "No peer review is claimed.",
+    "No adoption is claimed.",
+    "No CSLib validation of URF is claimed.",
+    "No unrestricted theorem closure is claimed."
+  ],
+  "improvement_metric": "adds one concrete CSLib-facing finite graph certificate adapter object beyond the baseline evidence shell",
+  "ok_token": "CSLIB_FINITE_GRAPH_CERTIFICATE_ADAPTER_OK"
+}
