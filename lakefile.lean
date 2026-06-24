@@ -9,3 +9,6 @@ require mathlib from git
 @[default_target]
 lean_lib FMT
 lean_lib CslibFmt where
+
+lean_lib CSLIB where
+  srcDir := "lean"
