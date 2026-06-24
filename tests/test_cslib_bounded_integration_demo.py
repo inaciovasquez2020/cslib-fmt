@@ -12,4 +12,5 @@ def test_cslib_bounded_integration_demo_verifier():
     assert result.stdout.strip().splitlines() == [
         "CSLIB_BOUNDED_INTEGRATION_DEMO_OK",
         "CSLIB_FINITE_GRAPH_CERTIFICATE_ADAPTER_OK",
+        "CSLIB_DOWNSTREAM_LIBRARY_OBJECT_REFERENCE_RECORD_OK",
     ]

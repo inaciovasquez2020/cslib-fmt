@@ -1,0 +1,26 @@
+{
+  "artifact": "cslib_downstream_library_object_reference_record",
+  "date": "2026-06-23",
+  "status": "bounded_cslib_object_reference_record",
+  "outside_repo": "leanprover/cslib",
+  "strongest_evidence_commit": "785cf69",
+  "source_import": "CSLIB.FMT.UnguardedFO.DownstreamLibrary",
+  "referenced_object": "CSLIB.FMT.UnguardedFO.downstream_library_radius_zero_locality_input",
+  "referenced_type": "{σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n) : UnguardedFOLocalityInputSurface M φ 0",
+  "role": "records one concrete downstream-library object available to the CSLib-facing integration branch",
+  "lean_check_file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryObjectCheck.lean",
+  "validation_commands": [
+    "lake env lean lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryObjectCheck.lean",
+    "python3 scripts/verify_cslib_bounded_integration_demo.py",
+    "python3 -m pytest tests/test_cslib_bounded_integration_demo.py"
+  ],
+  "non_claims": [
+    "No upstream acceptance is claimed.",
+    "No maintainer review is claimed.",
+    "No peer review is claimed.",
+    "No adoption is claimed.",
+    "No CSLib validation of URF is claimed.",
+    "No unrestricted theorem closure is claimed."
+  ],
+  "ok_token": "CSLIB_DOWNSTREAM_LIBRARY_OBJECT_REFERENCE_RECORD_OK"
+}
