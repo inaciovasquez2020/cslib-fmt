@@ -1,0 +1,16 @@
+{
+  "artifact": "cslib_bounded_integration_demo",
+  "date": "2026-06-23",
+  "status": "bounded_non_merged_integration_evidence",
+  "outside_repo": "leanprover/cslib",
+  "claim": "This artifact records a bounded downstream integration evidence surface only.",
+  "non_claims": [
+    "No upstream acceptance is claimed.",
+    "No maintainer review is claimed.",
+    "No peer review is claimed.",
+    "No adoption is claimed.",
+    "No URF theorem closure is claimed."
+  ],
+  "improvement_metric": "records one reproducible compatibility boundary for a CSLib-facing URF/FMT integration branch",
+  "ok_token": "CSLIB_BOUNDED_INTEGRATION_DEMO_OK"
+}

@@ -1601,6 +1601,19 @@ theorem full_formula_radius_construction_status_closed :
     full_formula_radius_construction_status := by
   exact ⟨full_formula_radius_construction_closed⟩
 
+/-- Radius-zero collapse of the current formula-radius construction surface.
+Every formula in the repository current unguarded FO input surface has locality
+input at radius zero. This is internal to the current assignment-close definition;
+it does not prove standard Gaifman locality, Fagin theorem, the 0-1 Law, Pk1,
+2vK, or any external finite-model-theory closure theorem.
+-/
+theorem unguarded_fo_formula_radius_zero_locality_input {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (φ : Formula σ n) :
+    UnguardedFOLocalityInputSurface M φ 0 := by
+  have h : HasUnguardedFOLocalityRadius M φ :=
+    unguarded_fo_formula_radius_construction M φ
+  exact unguarded_fo_locality_input_surface_weaken_radius M (Nat.zero_le h.radius) h.input
+
 /-- Actual downstream theorem/status edge using the closed full formula-radius construction object.
 This is an internal downstream Lean use of `full_formula_radius_construction_closed`. It does not claim external acceptance, Fagin's theorem, the 0-1 Law, Pk1 route closure, or 2vK route closure.
 -/
@@ -1613,6 +1626,36 @@ theorem existential_constructor_actual_downstream_theorem_use_status_closed :
   · exact full_formula_radius_construction_status_closed
   · exact ⟨full_formula_radius_construction_closed⟩
 
+
+
+/-- The constructed formula-radius witness gives its concrete invariant.
+-/
+theorem unguarded_fo_constructed_radius_invariance
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n)
+    (ρ τ : Fin n → M.carrier)
+    (hclose :
+      AssignmentGaifmanClose M
+        (unguarded_fo_formula_radius_construction M φ).radius ρ τ) :
+    Holds M ρ φ ↔ Holds M τ φ := by
+  exact
+    unguarded_fo_locality_input_surface_invariant
+      M φ
+      (unguarded_fo_formula_radius_construction M φ).radius
+      (unguarded_fo_formula_radius_construction M φ).input
+      ρ τ hclose
+
+
+/-- Existence form of the constructed formula-radius invariant.
+-/
+theorem exists_unguarded_fo_locality_radius_invariance
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n) :
+    ∃ r : Nat,
+      ∀ ρ τ : Fin n → M.carrier,
+        AssignmentGaifmanClose M r ρ τ →
+          (Holds M ρ φ ↔ Holds M τ φ) := by
+  refine ⟨(unguarded_fo_formula_radius_construction M φ).radius, ?_⟩
+  exact fun ρ τ hclose =>
+    unguarded_fo_constructed_radius_invariance M φ ρ τ hclose
 
 end UnguardedFO
 end FMT

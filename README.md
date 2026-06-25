@@ -85,3 +85,22 @@ Current pushed stopping point:
 Boundary: this is a smaller-radius locality surface weakening. It supersedes the prior README stopping pointer to `cbefa8d` as the current pushed head. It does not by itself prove radius monotonicity under the blocked assignment-close direction unless the corresponding theorem/checker explicitly records that closure.
 
 Next bounded choice: lock the smaller-radius locality weakening status if not already locked, then decide whether the Boolean/quantifier recursion gate is admissible from that weakened locality input.
+
+## Unguarded FO downstream certificate library
+
+This repository includes a small downstream Lean certificate surface for the
+unguarded FO locality-radius work.
+
+Import entry point:
+
+```lean
+import CSLIB.FMT.UnguardedFO.DownstreamLibrary
+```
+
+Current downstream wrappers:
+
+- `downstream_library_radius_zero_locality_input`
+- `downstream_library_full_formula_radius_status`
+
+Boundary: this library surface does not claim standard Gaifman locality,
+Fagin's theorem, the 0-1 Law, Pk1 route closure, or 2vK route closure.
