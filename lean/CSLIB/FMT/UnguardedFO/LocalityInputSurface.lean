@@ -1627,6 +1627,36 @@ theorem existential_constructor_actual_downstream_theorem_use_status_closed :
   · exact ⟨full_formula_radius_construction_closed⟩
 
 
+
+/-- The constructed formula-radius witness gives its concrete invariant.
+-/
+theorem unguarded_fo_constructed_radius_invariance
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n)
+    (ρ τ : Fin n → M.carrier)
+    (hclose :
+      AssignmentGaifmanClose M
+        (unguarded_fo_formula_radius_construction M φ).radius ρ τ) :
+    Holds M ρ φ ↔ Holds M τ φ := by
+  exact
+    unguarded_fo_locality_input_surface_invariant
+      M φ
+      (unguarded_fo_formula_radius_construction M φ).radius
+      (unguarded_fo_formula_radius_construction M φ).input
+      ρ τ hclose
+
+
+/-- Existence form of the constructed formula-radius invariant.
+-/
+theorem exists_unguarded_fo_locality_radius_invariance
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n) :
+    ∃ r : Nat,
+      ∀ ρ τ : Fin n → M.carrier,
+        AssignmentGaifmanClose M r ρ τ →
+          (Holds M ρ φ ↔ Holds M τ φ) := by
+  refine ⟨(unguarded_fo_formula_radius_construction M φ).radius, ?_⟩
+  exact fun ρ τ hclose =>
+    unguarded_fo_constructed_radius_invariance M φ ρ τ hclose
+
 end UnguardedFO
 end FMT
 end CSLIB
