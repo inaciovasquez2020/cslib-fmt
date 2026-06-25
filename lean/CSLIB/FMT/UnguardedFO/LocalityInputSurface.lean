@@ -1690,6 +1690,16 @@ theorem exists_unguarded_fo_locality_input_surface
     ⟨(unguarded_fo_formula_radius_construction M φ).radius,
       (unguarded_fo_formula_radius_construction M φ).input⟩
 
+
+/-- Negation preserves existence of an unguarded FO locality input surface
+from any locality-radius witness.
+-/
+theorem neg_has_unguarded_fo_locality_radius_to_exists_input_surface
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} {φ : Formula σ n}
+    (h : HasUnguardedFOLocalityRadius M φ) :
+    ∃ r : Nat, UnguardedFOLocalityInputSurface M (Formula.neg φ) r := by
+  exact ⟨h.radius, unguarded_fo_neg_radius_constructor M h.input⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
