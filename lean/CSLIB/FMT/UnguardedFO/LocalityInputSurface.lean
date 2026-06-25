@@ -1680,6 +1680,16 @@ theorem has_unguarded_fo_locality_radius_to_exists_input_surface
     ∃ r : Nat, UnguardedFOLocalityInputSurface M φ r := by
   exact ⟨h.radius, h.input⟩
 
+
+/-- The constructed formula-radius witness yields an existential input surface.
+-/
+theorem exists_unguarded_fo_locality_input_surface
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} (φ : Formula σ n) :
+    ∃ r : Nat, UnguardedFOLocalityInputSurface M φ r := by
+  exact
+    ⟨(unguarded_fo_formula_radius_construction M φ).radius,
+      (unguarded_fo_formula_radius_construction M φ).input⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
