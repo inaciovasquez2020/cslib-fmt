@@ -1671,6 +1671,15 @@ theorem has_unguarded_fo_locality_radius_to_exists_invariance
   exact fun ρ τ hclose =>
     unguarded_fo_locality_input_surface_invariant M φ h.radius h.input ρ τ hclose
 
+
+/-- Any unguarded FO locality-radius witness yields an existential input surface.
+-/
+theorem has_unguarded_fo_locality_radius_to_exists_input_surface
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} {φ : Formula σ n}
+    (h : HasUnguardedFOLocalityRadius M φ) :
+    ∃ r : Nat, UnguardedFOLocalityInputSurface M φ r := by
+  exact ⟨h.radius, h.input⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
