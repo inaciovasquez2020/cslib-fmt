@@ -1,0 +1,33 @@
+{
+  "target_id": "CSLIB_DOWNSTREAM_LIBRARY_ENTRYPOINT_READINESS_2026_06_25",
+  "status": "constructed",
+  "object_type": "bounded downstream library entrypoint readiness",
+  "lean_module": "CSLIB.FMT.UnguardedFO.DownstreamLibraryEntrypointReadiness",
+  "lean_file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryEntrypointReadiness.lean",
+  "constructed_objects": [
+    "CSLIB.FMT.UnguardedFO.downstream_library_entrypoint_readiness_statement",
+    "CSLIB.FMT.UnguardedFO.downstream_library_radius_zero_locality_input_ready",
+    "CSLIB.FMT.UnguardedFO.downstream_library_full_formula_radius_status_ready",
+    "CSLIB.FMT.UnguardedFO.downstream_library_entrypoint_current_wall"
+  ],
+  "referenced_existing_objects": [
+    "CSLIB.FMT.UnguardedFO.downstream_library_radius_zero_locality_input",
+    "CSLIB.FMT.UnguardedFO.downstream_library_full_formula_radius_status"
+  ],
+  "readiness_claim": "The downstream library entry point imports and the current wrapper objects are available from a bounded readiness module.",
+  "not_claimed": [
+    "full CSLIB downstream theorem solved",
+    "universal FO locality framework closed",
+    "downstream adoption completed"
+  ],
+  "boundary": "BOUNDARY := not full_CSLIB_downstream_theorem_solved",
+  "additional_boundaries": [
+    "BOUNDARY := not universal_FO_locality_framework_closed",
+    "BOUNDARY := not downstream_adoption_completed"
+  ],
+  "validation": [
+    "lake build CSLIB.FMT.UnguardedFO.DownstreamLibraryEntrypointReadiness",
+    "python3 tools/verify_cslib_downstream_library_entrypoint_readiness_2026_06_25.py",
+    "python3 -m pytest -q tests/test_cslib_downstream_library_entrypoint_readiness_2026_06_25.py"
+  ]
+}
