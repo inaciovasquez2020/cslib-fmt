@@ -506,8 +506,7 @@ theorem plain_induced_radius_ball_isomorphism_to_cr2
     {r : Nat} {a : α} {b : β}
     (h : PlainInducedRadiusBallIso 𝒜 ℬ r a b) :
     Cr2 𝒜 ℬ r a b := by
-  exact restricted_ef_game_local_type_invariant_input_surface_to_cr2
-    (plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_invariant_input_surface h)
+  exact ⟨plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_invariant_input_surface 𝒜 ℬ h⟩
 
 
 /--
@@ -525,7 +524,7 @@ theorem pointed_radius_ball_equiv_to_cr2
     (h : PointedRadiusBallEquiv 𝒜 ℬ r a b) :
     Cr2 𝒜 ℬ r a b := by
   exact plain_induced_radius_ball_isomorphism_to_cr2
-    (pointed_radius_ball_equiv_to_plain_induced_radius_ball_isomorphism h)
+    (pointed_radius_ball_equiv_to_plain_induced_radius_ball_isomorphism (α := α) (β := β) (𝔄 := 𝒜) (𝔅 := ℬ) (r := r) (a := a) (b := b) h)
 
 
 /--
@@ -542,8 +541,8 @@ theorem localIso_to_cr2
     (h : LocalIso 𝒜 ℬ r a b) :
     Cr2 𝒜 ℬ r a b := by
   exact pointed_radius_ball_equiv_to_cr2
-    (ballIso_to_pointed_radius_ball_equiv
-      (localIso_to_ballIso h))
+    (ballIso_to_pointed_radius_ball_equiv 𝒜 ℬ
+      (localIso_to_ballIso (α := α) (β := β) (𝔄 := 𝒜) (𝔅 := ℬ) (r := r) (a := a) (b := b) h))
 
 /--
 A restricted constructor target weaker than `cr2_unconditional_constructor`.
