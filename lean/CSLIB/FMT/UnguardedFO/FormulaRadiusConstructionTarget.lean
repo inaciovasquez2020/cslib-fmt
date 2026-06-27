@@ -385,6 +385,22 @@ noncomputable def neg_shared_radius_target_family_constructor
       exact hinput
     exact ⟨F.sharedRadius, F.shared_radius_bounded, hinputθ⟩
 
+/-- Extract a locality-radius witness from the negated shared-radius family constructor. -/
+noncomputable def neg_shared_radius_target_family_has_radius
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (F : SharedRadiusTargetFamily M n)
+    (θ : Formula σ n)
+    (hθ : (neg_shared_radius_target_family_fragment F).member θ) :
+    HasUnguardedFOLocalityRadius M θ :=
+  formula_radius_construction_target_has_radius
+    M
+    (neg_shared_radius_target_family_constructor F)
+    θ
+    hθ
+
+
 /-- Conjunction closure for the paired fragments of shared-radius target families. -/
 def conj_shared_radius_target_family_fragment
     {σ : RelLanguage}
@@ -442,6 +458,22 @@ noncomputable def conj_shared_radius_target_family_constructor
         (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound),
       hinputθ⟩
 
+/-- Extract a locality-radius witness from the conjunction shared-radius family constructor. -/
+noncomputable def conj_shared_radius_target_family_has_radius
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n)
+    (θ : Formula σ n)
+    (hθ : (conj_shared_radius_target_family_fragment P).member θ) :
+    HasUnguardedFOLocalityRadius M θ :=
+  formula_radius_construction_target_has_radius
+    M
+    (conj_shared_radius_target_family_constructor P)
+    θ
+    hθ
+
+
 /-- Disjunction closure for the paired fragments of shared-radius target families. -/
 def disj_shared_radius_target_family_fragment
     {σ : RelLanguage}
@@ -498,6 +530,22 @@ noncomputable def disj_shared_radius_target_family_constructor
       Nat.le_trans P.left.shared_radius_bounded
         (Nat.le_max_left P.left.target.radiusBound P.right.target.radiusBound),
       hinputθ⟩
+
+/-- Extract a locality-radius witness from the disjunction shared-radius family constructor. -/
+noncomputable def disj_shared_radius_target_family_has_radius
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (P : SharedRadiusTargetFamilyPair M n)
+    (θ : Formula σ n)
+    (hθ : (disj_shared_radius_target_family_fragment P).member θ) :
+    HasUnguardedFOLocalityRadius M θ :=
+  formula_radius_construction_target_has_radius
+    M
+    (disj_shared_radius_target_family_constructor P)
+    θ
+    hθ
+
 
 /-! ### Shared-radius family introductions -/
 
