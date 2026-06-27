@@ -385,6 +385,22 @@ noncomputable def neg_shared_radius_target_family_constructor
       exact hinput
     exact ⟨F.sharedRadius, F.shared_radius_bounded, hinputθ⟩
 
+/-- Extract a locality-radius witness from the negated shared-radius family constructor. -/
+noncomputable def neg_shared_radius_target_family_has_radius
+    {σ : RelLanguage}
+    {M : RelStructure σ}
+    {n : Nat}
+    (F : SharedRadiusTargetFamily M n)
+    (θ : Formula σ n)
+    (hθ : (neg_shared_radius_target_family_fragment F).member θ) :
+    HasUnguardedFOLocalityRadius M θ :=
+  formula_radius_construction_target_has_radius
+    M
+    (neg_shared_radius_target_family_constructor F)
+    θ
+    hθ
+
+
 /-- Conjunction closure for the paired fragments of shared-radius target families. -/
 def conj_shared_radius_target_family_fragment
     {σ : RelLanguage}
