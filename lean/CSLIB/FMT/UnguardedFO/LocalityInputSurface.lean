@@ -1700,6 +1700,22 @@ theorem neg_has_unguarded_fo_locality_radius_to_exists_input_surface
     ∃ r : Nat, UnguardedFOLocalityInputSurface M (Formula.neg φ) r := by
   exact ⟨h.radius, unguarded_fo_neg_radius_constructor M h.input⟩
 
+
+/-- Conjunction preserves existence of an unguarded FO locality input surface from two locality-radius witnesses.
+This uses the common-smaller-radius route and does not claim max-radius Boolean closure.
+-/
+theorem conj_has_unguarded_fo_locality_radius_to_exists_input_surface
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} {φ ψ : Formula σ n}
+    (hφ : HasUnguardedFOLocalityRadius M φ)
+    (hψ : HasUnguardedFOLocalityRadius M ψ) :
+    ∃ r : Nat, UnguardedFOLocalityInputSurface M (Formula.conj φ ψ) r := by
+  refine ⟨Nat.min hφ.radius hψ.radius, ?_⟩
+  exact unguarded_fo_conj_common_smaller_radius_constructor M
+    (Nat.min_le_left hφ.radius hψ.radius)
+    (Nat.min_le_right hφ.radius hψ.radius)
+    hφ.input
+    hψ.input
+
 end UnguardedFO
 end FMT
 end CSLIB
