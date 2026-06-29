@@ -32,7 +32,13 @@ jobs:
       - name: Fetch Mathlib cache
         run: |
           lake update
-          lake exe cache get
+          for attempt in 1 2 3; do
+            lake exe cache get && break
+            if [ "$attempt" = 3 ]; then
+              exit 1
+            fi
+            sleep 10
+          done
 
       - name: Build
         run: lake build
