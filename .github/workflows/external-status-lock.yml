@@ -11,3 +11,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify external status lock
         run: python3 scripts/verify_external_status_lock.py
+      - name: Verify existential locality radius input surface theorem
+        run: python3 tools/verify_ex_has_unguarded_fo_locality_radius_to_exists_input_surface.py

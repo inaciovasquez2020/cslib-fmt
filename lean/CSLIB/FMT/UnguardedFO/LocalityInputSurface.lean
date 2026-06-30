@@ -1732,6 +1732,21 @@ theorem disj_has_unguarded_fo_locality_radius_to_exists_input_surface
     hφ.input
     hψ.input
 
+/-- Existential quantification preserves existence of an unguarded FO locality input surface
+from a body locality-radius witness.
+
+This only packages the existing existential locality-radius constructor into an existential
+input-surface witness. It does not prove max-radius Boolean closure, Pk1, 2vK, standard
+Gaifman locality, Fagin's theorem, the 0-1 Law, or external theorem closure.
+-/
+theorem ex_has_unguarded_fo_locality_radius_to_exists_input_surface
+    {σ : RelLanguage} (M : RelStructure σ) {n : Nat} {φ : Formula σ (n + 1)}
+    (hφ : HasUnguardedFOLocalityRadius M φ) :
+    ∃ r : Nat, UnguardedFOLocalityInputSurface M (Formula.ex φ) r := by
+  have hEx : HasUnguardedFOLocalityRadius M (Formula.ex φ) :=
+    existential_locality_radius_constructor M hφ
+  exact ⟨hEx.radius, hEx.input⟩
+
 end UnguardedFO
 end FMT
 end CSLIB
