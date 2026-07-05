@@ -1,0 +1,21 @@
+{
+"artifact": "zero_one_law_finite_subset_almost_sure_receipt_2026_07_05",
+"repository": "cslib-fmt",
+"status": "FINITE_SUBSET_T_EXT_ALMOST_SURE_RECEIPT_RECORDED",
+"scope": "finite-union-bound closure for almost-sure extension axioms",
+"core_statement": "If Gamma is a finite subset of T_ext and every extension axiom is almost sure, then Pr[A_n models Gamma] tends to 1.",
+"proof_surface": [
+"for every gamma in Gamma, Pr[A_n does not model gamma] tends to 0",
+"A_n does not model Gamma implies A_n does not model gamma for some gamma in Gamma",
+"union bound controls the finite disjunction",
+"finite sum of null-limit error terms tends to 0",
+"therefore Pr[A_n models Gamma] tends to 1"
+],
+"boundaries": [
+"no countable intersection almost-sure closure claim",
+"no infinite Gamma closure claim",
+"no dependent probability model claim",
+"no nonuniform probability model claim",
+"no Lean-formal probability theorem claim"
+]
+}

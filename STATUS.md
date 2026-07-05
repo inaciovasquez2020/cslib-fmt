@@ -53,3 +53,12 @@ No repository-level claim of peer-reviewed acceptance unless explicitly document
 No repository-level claim that finite library closure equals theorem-level completion.
 
 Remaining frontier: independent review, external validation, peer-reviewed acceptance, or theorem-level strengthening outside this finite library surface.
+
+## Zero-One Law Structural Receipts — 2026-07-05
+
+- Structural solve receipt: `docs/status/ZERO_ONE_LAW_STRUCTURAL_SOLVE_RECEIPT_2026_07_05.md`
+- Back-and-forth completeness receipt: `docs/status/ZERO_ONE_LAW_BACK_AND_FORTH_COMPLETENESS_RECEIPT_2026_07_05.md`
+- Finite subset almost-sure receipt: `docs/status/ZERO_ONE_LAW_FINITE_SUBSET_ALMOST_SURE_RECEIPT_2026_07_05.md`
+- 0-ary relation negative-boundary receipt: `docs/status/ZERO_ONE_LAW_ZERO_ARY_RELATION_NEGATIVE_BOUNDARY_RECEIPT_2026_07_05.md`
+
+Boundary: these receipts do not assert Lean-formal Fagin theorem closure, global finite-model-theory closure, closure for random 0-ary relation symbols, closure for functions/constants, or closure for dependent/nonuniform random models.

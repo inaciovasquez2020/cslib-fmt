@@ -1,0 +1,22 @@
+{
+  "artifact": "zero_one_law_back_and_forth_completeness_receipt_2026_07_05",
+  "repository": "cslib-fmt",
+  "status": "T_EXT_COMPLETENESS_BACK_AND_FORTH_RECEIPT_RECORDED",
+  "scope": "classical finite positive-arity relational extension theory completeness",
+  "core_statement": "For the extension theory T_ext of finite positive-arity relational vocabularies, any two countable models of T_ext are isomorphic by back-and-forth, hence T_ext is complete.",
+  "proof_surface": [
+    "finite partial isomorphism between finite generated substructures",
+    "forward extension uses one-point extension axiom in the target model",
+    "backward extension uses the same argument with source and target exchanged",
+    "countable enumeration schedules all elements of both countable models",
+    "union of the chain is a total isomorphism",
+    "countable categoricity implies completeness for the extension theory"
+  ],
+  "boundaries": [
+    "no Lean-formal T_ext completeness theorem claim",
+    "no Lean-formal Fagin theorem closure claim",
+    "no global finite-model-theory closure claim",
+    "no claim for vocabularies with functions or constants",
+    "no claim for 0-ary relation symbols"
+  ]
+}

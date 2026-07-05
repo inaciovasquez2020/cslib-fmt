@@ -1,0 +1,21 @@
+{
+"artifact": "zero_one_law_zero_ary_relation_negative_boundary_receipt_2026_07_05",
+"repository": "cslib-fmt",
+"status": "ZERO_ARY_RELATION_NEGATIVE_BOUNDARY_RECEIPT_RECORDED",
+"scope": "counterexample showing positive arity is necessary for the recorded 0-1 law surface",
+"counterexample": {
+"vocabulary": "L = {P}",
+"arity": "arity(P) = 0",
+"sentence": "phi = P",
+"random_truth_value": "P is true with probability 1/2 and false with probability 1/2",
+"probability": "Pr[A_n models P] = 1/2 for every n",
+"limit": "lim_n Pr[A_n models P] = 1/2 not in {0,1}"
+},
+"conclusion": "The positive-arity condition is necessary unless 0-ary relation symbols are excluded or made deterministic.",
+"boundaries": [
+"no 0-1 law claim for random 0-ary relation symbols",
+"no global vocabulary closure claim",
+"no Lean-formal counterexample theorem claim",
+"no claim about deterministic 0-ary symbols"
+]
+}
