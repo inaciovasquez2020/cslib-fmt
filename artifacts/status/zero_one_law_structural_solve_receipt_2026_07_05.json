@@ -1,0 +1,57 @@
+{
+  "artifact": "zero_one_law_structural_solve_receipt_2026_07_05",
+  "repository": "cslib-fmt",
+  "status": "CLASSICAL_ZERO_ONE_LAW_STRUCTURAL_SOLVE_RECORDED",
+  "scope": "classical finite relational first-order 0-1 law structural mathematics",
+  "model": {
+    "vocabulary": {
+      "finite": true,
+      "relational_only": true,
+      "positive_arity_only": true,
+      "excluded": [
+        "0-ary relation symbols",
+        "function symbols",
+        "constant symbols",
+        "dependent distributions",
+        "nonuniform distributions"
+      ]
+    },
+    "finite_structure_domain": "[n] = {0, ..., n-1}",
+    "random_space": "independent Bernoulli(1/2) truth assignment for each relation tuple over [n]",
+    "coordinate_cardinality": "sum_R n^(arity(R))",
+    "structure_count": "2^(sum_R n^(arity(R)))",
+    "probability_normalization": "total mass over finite model space equals 1"
+  },
+  "extension_axiom_surface": {
+    "variable_context": [
+      "base variables are syntactically distinct",
+      "witness variable is fresh"
+    ],
+    "extension_type": [
+      "finite atom universe",
+      "complete signed one-point atomic type",
+      "finite conjunction constraints"
+    ],
+    "almost_sure_bound": "Pr[A_n does not satisfy EA_tau] <= n^m * (1 - 2^(-N_tau))^(n-m)",
+    "asymptotic_limit": "n^m * (1 - p_tau)^(n-m) -> 0 for p_tau > 0"
+  },
+  "completion_chain": [
+    "individual extension axioms are almost sure",
+    "finite subsets of T_ext are almost sure by union bound",
+    "T_ext completeness is supplied by countable back-and-forth",
+    "finite proof extraction supplies finite Gamma subset of T_ext",
+    "syntactic soundness gives event carrier inclusions",
+    "probability monotonicity and complement bounds force limit 0 or 1"
+  ],
+  "final_theorem_surface": "For every first-order sentence phi over a finite positive-arity relational vocabulary L, lim_n Pr[A_n |= phi] is in {0,1}.",
+  "boundaries": [
+    "no Lean-formal Fagin theorem closure claim",
+    "no repository-level global finite-model-theory closure claim",
+    "no 0-1 law claim for 0-ary relation symbols",
+    "no 0-1 law claim for vocabularies with functions or constants",
+    "no 0-1 law claim for dependent or nonuniform random models",
+    "no Clay-level or P-vs-NP claim"
+  ],
+  "verifier": "tools/verify_zero_one_law_structural_solve_receipt.py",
+  "test": "tests/test_zero_one_law_structural_solve_receipt.py"
+}
