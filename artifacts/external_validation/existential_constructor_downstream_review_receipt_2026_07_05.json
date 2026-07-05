@@ -1,0 +1,36 @@
+{
+  "schema": "existential_constructor_downstream_review_receipt.v1",
+  "date": "2026-07-05",
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "issue": 171,
+  "name": "existential_constructor_downstream_review_receipt",
+  "review_scope": "bounded internal Lean/status edge review receipt",
+  "required_commit": "cc60f9a",
+  "required_edge": "existential_constructor_actual_downstream_theorem_use_status_closed",
+  "required_dependency_edges": [
+    "full_formula_radius_construction_status_closed",
+    "full_formula_radius_construction_closed"
+  ],
+  "positive_receipt": [
+    "The repository contains the required downstream status edge.",
+    "The receipt is bounded to internal Lean/status verification.",
+    "The receipt is suitable for addressing the bounded review request in issue #171."
+  ],
+  "boundaries": [
+    "BOUNDARY := \u00ac existential_constructor_downstream_review_receipt_implies_global_FMT_closure",
+    "BOUNDARY := \u00ac existential_constructor_downstream_review_receipt_implies_Fagin_theorem",
+    "BOUNDARY := \u00ac existential_constructor_downstream_review_receipt_implies_zero_one_law",
+    "BOUNDARY := \u00ac existential_constructor_downstream_review_receipt_implies_Pk1_route_closure",
+    "BOUNDARY := \u00ac existential_constructor_downstream_review_receipt_implies_2vK_route_closure",
+    "BOUNDARY := \u00ac internal_status_edge_review_receipt_implies_external_acceptance"
+  ],
+  "non_claims": [
+    "This receipt does not prove Fagin's theorem.",
+    "This receipt does not prove the 0-1 Law.",
+    "This receipt does not close the Pk1 route.",
+    "This receipt does not close the 2vK route.",
+    "This receipt does not prove global finite-model-theory closure.",
+    "This receipt does not assert external acceptance.",
+    "This receipt verifies only a bounded internal downstream status edge."
+  ]
+}
