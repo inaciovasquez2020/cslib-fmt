@@ -1,0 +1,3766 @@
+{
+  "audit_scope": "syntactic Lean declaration surface audit with theorem-closure nonclaim boundaries",
+  "boundaries": [
+    "BOUNDARY := \u00ac exported_theorem_audit_receipt_implies_global_FMT_closure",
+    "BOUNDARY := \u00ac exported_theorem_audit_receipt_implies_Fagin_theorem",
+    "BOUNDARY := \u00ac exported_theorem_audit_receipt_implies_zero_one_law",
+    "BOUNDARY := \u00ac exported_theorem_audit_receipt_implies_Pk1_route_closure",
+    "BOUNDARY := \u00ac exported_theorem_audit_receipt_implies_2vK_route_closure",
+    "BOUNDARY := \u00ac syntactic_declaration_audit_implies_external_acceptance"
+  ],
+  "classification_set": [
+    "definition_or_specification",
+    "verified_lemma",
+    "conditional_theorem_or_boundary",
+    "scaffold_or_example",
+    "forbidden_or_untrusted_declaration"
+  ],
+  "counts": {
+    "conditional_theorem_or_boundary": 118,
+    "definition_or_specification": 219,
+    "scaffold_or_example": 40,
+    "verified_lemma": 154
+  },
+  "date": "2026-07-05",
+  "declaration_count": 531,
+  "declarations": [
+    {
+      "classification": "verified_lemma",
+      "file": "CslibFmt/FormalContent/NonVacuousCore.lean",
+      "kind": "theorem",
+      "line": 4,
+      "name": "nat_add_comm_core"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "CslibFmt/FormalContent/NonVacuousCore.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "nat_add_assoc_core"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "CslibFmt/FormalContent/NonVacuousCore.lean",
+      "kind": "theorem",
+      "line": 10,
+      "name": "nat_add_right_cancel_core"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/API/FinalSolve.lean",
+      "kind": "def",
+      "line": 10,
+      "name": "final_solve_spec"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/API.lean",
+      "kind": "def",
+      "line": 9,
+      "name": "useLocalType"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/API.lean",
+      "kind": "def",
+      "line": 11,
+      "name": "useLocalFactorization"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Bridge/LocalGlobal.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "localProjection"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Bridge/LocalGlobal.lean",
+      "kind": "def",
+      "line": 10,
+      "name": "globalLift"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Bridge/LocalGlobal.lean",
+      "kind": "def",
+      "line": 12,
+      "name": "localToGlobal"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/BallTest.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "G"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/BallTest.lean",
+      "kind": "example",
+      "line": 11,
+      "name": "anonymous_at_line_11"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleRankNext.lean",
+      "kind": "inductive",
+      "line": 9,
+      "name": "TwoV"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleRankNext.lean",
+      "kind": "def",
+      "line": 14,
+      "name": "testGraph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleRankNext.lean",
+      "kind": "instance",
+      "line": 21,
+      "name": "anonymous_at_line_21"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleRankNext.lean",
+      "kind": "example",
+      "line": 32,
+      "name": "anonymous_at_line_32"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleRankNext.lean",
+      "kind": "example",
+      "line": 35,
+      "name": "anonymous_at_line_35"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleRankNext.lean",
+      "kind": "example",
+      "line": 39,
+      "name": "anonymous_at_line_39"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleRankThreeVertex.lean",
+      "kind": "inductive",
+      "line": 9,
+      "name": "ThreeV"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleRankThreeVertex.lean",
+      "kind": "def",
+      "line": 15,
+      "name": "triangleGraph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleRankThreeVertex.lean",
+      "kind": "instance",
+      "line": 26,
+      "name": "anonymous_at_line_26"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleRankThreeVertex.lean",
+      "kind": "example",
+      "line": 37,
+      "name": "anonymous_at_line_37"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleRankThreeVertex.lean",
+      "kind": "example",
+      "line": 40,
+      "name": "anonymous_at_line_40"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleRankThreeVertex.lean",
+      "kind": "example",
+      "line": 44,
+      "name": "anonymous_at_line_44"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleSpaceEdgeGap.lean",
+      "kind": "example",
+      "line": 11,
+      "name": "anonymous_at_line_11"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleSpaceEdgeGap.lean",
+      "kind": "example",
+      "line": 14,
+      "name": "anonymous_at_line_14"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleSpaceEdgeGap.lean",
+      "kind": "example",
+      "line": 17,
+      "name": "anonymous_at_line_17"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleSpaceEdgeGap.lean",
+      "kind": "example",
+      "line": 20,
+      "name": "anonymous_at_line_20"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/CycleSpaceTest.lean",
+      "kind": "instance",
+      "line": 10,
+      "name": "anonymous_at_line_10"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleSpaceTest.lean",
+      "kind": "example",
+      "line": 22,
+      "name": "anonymous_at_line_22"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/CycleSpaceTest.lean",
+      "kind": "example",
+      "line": 25,
+      "name": "anonymous_at_line_25"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "inductive",
+      "line": 9,
+      "name": "Line3"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "def",
+      "line": 15,
+      "name": "lineGraph"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 23,
+      "name": "lineGraph_symm"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 32,
+      "name": "lineGraph_path_ab"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 45,
+      "name": "lineGraph_path_bc"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 58,
+      "name": "lineGraph_path_ba"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 71,
+      "name": "lineGraph_path_cb"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 84,
+      "name": "lineGraph_path_ac_two"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 100,
+      "name": "lineGraph_direct_path_symmetry_ab_ba"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 105,
+      "name": "lineGraph_direct_path_ac_le_two"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 110,
+      "name": "lineGraph_no_path_ab_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 118,
+      "name": "lineGraph_no_path_ba_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 126,
+      "name": "lineGraph_no_path_bc_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 134,
+      "name": "lineGraph_no_path_cb_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 142,
+      "name": "lineGraph_no_path_ac_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 150,
+      "name": "lineGraph_no_path_ca_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 158,
+      "name": "lineGraph_no_path_ac_one"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 171,
+      "name": "lineGraph_no_path_ca_one"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 184,
+      "name": "lineGraph_path_aa_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 193,
+      "name": "lineGraph_path_bb_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 202,
+      "name": "lineGraph_path_cc_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 211,
+      "name": "lineGraph_path_ca_two"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "instance",
+      "line": 227,
+      "name": "lineGraph_slashAxioms"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 271,
+      "name": "lineGraph_dist_ab_le_one"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 279,
+      "name": "lineGraph_dist_ba_le_one"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 287,
+      "name": "lineGraph_dist_ab_ba_symmetry"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Examples/DistanceAlgebra.lean",
+      "kind": "theorem",
+      "line": 292,
+      "name": "lineGraph_dist_ac_le_two"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "inductive",
+      "line": 7,
+      "name": "SplitV"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "def",
+      "line": 13,
+      "name": "splitGraph"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "example",
+      "line": 20,
+      "name": "anonymous_at_line_20"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "example",
+      "line": 23,
+      "name": "anonymous_at_line_23"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "example",
+      "line": 27,
+      "name": "anonymous_at_line_27"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "example",
+      "line": 31,
+      "name": "anonymous_at_line_31"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceRegression.lean",
+      "kind": "example",
+      "line": 36,
+      "name": "anonymous_at_line_36"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "inductive",
+      "line": 8,
+      "name": "TwoV"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "def",
+      "line": 13,
+      "name": "testGraph"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "example",
+      "line": 20,
+      "name": "anonymous_at_line_20"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "example",
+      "line": 23,
+      "name": "anonymous_at_line_23"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "example",
+      "line": 26,
+      "name": "anonymous_at_line_26"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "example",
+      "line": 30,
+      "name": "anonymous_at_line_30"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/DistanceTest.lean",
+      "kind": "example",
+      "line": 33,
+      "name": "anonymous_at_line_33"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/FactorizationBreak.lean",
+      "kind": "example",
+      "line": 8,
+      "name": "anonymous_at_line_8"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/FactorizationTest.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "f"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/FactorizationTest.lean",
+      "kind": "def",
+      "line": 9,
+      "name": "anonymous_at_line_9"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/FactorizationTest.lean",
+      "kind": "example",
+      "line": 11,
+      "name": "anonymous_at_line_11"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankGapLemmaV2.lean",
+      "kind": "example",
+      "line": 11,
+      "name": "anonymous_at_line_11"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankGapLemmaV2.lean",
+      "kind": "example",
+      "line": 14,
+      "name": "anonymous_at_line_14"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankGapLemmaV2.lean",
+      "kind": "example",
+      "line": 17,
+      "name": "anonymous_at_line_17"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankGapLemmaV2.lean",
+      "kind": "example",
+      "line": 20,
+      "name": "anonymous_at_line_20"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/GenuineCycleRankPath3WitnessV2.lean",
+      "kind": "inductive",
+      "line": 11,
+      "name": "Path3V"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/GenuineCycleRankPath3WitnessV2.lean",
+      "kind": "def",
+      "line": 17,
+      "name": "path3Graph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/GenuineCycleRankPath3WitnessV2.lean",
+      "kind": "instance",
+      "line": 26,
+      "name": "anonymous_at_line_26"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankPath3WitnessV2.lean",
+      "kind": "example",
+      "line": 37,
+      "name": "anonymous_at_line_37"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankPath3WitnessV2.lean",
+      "kind": "example",
+      "line": 43,
+      "name": "anonymous_at_line_43"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankPath3WitnessV2.lean",
+      "kind": "example",
+      "line": 46,
+      "name": "anonymous_at_line_46"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankWitnessV2.lean",
+      "kind": "example",
+      "line": 10,
+      "name": "anonymous_at_line_10"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/GenuineCycleRankWitnessV2.lean",
+      "kind": "example",
+      "line": 13,
+      "name": "anonymous_at_line_13"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/Girth.lean",
+      "kind": "example",
+      "line": 10,
+      "name": "anonymous_at_line_10"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/HighGirthLift.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "trivialGraph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Examples/Separation.lean",
+      "kind": "def",
+      "line": 5,
+      "name": "separated"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/UndirectedEdgeTest.lean",
+      "kind": "example",
+      "line": 9,
+      "name": "anonymous_at_line_9"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "FMT/Examples/UndirectedEdgeTest.lean",
+      "kind": "example",
+      "line": 13,
+      "name": "anonymous_at_line_13"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Game/BoundedRadiusEF.lean",
+      "kind": "def",
+      "line": 3,
+      "name": "winsLocal"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Game/EF.lean",
+      "kind": "structure",
+      "line": 5,
+      "name": "Pebble"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Game/EF.lean",
+      "kind": "structure",
+      "line": 8,
+      "name": "Position"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Game/EF.lean",
+      "kind": "def",
+      "line": 12,
+      "name": "indistinguishable"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Ball.lean",
+      "kind": "def",
+      "line": 6,
+      "name": "Ball"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/Ball.lean",
+      "kind": "theorem",
+      "line": 9,
+      "name": "memBall_iff"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/Ball.lean",
+      "kind": "theorem",
+      "line": 14,
+      "name": "center_mem_ball"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/Ball.lean",
+      "kind": "theorem",
+      "line": 19,
+      "name": "ball_mono"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Basic.lean",
+      "kind": "structure",
+      "line": 3,
+      "name": "Graph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/BoundedRadius.lean",
+      "kind": "def",
+      "line": 6,
+      "name": "InBoundedRadius"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/BoundedRadius.lean",
+      "kind": "def",
+      "line": 9,
+      "name": "BoundedRadius"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/BoundedRadius.lean",
+      "kind": "theorem",
+      "line": 12,
+      "name": "inBoundedRadius_of_distLE"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/BoundedRadius.lean",
+      "kind": "theorem",
+      "line": 18,
+      "name": "dist_le_of_inBoundedRadius"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistExistsOfPath.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistIsShortest.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "dist_is_shortest"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistLeOfPathFromShortestAxioms.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistLeOfPathViaExists.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "dist"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/DistRefl.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "nilPath"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistRefl.lean",
+      "kind": "theorem",
+      "line": 16,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistSomeOfShortestPath.lean",
+      "kind": "theorem",
+      "line": 8,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistSymm.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistSymmViaReverse.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistTriangle.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistTriangleNat.lean",
+      "kind": "theorem",
+      "line": 8,
+      "name": "dist_triangle_nat"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/Distance.lean",
+      "kind": "theorem",
+      "line": 12,
+      "name": "dist_exists"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceMinimality.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "dist_eq_of_no_shorter_path"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceMinimality.lean",
+      "kind": "theorem",
+      "line": 14,
+      "name": "dist"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/DistanceOrder.lean",
+      "kind": "def",
+      "line": 5,
+      "name": "DistLE"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/DistanceOrder.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "DistGT"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceOrder.lean",
+      "kind": "theorem",
+      "line": 11,
+      "name": "distLE_of_eq"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceOrder.lean",
+      "kind": "theorem",
+      "line": 17,
+      "name": "not_distLE_of_none"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceOrder.lean",
+      "kind": "theorem",
+      "line": 25,
+      "name": "distGT_of_none"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceOrder.lean",
+      "kind": "theorem",
+      "line": 32,
+      "name": "not_distGT_of_distLE"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistancePath.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "path_of_dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistancePath.lean",
+      "kind": "theorem",
+      "line": 13,
+      "name": "dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistancePathBound.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "distancePathBound_exists_only_baseline"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceSymmetry.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "distanceSymmetry_exists_only_baseline"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/DistanceTriangle.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "distLE_triangle"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Edge.lean",
+      "kind": "def",
+      "line": 6,
+      "name": "Edge"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Edge.lean",
+      "kind": "instance",
+      "line": 9,
+      "name": "anonymous_at_line_9"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/Edge.lean",
+      "kind": "theorem",
+      "line": 20,
+      "name": "edgeCount_nonneg"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ExistsMinPath.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "existsMinPath"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ExistsMinPathLength.lean",
+      "kind": "theorem",
+      "line": 8,
+      "name": "exists_min_pathLength"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ExistsMinPathLengthBridge.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "exists_min_pathLength_of_reachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ExistsPathOrNone.lean",
+      "kind": "theorem",
+      "line": 8,
+      "name": "exists_path_or_none"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ExistsShortestPathLength.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "exists_shortest_path_length"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Finite.lean",
+      "kind": "class",
+      "line": 6,
+      "name": "FiniteGraph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Finite.lean",
+      "kind": "instance",
+      "line": 11,
+      "name": "finiteGraphFintype"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Finite.lean",
+      "kind": "instance",
+      "line": 14,
+      "name": "finiteGraphDecEq"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/Finite.lean",
+      "kind": "instance",
+      "line": 17,
+      "name": "finiteGraphDecAdj"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "def",
+      "line": 11,
+      "name": "ConnectedGraph"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "def",
+      "line": 19,
+      "name": "allVertexPairs"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "def",
+      "line": 35,
+      "name": "allPairDistancesReachable"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "def",
+      "line": 62,
+      "name": "natListMax"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 66,
+      "name": "le_natListMax_of_mem"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 102,
+      "name": "connected_implies_all_pair_distances_reachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 110,
+      "name": "finite_connected_graph_diameter_exists"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 121,
+      "name": "finiteGraphDiameter_eq_none_of_not_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 131,
+      "name": "finiteGraphDiameter_exists_of_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 142,
+      "name": "finiteGraphDiameter_eq_some_natListMax_of_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 151,
+      "name": "finiteGraphDiameter_exists_iff_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 169,
+      "name": "distance_mem_pairDistanceValues"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 183,
+      "name": "distance_le_diameter_of_finite_connected"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 218,
+      "name": "finiteGraphDiameter_eq_exact_value_of_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 227,
+      "name": "finiteGraphDiameter_exact_value_exists_of_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 236,
+      "name": "finiteGraphDiameter_none_of_not_allPairDistancesReachable'"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 245,
+      "name": "finiteGraphDiameter_some_iff_allPairDistancesReachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/FiniteGraphDiameter.lean",
+      "kind": "theorem",
+      "line": 254,
+      "name": "finiteGraphDiameter_closed_option_nat_cases"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/GlobalDistanceAxiomDischarge.lean",
+      "kind": "instance",
+      "line": 8,
+      "name": "globalSLASHAxioms"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/GlobalDistanceAxiomDischarge.lean",
+      "kind": "theorem",
+      "line": 17,
+      "name": "global_dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/GlobalDistanceAxiomDischarge.lean",
+      "kind": "theorem",
+      "line": 24,
+      "name": "global_dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/GlobalDistanceTheorems.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "global_dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/GlobalDistanceTheorems.lean",
+      "kind": "theorem",
+      "line": 13,
+      "name": "global_dist"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathConcat.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "path_concat"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLength.lean",
+      "kind": "structure",
+      "line": 6,
+      "name": "PathLength"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLength.lean",
+      "kind": "def",
+      "line": 12,
+      "name": "PathLength.concat"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLength.lean",
+      "kind": "def",
+      "line": 56,
+      "name": "PathLength.reverse"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthAccessors.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "PathLength.first_eq"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthAccessors.lean",
+      "kind": "theorem",
+      "line": 11,
+      "name": "PathLength.last_eq"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthAccessors.lean",
+      "kind": "theorem",
+      "line": 17,
+      "name": "PathLength.start_adj"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLengthConcat.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "concatVerts"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLengthConcat.lean",
+      "kind": "def",
+      "line": 18,
+      "name": "pathLength_concat"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthLemmas.lean",
+      "kind": "theorem",
+      "line": 6,
+      "name": "pathLength_zero_iff"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLengthLemmas.lean",
+      "kind": "def",
+      "line": 18,
+      "name": "Reachable"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthLemmas.lean",
+      "kind": "theorem",
+      "line": 21,
+      "name": "reachable_refl"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthLemmas.lean",
+      "kind": "theorem",
+      "line": 25,
+      "name": "reachable_of_adj"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthOne.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "pathLength_one_of_adj"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLengthReverse.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "pathLength_reverse"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/PathLengthReverseScratch.lean",
+      "kind": "def",
+      "line": 6,
+      "name": "revFin"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthReverseScratch.lean",
+      "kind": "theorem",
+      "line": 9,
+      "name": "revFin_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthReverseScratch.lean",
+      "kind": "theorem",
+      "line": 13,
+      "name": "revFin_last"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathLengthReverseScratch.lean",
+      "kind": "theorem",
+      "line": 17,
+      "name": "revFin_involutive_val"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/PathReverse.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "path_reverse"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ShortestLength.lean",
+      "kind": "theorem",
+      "line": 12,
+      "name": "shortest_length_spec"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/ShortestPathSelectorReachableBridge.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "shortest_path_selector_complete_of_reachable"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/UndirectedEdge.lean",
+      "kind": "def",
+      "line": 6,
+      "name": "SymmAdj"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/UndirectedEdge.lean",
+      "kind": "def",
+      "line": 9,
+      "name": "UndirectedEdge"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/UndirectedEdge.lean",
+      "kind": "theorem",
+      "line": 15,
+      "name": "undirectedEdgeCount_nonneg"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Graph/UndirectedGraphDistanceSymmetryAPI.lean",
+      "kind": "class",
+      "line": 6,
+      "name": "UndirectedGraph"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/UndirectedGraphDistanceSymmetryAPI.lean",
+      "kind": "theorem",
+      "line": 9,
+      "name": "symmAdj_of_undirectedGraph"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Graph/UndirectedGraphDistanceSymmetryAPI.lean",
+      "kind": "theorem",
+      "line": 14,
+      "name": "global_dist"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Inputs/ConstructiveSLASHAxioms.lean",
+      "kind": "abbrev",
+      "line": 5,
+      "name": "ConstructiveSLASHAxioms"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Inputs/ConstructiveSLASHAxioms.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "constructiveSLASHAxioms_iff"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Inputs/SLASH_Axioms.lean",
+      "kind": "class",
+      "line": 6,
+      "name": "SLASHAxioms"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Inputs/SLASH_INPUT.lean",
+      "kind": "def",
+      "line": 3,
+      "name": "SLASH"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/Bijection.lean",
+      "kind": "theorem",
+      "line": 8,
+      "name": "eval_bijective"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/Coherence.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "eval_coherence"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/CycleQuotientProjection.lean",
+      "kind": "abbrev",
+      "line": 9,
+      "name": "CycleSpace"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/CycleQuotientProjection.lean",
+      "kind": "theorem",
+      "line": 16,
+      "name": "cycleQuotientProjection_apply"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/CycleQuotientProjection.lean",
+      "kind": "theorem",
+      "line": 20,
+      "name": "cycleQuotientProjection_ker"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/CycleSpace.lean",
+      "kind": "structure",
+      "line": 7,
+      "name": "CycleSpace"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/CycleSpace.lean",
+      "kind": "def",
+      "line": 10,
+      "name": "vertexCount"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/CycleSpace.lean",
+      "kind": "def",
+      "line": 13,
+      "name": "cycleSpaceOfGraph"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/CycleSpace.lean",
+      "kind": "theorem",
+      "line": 16,
+      "name": "cycleDim_nonneg"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/Eval.lean",
+      "kind": "def",
+      "line": 3,
+      "name": "EvalStub"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/FactorsThrough.lean",
+      "kind": "def",
+      "line": 3,
+      "name": "factorsThrough"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/GenuineCycleRankV2.lean",
+      "kind": "structure",
+      "line": 11,
+      "name": "GenuineCycleSpaceV2"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/GenuineCycleRankV2.lean",
+      "kind": "theorem",
+      "line": 17,
+      "name": "genuineCycleRankV2_nonneg"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/Injectivity.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "eval_injective"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/NonFactorization.lean",
+      "kind": "inductive",
+      "line": 4,
+      "name": "NonFactorizationFrontierStatus"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/NonFactorization.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "badF_factorsThrough"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Invariants/NonFactorization.lean",
+      "kind": "def",
+      "line": 10,
+      "name": "nonFactorization_placeholder"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Invariants/Surjectivity.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "eval_surjective01"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Logic/FOkSyntax.lean",
+      "kind": "structure",
+      "line": 2,
+      "name": "FOk"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Logic/LocalityRadius.lean",
+      "kind": "structure",
+      "line": 2,
+      "name": "Radius"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Spec/FinalSolve.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "closeWithin"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Spec/FinalSolve.lean",
+      "kind": "def",
+      "line": 10,
+      "name": "farApart"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Spec/FinalSolve.lean",
+      "kind": "def",
+      "line": 13,
+      "name": "separated"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/Factorization.lean",
+      "kind": "structure",
+      "line": 5,
+      "name": "FactorsThrough"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/Factorization.lean",
+      "kind": "def",
+      "line": 15,
+      "name": "factorsThrough_id"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/Factorization.lean",
+      "kind": "def",
+      "line": 20,
+      "name": "factorsThrough_comp"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/LocalEncoding.lean",
+      "kind": "def",
+      "line": 5,
+      "name": "localCode"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Types/LocalEncoding.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "localCode_zero"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Types/LocalEncoding.lean",
+      "kind": "theorem",
+      "line": 11,
+      "name": "localCode_one"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Types/LocalEncoding.lean",
+      "kind": "theorem",
+      "line": 15,
+      "name": "localCode_separates"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/LocalType.lean",
+      "kind": "inductive",
+      "line": 3,
+      "name": "LocalType"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/LocalType.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "evalLocal"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/WL.lean",
+      "kind": "structure",
+      "line": 5,
+      "name": "Color"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/WL.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "refineColor"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "FMT/Types/WL.lean",
+      "kind": "def",
+      "line": 11,
+      "name": "WLstep"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "FMT/Types/WL.lean",
+      "kind": "theorem",
+      "line": 14,
+      "name": "WL_stabilizes"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "Main.lean",
+      "kind": "def",
+      "line": 3,
+      "name": "main"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "structure",
+      "line": 5,
+      "name": "Struct"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "Guard"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 11,
+      "name": "LocalIso"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "inductive",
+      "line": 25,
+      "name": "GFormula"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 34,
+      "name": "gsat"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 45,
+      "name": "guarded_rank_locality"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "inductive",
+      "line": 110,
+      "name": "RestrictedGuardedFO"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 123,
+      "name": "restrictedSat"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 134,
+      "name": "toGuardedFO"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 144,
+      "name": "restricted_guarded_translation_sound"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 200,
+      "name": "restricted_guarded_rank_locality"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 218,
+      "name": "BallIso"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 223,
+      "name": "PointedRadiusBallEquiv"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 228,
+      "name": "PlainInducedRadiusBallIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 233,
+      "name": "ballIso_to_localIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 241,
+      "name": "localIso_to_ballIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 249,
+      "name": "ballIso_iff_localIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 258,
+      "name": "pointed_radius_ball_equiv_to_ballIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 266,
+      "name": "ballIso_to_pointed_radius_ball_equiv"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 274,
+      "name": "ordinary_pointed_radius_ball_bijection_to_ballIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 282,
+      "name": "pointed_radius_ball_equiv_iff_ballIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 291,
+      "name": "plain_induced_radius_ball_isomorphism_to_pointed_radius_ball_equiv"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 299,
+      "name": "pointed_radius_ball_equiv_to_plain_induced_radius_ball_isomorphism"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 307,
+      "name": "plain_induced_radius_ball_isomorphism_iff_pointed_radius_ball_equiv"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 317,
+      "name": "guarded_rank_locality_from_ballIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 326,
+      "name": "restricted_guarded_rank_locality_from_ballIso"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 335,
+      "name": "guarded_rank_locality_from_pointed_radius_ball_equiv"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 344,
+      "name": "restricted_guarded_rank_locality_from_pointed_radius_ball_equiv"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 353,
+      "name": "guarded_rank_locality_from_plain_induced_radius_ball_isomorphism"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 362,
+      "name": "restricted_guarded_rank_locality_from_plain_induced_radius_ball_isomorphism"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "def",
+      "line": 372,
+      "name": "RestrictedGuardedLocalTypeEquivalent"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 381,
+      "name": "ballIso_to_restricted_guarded_local_type_equivalent"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 391,
+      "name": "plain_induced_radius_ball_isomorphism_to_restricted_guarded_local_type_equivalent"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 401,
+      "name": "locality_pipeline_certificate"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "structure",
+      "line": 412,
+      "name": "RestrictedEFGameLocalTypeInvariantInputSurface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 416,
+      "name": "restricted_guarded_local_type_equivalent_to_restricted_ef_game_local_type_invariant_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 422,
+      "name": "restricted_ef_game_local_type_invariant_input_surface_to_restricted_guarded_local_type_equivalent"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 428,
+      "name": "restricted_ef_game_local_type_invariant_input_surface_formula_invariant"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 435,
+      "name": "ballIso_to_restricted_ef_game_local_type_invariant_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 441,
+      "name": "plain_induced_radius_ball_isomorphism_to_restricted_ef_game_local_type_invariant_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 455,
+      "name": "guarded_locality_boundary_conditional_lemma"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "structure",
+      "line": 473,
+      "name": "Cr2"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 486,
+      "name": "cr2_discharges_guarded_locality_input"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 503,
+      "name": "plain_induced_radius_ball_isomorphism_to_cr2"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 520,
+      "name": "pointed_radius_ball_equiv_to_cr2"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 537,
+      "name": "localIso_to_cr2"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 554,
+      "name": "restricted_ef_game_local_type_invariant_input_surface_to_cr2"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 566,
+      "name": "cr2_restricted_guarded_formula_invariant"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 582,
+      "name": "cr2_reflexive_constructor"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/GuardedLocality/Pipeline.lean",
+      "kind": "theorem",
+      "line": 597,
+      "name": "restricted_guarded_local_type_equivalent_to_cr2"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibrary.lean",
+      "kind": "theorem",
+      "line": 19,
+      "name": "downstream_library_radius_zero_locality_input"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibrary.lean",
+      "kind": "theorem",
+      "line": 25,
+      "name": "downstream_library_full_formula_radius_status"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryEntrypointReadiness.lean",
+      "kind": "def",
+      "line": 15,
+      "name": "downstream_library_entrypoint_readiness_statement"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryEntrypointReadiness.lean",
+      "kind": "theorem",
+      "line": 17,
+      "name": "downstream_library_radius_zero_locality_input_ready"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryEntrypointReadiness.lean",
+      "kind": "theorem",
+      "line": 21,
+      "name": "downstream_library_full_formula_radius_status_ready"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryEntrypointReadiness.lean",
+      "kind": "theorem",
+      "line": 25,
+      "name": "downstream_library_entrypoint_current_wall"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryImportCheck.lean",
+      "kind": "theorem",
+      "line": 5,
+      "name": "downstreamLibrary_import_check"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/DownstreamLibraryObjectCheck.lean",
+      "kind": "theorem",
+      "line": 7,
+      "name": "downstreamLibrary_object_reference_check"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 24,
+      "name": "RelLanguage"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 29,
+      "name": "RelStructure"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "inductive",
+      "line": 34,
+      "name": "Formula"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 45,
+      "name": "extendAssignment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 51,
+      "name": "Holds"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 63,
+      "name": "FormulaQuantifierDepth"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 75,
+      "name": "GaifmanDistanceLe"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 80,
+      "name": "AssignmentGaifmanClose"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 90,
+      "name": "UnguardedFOLocalityInputSurface"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 102,
+      "name": "HasUnguardedFOLocalityRadius"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 113,
+      "name": "BoundedSyntacticFragment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 126,
+      "name": "FormulaRadiusConstructionTarget"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 136,
+      "name": "formula_radius_construction_target_has_radius"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 145,
+      "name": "formula_radius_construction_target_radius_le"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 154,
+      "name": "formula_radius_construction_target_input"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 165,
+      "name": "singleton_bounded_syntactic_fragment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 179,
+      "name": "atomic_bounded_syntactic_fragment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 187,
+      "name": "singleton_radius_construction_target"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 205,
+      "name": "atomic_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 220,
+      "name": "neg_radius_input"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 235,
+      "name": "neg_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 252,
+      "name": "conj_radius_input"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 272,
+      "name": "conj_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 290,
+      "name": "disj_radius_input"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 312,
+      "name": "disj_radius_constructor"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 332,
+      "name": "SharedRadiusTargetFamily"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "structure",
+      "line": 343,
+      "name": "SharedRadiusTargetFamilyPair"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 352,
+      "name": "neg_shared_radius_target_family_fragment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 405,
+      "name": "conj_shared_radius_target_family_fragment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 478,
+      "name": "disj_shared_radius_target_family_fragment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 553,
+      "name": "singleton_shared_radius_target_family"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "def",
+      "line": 574,
+      "name": "atomic_shared_radius_target_family"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "inductive",
+      "line": 680,
+      "name": "FiniteBooleanFamilyExpr"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 748,
+      "name": "finite_boolean_family_fold_shared_radius"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 775,
+      "name": "finite_boolean_family_fold_atom_fragment_member"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 791,
+      "name": "finite_boolean_family_fold_neg_fragment_member"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 811,
+      "name": "finite_boolean_family_fold_conj_fragment_member"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 838,
+      "name": "finite_boolean_family_fold_disj_fragment_member"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 869,
+      "name": "finite_boolean_family_fold_with_radius_value_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 883,
+      "name": "finite_boolean_family_fold_radius_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 896,
+      "name": "finite_boolean_family_fold_pair_radius_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 913,
+      "name": "finite_boolean_family_fold_target_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 927,
+      "name": "finite_boolean_family_fold_target_fragment_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 945,
+      "name": "finite_boolean_family_fold_atom_constructor_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 959,
+      "name": "finite_boolean_family_fold_neg_constructor_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 974,
+      "name": "finite_boolean_family_fold_conj_constructor_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 995,
+      "name": "finite_boolean_family_fold_disj_constructor_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1020,
+      "name": "finite_boolean_family_fold_atom_shared_radius_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1039,
+      "name": "finite_boolean_family_fold_neg_shared_radius_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1058,
+      "name": "finite_boolean_family_fold_conj_left_shared_radius_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1077,
+      "name": "finite_boolean_family_fold_conj_right_shared_radius_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1096,
+      "name": "finite_boolean_family_fold_disj_left_shared_radius_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1115,
+      "name": "finite_boolean_family_fold_disj_right_shared_radius_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1138,
+      "name": "finite_boolean_family_fold_atom_target_fragment_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1153,
+      "name": "finite_boolean_family_fold_neg_target_fragment_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1169,
+      "name": "finite_boolean_family_fold_conj_target_fragment_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1190,
+      "name": "finite_boolean_family_fold_disj_target_fragment_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1215,
+      "name": "finite_boolean_family_fold_atom_target_locality_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1233,
+      "name": "finite_boolean_family_fold_neg_target_locality_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1256,
+      "name": "finite_boolean_family_fold_conj_target_locality_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1281,
+      "name": "finite_boolean_family_fold_disj_target_locality_input_access"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FormulaRadiusConstructionTarget.lean",
+      "kind": "theorem",
+      "line": 1310,
+      "name": "finite_boolean_family_fold_access_rollup"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/FullFormulaRadiusStatusDownstreamExample.lean",
+      "kind": "theorem",
+      "line": 18,
+      "name": "full_formula_radius_status_downstream_example"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "structure",
+      "line": 20,
+      "name": "RelLanguage"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "structure",
+      "line": 25,
+      "name": "RelStructure"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 30,
+      "name": "RelationTupleContains"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 35,
+      "name": "SameRelationTuple"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "theorem",
+      "line": 43,
+      "name": "same_relation_tuple_symmetric"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 54,
+      "name": "GaifmanAdjacent"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "theorem",
+      "line": 59,
+      "name": "gaifman_adjacent_symmetric"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "inductive",
+      "line": 67,
+      "name": "GaifmanWalk"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 76,
+      "name": "GaifmanDistanceLe"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 81,
+      "name": "GaifmanConnected"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "theorem",
+      "line": 86,
+      "name": "gaifman_distanceLe_refl"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "theorem",
+      "line": 92,
+      "name": "gaifman_connected_refl"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "structure",
+      "line": 98,
+      "name": "FiniteRelStructure"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 104,
+      "name": "FiniteRelStructure.gaifmanAdjacent"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "def",
+      "line": 110,
+      "name": "FiniteRelStructure.gaifmanDistanceLe"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/Gaifman.lean",
+      "kind": "theorem",
+      "line": 116,
+      "name": "finite_gaifman_distanceLe_refl"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 19,
+      "name": "RelLanguage"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 24,
+      "name": "RelStructure"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "inductive",
+      "line": 29,
+      "name": "Formula"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 40,
+      "name": "extendAssignment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 46,
+      "name": "Holds"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 58,
+      "name": "RelationTupleContains"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 63,
+      "name": "SameRelationTuple"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 74,
+      "name": "GaifmanAdjacent"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "inductive",
+      "line": 79,
+      "name": "GaifmanWalk"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 88,
+      "name": "GaifmanDistanceLe"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 98,
+      "name": "AssignmentGaifmanClose"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 108,
+      "name": "gaifman_distance_le_mono"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 123,
+      "name": "assignment_gaifman_close_mono"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 137,
+      "name": "UnguardedFOLocalityInputSurface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 151,
+      "name": "unguarded_fo_locality_input_surface_weaken_radius"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "abbrev",
+      "line": 167,
+      "name": "AtomicLocalityInput"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 178,
+      "name": "equality_atom_locality_input_of_assignment_eq"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 209,
+      "name": "relation_atom_locality_input_of_interp_iff"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 232,
+      "name": "AssignmentGaifmanClosePreservationTarget"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 246,
+      "name": "AssignmentGaifmanClosePreservationAtRadiusZeroOrExactAssignmentCloseTarget"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 261,
+      "name": "gaifman_distance_le_zero_eq"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 274,
+      "name": "assignment_gaifman_close_radius_zero_preservation"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 286,
+      "name": "equality_atom_locality_input_radius_zero"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 300,
+      "name": "relation_atom_locality_input_radius_zero"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 323,
+      "name": "HasUnguardedFOLocalityRadius"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 336,
+      "name": "BoundedBooleanRadiusZeroConstructorTarget"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 351,
+      "name": "unguarded_fo_locality_input_surface_invariant"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 361,
+      "name": "has_unguarded_fo_locality_radius_input"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 375,
+      "name": "unguarded_fo_neg_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 398,
+      "name": "unguarded_fo_conj_same_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 425,
+      "name": "unguarded_fo_conj_common_smaller_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 445,
+      "name": "unguarded_fo_disj_same_radius_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 478,
+      "name": "unguarded_fo_disj_common_smaller_radius_constructor"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 495,
+      "name": "finite_boolean_disjunction_fold_access_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 498,
+      "name": "finite_boolean_disjunction_fold_access_surface_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 510,
+      "name": "bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 513,
+      "name": "bounded_boolean_recursion_gate_from_finite_boolean_fold_access_surface_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 525,
+      "name": "formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 528,
+      "name": "formula_radius_construction_gate_status_from_bounded_boolean_recursion_gate_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 540,
+      "name": "atomic_formula_radius_input_connection_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 543,
+      "name": "atomic_formula_radius_input_connection_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 555,
+      "name": "quantified_formula_radius_constructor_target_shell"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 558,
+      "name": "quantified_formula_radius_constructor_target_shell_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 570,
+      "name": "quantifier_locality_input_transport_target_shell"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 573,
+      "name": "quantifier_locality_input_transport_target_shell_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 585,
+      "name": "assignment_extension_projection_radius_control_target_shell"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 588,
+      "name": "assignment_extension_projection_radius_control_target_shell_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 601,
+      "name": "quantified_formula_radius_constructor_dependency_status_gate"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 604,
+      "name": "quantified_formula_radius_constructor_dependency_status_gate_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 618,
+      "name": "concrete_quantifier_locality_input_transport_statement_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 621,
+      "name": "concrete_quantifier_locality_input_transport_statement_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 634,
+      "name": "assignment_extension_projection_radius_control_statement_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 637,
+      "name": "assignment_extension_projection_radius_control_statement_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 650,
+      "name": "quantifier_assignment_semantics_bridge_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 653,
+      "name": "quantifier_assignment_semantics_bridge_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 664,
+      "name": "radius_preservation_under_quantifier_assignment_move_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 667,
+      "name": "radius_preservation_under_quantifier_assignment_move_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 678,
+      "name": "locality_surface_transport_body_to_quantified_formula_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 681,
+      "name": "locality_surface_transport_body_to_quantified_formula_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 692,
+      "name": "existential_quantifier_constructor_branch_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 695,
+      "name": "existential_quantifier_constructor_branch_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 706,
+      "name": "universal_quantifier_constructor_branch_classification_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 709,
+      "name": "universal_quantifier_constructor_branch_classification_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 720,
+      "name": "quantified_formula_radius_constructor_target_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 723,
+      "name": "quantified_formula_radius_constructor_target_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 732,
+      "name": "tri_graph_radius_zero_assignment_projection_invariant"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 740,
+      "name": "tri_graph_radius_zero_assignment_projection_invariant_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 758,
+      "name": "tri_graph_assignment_extension_projection_radius_control_semantics_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 768,
+      "name": "tri_graph_r_target_to_assignment_extension_projection_radius_control"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 782,
+      "name": "tri_graph_positive_radius_assignment_extension_projection"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 807,
+      "name": "radius_preservation_under_quantifier_assignment_move_target_eliminator"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 822,
+      "name": "tri_graph_r_target_to_positive_radius_assignment_extension_projection"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 838,
+      "name": "tri_graph_r_target_to_quantifier_assignment_extension_radius_zero_projection"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 858,
+      "name": "tri_graph_assignment_extension_semantics_payload"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 872,
+      "name": "tri_graph_payload_positive_radius_assignment_extension_projection_with_transport_target"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 888,
+      "name": "proof_bearing_quantifier_assignment_radius_control_statement"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 908,
+      "name": "existential_ex_body_to_quantified_radius_witness_constructor"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 931,
+      "name": "trebuchet_variant_full_unguarded_fo_formula_radius_construction"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 954,
+      "name": "formula_structural_recursion_assembler_target"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 958,
+      "name": "formula_structural_recursion_assembler_target_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 973,
+      "name": "formula_radius_construction_gate_structural_recursion_edge"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 977,
+      "name": "formula_radius_construction_gate_structural_recursion_edge_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 989,
+      "name": "pk1_quantified_constructor_branch_frontier_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 993,
+      "name": "pk1_quantified_constructor_branch_frontier_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1009,
+      "name": "Pk1_unguarded_fo_locality_theorem_statement_shell"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1012,
+      "name": "Pk1_unguarded_fo_locality_theorem_statement_shell_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1023,
+      "name": "TwoVK_bridge_target_shell"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1026,
+      "name": "TwoVK_bridge_target_shell_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1039,
+      "name": "TwoVK_bridge_target_to_Pk1_statement_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1043,
+      "name": "TwoVK_bridge_target_to_Pk1_statement_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1060,
+      "name": "TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1064,
+      "name": "TwoVK_to_Pk1_statement_to_quantified_constructor_frontier_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1081,
+      "name": "TwoVK_to_Pk1_frontier_to_formula_radius_gate_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1085,
+      "name": "TwoVK_to_Pk1_frontier_to_formula_radius_gate_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 1100,
+      "name": "SharedRadiusBooleanConstructorRollupTarget"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1128,
+      "name": "TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1132,
+      "name": "TwoVK_to_Pk1_formula_radius_gate_to_structural_recursion_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1150,
+      "name": "TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1154,
+      "name": "TwoVK_to_Pk1_structural_recursion_to_proof_bearing_quantifier_status_closed"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1167,
+      "name": "would"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1172,
+      "name": "existential_locality_radius_constructor_missing_theorem_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1175,
+      "name": "existential_locality_radius_constructor_missing_theorem_status_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1187,
+      "name": "existential_body_witness_locality_transport_type"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1198,
+      "name": "existential_ex_body_to_quantified_radius_witness_constructor_shell"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1206,
+      "name": "existential_body_same_witness_assignment_extension_invariance"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1232,
+      "name": "existential_body_witness_locality_transport_type_constructor"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1262,
+      "name": "existential_locality_radius_constructor"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1274,
+      "name": "concrete_quantifier_locality_transport_named_interface"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1279,
+      "name": "concrete_quantifier_locality_transport_named_interface_closed"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1292,
+      "name": "concrete_quantifier_transport_formula_radius_frontier_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1297,
+      "name": "concrete_quantifier_transport_formula_radius_frontier_status_closed"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1310,
+      "name": "existential_body_distinct_witness_assignment_extension_invariance"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1334,
+      "name": "existential_body_assignment_extension_invariance_component_package"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1363,
+      "name": "existential_body_witness_locality_transport"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1384,
+      "name": "existential_constructor_frontier_from_body_invariance_package_status"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1391,
+      "name": "existential_constructor_obligation_gap_package_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1402,
+      "name": "shared_radius_boolean_constructor_rollup"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 1427,
+      "name": "MaxRadiusBooleanConstructorTarget"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 1457,
+      "name": "RadiusMonotonicityTarget"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "structure",
+      "line": 1481,
+      "name": "AssignmentGaifmanCloseMonotonicityTarget"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1504,
+      "name": "assignment_gaifman_close_monotonicity_formula_radius_dependency_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1509,
+      "name": "assignment_gaifman_close_monotonicity_formula_radius_dependency_status_closed"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1523,
+      "name": "unguarded_fo_top_locality_input"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1536,
+      "name": "unguarded_fo_bot_locality_input"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1586,
+      "name": "full_formula_radius_construction"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1597,
+      "name": "full_formula_radius_construction_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1600,
+      "name": "full_formula_radius_construction_status_closed"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1610,
+      "name": "unguarded_fo_formula_radius_zero_locality_input"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "def",
+      "line": 1620,
+      "name": "existential_constructor_actual_downstream_theorem_use_status"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1623,
+      "name": "existential_constructor_actual_downstream_theorem_use_status_closed"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1633,
+      "name": "unguarded_fo_constructed_radius_invariance"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1650,
+      "name": "exists_unguarded_fo_locality_radius_invariance"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1663,
+      "name": "has_unguarded_fo_locality_radius_to_exists_invariance"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1677,
+      "name": "has_unguarded_fo_locality_radius_to_exists_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1686,
+      "name": "exists_unguarded_fo_locality_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1697,
+      "name": "neg_has_unguarded_fo_locality_radius_to_exists_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1707,
+      "name": "conj_has_unguarded_fo_locality_radius_to_exists_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1723,
+      "name": "disj_has_unguarded_fo_locality_radius_to_exists_input_surface"
+    },
+    {
+      "classification": "conditional_theorem_or_boundary",
+      "file": "lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean",
+      "kind": "theorem",
+      "line": 1742,
+      "name": "ex_has_unguarded_fo_locality_radius_to_exists_input_surface"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/RadiusZeroLocalityInputDownstreamExample.lean",
+      "kind": "theorem",
+      "line": 18,
+      "name": "radius_zero_locality_input_downstream_example"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "structure",
+      "line": 16,
+      "name": "RelLanguage"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "structure",
+      "line": 21,
+      "name": "RelStructure"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "inductive",
+      "line": 31,
+      "name": "Formula"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "def",
+      "line": 42,
+      "name": "IsAtomicFormula"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "abbrev",
+      "line": 48,
+      "name": "Sentence"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "def",
+      "line": 52,
+      "name": "extendAssignment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "def",
+      "line": 58,
+      "name": "emptyAssignment"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "def",
+      "line": 62,
+      "name": "Holds"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "def",
+      "line": 74,
+      "name": "Satisfies"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "theorem",
+      "line": 77,
+      "name": "holds_top"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "theorem",
+      "line": 82,
+      "name": "holds_bot"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "theorem",
+      "line": 88,
+      "name": "holds_eq"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "theorem",
+      "line": 93,
+      "name": "holds_conj"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "theorem",
+      "line": 98,
+      "name": "holds_disj"
+    },
+    {
+      "classification": "verified_lemma",
+      "file": "lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean",
+      "kind": "theorem",
+      "line": 103,
+      "name": "holds_ex"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "tests/basic.lean",
+      "kind": "def",
+      "line": 7,
+      "name": "t1"
+    },
+    {
+      "classification": "definition_or_specification",
+      "file": "tests/basic.lean",
+      "kind": "def",
+      "line": 8,
+      "name": "t2"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "tests/bridge_factorization_check.lean",
+      "kind": "example",
+      "line": 8,
+      "name": "anonymous_at_line_8"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "tests/bridge_factorization_check.lean",
+      "kind": "example",
+      "line": 11,
+      "name": "anonymous_at_line_11"
+    },
+    {
+      "classification": "scaffold_or_example",
+      "file": "tests/bridge_factorization_check.lean",
+      "kind": "example",
+      "line": 14,
+      "name": "anonymous_at_line_14"
+    }
+  ],
+  "name": "exported_theorem_surface_audit_receipt_2026_07_05",
+  "non_claims": [
+    "This receipt does not prove Fagin's theorem.",
+    "This receipt does not prove the 0-1 Law.",
+    "This receipt does not close the Pk1 route.",
+    "This receipt does not close the 2vK route.",
+    "This receipt does not prove global finite-model-theory closure.",
+    "This receipt does not assert external acceptance.",
+    "This receipt is a syntactic declaration-surface audit, not a semantic final-theorem proof."
+  ],
+  "positive_receipt": [
+    "The repository has a generated syntactic audit of Lean declaration surfaces.",
+    "The audit separates definitions/specifications, verified lemmas, conditional theorem or boundary surfaces, scaffolds/examples, and forbidden or untrusted declarations.",
+    "The audit is a theorem-surface visibility receipt only."
+  ],
+  "repository": "inaciovasquez2020/cslib-fmt",
+  "schema": "exported_theorem_surface_audit_receipt.v1",
+  "source": {
+    "default_branch": "docs/exported-theorem-surface-audit-receipt-2026-07-05",
+    "head_commit": "4c498e5679d2f235f3488d58b0e12af96e2095b1"
+  }
+}
