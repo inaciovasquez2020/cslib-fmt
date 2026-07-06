@@ -17,3 +17,5 @@ jobs:
         run: python3 tools/verify_finite_subset_union_bound_local_closure_receipt.py
       - name: Verify zero-ary relation negative boundary regression receipt
         run: python3 tools/verify_zero_ary_relation_negative_boundary_regression_receipt.py
+      - name: Verify T_ext back-and-forth completeness regression receipt
+        run: python3 tools/verify_t_ext_back_and_forth_completeness_regression_receipt.py
