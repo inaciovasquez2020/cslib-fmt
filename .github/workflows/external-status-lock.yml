@@ -13,3 +13,5 @@ jobs:
         run: python3 scripts/verify_external_status_lock.py
       - name: Verify existential locality radius input surface theorem
         run: python3 tools/verify_ex_has_unguarded_fo_locality_radius_to_exists_input_surface.py
+      - name: Verify finite subset union bound local closure receipt
+        run: python3 tools/verify_finite_subset_union_bound_local_closure_receipt.py
