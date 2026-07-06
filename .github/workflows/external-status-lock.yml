@@ -19,3 +19,5 @@ jobs:
         run: python3 tools/verify_zero_ary_relation_negative_boundary_regression_receipt.py
       - name: Verify T_ext back-and-forth completeness regression receipt
         run: python3 tools/verify_t_ext_back_and_forth_completeness_regression_receipt.py
+      - name: Verify zero-one-law local regression hardening rollup
+        run: python3 tools/verify_zero_one_law_local_regression_hardening_rollup.py

@@ -1,0 +1,46 @@
+{
+  "artifact": "zero_one_law_local_regression_hardening_rollup_2026_07_06",
+  "repository": "cslib-fmt",
+  "status": "ZERO_ONE_LAW_LOCAL_REGRESSION_HARDENING_ROLLUP_RECORDED",
+  "scope": "rollup receipt for the local zero-one-law regression hardening chain merged on 2026-07-06",
+  "merged_prs": [
+    {
+      "pr": 186,
+      "title": "docs: add finite subset union bound local closure receipt",
+      "receipt": "artifacts/status/finite_subset_union_bound_local_closure_receipt_2026_07_06.json",
+      "verifier": "tools/verify_finite_subset_union_bound_local_closure_receipt.py",
+      "status": "FINITE_SUBSET_UNION_BOUND_LOCAL_CLOSURE_RECEIPT_RECORDED"
+    },
+    {
+      "pr": 187,
+      "title": "docs: add zero-ary relation negative boundary regression receipt",
+      "receipt": "artifacts/status/zero_ary_relation_negative_boundary_regression_receipt_2026_07_06.json",
+      "verifier": "tools/verify_zero_ary_relation_negative_boundary_regression_receipt.py",
+      "status": "ZERO_ARY_RELATION_NEGATIVE_BOUNDARY_REGRESSION_RECEIPT_RECORDED"
+    },
+    {
+      "pr": 188,
+      "title": "docs: add T_ext back-and-forth completeness regression receipt",
+      "receipt": "artifacts/status/t_ext_back_and_forth_completeness_regression_receipt_2026_07_06.json",
+      "verifier": "tools/verify_t_ext_back_and_forth_completeness_regression_receipt.py",
+      "status": "T_EXT_BACK_AND_FORTH_COMPLETENESS_REGRESSION_RECEIPT_RECORDED"
+    }
+  ],
+  "chain_gain": [
+    "finite-subset union-bound local closure is verifier-locked",
+    "random 0-ary relation negative boundary is regression-guarded",
+    "T_ext back-and-forth completeness receipt is regression-guarded",
+    "each verifier is wired into external-status-lock"
+  ],
+  "preserved_boundaries": [
+    "no global zero-one law closure",
+    "no Fagin theorem",
+    "no unrestricted finite-model-theory closure",
+    "no 0-ary relation positive closure",
+    "no random 0-ary relation zero-one law",
+    "no Lean-formal T_ext completeness theorem",
+    "no countable-theory completeness closure",
+    "no uniform sentence decision procedure"
+  ],
+  "boundary": "This rollup records only local regression hardening for already-bounded zero-one-law receipts. It does not prove a global zero-one law, Fagin theorem, unrestricted finite-model-theory closure, 0-ary relation positive closure, Lean-formal T_ext completeness theorem, or uniform sentence decision procedure."
+}
