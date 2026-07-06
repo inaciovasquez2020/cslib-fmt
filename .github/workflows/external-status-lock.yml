@@ -15,3 +15,5 @@ jobs:
         run: python3 tools/verify_ex_has_unguarded_fo_locality_radius_to_exists_input_surface.py
       - name: Verify finite subset union bound local closure receipt
         run: python3 tools/verify_finite_subset_union_bound_local_closure_receipt.py
+      - name: Verify zero-ary relation negative boundary regression receipt
+        run: python3 tools/verify_zero_ary_relation_negative_boundary_regression_receipt.py

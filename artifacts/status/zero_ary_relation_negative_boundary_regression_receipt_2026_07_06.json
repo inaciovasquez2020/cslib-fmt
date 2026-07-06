@@ -1,0 +1,24 @@
+{
+  "artifact": "zero_ary_relation_negative_boundary_regression_receipt_2026_07_06",
+  "repository": "cslib-fmt",
+  "status": "ZERO_ARY_RELATION_NEGATIVE_BOUNDARY_REGRESSION_RECEIPT_RECORDED",
+  "scope": "regression guard for the recorded random 0-ary relation negative boundary",
+  "input_receipt": "artifacts/status/zero_one_law_zero_ary_relation_negative_boundary_receipt_2026_07_05.json",
+  "guard_statement": "The recorded counterexample with a random 0-ary relation symbol P has Pr[A_n models P] = 1/2 for every n, so its limiting probability is 1/2 and not in {0,1}. Any future positive 0-1 law surface must either exclude random 0-ary relation symbols or make them deterministic.",
+  "checked_boundary": [
+    "arity(P) = 0",
+    "phi = P",
+    "Pr[A_n models P] = 1/2 for every n",
+    "limit is 1/2 not in {0,1}",
+    "positive arity is necessary unless 0-ary relation symbols are excluded or deterministic"
+  ],
+  "forbidden_regressions": [
+    "ZERO_ARY_RELATION_POSITIVE_CLOSURE",
+    "RANDOM_ZERO_ARY_RELATION_ZERO_ONE_LAW",
+    "GLOBAL_VOCABULARY_CLOSURE",
+    "UNRESTRICTED_FMT_CLOSURE",
+    "FAGIN_THEOREM",
+    "LEAN_FORMAL_COUNTEREXAMPLE_THEOREM"
+  ],
+  "boundary": "This receipt is only a regression guard for the existing random 0-ary relation negative boundary. It does not prove a global vocabulary closure, unrestricted finite-model-theory closure, Fagin theorem, or Lean-formal counterexample theorem."
+}
