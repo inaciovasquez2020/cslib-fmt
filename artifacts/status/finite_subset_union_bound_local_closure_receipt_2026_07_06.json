@@ -1,0 +1,28 @@
+{
+  "artifact": "finite_subset_union_bound_local_closure_receipt_2026_07_06",
+  "repository": "cslib-fmt",
+  "status": "FINITE_SUBSET_UNION_BOUND_LOCAL_CLOSURE_RECEIPT_RECORDED",
+  "scope": "local finite-subset union-bound closure for already-recorded almost-sure T_ext extension axioms",
+  "input_receipt": "artifacts/status/zero_one_law_finite_subset_almost_sure_receipt_2026_07_05.json",
+  "local_statement": "For a fixed finite Gamma subset of T_ext, if each gamma in Gamma has null-limit failure probability in the fixed probability model, then the failure probability of Gamma is bounded by the finite sum of those null-limit terms, and therefore tends to 0.",
+  "checked_invariant": [
+    "Gamma is finite",
+    "each member failure event has probability tending to 0",
+    "failure of the conjunction is contained in the finite union of member failure events",
+    "finite union bound applies",
+    "finite sum of null-limit terms tends to 0"
+  ],
+  "positive_claim": "FINITE_SUBSET_UNION_BOUND_LOCAL_CLOSURE_ONLY",
+  "forbidden_claims": [
+    "GLOBAL_ZERO_ONE_LAW_CLOSURE",
+    "FAGIN_THEOREM",
+    "UNRESTRICTED_FMT_CLOSURE",
+    "ZERO_ARY_RELATION_POSITIVE_CLOSURE",
+    "COUNTABLE_INTERSECTION_ALMOST_SURE_CLOSURE",
+    "INFINITE_GAMMA_CLOSURE",
+    "DEPENDENT_PROBABILITY_MODEL_CLOSURE",
+    "NONUNIFORM_PROBABILITY_MODEL_CLOSURE",
+    "LEAN_FORMAL_PROBABILITY_THEOREM"
+  ],
+  "boundary": "This receipt records only the finite local union-bound step. It does not prove a global zero-one law, Fagin theorem, unrestricted finite-model-theory closure, or positive closure for 0-ary relation vocabularies."
+}
