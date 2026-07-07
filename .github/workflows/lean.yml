@@ -26,6 +26,7 @@ jobs:
 
       - name: Show tool versions
         run: |
+          source "$HOME/.elan/env"
           lean --version
           lake --version
 
