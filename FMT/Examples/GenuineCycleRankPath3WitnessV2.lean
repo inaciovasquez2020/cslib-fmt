@@ -12,7 +12,13 @@ inductive Path3V
 | a
 | b
 | c
-deriving DecidableEq, Fintype
+deriving DecidableEq
+
+instance : Fintype Path3V where
+  elems := {Path3V.a, Path3V.b, Path3V.c}
+  complete := by
+    intro x
+    cases x <;> simp
 
 def path3Graph : Graph where
   V := Path3V
