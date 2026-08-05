@@ -623,6 +623,49 @@ def LocalPointedBackAndForth.toPointedNeighborhoodBackAndForthFamily
   backward := L.backward_extension
 
 /--
+The reflexive concrete witness for the local pointed back-and-forth carrier.
+
+This construction is independent of global automorphisms: related assignments
+are definitionally equal, the pointed-neighborhood equivalence is the identity,
+and quantified extensions choose the same witness on both sides. It establishes
+only the reflexive base case and does not produce a nontrivial local equivalence
+between distinct assignments.
+-/
+def localPointedBackAndForthRefl
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (r : Nat) (ρ : Fin n → M.carrier) :
+    LocalPointedBackAndForth M r ρ ρ where
+  Related := fun ρ' τ' => ρ' = τ'
+  root := rfl
+  current_neighborhood_equiv := by
+    intro k ρ' τ' hrel
+    subst τ'
+    refine ⟨?_⟩
+    exact
+      { toFun := fun x => x
+        invFun := fun x => x
+        left_inv := by
+          intro x
+          rfl
+        right_inv := by
+          intro x
+          rfl
+        preserves_distinguished := by
+          intro i
+          rfl
+        preserves_interpreted_tuple := by
+          intro R tuple
+          rfl }
+  forward_extension := by
+    intro k ρ' τ' hrel x
+    subst τ'
+    exact ⟨x, rfl⟩
+  backward_extension := by
+    intro k ρ' τ' hrel y
+    subst τ'
+    exact ⟨y, rfl⟩
+
+/--
 Forward monotonicity for the distance-bound relation.
 
 If two elements are connected by a walk of length at most `r`, then they are
