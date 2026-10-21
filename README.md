@@ -73,18 +73,21 @@ Status: Distance/Factorization Surface Closed; General FMT Frontier Open.
 
 No Fagin theorem, 0-1 Law, global finite-model-theory final theorem, broad CSLIB adoption, direct Mathlib adoption, or Vardi endorsement/collaboration/coauthorship claim is asserted.
 
-## Current stopping point: smaller-radius locality surface weakening
+## Recent proof-bearing work — October 2026
 
-Status: `SMALLER_RADIUS_LOCALITY_SURFACE_WEAKENING`
+Recent merged additions and their boundaries are recorded in [Recent Proof Work Review](docs/status/RECENT_PROOF_WORK_REVIEW_2026_10_21.md).
 
-Current pushed stopping point:
+- [PR #191](https://github.com/inaciovasquez2020/cslib-fmt/pull/191): pointed-neighborhood equivalence and formula-preservation interfaces.
+- [PR #192](https://github.com/inaciovasquez2020/cslib-fmt/pull/192): reflexive local pointed back-and-forth witness.
+- [PR #193](https://github.com/inaciovasquez2020/cslib-fmt/pull/193): proof-bearing natural-number left-cancellation lemma.
 
-- `8866e78` — `theorem: add smaller-radius locality surface weakening`
-- touched Lean source: `lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean`
+These are bounded formal results. They do not prove Gaifman locality, Fagin's theorem, the 0-1 Law, or global finite-model-theory closure. The July 5 exported theorem-surface receipt predates PR #193 and must not be used as the current complete declaration count.
 
-Boundary: this is a smaller-radius locality surface weakening. It supersedes the prior README stopping pointer to `cbefa8d` as the current pushed head. It does not by itself prove radius monotonicity under the blocked assignment-close direction unless the corresponding theorem/checker explicitly records that closure.
+## Current locality frontier
 
-Next bounded choice: lock the smaller-radius locality weakening status if not already locked, then decide whether the Boolean/quantifier recursion gate is admissible from that weakened locality input.
+The current locality surface includes pointed-neighborhood equivalence and a reflexive local pointed back-and-forth witness. The remaining mathematical gap is a nontrivial local back-and-forth witness between distinct assignments that does not depend on a global automorphism.
+
+Boundary: the smaller-radius locality surface weakening at `8866e78` remains a bounded input result; it does not by itself prove radius monotonicity under the blocked assignment-close direction. No standard Gaifman-locality theorem is claimed.
 
 ## Unguarded FO downstream certificate library
 
