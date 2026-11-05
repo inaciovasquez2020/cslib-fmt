@@ -399,6 +399,81 @@ theorem pointed_neighborhood_equiv_implies_rank_zero_EF
     exact pointed_neighborhood_equiv_preserves_relation_atom M e R args
 
 /--
+A directed edge is a finite counterexample to inferring one-round EF
+equivalence from isomorphic radius-zero pointed neighborhoods.
+
+The two roots have isomorphic singleton radius-zero neighborhoods, but the
+existential formula "this vertex has an outgoing edge" distinguishes them.
+There are no automorphisms, unrestricted back-and-forth assumptions, or
+unproved locality hypotheses in this example.
+-/
+theorem radius_zero_pointed_neighborhood_not_rank_one_EF :
+    ∃ (σ : RelLanguage) (M : RelStructure σ)
+      (ρ τ : Fin 1 → M.carrier),
+      Nonempty (PointedNeighborhoodEquiv M 0 ρ τ) ∧
+        ¬ RankIndexedEF M 1 ρ τ := by
+  let σ : RelLanguage := ⟨Unit, fun _ => 2⟩
+  let M : RelStructure σ :=
+    { carrier := Bool
+      interp := fun _ pair => pair 0 = false ∧ pair 1 = true }
+  let ρ : Fin 1 → M.carrier := fun _ => false
+  let τ : Fin 1 → M.carrier := fun _ => true
+  have zero_distance_eq {x y : M.carrier}
+      (h : GaifmanDistanceLe M x y 0) : x = y := by
+    obtain ⟨k, hk, w⟩ := h
+    have hk0 : k = 0 := Nat.eq_zero_of_le_zero hk
+    subst k
+    cases w
+    rfl
+  have hsource (u : AssignmentNeighborhood M 0 ρ) : u.1 = false := by
+    obtain ⟨i, hi⟩ := u.2
+    exact (zero_distance_eq hi).symm
+  have htarget (u : AssignmentNeighborhood M 0 τ) : u.1 = true := by
+    obtain ⟨i, hi⟩ := u.2
+    exact (zero_distance_eq hi).symm
+  let e : PointedNeighborhoodEquiv M 0 ρ τ :=
+    { toFun := fun _ => assignmentNeighborhoodPoint M 0 τ 0
+      invFun := fun _ => assignmentNeighborhoodPoint M 0 ρ 0
+      left_inv := by
+        intro u
+        apply Subtype.ext
+        exact (hsource u).symm
+      right_inv := by
+        intro u
+        apply Subtype.ext
+        exact (htarget u).symm
+      preserves_distinguished := by
+        intro i
+        apply Subtype.ext
+        rfl
+      preserves_interpreted_tuple := by
+        intro R tuple
+        change
+          ((tuple 0).1 = false ∧ (tuple 1).1 = true) ↔
+            (true = false ∧ true = true)
+        constructor
+        · intro h
+          have hf := hsource (tuple 1)
+          rw [hf] at h
+          cases h.2
+        · intro h
+          cases h.1 }
+  let args : Fin 2 → Fin 2 := Fin.cases 1 (fun _ => 0)
+  let φ : Formula σ 1 := Formula.ex (Formula.rel () args)
+  have hφsource : Holds M ρ φ := by
+    change ∃ y : Bool, false = false ∧ y = true
+    exact ⟨true, rfl, rfl⟩
+  have hφtarget : ¬ Holds M τ φ := by
+    change ¬ ∃ y : Bool, true = false ∧ y = true
+    rintro ⟨y, h, _⟩
+    cases h
+  have hqr : formulaQuantifierRank φ ≤ 1 := by decide
+  refine ⟨σ, M, ρ, τ, ⟨e⟩, ?_⟩
+  intro hEF
+  exact hφtarget
+    ((rankIndexedEF_preserves_bounded_formula M φ hqr hEF).mp hφsource)
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
