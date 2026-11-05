@@ -333,7 +333,6 @@ theorem pointed_neighborhood_equiv_full_carrier_automorphism
           apply Subtype.ext
           rfl
         rw [h, e.left_inv (liftρ x)]
-        rfl
       right_inv := by
         intro y
         change (e.toFun (liftρ (e.invFun (liftτ y)).1)).1 = y
@@ -341,7 +340,6 @@ theorem pointed_neighborhood_equiv_full_carrier_automorphism
           apply Subtype.ext
           rfl
         rw [h, e.right_inv (liftτ y)]
-        rfl
       preserves_interpreted_tuple := by
         intro R tuple
         have h := e.preserves_interpreted_tuple R (fun i => liftρ (tuple i))
