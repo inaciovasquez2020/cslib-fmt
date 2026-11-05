@@ -876,6 +876,14 @@ theorem rank_two_geometric_extension_implies_rank_two_EF
       outside_diagonal_matching_implies_rank_one_EF
         M h.radius_positive e' hOutside⟩
 
+/-- The exact finite relational structure used by the rank-two counterexample. -/
+def fiveVertexGraph : RelStructure ⟨Unit, fun _ => 2⟩ where
+  carrier := Fin 5
+  interp := fun _ p =>
+    (p 0 = 0 ∧ p 1 = 1) ∨
+    (p 0 = 2 ∧ p 1 = 3) ∨
+    (p 0 = 3 ∧ p 1 = 4)
+
 /--
 For the five-vertex directed-edge presentation of the Gaifman graph
 with undirected edges {0,1}, {2,3}, {3,4}, the distinguished
