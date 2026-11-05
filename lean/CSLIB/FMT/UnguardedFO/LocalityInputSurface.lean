@@ -884,40 +884,6 @@ def fiveVertexGraph : RelStructure ⟨Unit, fun _ => 2⟩ where
     (p 0 = 2 ∧ p 1 = 3) ∨
     (p 0 = 3 ∧ p 1 = 4)
 
-/-- The only Gaifman neighbor of vertex zero in the finite graph is one. -/
-theorem fiveVertexGraph_zero_adjacent_only_one
-    {x : Fin 5} (h : GaifmanAdjacent fiveVertexGraph 0 x) :
-    x = 1 := by
-  rcases h with ⟨hne, R, tuple, hrel, h0, hx⟩
-  cases R
-  rcases h0 with ⟨i, hi⟩
-  rcases hx with ⟨j, hj⟩
-  have hIdx : ∀ k : Fin 2, k = 0 ∨ k = 1 := by decide
-  change
-    (tuple 0 = (0 : Fin 5) ∧ tuple 1 = 1) ∨
-    (tuple 0 = (2 : Fin 5) ∧ tuple 1 = 3) ∨
-    (tuple 0 = (3 : Fin 5) ∧ tuple 1 = 4) at hrel
-  rcases hIdx i with hi0 | hi1
-  · subst i
-    rcases hrel with h01 | h23 | h34
-    · rcases hIdx j with hj0 | hj1
-      · subst j
-        exact False.elim (hne (h01.1.symm.trans hj))
-      · subst j
-        exact (h01.2.symm.trans hj).symm
-    · have hne20 : (2 : Fin 5) ≠ 0 := by decide
-      exact False.elim (hne20 (h23.1.symm.trans hi))
-    · have hne30 : (3 : Fin 5) ≠ 0 := by decide
-      exact False.elim (hne30 (h34.1.symm.trans hi))
-  · subst i
-    rcases hrel with h01 | h23 | h34
-    · have hne10 : (1 : Fin 5) ≠ 0 := by decide
-      exact False.elim (hne10 (h01.2.symm.trans hi))
-    · have hne30 : (3 : Fin 5) ≠ 0 := by decide
-      exact False.elim (hne30 (h23.2.symm.trans hi))
-    · have hne40 : (4 : Fin 5) ≠ 0 := by decide
-      exact False.elim (hne40 (h34.2.symm.trans hi))
-
 /--
 For the five-vertex directed-edge presentation of the Gaifman graph
 with undirected edges {0,1}, {2,3}, {3,4}, the distinguished
