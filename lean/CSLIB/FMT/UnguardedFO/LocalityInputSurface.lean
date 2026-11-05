@@ -3125,3 +3125,5 @@ theorem ex_has_unguarded_fo_locality_radius_to_exists_input_surface
 end UnguardedFO
 end FMT
 end CSLIB
+
+#print axioms CSLIB.FMT.UnguardedFO.rank_two_geometric_extension_implies_rank_two_EF
