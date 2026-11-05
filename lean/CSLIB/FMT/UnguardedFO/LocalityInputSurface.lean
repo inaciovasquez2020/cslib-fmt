@@ -421,6 +421,27 @@ structure PointedNeighborhoodQuantifierExtension {σ : RelLanguage}
             (extendAssignment ρ x) (extendAssignment τ y))
 
 /--
+A sufficient geometric rank-one EF bridge. The root has a pointed radius-r
+neighborhood equivalence, and every one-element extension in either direction
+has an equivalent pointed radius-r neighborhood. The second hypothesis is a
+separate geometric extension condition, not a consequence of root equivalence.
+This theorem does not construct extensions from Gaifman-radius bounds.
+-/
+theorem pointed_neighborhood_rank_one_EF_of_extension
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} {ρ τ : Fin n → M.carrier}
+    (e : PointedNeighborhoodEquiv M r ρ τ)
+    (hExt : PointedNeighborhoodQuantifierExtension M r ρ τ) :
+    RankIndexedEF M 1 ρ τ := by
+  refine ⟨pointed_neighborhood_equiv_implies_rank_zero_EF M e, ?_, ?_⟩
+  · intro x
+    obtain ⟨y, ⟨e'⟩⟩ := hExt.forward x
+    exact ⟨y, pointed_neighborhood_equiv_implies_rank_zero_EF M e'⟩
+  · intro y
+    obtain ⟨x, ⟨e'⟩⟩ := hExt.backward y
+    exact ⟨x, pointed_neighborhood_equiv_implies_rank_zero_EF M e'⟩
+
+/--
 The quantified-witness back-and-forth surface transports preservation of a
 formula body to preservation of its existential closure.
 -/
