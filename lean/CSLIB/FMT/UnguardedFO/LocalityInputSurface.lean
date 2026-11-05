@@ -717,6 +717,58 @@ theorem outside_neighborhood_diagonal_atomic_extension
         exact ⟨fun h => (hsFalse h).elim, fun h => (htFalse h).elim⟩
 
 /--
+A noncircular rank-one EF bridge from rooted neighborhood geometry.
+The distinguished radius-r neighborhoods are isomorphic, and every outside
+vertex has a counterpart with the same diagonal atomic type in both
+directions. The proof constructs, rather than assumes, one-round EF witnesses.
+This does not establish positive-rank Gaifman locality for arbitrary ranks.
+-/
+theorem outside_diagonal_matching_implies_rank_one_EF
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} {ρ τ : Fin n → M.carrier}
+    (hr : 1 ≤ r)
+    (e : PointedNeighborhoodEquiv M r ρ τ)
+    (hOutside : OutsideNeighborhoodDiagonalMatching M r ρ τ) :
+    RankIndexedEF M 1 ρ τ := by
+  have eSymm : PointedNeighborhoodEquiv M r τ ρ :=
+    { toFun := e.invFun
+      invFun := e.toFun
+      left_inv := e.right_inv
+      right_inv := e.left_inv
+      preserves_distinguished := by
+        intro i
+        have h := congrArg e.invFun (e.preserves_distinguished i)
+        rw [e.left_inv (assignmentNeighborhoodPoint M r ρ i)] at h
+        exact h.symm
+      preserves_interpreted_tuple := by
+        intro R tuple
+        have h :=
+          e.preserves_interpreted_tuple R (fun k => e.invFun (tuple k))
+        change
+          M.interp R (fun k => (e.invFun (tuple k)).1) ↔
+            M.interp R (fun k => (e.toFun (e.invFun (tuple k))).1) at h
+        have htuple :
+            (fun k => (e.toFun (e.invFun (tuple k))).1) =
+              (fun k => (tuple k).1) := by
+          funext k
+          exact congrArg (fun z => z.1) (e.right_inv (tuple k))
+        rw [htuple] at h
+        exact h.symm }
+  refine ⟨pointed_neighborhood_equiv_implies_rank_zero_EF M e, ?_, ?_⟩
+  · intro x
+    by_cases hx : ∃ i : Fin n, GaifmanDistanceLe M (ρ i) x r
+    · exact pointed_neighborhood_inside_atomic_extension M e x hx
+    · obtain ⟨y, hy, hdiag⟩ := hOutside.forward x hx
+      exact ⟨y, outside_neighborhood_diagonal_atomic_extension M hr e x y hx hy hdiag⟩
+  · intro y
+    by_cases hy : ∃ i : Fin n, GaifmanDistanceLe M (τ i) y r
+    · obtain ⟨x, h⟩ := pointed_neighborhood_inside_atomic_extension M eSymm y hy
+      refine ⟨x, ?_⟩
+      exact ⟨(fun i j => (h.1 i j).symm), (fun R args => (h.2 R args).symm)⟩
+    · obtain ⟨x, hx, hdiag⟩ := hOutside.backward y hy
+      exact ⟨x, outside_neighborhood_diagonal_atomic_extension M hr e x y hx hy hdiag⟩
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
