@@ -162,6 +162,60 @@ theorem rankIndexedEF_of_le
             obtain ⟨x, hxy⟩ := h.2.2 y
             exact ⟨x, ih hqr' hxy⟩
 
+/-- Rank-bounded EF preserves formulas of bounded quantifier rank. -/
+theorem rankIndexedEF_preserves_bounded_formula
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (φ : Formula σ n) :
+    ∀ {q : Nat} {ρ τ : Fin n → M.carrier},
+      formulaQuantifierRank φ ≤ q →
+      RankIndexedEF M q ρ τ →
+      (Holds M ρ φ ↔ Holds M τ φ) := by
+  induction φ with
+  | top => intro q ρ τ hqr hEF; exact Iff.rfl
+  | bot => intro q ρ τ hqr hEF; exact Iff.rfl
+  | eq i j =>
+      intro q ρ τ hqr hEF
+      exact rankIndexedEF_preserves_equality_atom M hEF i j
+  | rel R args =>
+      intro q ρ τ hqr hEF
+      exact rankIndexedEF_preserves_relation_atom M hEF R args
+  | neg φ ih =>
+      intro q ρ τ hqr hEF
+      change (¬ Holds M ρ φ) ↔ (¬ Holds M τ φ)
+      exact not_congr (ih hqr hEF)
+  | conj φ ψ ihφ ihψ =>
+      intro q ρ τ hqr hEF
+      have hφ : formulaQuantifierRank φ ≤ q :=
+        Nat.le_trans (Nat.le_max_left _ _) hqr
+      have hψ : formulaQuantifierRank ψ ≤ q :=
+        Nat.le_trans (Nat.le_max_right _ _) hqr
+      change (Holds M ρ φ ∧ Holds M ρ ψ) ↔ (Holds M τ φ ∧ Holds M τ ψ)
+      exact and_congr (ihφ hφ hEF) (ihψ hψ hEF)
+  | disj φ ψ ihφ ihψ =>
+      intro q ρ τ hqr hEF
+      have hφ : formulaQuantifierRank φ ≤ q :=
+        Nat.le_trans (Nat.le_max_left _ _) hqr
+      have hψ : formulaQuantifierRank ψ ≤ q :=
+        Nat.le_trans (Nat.le_max_right _ _) hqr
+      change (Holds M ρ φ ∨ Holds M ρ ψ) ↔ (Holds M τ φ ∨ Holds M τ ψ)
+      exact or_congr (ihφ hφ hEF) (ihψ hψ hEF)
+  | ex φ ih =>
+      intro q ρ τ hqr hEF
+      cases q with
+      | zero => simp [formulaQuantifierRank] at hqr
+      | succ q =>
+          have hbody : formulaQuantifierRank φ ≤ q :=
+            Nat.le_of_succ_le_succ hqr
+          change (∃ x : M.carrier, Holds M (extendAssignment ρ x) φ) ↔
+            ∃ y : M.carrier, Holds M (extendAssignment τ y) φ
+          constructor
+          · rintro ⟨x, hx⟩
+            obtain ⟨y, hxy⟩ := hEF.2.1 x
+            exact ⟨y, (ih hbody hxy).mp hx⟩
+          · rintro ⟨y, hy⟩
+            obtain ⟨x, hxy⟩ := hEF.2.2 y
+            exact ⟨x, (ih hbody hxy).mpr hy⟩
+
 /-- A relation tuple contains an element when that element appears in one coordinate. -/
 def RelationTupleContains {σ : RelLanguage} (M : RelStructure σ)
     (R : σ.Rel) (tuple : Fin (σ.arity R) → M.carrier) (x : M.carrier) : Prop :=
