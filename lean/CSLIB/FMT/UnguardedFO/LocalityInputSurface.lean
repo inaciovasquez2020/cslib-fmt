@@ -722,6 +722,105 @@ def localPointedBackAndForthRefl
     exact ⟨y, rfl⟩
 
 /--
+An unrestricted local back-and-forth system can extend its root so that
+both resulting assignments enumerate every element of a specified list.
+All original distinguished pairs remain in the extended assignments.
+
+No global automorphism, finiteness assumption, or locality theorem is used.
+-/
+theorem local_pointed_back_and_forth_enumerating_extension
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (r : Nat) (ρ τ : Fin n → M.carrier)
+    (L : LocalPointedBackAndForth M r ρ τ)
+    (xs : List M.carrier) :
+    ∃ (k : Nat) (a b : Fin k → M.carrier),
+      L.Related a b ∧
+      (∀ i : Fin n, ∃ j : Fin k, a j = ρ i ∧ b j = τ i) ∧
+      (∀ x : M.carrier, x ∈ xs → ∃ j : Fin k, a j = x) ∧
+      (∀ y : M.carrier, y ∈ xs → ∃ j : Fin k, b j = y) := by
+  let P (us vs : List M.carrier) : Prop :=
+    ∃ (k : Nat) (a b : Fin k → M.carrier),
+      L.Related a b ∧
+      (∀ i : Fin n, ∃ j : Fin k, a j = ρ i ∧ b j = τ i) ∧
+      (∀ x : M.carrier, x ∈ us → ∃ j : Fin k, a j = x) ∧
+      (∀ y : M.carrier, y ∈ vs → ∃ j : Fin k, b j = y)
+  have hbase : P [] [] := by
+    refine ⟨n, ρ, τ, L.root, ?_, ?_, ?_⟩
+    · intro i
+      exact ⟨i, rfl, rfl⟩
+    · intro x hx
+      cases hx
+    · intro y hy
+      cases hy
+  have hforward :
+      ∀ (us vs : List M.carrier) (x : M.carrier),
+        P us vs → P (x :: us) vs := by
+    intro us vs x h
+    obtain ⟨k, a, b, hrel, hroot, hsource, htarget⟩ := h
+    obtain ⟨y, hrel'⟩ := L.forward_extension hrel x
+    refine ⟨k + 1, extendAssignment a x, extendAssignment b y,
+      hrel', ?_, ?_, ?_⟩
+    · intro i
+      obtain ⟨j, ha, hb⟩ := hroot i
+      refine ⟨Fin.succ j, ?_, ?_⟩
+      · change a j = ρ i
+        exact ha
+      · change b j = τ i
+        exact hb
+    · intro z hz
+      simp only [List.mem_cons] at hz
+      rcases hz with rfl | hz
+      · exact ⟨0, rfl⟩
+      · obtain ⟨j, hj⟩ := hsource z hz
+        refine ⟨Fin.succ j, ?_⟩
+        change a j = z
+        exact hj
+    · intro z hz
+      obtain ⟨j, hj⟩ := htarget z hz
+      refine ⟨Fin.succ j, ?_⟩
+      change b j = z
+      exact hj
+  have hbackward :
+      ∀ (us vs : List M.carrier) (y : M.carrier),
+        P us vs → P us (y :: vs) := by
+    intro us vs y h
+    obtain ⟨k, a, b, hrel, hroot, hsource, htarget⟩ := h
+    obtain ⟨x, hrel'⟩ := L.backward_extension hrel y
+    refine ⟨k + 1, extendAssignment a x, extendAssignment b y,
+      hrel', ?_, ?_, ?_⟩
+    · intro i
+      obtain ⟨j, ha, hb⟩ := hroot i
+      refine ⟨Fin.succ j, ?_, ?_⟩
+      · change a j = ρ i
+        exact ha
+      · change b j = τ i
+        exact hb
+    · intro z hz
+      obtain ⟨j, hj⟩ := hsource z hz
+      refine ⟨Fin.succ j, ?_⟩
+      change a j = z
+      exact hj
+    · intro z hz
+      simp only [List.mem_cons] at hz
+      rcases hz with rfl | hz
+      · exact ⟨0, rfl⟩
+      · obtain ⟨j, hj⟩ := htarget z hz
+        refine ⟨Fin.succ j, ?_⟩
+        change b j = z
+        exact hj
+  have hsource_list : ∀ us : List M.carrier, P us [] := by
+    intro us
+    induction us with
+    | nil => exact hbase
+    | cons x us ih => exact hforward us [] x ih
+  have htarget_list : ∀ vs : List M.carrier, P xs vs := by
+    intro vs
+    induction vs with
+    | nil => exact hsource_list xs
+    | cons y vs ih => exact hbackward xs vs y ih
+  exact htarget_list xs
+
+/--
 Forward monotonicity for the distance-bound relation.
 
 If two elements are connected by a walk of length at most `r`, then they are
