@@ -821,6 +821,40 @@ theorem local_pointed_back_and_forth_enumerating_extension
   exact htarget_list xs
 
 /--
+Over a carrier admitting a complete finite list, an unrestricted rooted local
+back-and-forth relation is induced by a global relational automorphism.
+
+The finiteness witness is expressed as an explicit covering list; this avoids
+assuming any external Fintype or Finite bridge in the standalone module.
+-/
+theorem local_pointed_back_and_forth_finite_automorphism
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (r : Nat) (ρ τ : Fin n → M.carrier)
+    (L : LocalPointedBackAndForth M r ρ τ)
+    (hfinite : ∃ xs : List M.carrier, ∀ x : M.carrier, x ∈ xs) :
+    ∃ A : RelStructureAutomorphism M,
+      ∀ i : Fin n, A.toFun (ρ i) = τ i := by
+  obtain ⟨xs, hcover⟩ := hfinite
+  obtain ⟨k, a, b, hrel, hroot, hsource, htarget⟩ :=
+    local_pointed_back_and_forth_enumerating_extension M r ρ τ L xs
+  obtain ⟨e⟩ := L.current_neighborhood_equiv hrel
+  have ha : Function.Surjective a := by
+    intro x
+    exact hsource x (hcover x)
+  have hb : Function.Surjective b := by
+    intro y
+    exact htarget y (hcover y)
+  obtain ⟨A, hA⟩ :=
+    pointed_neighborhood_equiv_full_carrier_automorphism M a b e ha hb
+  refine ⟨A, ?_⟩
+  intro i
+  obtain ⟨j, haj, hbj⟩ := hroot i
+  calc
+    A.toFun (ρ i) = A.toFun (a j) := congrArg A.toFun haj.symm
+    _ = b j := hA j
+    _ = τ i := hbj
+
+/--
 Forward monotonicity for the distance-bound relation.
 
 If two elements are connected by a walk of length at most `r`, then they are
