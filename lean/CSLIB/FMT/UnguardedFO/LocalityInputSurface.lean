@@ -341,6 +341,34 @@ structure OutsideNeighborhoodDiagonalMatching {σ : RelLanguage}
         (∀ R : σ.Rel,
           M.interp R (fun _ => x) ↔ M.interp R (fun _ => y))
 
+/--
+A rank-two geometric witness invariant. After a single matched extension
+in either direction, pointed radius-r neighborhoods remain equivalent
+and outside witnesses retain two-sided diagonal atomic matching.
+This is a hypothesis surface, not a proof of its existence.
+-/
+structure RankTwoGeometricExtensionInvariant
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (r : Nat) (ρ τ : Fin n → M.carrier) : Prop where
+  radius_positive : 1 ≤ r
+  root : Nonempty (PointedNeighborhoodEquiv M r ρ τ)
+  forward :
+    ∀ x : M.carrier,
+      ∃ y : M.carrier,
+        Nonempty
+          (PointedNeighborhoodEquiv M r
+            (extendAssignment ρ x) (extendAssignment τ y)) ∧
+        OutsideNeighborhoodDiagonalMatching M r
+          (extendAssignment ρ x) (extendAssignment τ y)
+  backward :
+    ∀ y : M.carrier,
+      ∃ x : M.carrier,
+        Nonempty
+          (PointedNeighborhoodEquiv M r
+            (extendAssignment ρ x) (extendAssignment τ y)) ∧
+        OutsideNeighborhoodDiagonalMatching M r
+          (extendAssignment ρ x) (extendAssignment τ y)
+
 /-- Pointed neighborhood equivalence preserves equality atoms. -/
 theorem pointed_neighborhood_equiv_preserves_equality_atom
     {σ : RelLanguage} (M : RelStructure σ)
