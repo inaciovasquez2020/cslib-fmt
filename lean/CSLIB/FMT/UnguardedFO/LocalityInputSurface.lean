@@ -117,6 +117,23 @@ theorem rankIndexedEF_preserves_relation_atom
   | zero => exact h.2 R args
   | succ q => exact h.1.2 R args
 
+/--
+Quantifier rank of first-order formulas: Boolean connectives preserve the
+maximum rank; each existential binder adds one round.
+-/
+def formulaQuantifierRank {σ : RelLanguage} :
+    {n : Nat} → Formula σ n → Nat
+  | _, Formula.top => 0
+  | _, Formula.bot => 0
+  | _, Formula.eq _ _ => 0
+  | _, Formula.rel _ _ => 0
+  | _, Formula.neg φ => formulaQuantifierRank φ
+  | _, Formula.conj φ ψ =>
+      max (formulaQuantifierRank φ) (formulaQuantifierRank ψ)
+  | _, Formula.disj φ ψ =>
+      max (formulaQuantifierRank φ) (formulaQuantifierRank ψ)
+  | _, Formula.ex φ => formulaQuantifierRank φ + 1
+
 /-- A relation tuple contains an element when that element appears in one coordinate. -/
 def RelationTupleContains {σ : RelLanguage} (M : RelStructure σ)
     (R : σ.Rel) (tuple : Fin (σ.arity R) → M.carrier) (x : M.carrier) : Prop :=
