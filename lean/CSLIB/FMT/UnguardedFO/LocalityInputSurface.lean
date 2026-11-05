@@ -369,6 +369,31 @@ structure RankTwoGeometricExtensionInvariant
         OutsideNeighborhoodDiagonalMatching M r
           (extendAssignment ρ x) (extendAssignment τ y)
 
+/--
+The isolated two-sided geometric witness-existence obligation for rank two.
+It asks for independently constructed pointed-neighborhood equivalences
+and outside diagonal matches after each first extension. Root geometry
+and positive radius are separate hypotheses, not built into this definition.
+No witnesses are asserted to exist here.
+-/
+def RankTwoGeometricWitnessExistence
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (r : Nat) (ρ τ : Fin n → M.carrier) : Prop :=
+  (∀ x : M.carrier,
+    ∃ y : M.carrier,
+      Nonempty
+        (PointedNeighborhoodEquiv M r
+          (extendAssignment ρ x) (extendAssignment τ y)) ∧
+      OutsideNeighborhoodDiagonalMatching M r
+        (extendAssignment ρ x) (extendAssignment τ y)) ∧
+  (∀ y : M.carrier,
+    ∃ x : M.carrier,
+      Nonempty
+        (PointedNeighborhoodEquiv M r
+          (extendAssignment ρ x) (extendAssignment τ y)) ∧
+      OutsideNeighborhoodDiagonalMatching M r
+        (extendAssignment ρ x) (extendAssignment τ y))
+
 /-- Pointed neighborhood equivalence preserves equality atoms. -/
 theorem pointed_neighborhood_equiv_preserves_equality_atom
     {σ : RelLanguage} (M : RelStructure σ)
