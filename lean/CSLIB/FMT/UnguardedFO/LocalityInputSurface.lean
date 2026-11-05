@@ -134,6 +134,34 @@ def formulaQuantifierRank {σ : RelLanguage} :
       max (formulaQuantifierRank φ) (formulaQuantifierRank ψ)
   | _, Formula.ex φ => formulaQuantifierRank φ + 1
 
+/--
+A winning bounded back-and-forth system can be truncated to fewer rounds.
+The proof descends structurally through the remaining rank.
+-/
+theorem rankIndexedEF_of_le
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n q r : Nat} {ρ τ : Fin n → M.carrier}
+    (hqr : q ≤ r) (h : RankIndexedEF M r ρ τ) :
+    RankIndexedEF M q ρ τ := by
+  induction r generalizing n q ρ τ with
+  | zero =>
+      have hq : q = 0 := Nat.eq_zero_of_le_zero hqr
+      subst q
+      exact h
+  | succ r ih =>
+      cases q with
+      | zero =>
+          exact h.1
+      | succ q =>
+          have hqr' : q ≤ r := Nat.le_of_succ_le_succ hqr
+          refine ⟨h.1, ?_, ?_⟩
+          · intro x
+            obtain ⟨y, hxy⟩ := h.2.1 x
+            exact ⟨y, ih hqr' hxy⟩
+          · intro y
+            obtain ⟨x, hxy⟩ := h.2.2 y
+            exact ⟨x, ih hqr' hxy⟩
+
 /-- A relation tuple contains an element when that element appears in one coordinate. -/
 def RelationTupleContains {σ : RelLanguage} (M : RelStructure σ)
     (R : σ.Rel) (tuple : Fin (σ.arity R) → M.carrier) (x : M.carrier) : Prop :=
