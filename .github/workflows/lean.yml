@@ -45,7 +45,7 @@ jobs:
         run: |
           lake env lean lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean
           cp lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean "$RUNNER_TEMP/LocalityInputSurfaceAxiomAudit.lean"
-          printf '\n#print axioms CSLIB.FMT.UnguardedFO.pointed_neighborhood_equiv_full_carrier_automorphism\n#print axioms CSLIB.FMT.UnguardedFO.local_pointed_back_and_forth_enumerating_extension\n#print axioms CSLIB.FMT.UnguardedFO.local_pointed_back_and_forth_finite_automorphism\n' >> "$RUNNER_TEMP/LocalityInputSurfaceAxiomAudit.lean"
+          printf '\n#print axioms CSLIB.FMT.UnguardedFO.pointed_neighborhood_equiv_full_carrier_automorphism\n#print axioms CSLIB.FMT.UnguardedFO.local_pointed_back_and_forth_enumerating_extension\n#print axioms CSLIB.FMT.UnguardedFO.local_pointed_back_and_forth_finite_automorphism\n#print axioms CSLIB.FMT.UnguardedFO.rankIndexedEF_preserves_equality_atom\n' >> "$RUNNER_TEMP/LocalityInputSurfaceAxiomAudit.lean"
           lake env lean "$RUNNER_TEMP/LocalityInputSurfaceAxiomAudit.lean"
 
       - name: Build
