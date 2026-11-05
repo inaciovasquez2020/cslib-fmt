@@ -41,5 +41,8 @@ jobs:
             sleep 10
           done
 
+      - name: Direct-check isolated automorphism lemma
+        run: lake env lean lean/CSLIB/FMT/UnguardedFO/LocalityInputSurface.lean
+
       - name: Build
         run: lake build
