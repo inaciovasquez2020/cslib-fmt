@@ -99,6 +99,24 @@ theorem rankIndexedEF_preserves_equality_atom
   | zero => exact h.1 i j
   | succ q => exact h.1.1 i j
 
+/--
+A bounded EF relation preserves every relation atom at every rank. This reads
+the interpretation-agreement component of the zero-round EF condition and
+does not assume a global automorphism or a locality result.
+-/
+theorem rankIndexedEF_preserves_relation_atom
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n q : Nat} {ρ τ : Fin n → M.carrier}
+    (h : RankIndexedEF M q ρ τ)
+    (R : σ.Rel) (args : Fin (σ.arity R) → Fin n) :
+    Holds M ρ (Formula.rel R args) ↔
+      Holds M τ (Formula.rel R args) := by
+  change M.interp R (fun i => ρ (args i)) ↔
+    M.interp R (fun i => τ (args i))
+  cases q with
+  | zero => exact h.2 R args
+  | succ q => exact h.1.2 R args
+
 /-- A relation tuple contains an element when that element appears in one coordinate. -/
 def RelationTupleContains {σ : RelLanguage} (M : RelStructure σ)
     (R : σ.Rel) (tuple : Fin (σ.arity R) → M.carrier) (x : M.carrier) : Prop :=
