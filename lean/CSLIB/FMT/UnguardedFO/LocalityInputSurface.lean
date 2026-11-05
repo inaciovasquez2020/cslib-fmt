@@ -252,6 +252,38 @@ def GaifmanDistanceLe {σ : RelLanguage} (M : RelStructure σ)
   ∃ n : Nat, n ≤ r ∧ GaifmanWalk M x y n
 
 /--
+At radius one, a bounded Gaifman walk is either stationary or traverses
+exactly one Gaifman edge. This reduces finite rooted-neighborhood
+membership to an atomic adjacency condition.
+-/
+theorem gaifman_distance_one_eq_or_adjacent
+    {σ : RelLanguage} (M : RelStructure σ)
+    (x y : M.carrier) :
+    GaifmanDistanceLe M x y 1 ↔
+      x = y ∨ GaifmanAdjacent M x y := by
+  constructor
+  · rintro ⟨n, hn, hw⟩
+    cases n with
+    | zero =>
+        cases hw
+        exact Or.inl rfl
+    | succ n =>
+        have hn0 : n = 0 :=
+          Nat.eq_zero_of_le_zero (Nat.le_of_succ_le_succ hn)
+        subst n
+        cases hw with
+        | step hadj htail =>
+            cases htail
+            exact Or.inr hadj
+  · intro h
+    rcases h with heq | hadj
+    · subst y
+      exact ⟨0, Nat.zero_le 1, GaifmanWalk.nil (M := M) x⟩
+    · exact
+        ⟨1, Nat.le_refl 1,
+          GaifmanWalk.step hadj (GaifmanWalk.nil (M := M) y)⟩
+
+/--
 Two assignments are pointwise Gaifman-close at radius `r`.
 
 This is an input relation for locality statements; it is not itself a locality
