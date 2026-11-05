@@ -54,6 +54,51 @@ def Holds {σ : RelLanguage} (M : RelStructure σ) :
   | _, ρ, Formula.disj φ ψ => Holds M ρ φ ∨ Holds M ρ ψ
   | _, ρ, Formula.ex φ => ∃ x : M.carrier, Holds M (extendAssignment ρ x) φ
 
+/--
+Agreement on all equality atoms and all interpreted relation atoms for the
+current distinguished assignment. This is the genuine zero-round EF condition,
+not a truth-valued placeholder.
+-/
+def EFAtomicAgreement {σ : RelLanguage} (M : RelStructure σ)
+    {n : Nat} (ρ τ : Fin n → M.carrier) : Prop :=
+  (∀ i j : Fin n, (ρ i = ρ j ↔ τ i = τ j)) ∧
+  (∀ (R : σ.Rel) (args : Fin (σ.arity R) → Fin n),
+    M.interp R (fun i => ρ (args i)) ↔
+      M.interp R (fun i => τ (args i)))
+
+/--
+The standard rank-indexed, two-sided Ehrenfeucht-Fraïssé relation for
+assignments in one relational structure. Every round retains atomic
+agreement, and decreases the remaining round budget on extensions.
+Unlike an unrestricted back-and-forth family, the recursion stops at zero.
+-/
+def RankIndexedEF {σ : RelLanguage} (M : RelStructure σ) :
+    (q : Nat) → {n : Nat} →
+      (Fin n → M.carrier) → (Fin n → M.carrier) → Prop
+  | 0, _, ρ, τ => EFAtomicAgreement M ρ τ
+  | q + 1, _, ρ, τ =>
+      EFAtomicAgreement M ρ τ ∧
+      (∀ x : M.carrier, ∃ y : M.carrier,
+        RankIndexedEF M q (extendAssignment ρ x) (extendAssignment τ y)) ∧
+      (∀ y : M.carrier, ∃ x : M.carrier,
+        RankIndexedEF M q (extendAssignment ρ x) (extendAssignment τ y))
+
+/--
+The first atomic-preservation case: equality of distinguished variables is
+preserved at every bounded EF rank, without global automorphism assumptions.
+-/
+theorem rankIndexedEF_preserves_equality_atom
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n q : Nat} {ρ τ : Fin n → M.carrier}
+    (h : RankIndexedEF M q ρ τ)
+    (i j : Fin n) :
+    Holds M ρ (Formula.eq i j) ↔
+      Holds M τ (Formula.eq i j) := by
+  change (ρ i = ρ j) ↔ (τ i = τ j)
+  cases q with
+  | zero => exact h.1 i j
+  | succ q => exact h.1.1 i j
+
 /-- A relation tuple contains an element when that element appears in one coordinate. -/
 def RelationTupleContains {σ : RelLanguage} (M : RelStructure σ)
     (R : σ.Rel) (tuple : Fin (σ.arity R) → M.carrier) (x : M.carrier) : Prop :=
