@@ -300,6 +300,64 @@ structure RelStructureAutomorphism {σ : RelLanguage}
         M.interp R (fun i => toFun (tuple i))
 
 /--
+If both distinguished assignments enumerate the entire carrier, a pointed
+neighborhood equivalence induces an automorphism of the whole structure.
+This is an intermediate lemma; it does not establish that arbitrary
+LocalPointedBackAndForth roots admit such enumerating extensions.
+-/
+theorem pointed_neighborhood_equiv_full_carrier_automorphism
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} (ρ τ : Fin n → M.carrier)
+    (e : PointedNeighborhoodEquiv M r ρ τ)
+    (hρ : Function.Surjective ρ)
+    (hτ : Function.Surjective τ) :
+    ∃ A : RelStructureAutomorphism M,
+      ∀ i : Fin n, A.toFun (ρ i) = τ i := by
+  let liftρ (x : M.carrier) : AssignmentNeighborhood M r ρ :=
+    ⟨x, by
+      obtain ⟨i, hi⟩ := hρ x
+      refine ⟨i, 0, Nat.zero_le r, ?_⟩
+      simpa [hi] using (GaifmanWalk.nil (M := M) x)⟩
+  let liftτ (y : M.carrier) : AssignmentNeighborhood M r τ :=
+    ⟨y, by
+      obtain ⟨i, hi⟩ := hτ y
+      refine ⟨i, 0, Nat.zero_le r, ?_⟩
+      simpa [hi] using (GaifmanWalk.nil (M := M) y)⟩
+  let A : RelStructureAutomorphism M :=
+    { toFun := fun x => (e.toFun (liftρ x)).1
+      invFun := fun y => (e.invFun (liftτ y)).1
+      left_inv := by
+        intro x
+        change (e.invFun (liftτ (e.toFun (liftρ x)).1)).1 = x
+        have h : liftτ (e.toFun (liftρ x)).1 = e.toFun (liftρ x) := by
+          apply Subtype.ext
+          rfl
+        rw [h, e.left_inv (liftρ x)]
+        rfl
+      right_inv := by
+        intro y
+        change (e.toFun (liftρ (e.invFun (liftτ y)).1)).1 = y
+        have h : liftρ (e.invFun (liftτ y)).1 = e.invFun (liftτ y) := by
+          apply Subtype.ext
+          rfl
+        rw [h, e.right_inv (liftτ y)]
+        rfl
+      preserves_interpreted_tuple := by
+        intro R tuple
+        have h := e.preserves_interpreted_tuple R (fun i => liftρ (tuple i))
+        change M.interp R tuple ↔
+          M.interp R (fun i => (e.toFun (liftρ (tuple i))).1) at h
+        exact h }
+  refine ⟨A, ?_⟩
+  intro i
+  change (e.toFun (liftρ (ρ i))).1 = τ i
+  have h : liftρ (ρ i) = assignmentNeighborhoodPoint M r ρ i := by
+    apply Subtype.ext
+    rfl
+  rw [h]
+  exact congrArg Subtype.val (e.preserves_distinguished i)
+
+/--
 The inverse maps of a relational automorphism form a relational automorphism.
 -/
 def relStructureAutomorphismSymm {σ : RelLanguage}
