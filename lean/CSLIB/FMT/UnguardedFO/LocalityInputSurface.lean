@@ -797,6 +797,29 @@ theorem outside_diagonal_matching_implies_rank_one_EF
       exact ⟨x, outside_neighborhood_diagonal_atomic_extension M hr e x y hx hy hdiag⟩
 
 /--
+The rank-two geometric extension invariant suffices for two EF rounds.
+Every first-round matched extension satisfies the existing geometric
+rank-one EF bridge. This does not assert the invariant itself exists.
+-/
+theorem rank_two_geometric_extension_implies_rank_two_EF
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} {ρ τ : Fin n → M.carrier}
+    (h : RankTwoGeometricExtensionInvariant M r ρ τ) :
+    RankIndexedEF M 2 ρ τ := by
+  obtain ⟨e⟩ := h.root
+  refine ⟨pointed_neighborhood_equiv_implies_rank_zero_EF M e, ?_, ?_⟩
+  · intro x
+    obtain ⟨y, ⟨e'⟩, hOutside⟩ := h.forward x
+    exact ⟨y,
+      outside_diagonal_matching_implies_rank_one_EF
+        M h.radius_positive e' hOutside⟩
+  · intro y
+    obtain ⟨x, ⟨e'⟩, hOutside⟩ := h.backward y
+    exact ⟨x,
+      outside_diagonal_matching_implies_rank_one_EF
+        M h.radius_positive e' hOutside⟩
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
