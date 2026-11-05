@@ -568,48 +568,6 @@ theorem pointed_neighborhood_inside_atomic_extension
     exact hrel
 
 /--
-A vertex outside every distinguished radius-r ball cannot occur in an
-interpreted relation tuple alongside a distinguished value when r >= 1.
-The relation tuple is indexed by an assignment extended with the outside
-vertex at de Bruijn index zero. This is purely Gaifman geometry.
--/
-theorem outside_neighborhood_no_mixed_relation
-    {σ : RelLanguage} (M : RelStructure σ)
-    {n r : Nat} (ρ : Fin n → M.carrier)
-    (hr : 1 ≤ r) (x : M.carrier)
-    (houtside : ¬ ∃ i : Fin n, GaifmanDistanceLe M (ρ i) x r)
-    (R : σ.Rel) (args : Fin (σ.arity R) → Fin (n + 1))
-    (hnew : ∃ k, args k = (0 : Fin (n + 1)))
-    (hold : ∃ k, args k ≠ (0 : Fin (n + 1))) :
-    ¬ M.interp R (fun k => extendAssignment ρ x (args k)) := by
-  intro hrel
-  obtain ⟨knew, hnew⟩ := hnew
-  obtain ⟨kold, hold⟩ := hold
-  let iold : Fin n := (args kold).pred hold
-  have hs : args kold = Fin.succ iold := by
-    exact (Fin.succ_pred (args kold) hold).symm
-  have hroot : extendAssignment ρ x (args kold) = ρ iold := by
-    rw [hs]
-    rfl
-  have hnewval : extendAssignment ρ x (args knew) = x := by
-    rw [hnew]
-    rfl
-  have hne : ρ iold ≠ x := by
-    intro heq
-    apply houtside
-    refine ⟨iold, 0, Nat.zero_le r, ?_⟩
-    rw [heq]
-    exact GaifmanWalk.nil M x
-  have hAdj : GaifmanAdjacent M (ρ iold) x := by
-    refine ⟨hne, ?_⟩
-    refine ⟨R, (fun k => extendAssignment ρ x (args k)), hrel, ?_, ?_⟩
-    · exact ⟨kold, hroot⟩
-    · exact ⟨knew, hnewval⟩
-  apply houtside
-  refine ⟨iold, 1, hr, ?_⟩
-  exact GaifmanWalk.step hAdj (GaifmanWalk.nil M x)
-
-/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
