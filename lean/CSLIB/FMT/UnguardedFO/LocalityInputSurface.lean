@@ -3227,3 +3227,5 @@ theorem ex_has_unguarded_fo_locality_radius_to_exists_input_surface
 end UnguardedFO
 end FMT
 end CSLIB
+
+#print axioms CSLIB.FMT.UnguardedFO.five_vertex_graph_not_rank_two_EF
