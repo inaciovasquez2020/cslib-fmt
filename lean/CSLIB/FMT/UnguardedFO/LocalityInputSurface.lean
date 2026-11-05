@@ -877,7 +877,7 @@ theorem rank_two_geometric_extension_implies_rank_two_EF
         M h.radius_positive e' hOutside⟩
 
 /-- The exact finite relational structure used by the rank-two counterexample. -/
-def fiveVertexGraph : RelStructure ⟨Unit, fun _ => 2⟩ where
+abbrev fiveVertexGraph : RelStructure ⟨Unit, fun _ => 2⟩ where
   carrier := Fin 5
   interp := fun _ p =>
     (p 0 = 0 ∧ p 1 = 1) ∨
