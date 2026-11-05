@@ -498,6 +498,76 @@ theorem radius_zero_pointed_neighborhood_not_rank_one_EF :
     ((rankIndexedEF_preserves_bounded_formula M φ hqr hEF).mp hφsource)
 
 /--
+The pointed-neighborhood isomorphism matches any witness inside the source
+rooted neighborhood, preserving all atomic formulas on the extended assignment.
+This is independent of any EF extension hypothesis.
+-/
+theorem pointed_neighborhood_inside_atomic_extension
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} {ρ τ : Fin n → M.carrier}
+    (e : PointedNeighborhoodEquiv M r ρ τ)
+    (x : M.carrier)
+    (hx : ∃ i : Fin n, GaifmanDistanceLe M (ρ i) x r) :
+    ∃ y : M.carrier,
+      EFAtomicAgreement M (extendAssignment ρ x) (extendAssignment τ y) := by
+  let u : AssignmentNeighborhood M r ρ := ⟨x, hx⟩
+  let y : M.carrier := (e.toFun u).1
+  let lift : Fin (n + 1) → AssignmentNeighborhood M r ρ :=
+    Fin.cases u (assignmentNeighborhoodPoint M r ρ)
+  have hsource (i : Fin (n + 1)) :
+      (lift i).1 = extendAssignment ρ x i := by
+    refine Fin.cases ?_ ?_ i
+    · rfl
+    · intro j
+      rfl
+  have htarget (i : Fin (n + 1)) :
+      (e.toFun (lift i)).1 = extendAssignment τ y i := by
+    refine Fin.cases ?_ ?_ i
+    · rfl
+    · intro j
+      exact congrArg (fun z => z.1) (e.preserves_distinguished j)
+  refine ⟨y, ?_, ?_⟩
+  · intro i j
+    constructor
+    · intro h
+      have hsub : lift i = lift j := by
+        apply Subtype.ext
+        rw [hsource i, hsource j]
+        exact h
+      have hmap :=
+        congrArg (fun v : AssignmentNeighborhood M r ρ => (e.toFun v).1) hsub
+      rw [htarget i, htarget j] at hmap
+      exact hmap
+    · intro h
+      have hsub : e.toFun (lift i) = e.toFun (lift j) := by
+        apply Subtype.ext
+        rw [htarget i, htarget j]
+        exact h
+      have hmap :=
+        congrArg (fun v : AssignmentNeighborhood M r τ => (e.invFun v).1) hsub
+      rw [e.left_inv (lift i), e.left_inv (lift j)] at hmap
+      rw [hsource i, hsource j] at hmap
+      exact hmap
+  · intro R args
+    have hrel :=
+      e.preserves_interpreted_tuple R (fun t => lift (args t))
+    have hs :
+        (fun t => (lift (args t)).1) =
+          (fun t => extendAssignment ρ x (args t)) := by
+      funext t
+      exact hsource (args t)
+    have ht :
+        (fun t => (e.toFun (lift (args t))).1) =
+          (fun t => extendAssignment τ y (args t)) := by
+      funext t
+      exact htarget (args t)
+    change
+      M.interp R (fun t => (lift (args t)).1) ↔
+        M.interp R (fun t => (e.toFun (lift (args t))).1) at hrel
+    rw [hs, ht] at hrel
+    exact hrel
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
