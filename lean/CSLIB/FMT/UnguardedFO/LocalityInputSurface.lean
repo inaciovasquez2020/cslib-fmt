@@ -845,27 +845,6 @@ theorem rank_two_geometric_extension_implies_rank_two_EF
         M h.radius_positive e' hOutside⟩
 
 /--
-A finite directed presentation of the undirected Gaifman graph
-with edges {0,1}, {2,3}, {3,4}. The root at 0 has no length-two
-nonbacktracking walk, while the root at 2 does.
--/
-theorem five_vertex_graph_not_rank_two_EF :
-    ∃ (σ : RelLanguage) (M : RelStructure σ)
-      (ρ τ : Fin 1 → M.carrier),
-        ¬ RankIndexedEF M 2 ρ τ := by
-  let σ : RelLanguage := ⟨Unit, fun _ => 2⟩
-  let M : RelStructure σ :=
-    { carrier := Fin 5
-      interp := fun _ p =>
-        (p 0 = 0 ∧ p 1 = 1) ∨
-        (p 0 = 2 ∧ p 1 = 3) ∨
-        (p 0 = 3 ∧ p 1 = 4) }
-  let ρ : Fin 1 → M.carrier := fun _ => 0
-  let τ : Fin 1 → M.carrier := fun _ => 2
-  refine ⟨σ, M, ρ, τ, ?_⟩
-  decide
-
-/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
