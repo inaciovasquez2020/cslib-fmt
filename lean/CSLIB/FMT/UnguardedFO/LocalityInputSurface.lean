@@ -317,6 +317,30 @@ structure PointedNeighborhoodEquiv {σ : RelLanguage} (M : RelStructure σ)
       M.interp R (fun i => (tuple i).1) ↔
         M.interp R (fun i => (toFun (tuple i)).1)
 
+/--
+A geometric, two-sided witness condition for vertices outside the rooted
+radius-r neighborhoods. Matched outside vertices agree on every diagonal
+relation atom, including nullary relation symbols. No EF relation, global
+automorphism, or formula-preservation hypothesis is assumed.
+-/
+structure OutsideNeighborhoodDiagonalMatching {σ : RelLanguage}
+    (M : RelStructure σ) {n : Nat} (r : Nat)
+    (ρ τ : Fin n → M.carrier) : Prop where
+  forward :
+    ∀ x : M.carrier,
+      (¬ ∃ i : Fin n, GaifmanDistanceLe M (ρ i) x r) →
+      ∃ y : M.carrier,
+        (¬ ∃ i : Fin n, GaifmanDistanceLe M (τ i) y r) ∧
+        (∀ R : σ.Rel,
+          M.interp R (fun _ => x) ↔ M.interp R (fun _ => y))
+  backward :
+    ∀ y : M.carrier,
+      (¬ ∃ i : Fin n, GaifmanDistanceLe M (τ i) y r) →
+      ∃ x : M.carrier,
+        (¬ ∃ i : Fin n, GaifmanDistanceLe M (ρ i) x r) ∧
+        (∀ R : σ.Rel,
+          M.interp R (fun _ => x) ↔ M.interp R (fun _ => y))
+
 /-- Pointed neighborhood equivalence preserves equality atoms. -/
 theorem pointed_neighborhood_equiv_preserves_equality_atom
     {σ : RelLanguage} (M : RelStructure σ)
