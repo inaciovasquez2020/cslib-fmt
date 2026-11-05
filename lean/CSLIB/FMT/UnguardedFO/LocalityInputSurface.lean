@@ -845,6 +845,79 @@ theorem rank_two_geometric_extension_implies_rank_two_EF
         M h.radius_positive e' hOutside⟩
 
 /--
+For the five-vertex directed-edge presentation of the Gaifman graph
+with undirected edges {0,1}, {2,3}, {3,4}, the distinguished
+vertices 0 and 2 are distinguishable in two EF rounds.
+This isolated theorem proves non-equivalence at rank two only.
+-/
+theorem five_vertex_graph_not_rank_two_EF :
+    ∃ (σ : RelLanguage) (M : RelStructure σ)
+      (ρ τ : Fin 1 → M.carrier),
+        ¬ RankIndexedEF M 2 ρ τ := by
+  let σ : RelLanguage := ⟨Unit, fun _ => 2⟩
+  let M : RelStructure σ :=
+    { carrier := Fin 5
+      interp := fun _ p =>
+        (p 0 = 0 ∧ p 1 = 1) ∨
+        (p 0 = 2 ∧ p 1 = 3) ∨
+        (p 0 = 3 ∧ p 1 = 4) }
+  let ρ : Fin 1 → M.carrier := fun _ => 0
+  let τ : Fin 1 → M.carrier := fun _ => 2
+  let edgeArgs : Fin 2 → Fin 2 := Fin.cases 1 (fun _ => 0)
+  refine ⟨σ, M, ρ, τ, ?_⟩
+  intro hEF
+  obtain ⟨x, hx⟩ := hEF.2.2 (3 : Fin 5)
+  have hRootTarget :
+      M.interp () (fun i => extendAssignment τ (3 : Fin 5) (edgeArgs i)) := by
+    change
+      ((2 : Fin 5) = 0 ∧ (3 : Fin 5) = 1) ∨
+      ((2 : Fin 5) = 2 ∧ (3 : Fin 5) = 3) ∨
+      ((2 : Fin 5) = 3 ∧ (3 : Fin 5) = 4)
+    exact Or.inr (Or.inl ⟨rfl, rfl⟩)
+  have hRootSource :
+      M.interp () (fun i => extendAssignment ρ x (edgeArgs i)) :=
+    (hx.1.2 () edgeArgs).mpr hRootTarget
+  have hx1 : x = (1 : Fin 5) := by
+    have hArg0 : edgeArgs (0 : Fin 2) = (1 : Fin 2) := by
+      decide
+    have hArg1 : edgeArgs (1 : Fin 2) = (0 : Fin 2) := by
+      decide
+    change
+      ((extendAssignment ρ x (edgeArgs 0) = (0 : Fin 5) ∧
+        extendAssignment ρ x (edgeArgs 1) = (1 : Fin 5)) ∨
+       (extendAssignment ρ x (edgeArgs 0) = (2 : Fin 5) ∧
+        extendAssignment ρ x (edgeArgs 1) = (3 : Fin 5)) ∨
+       (extendAssignment ρ x (edgeArgs 0) = (3 : Fin 5) ∧
+        extendAssignment ρ x (edgeArgs 1) = (4 : Fin 5))) at hRootSource
+    rw [hArg0, hArg1] at hRootSource
+    rcases hRootSource with hEdge | hBad | hBad
+    · simpa [ρ, extendAssignment] using hEdge.2
+    · have hNe :
+          ¬ (extendAssignment ρ x (1 : Fin 2) = (2 : Fin 5)) := by
+        change ¬ ((0 : Fin 5) = 2)
+        decide
+      exact False.elim (hNe hBad.1)
+    · have hNe :
+          ¬ (extendAssignment ρ x (1 : Fin 2) = (3 : Fin 5)) := by
+        change ¬ ((0 : Fin 5) = 3)
+        decide
+      exact False.elim (hNe hBad.1)
+  obtain ⟨z, hz⟩ := hx.2.2 (4 : Fin 5)
+  let edgeArgsSecond : Fin 2 → Fin 3 := Fin.cases 1 (fun _ => 0)
+  have hSecondTarget :
+      M.interp ()
+        (fun i =>
+          extendAssignment (extendAssignment τ (3 : Fin 5))
+            (4 : Fin 5) (edgeArgsSecond i)) := by
+    simp [M, τ, edgeArgsSecond, extendAssignment]
+  have hSecondSource :
+      M.interp ()
+        (fun i =>
+          extendAssignment (extendAssignment ρ x) z (edgeArgsSecond i)) :=
+    (hz.2 () edgeArgsSecond).mpr hSecondTarget
+  simp [M, ρ, edgeArgsSecond, extendAssignment, hx1] at hSecondSource
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
