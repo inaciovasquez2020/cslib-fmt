@@ -610,6 +610,111 @@ theorem outside_neighborhood_no_mixed_relation
   exact GaifmanWalk.step hAdj (GaifmanWalk.nil (M := M) x)
 
 /--
+Outside witnesses with equal diagonal atomic types preserve the complete
+atomic diagram of an extended rooted assignment when the neighborhood radius
+is at least one. Mixed relation tuples are ruled out by Gaifman geometry.
+-/
+theorem outside_neighborhood_diagonal_atomic_extension
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} {ρ τ : Fin n → M.carrier}
+    (hr : 1 ≤ r) (e : PointedNeighborhoodEquiv M r ρ τ)
+    (x y : M.carrier)
+    (hx : ¬ ∃ i : Fin n, GaifmanDistanceLe M (ρ i) x r)
+    (hy : ¬ ∃ i : Fin n, GaifmanDistanceLe M (τ i) y r)
+    (hdiag : ∀ R : σ.Rel,
+      M.interp R (fun _ => x) ↔ M.interp R (fun _ => y)) :
+    EFAtomicAgreement M (extendAssignment ρ x) (extendAssignment τ y) := by
+  have hroot := pointed_neighborhood_equiv_implies_rank_zero_EF M e
+  have hnotSource (k : Fin n) : ρ k ≠ x := by
+    intro hk
+    apply hx
+    refine ⟨k, 0, Nat.zero_le r, ?_⟩
+    rw [hk]
+    exact GaifmanWalk.nil (M := M) x
+  have hnotTarget (k : Fin n) : τ k ≠ y := by
+    intro hk
+    apply hy
+    refine ⟨k, 0, Nat.zero_le r, ?_⟩
+    rw [hk]
+    exact GaifmanWalk.nil (M := M) y
+  constructor
+  · intro i j
+    refine Fin.cases ?_ ?_ i
+    · refine Fin.cases ?_ ?_ j
+      · change (x = x) ↔ (y = y)
+        exact ⟨fun _ => rfl, fun _ => rfl⟩
+      · intro k
+        change (x = ρ k) ↔ (y = τ k)
+        exact ⟨fun h => (hnotSource k h.symm).elim,
+          fun h => (hnotTarget k h.symm).elim⟩
+    · intro k
+      refine Fin.cases ?_ ?_ j
+      · change (ρ k = x) ↔ (τ k = y)
+        exact ⟨fun h => (hnotSource k h).elim,
+          fun h => (hnotTarget k h).elim⟩
+      · intro l
+        change (ρ k = ρ l) ↔ (τ k = τ l)
+        exact hroot.1 k l
+  · intro R args
+    by_cases hAllNew : ∀ k : Fin (σ.arity R), args k = 0
+    · have hs :
+          (fun k => extendAssignment ρ x (args k)) =
+            (fun _ => x) := by
+        funext k
+        rw [hAllNew k]
+        rfl
+      have ht :
+          (fun k => extendAssignment τ y (args k)) =
+            (fun _ => y) := by
+        funext k
+        rw [hAllNew k]
+        rfl
+      rw [hs, ht]
+      exact hdiag R
+    · by_cases hAllOld : ∀ k : Fin (σ.arity R), args k ≠ 0
+      · let argsRoot : Fin (σ.arity R) → Fin n :=
+          fun k => (args k).pred (hAllOld k)
+        have hSucc (k : Fin (σ.arity R)) :
+            Fin.succ (argsRoot k) = args k :=
+          Fin.succ_pred (args k) (hAllOld k)
+        have hs :
+            (fun k => extendAssignment ρ x (args k)) =
+              (fun k => ρ (argsRoot k)) := by
+          funext k
+          calc
+            extendAssignment ρ x (args k) =
+                extendAssignment ρ x (Fin.succ (argsRoot k)) :=
+                  congrArg (extendAssignment ρ x) (hSucc k).symm
+            _ = ρ (argsRoot k) := rfl
+        have ht :
+            (fun k => extendAssignment τ y (args k)) =
+              (fun k => τ (argsRoot k)) := by
+          funext k
+          calc
+            extendAssignment τ y (args k) =
+                extendAssignment τ y (Fin.succ (argsRoot k)) :=
+                  congrArg (extendAssignment τ y) (hSucc k).symm
+            _ = τ (argsRoot k) := rfl
+        rw [hs, ht]
+        exact hroot.2 R argsRoot
+      · have hNew : ∃ k : Fin (σ.arity R), args k = 0 := by
+          by_contra h
+          apply hAllOld
+          intro k hk
+          exact h ⟨k, hk⟩
+        have hOld : ∃ k : Fin (σ.arity R), args k ≠ 0 := by
+          by_contra h
+          apply hAllNew
+          intro k
+          by_contra hk
+          exact h ⟨k, hk⟩
+        have hsFalse :=
+          outside_neighborhood_no_mixed_relation M ρ hr x hx R args hNew hOld
+        have htFalse :=
+          outside_neighborhood_no_mixed_relation M τ hr y hy R args hNew hOld
+        exact ⟨fun h => (hsFalse h).elim, fun h => (htFalse h).elim⟩
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
