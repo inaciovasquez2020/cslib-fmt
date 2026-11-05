@@ -383,6 +383,22 @@ theorem pointed_neighborhood_equiv_preserves_relation_atom
   exact hpreserved
 
 /--
+A pointed neighborhood equivalence gives a zero-round EF witness directly.
+The proof uses only the existing preservation lemmas for equality and relation
+atoms, not the desired positive-rank Gaifman locality theorem.
+-/
+theorem pointed_neighborhood_equiv_implies_rank_zero_EF
+    {σ : RelLanguage} (M : RelStructure σ)
+    {n r : Nat} {ρ τ : Fin n → M.carrier}
+    (e : PointedNeighborhoodEquiv M r ρ τ) :
+    RankIndexedEF M 0 ρ τ := by
+  constructor
+  · intro i j
+    exact pointed_neighborhood_equiv_preserves_equality_atom M e i j
+  · intro R args
+    exact pointed_neighborhood_equiv_preserves_relation_atom M e R args
+
+/--
 A proof-bearing back-and-forth condition for transporting an unguarded
 existential witness. Every source witness has a target witness whose extended
 assignments have an inhabited radius-`r` pointed-neighborhood equivalence, and
