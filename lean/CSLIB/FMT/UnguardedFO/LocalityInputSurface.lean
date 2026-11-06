@@ -1064,6 +1064,7 @@ theorem fiveVertexGraph_radius_one_pointed_equiv :
     have hi : i = (0 : Fin 1) := Subsingleton.elim i 0
     subst i
     change f p0 = p2
+    apply Subtype.ext
     simp [f, p0, p2, assignmentNeighborhoodPoint, ρ, τ]
   · intro R tuple
     cases R
