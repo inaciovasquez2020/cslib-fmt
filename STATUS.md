@@ -29,7 +29,7 @@ Finite-model-theory library for FO^k locality, EF games, bounded-radius structur
 - examples/tests: active
 
 ## Remaining Live Frontier
-- none
+- Non-reflexive `LocalPointedBackAndForth` witness between distinct assignments, independent of a global automorphism: OPEN. Standard Gaifman locality: NOT_ESTABLISHED.
 
 ## Canonical pointer
 - graph-distance closure: resolved; see `FMT/Graph/FrontierStatus.txt`
