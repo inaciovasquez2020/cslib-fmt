@@ -1006,6 +1006,86 @@ theorem fiveVertexGraph_radius_one_membership :
       · subst x
         exact Or.inr h23
 
+/-- The two radius-one rooted neighborhoods are pointed-relationally equivalent. -/
+theorem fiveVertexGraph_radius_one_pointed_equiv :
+    Nonempty (PointedNeighborhoodEquiv fiveVertexGraph 1
+      (fun _ : Fin 1 => (0 : Fin 5))
+      (fun _ : Fin 1 => (2 : Fin 5))) := by
+  classical
+  let ρ : Fin 1 → Fin 5 := fun _ => 0
+  let τ : Fin 1 → Fin 5 := fun _ => 2
+  change Nonempty (PointedNeighborhoodEquiv fiveVertexGraph 1 ρ τ)
+  have hN0 (u : AssignmentNeighborhood fiveVertexGraph 1 ρ) :
+      u.1 = (0 : Fin 5) ∨ u.1 = 1 := by
+    obtain ⟨i, hi⟩ := u.2
+    have hIdx : i = (0 : Fin 1) := Subsingleton.elim i 0
+    subst i
+    exact (fiveVertexGraph_radius_one_membership.1 u.1).mp hi
+  have hN2 (v : AssignmentNeighborhood fiveVertexGraph 1 τ) :
+      v.1 = (2 : Fin 5) ∨ v.1 = 3 := by
+    obtain ⟨i, hi⟩ := v.2
+    have hIdx : i = (0 : Fin 1) := Subsingleton.elim i 0
+    subst i
+    exact (fiveVertexGraph_radius_one_membership.2 v.1).mp hi
+  let p0 : AssignmentNeighborhood fiveVertexGraph 1 ρ :=
+    assignmentNeighborhoodPoint fiveVertexGraph 1 ρ 0
+  let p1 : AssignmentNeighborhood fiveVertexGraph 1 ρ :=
+    ⟨1, ⟨0, (fiveVertexGraph_radius_one_membership.1 1).mpr (Or.inr rfl)⟩⟩
+  let p2 : AssignmentNeighborhood fiveVertexGraph 1 τ :=
+    assignmentNeighborhoodPoint fiveVertexGraph 1 τ 0
+  let p3 : AssignmentNeighborhood fiveVertexGraph 1 τ :=
+    ⟨3, ⟨0, (fiveVertexGraph_radius_one_membership.2 3).mpr (Or.inr rfl)⟩⟩
+  let f : AssignmentNeighborhood fiveVertexGraph 1 ρ →
+      AssignmentNeighborhood fiveVertexGraph 1 τ :=
+    fun u => if u.1 = (0 : Fin 5) then p2 else p3
+  let g : AssignmentNeighborhood fiveVertexGraph 1 τ →
+      AssignmentNeighborhood fiveVertexGraph 1 ρ :=
+    fun v => if v.1 = (2 : Fin 5) then p0 else p1
+  refine ⟨{ toFun := f, invFun := g,
+    left_inv := ?_, right_inv := ?_,
+    preserves_distinguished := ?_, preserves_interpreted_tuple := ?_ }⟩
+  · intro u
+    apply Subtype.ext
+    rcases hN0 u with hu | hu
+    · simp [f, g, hu, p0, p2]
+    · have hne : u.1 ≠ (0 : Fin 5) := by
+        intro h
+        have h10 : (1 : Fin 5) ≠ 0 := by decide
+        exact h10 (hu.symm.trans h)
+      simp [f, g, hne, hu, p1, p3]
+  · intro v
+    apply Subtype.ext
+    rcases hN2 v with hv | hv
+    · simp [f, g, hv, p0, p2]
+    · have hne : v.1 ≠ (2 : Fin 5) := by
+        intro h
+        have h32 : (3 : Fin 5) ≠ 2 := by decide
+        exact h32 (hv.symm.trans h)
+      simp [f, g, hne, hv, p1, p3]
+  · intro i
+    have hi : i = (0 : Fin 1) := Subsingleton.elim i 0
+    subst i
+    change f p0 = p2
+    simp [f, p0, p2]
+  · intro R tuple
+    cases R
+    have h0 := hN0 (tuple 0)
+    have h1 := hN0 (tuple 1)
+    change
+      (((tuple 0).1 = (0 : Fin 5) ∧ (tuple 1).1 = 1) ∨
+       ((tuple 0).1 = (2 : Fin 5) ∧ (tuple 1).1 = 3) ∨
+       ((tuple 0).1 = (3 : Fin 5) ∧ (tuple 1).1 = 4)) ↔
+      (((f (tuple 0)).1 = (0 : Fin 5) ∧ (f (tuple 1)).1 = 1) ∨
+       ((f (tuple 0)).1 = (2 : Fin 5) ∧ (f (tuple 1)).1 = 3) ∨
+       ((f (tuple 0)).1 = (3 : Fin 5) ∧ (f (tuple 1)).1 = 4))
+    rcases h0 with h00 | h01
+    · rcases h1 with h10 | h11
+      · simp [f, h00, h10, p2, p3]
+      · simp [f, h00, h11, p2, p3]
+    · rcases h1 with h10 | h11
+      · simp [f, h01, h10, p2, p3]
+      · simp [f, h01, h11, p2, p3]
+
 /--
 For the five-vertex directed-edge presentation of the Gaifman graph
 with undirected edges {0,1}, {2,3}, {3,4}, the distinguished
