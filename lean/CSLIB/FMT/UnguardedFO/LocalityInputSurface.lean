@@ -918,6 +918,40 @@ theorem fiveVertexGraph_zero_adjacent_only_one
     · have hne40 : (4 : Fin 5) ≠ 0 := by decide
       exact False.elim (hne40 (h34.2.symm.trans hi))
 
+/-- The only Gaifman neighbor of vertex two in the finite graph is three. -/
+theorem fiveVertexGraph_two_adjacent_only_three
+    {x : Fin 5} (h : GaifmanAdjacent fiveVertexGraph 2 x) :
+    x = 3 := by
+  rcases h with ⟨hne, R, tuple, hrel, h2, hx⟩
+  cases R
+  rcases h2 with ⟨i, hi⟩
+  rcases hx with ⟨j, hj⟩
+  have hIdx : ∀ k : Fin 2, k = 0 ∨ k = 1 := by decide
+  change
+    (tuple 0 = (0 : Fin 5) ∧ tuple 1 = 1) ∨
+    (tuple 0 = (2 : Fin 5) ∧ tuple 1 = 3) ∨
+    (tuple 0 = (3 : Fin 5) ∧ tuple 1 = 4) at hrel
+  rcases hIdx i with hi0 | hi1
+  · subst i
+    rcases hrel with h01 | h23 | h34
+    · have hne02 : (0 : Fin 5) ≠ 2 := by decide
+      exact False.elim (hne02 (h01.1.symm.trans hi))
+    · rcases hIdx j with hj0 | hj1
+      · subst j
+        exact False.elim (hne (h23.1.symm.trans hj))
+      · subst j
+        exact (h23.2.symm.trans hj).symm
+    · have hne32 : (3 : Fin 5) ≠ 2 := by decide
+      exact False.elim (hne32 (h34.1.symm.trans hi))
+  · subst i
+    rcases hrel with h01 | h23 | h34
+    · have hne12 : (1 : Fin 5) ≠ 2 := by decide
+      exact False.elim (hne12 (h01.2.symm.trans hi))
+    · have hne32 : (3 : Fin 5) ≠ 2 := by decide
+      exact False.elim (hne32 (h23.2.symm.trans hi))
+    · have hne42 : (4 : Fin 5) ≠ 2 := by decide
+      exact False.elim (hne42 (h34.2.symm.trans hi))
+
 /--
 For the five-vertex directed-edge presentation of the Gaifman graph
 with undirected edges {0,1}, {2,3}, {3,4}, the distinguished
