@@ -1045,7 +1045,7 @@ theorem fiveVertexGraph_radius_one_pointed_equiv :
   · intro u
     apply Subtype.ext
     rcases hN0 u with hu | hu
-    · simp [f, g, hu, p0, p2, assignmentNeighborhoodPoint, ρ, τ]
+    · simp [f, g, hu, p0, p2]
     · have hne : u.1 ≠ (0 : Fin 5) := by
         intro h
         have h10 : (1 : Fin 5) ≠ 0 := by decide
