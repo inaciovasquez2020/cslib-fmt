@@ -1041,7 +1041,9 @@ theorem fiveVertexGraph_radius_one_pointed_equiv :
   let g : AssignmentNeighborhood fiveVertexGraph 1 τ →
       AssignmentNeighborhood fiveVertexGraph 1 ρ :=
     fun v => if v.1 = (2 : Fin 5) then p0 else p1
-  refine ⟨⟨f, g, ?_, ?_, ?_, ?_⟩⟩
+  refine ⟨{ toFun := f, invFun := g,
+    left_inv := ?_, right_inv := ?_,
+    preserves_distinguished := ?_, preserves_interpreted_tuple := ?_ }⟩
   · intro u
     apply Subtype.ext
     rcases hN0 u with hu | hu
