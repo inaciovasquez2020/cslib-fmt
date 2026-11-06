@@ -952,6 +952,60 @@ theorem fiveVertexGraph_two_adjacent_only_three
     · have hne42 : (4 : Fin 5) ≠ 2 := by decide
       exact False.elim (hne42 (h34.2.symm.trans hi))
 
+/-- Exact radius-one rooted neighborhoods of vertices zero and two. -/
+theorem fiveVertexGraph_radius_one_membership :
+    (∀ x : Fin 5,
+      GaifmanDistanceLe fiveVertexGraph 0 x 1 ↔ x = 0 ∨ x = 1) ∧
+    (∀ x : Fin 5,
+      GaifmanDistanceLe fiveVertexGraph 2 x 1 ↔ x = 2 ∨ x = 3) := by
+  have h01 : GaifmanAdjacent fiveVertexGraph 0 1 := by
+    let tuple : Fin 2 → Fin 5 := Fin.cases 0 (fun _ => 1)
+    have ht0 : tuple 0 = 0 := by decide
+    have ht1 : tuple 1 = 1 := by decide
+    refine ⟨?_, (), tuple, ?_, ?_, ?_⟩
+    · decide
+    · change
+        (tuple 0 = (0 : Fin 5) ∧ tuple 1 = 1) ∨
+        (tuple 0 = (2 : Fin 5) ∧ tuple 1 = 3) ∨
+        (tuple 0 = (3 : Fin 5) ∧ tuple 1 = 4)
+      exact Or.inl ⟨ht0, ht1⟩
+    · exact ⟨0, ht0⟩
+    · exact ⟨1, ht1⟩
+  have h23 : GaifmanAdjacent fiveVertexGraph 2 3 := by
+    let tuple : Fin 2 → Fin 5 := Fin.cases 2 (fun _ => 3)
+    have ht0 : tuple 0 = 2 := by decide
+    have ht1 : tuple 1 = 3 := by decide
+    refine ⟨?_, (), tuple, ?_, ?_, ?_⟩
+    · decide
+    · change
+        (tuple 0 = (0 : Fin 5) ∧ tuple 1 = 1) ∨
+        (tuple 0 = (2 : Fin 5) ∧ tuple 1 = 3) ∨
+        (tuple 0 = (3 : Fin 5) ∧ tuple 1 = 4)
+      exact Or.inr (Or.inl ⟨ht0, ht1⟩)
+    · exact ⟨0, ht0⟩
+    · exact ⟨1, ht1⟩
+  constructor
+  · intro x
+    rw [gaifman_distance_one_eq_or_adjacent]
+    constructor
+    · rintro (heq | hadj)
+      · exact Or.inl heq.symm
+      · exact Or.inr (fiveVertexGraph_zero_adjacent_only_one hadj)
+    · rintro (heq | heq)
+      · exact Or.inl heq.symm
+      · subst x
+        exact Or.inr h01
+  · intro x
+    rw [gaifman_distance_one_eq_or_adjacent]
+    constructor
+    · rintro (heq | hadj)
+      · exact Or.inl heq.symm
+      · exact Or.inr (fiveVertexGraph_two_adjacent_only_three hadj)
+    · rintro (heq | heq)
+      · exact Or.inl heq.symm
+      · subst x
+        exact Or.inr h23
+
 /--
 For the five-vertex directed-edge presentation of the Gaifman graph
 with undirected edges {0,1}, {2,3}, {3,4}, the distinguished
