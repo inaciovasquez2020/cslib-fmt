@@ -1080,7 +1080,7 @@ theorem fiveVertexGraph_radius_one_pointed_equiv :
     rcases h0 with h00 | h01
     · rcases h1 with h10 | h11
       · simp [f, h00, h10, p2, p3, assignmentNeighborhoodPoint, τ]
-      · simp [f, h00, h11, p2, p3, assignmentNeighborhoodPoint, τ]
+      · simp [f, h00, h11, p2, p3]
     · rcases h1 with h10 | h11
       · simp [f, h01, h10, p2, p3]
       · simp [f, h01, h11, p2, p3]
