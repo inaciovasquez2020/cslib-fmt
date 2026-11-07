@@ -1079,7 +1079,7 @@ theorem fiveVertexGraph_radius_one_pointed_equiv :
        ((f (tuple 0)).1 = (3 : Fin 5) ∧ (f (tuple 1)).1 = 4))
     rcases h0 with h00 | h01
     · rcases h1 with h10 | h11
-      · simp [f, h00, h10, p2, p3, assignmentNeighborhoodPoint, τ]
+      · simp [f, h00, h10, p2, p3]
       · simp [f, h00, h11, p2, p3]
     · rcases h1 with h10 | h11
       · simp [f, h01, h10, p2, p3]
