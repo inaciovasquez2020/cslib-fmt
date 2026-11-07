@@ -1,0 +1,202 @@
+{
+  "base_program_sha256": "9a868ec29b8f3dbacba735db185a4527d360b947a3880c2690e456a4f3c6bed8",
+  "chunks": [
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1188,
+      "r2_q2_failures": 0,
+      "r3_iso_pairs": 1188,
+      "r3_q2_failures": 0,
+      "start": 0,
+      "stop": 5000,
+      "wall_seconds": 2.19
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1548,
+      "r2_q2_failures": 0,
+      "r3_iso_pairs": 1548,
+      "r3_q2_failures": 0,
+      "start": 5000,
+      "stop": 10000,
+      "wall_seconds": 2.114
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1061,
+      "r2_q2_failures": 24,
+      "r3_iso_pairs": 1037,
+      "r3_q2_failures": 0,
+      "start": 10000,
+      "stop": 15000,
+      "wall_seconds": 3.172
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1200,
+      "r2_q2_failures": 40,
+      "r3_iso_pairs": 1160,
+      "r3_q2_failures": 0,
+      "start": 15000,
+      "stop": 20000,
+      "wall_seconds": 2.77
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1106,
+      "r2_q2_failures": 38,
+      "r3_iso_pairs": 1068,
+      "r3_q2_failures": 0,
+      "start": 20000,
+      "stop": 25000,
+      "wall_seconds": 2.624
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 992,
+      "r2_q2_failures": 30,
+      "r3_iso_pairs": 962,
+      "r3_q2_failures": 0,
+      "start": 25000,
+      "stop": 30000,
+      "wall_seconds": 2.639
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1225,
+      "r2_q2_failures": 38,
+      "r3_iso_pairs": 1187,
+      "r3_q2_failures": 0,
+      "start": 30000,
+      "stop": 35000,
+      "wall_seconds": 2.662
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1266,
+      "r2_q2_failures": 32,
+      "r3_iso_pairs": 1234,
+      "r3_q2_failures": 0,
+      "start": 35000,
+      "stop": 40000,
+      "wall_seconds": 2.8
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 1113,
+      "r2_q2_failures": 4,
+      "r3_iso_pairs": 1109,
+      "r3_q2_failures": 0,
+      "start": 40000,
+      "stop": 45000,
+      "wall_seconds": 2.607
+    },
+    {
+      "graphs": 5000,
+      "r2_iso_pairs": 856,
+      "r2_q2_failures": 21,
+      "r3_iso_pairs": 835,
+      "r3_q2_failures": 0,
+      "start": 45000,
+      "stop": 50000,
+      "wall_seconds": 2.573
+    },
+    {
+      "graphs": 3130,
+      "r2_iso_pairs": 985,
+      "r2_q2_failures": 13,
+      "r3_iso_pairs": 972,
+      "r3_q2_failures": 0,
+      "start": 50000,
+      "stop": 53130,
+      "wall_seconds": 1.649
+    }
+  ],
+  "coverage": "exact enumeration of all directed graphs on labeled Fin 5 with at most 5 edges, including loops, and all unordered distinct root pairs",
+  "five_vertices_edges_0_to_4": {
+    "graphs": 15276,
+    "r2_iso_pairs": 8260,
+    "r2_q2_failures": 0,
+    "r3_iso_pairs": 8260,
+    "r3_q2_failures": 0
+  },
+  "five_vertices_edges_0_to_5": {
+    "graphs": 68406,
+    "r2_iso_pairs": 20800,
+    "r2_q2_failures": 240,
+    "r3_iso_pairs": 20560,
+    "r3_q2_failures": 0
+  },
+  "five_vertices_edges_exactly_5": {
+    "graphs": 53130,
+    "r2_iso_pairs": 12540,
+    "r2_q2_failures": 240,
+    "r3_iso_pairs": 12300,
+    "r3_q2_failures": 0
+  },
+  "four_vertex_full_graphs": {
+    "graphs": 65536,
+    "r1_iso_root_pairs": 8784,
+    "r1_q1_failures": 0,
+    "r2_iso_root_pairs": 7776,
+    "r2_q2_failures": 0,
+    "r3_iso_root_pairs": 7776,
+    "r3_q2_failures": 0
+  },
+  "lean_verification": "NOT_RUN",
+  "mac_reproduction": "WITNESS_ONLY_PASS; FULL_ENUMERATION_NOT_RUN",
+  "rank3_radius3_counterexample": {
+    "EF2_equivalent": true,
+    "EF3_equivalent": false,
+    "direct_rank3_formula_at_source": true,
+    "direct_rank3_formula_at_target": false,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        4,
+        4
+      ],
+      [
+        5,
+        6
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "n": 10,
+    "radius3_iso": true,
+    "radius4_iso": false,
+    "source_root": 0,
+    "target_root": 5
+  },
+  "result": "COMPUTATION_PASS",
+  "source_file": "locality_chunk5.py",
+  "source_sha256": "ede1bb71791cbb67257e2a2f492f0216dbb1fc4efe5982ede868b9374edc4585",
+  "reproduction_notes": "Exact chunk results recorded in this receipt; portable scripts support reproduction. The five-vertex witness was separately checked on the user Mac. Source scripts contain no downloads or repository writes.",
+  "updated_for_publication": "2026-11-07: removed /mnt/data-only import path; bounded chunks to 5000 graphs and 120s; original recorded chunk counts reverified independently."
+}
