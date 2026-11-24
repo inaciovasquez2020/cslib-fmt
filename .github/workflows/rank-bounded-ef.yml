@@ -1,0 +1,54 @@
+name: Rank bounded EF isolated audit
+on:
+  push:
+    branches: [research/rank-bounded-ef-20261124]
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/RankBoundedEF.lean'
+      - '.github/workflows/rank-bounded-ef.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Isolated compile and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          lean --version
+          D="$RUNNER_TEMP/ef-audit"
+          mkdir -p "$D/CSLIB/FMT/UnguardedFO"
+          git rev-parse HEAD > "$D/head.txt"
+          sha256sum lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean lean/CSLIB/FMT/UnguardedFO/RankBoundedEF.lean > "$D/source.sha256"
+          lean -o "$D/CSLIB/FMT/UnguardedFO/SyntaxSemantics.olean" lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean
+          LEAN_PATH="$D" lean lean/CSLIB/FMT/UnguardedFO/RankBoundedEF.lean 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import sys, re
+          log = open(sys.argv[1]).read()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in ("rankBackAndForth_atomic", "rankBackAndForth_preserves_formula", "rankBackAndForth_implies_rankEquivalent"):
+              full = "CSLIB.FMT.UnguardedFO." + name
+              lines = [line for line in log.splitlines() if line.startswith("'" + full + "'")]
+              assert len(lines) == 1, full
+              line = lines[0]
+              if "does not depend on any axioms" in line:
+                  continue
+              match = re.search(r"\[([^\]]*)\]", line)
+              assert match, line
+              assert {a.strip() for a in match.group(1).split(",") if a.strip()} <= allowed, line
+          print("AXIOM_AUDIT := PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rank-bounded-ef-receipt
+          path: ${{ runner.temp }}/ef-audit/
