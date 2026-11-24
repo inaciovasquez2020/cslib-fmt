@@ -82,7 +82,8 @@ theorem cycleLocalSpace_eq_bot (K : Type*) [Field K] (c L : Nat) [NeZero L]
   · apply Submodule.span_le.mpr
     intro z hz
     obtain ⟨v, hv⟩ := hz
-    exact Submodule.mem_bot.mpr (cycleBallSupported_zero hL v z hv)
+    rw [cycleBallSupported_zero hL v z hv]
+    exact Submodule.zero_mem _
   · exact bot_le
 
 #print axioms cycleAdjacent_interp
