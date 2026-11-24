@@ -115,7 +115,7 @@ theorem shiftAgreement_forward (A B : ShiftSystem) {n : Nat}
     exact ⟨fun he => False.elim (near ⟨j, d, dl, du, he⟩),
       fun he => False.elim (hy j d dl du he)⟩
 
-def shiftGraphLanguage : RelLanguage := ⟨Unit, fun _ => 2⟩
+abbrev shiftGraphLanguage : RelLanguage := ⟨Unit, fun _ => 2⟩
 
 def shiftGraph (A : ShiftSystem) : RelStructure shiftGraphLanguage where
   carrier := A.carrier
