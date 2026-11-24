@@ -129,7 +129,9 @@ theorem logicalEntropy_witnesses (K : Type) [Field K] [Fintype K] (r m : Nat) :
   refine ⟨G,H,hLG,hL,?_,?_,?_⟩
   · simp [cycleOrder,G,H]
   · exact oneCycle_manyCycles_rankEquivalent (m+1) L r (by omega) hL hr hs
-  · change cycleEntropy K (m+1) L - cycleEntropy K 1 ((m+1)*L) = _
+  · letI : NeZero L := ⟨Nat.ne_of_gt hp⟩
+    letI : NeZero ((m+1)*L) := ⟨Nat.ne_of_gt (Nat.mul_pos hm hp)⟩
+    change cycleEntropy K (m+1) L - cycleEntropy K 1 ((m+1)*L) = _
     rw [cycleEntropy_exact K _ _ hL, cycleEntropy_exact K _ _ hLG]
     push_cast
     ring
