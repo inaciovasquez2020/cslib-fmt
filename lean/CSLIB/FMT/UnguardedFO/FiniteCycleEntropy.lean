@@ -28,6 +28,10 @@ noncomputable def cycleEntropy (K : Type) [Field K] [Fintype K]
     (c L : Nat) [NeZero L] : ℝ := by
   classical
   let G := cyclePresentation K c L
+  letI : Finite (graphCycles G) := Finite.of_injective (fun z : graphCycles G => z.val) Subtype.val_injective
+  letI : Finite (Module.Dual K (graphCycles G)) :=
+    Finite.of_injective (fun f : Module.Dual K (graphCycles G) => (fun x => f x))
+      (by intro f g h; ext x; exact congrFun h x)
   letI : Fintype (Module.Dual K (graphCycles G)) := Fintype.ofFinite _
   letI : Fintype (Module.Dual K G.localCycles) := Fintype.ofFinite _
   exact ∑ y : Module.Dual K G.localCycles,
@@ -40,6 +44,10 @@ theorem cycleEntropy_exact (K : Type) [Field K] [Fintype K]
   classical
   unfold cycleEntropy
   let G := cyclePresentation K c L
+  letI : Finite (graphCycles G) := Finite.of_injective (fun z : graphCycles G => z.val) Subtype.val_injective
+  letI : Finite (Module.Dual K (graphCycles G)) :=
+    Finite.of_injective (fun f : Module.Dual K (graphCycles G) => (fun x => f x))
+      (by intro f g h; ext x; exact congrFun h x)
   letI : Fintype (Module.Dual K (graphCycles G)) := Fintype.ofFinite _
   letI : Fintype (Module.Dual K G.localCycles) := Fintype.ofFinite _
   letI : Fintype (LinearMap.ker (graphObservation G)) := Fintype.ofFinite _
