@@ -1,0 +1,54 @@
+name: Finite cycle ordered edge audit
+on:
+  push:
+    branches: [research/rank-bounded-ef-20261124]
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleOrderedEdge.lean'
+      - '.github/workflows/finite-cycle-ordered-edge.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Isolated compile and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          D="$RUNNER_TEMP/finite-cycle-ordered-edge"
+          mkdir -p "$D"
+          git rev-parse HEAD > "$D/head.txt"
+          sha256sum lean/CSLIB/FMT/UnguardedFO/{SyntaxSemantics,RankBoundedEF,ShiftSystemEF,FiniteCycleEF,FiniteCycleChain,FiniteCycleLocal,ImportedSharpCliqueEntropy,ImportedLogicalEntropyEstimator,FiniteCycleEntropy,FiniteCycleSimpleGraph,FiniteCycleOrderedEdge}.lean > "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleSimpleGraph 2>&1 | tee "$D/dependency.log"
+          lake env lean lean/CSLIB/FMT/UnguardedFO/FiniteCycleOrderedEdge.lean 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import sys, re
+          log = open(sys.argv[1]).read()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in ("cycleOrderedEdge_endpoints", "cycleOrderedEdge_injective", "cycleOrderedEdge_surjective", "cycleEdgeEquiv", "cycleEdgeChainEquiv", "cycleEdgeChainEquiv_at"):
+              full = "CSLIB.FMT.UnguardedFO." + name
+              pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              matches = list(re.finditer(pattern, log, re.MULTILINE))
+              assert len(matches) == 1, full
+              axioms = matches[0].group(1)
+              if axioms is not None:
+                  assert {a.strip() for a in axioms.split(",") if a.strip()} <= allowed, matches[0].group(0)
+          print("AXIOM_AUDIT := PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: finite-cycle-ordered-edge-receipt
+          path: ${{ runner.temp }}/finite-cycle-ordered-edge/
