@@ -1,0 +1,55 @@
+name: Logical entropy dependency migration audit
+on:
+  push:
+    branches: [research/rank-bounded-ef-20261124]
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean'
+      - '.github/workflows/logical-entropy-migration.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Isolated compile and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          D="$RUNNER_TEMP/logical-entropy-migration"
+          mkdir -p "$D"
+          git rev-parse HEAD > "$D/head.txt"
+          sha256sum lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean lean/CSLIB/FMT/UnguardedFO/ImportedLogicalEntropyEstimator.lean > "$D/source.sha256"
+          lake env lean lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean 2>&1 | tee "$D/lean.log"
+          lake env lean lean/CSLIB/FMT/UnguardedFO/ImportedLogicalEntropyEstimator.lean 2>&1 | tee -a "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import sys, re
+          log = open(sys.argv[1]).read()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for full in ("URF.EntropyBridge.graphObservation_hidden_finrank", "URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate", "URF.EntropyBridge.radiusOne_uniform_entropy_eq_cliqueH1_candidate", "LogicalEntropy.entropy_gap_lower_bound"):
+              lines = [line for line in log.splitlines() if line.startswith("'" + full + "'")]
+              assert len(lines) == 1, full
+              line = lines[0]
+              if "does not depend on any axioms" in line:
+                  continue
+              match = re.search(r"\[([^\]]*)\]", line)
+              assert match, line
+              assert {a.strip() for a in match.group(1).split(",") if a.strip()} <= allowed, line
+          print("AXIOM_AUDIT := PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logical-entropy-migration-receipt
+          path: ${{ runner.temp }}/logical-entropy-migration/
