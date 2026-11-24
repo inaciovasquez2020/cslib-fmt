@@ -1463,3 +1463,5 @@ theorem radiusOne_uniform_entropy_eq_cliqueH1_candidate
 end
 
 end URF.EntropyBridge
+
+#print axioms URF.EntropyBridge.graphObservation_hidden_finrank
