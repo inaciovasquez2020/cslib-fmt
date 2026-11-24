@@ -20,7 +20,8 @@ theorem cycleObservation_finrank (K : Type) [Field K] (c L : Nat) [NeZero L]
   change Module.finrank K (LinearMap.ker (cycleBoundary K c L)) -
     Module.finrank K (cycleLocalSpace K c L) = c
   rw [cycleKernel_finrank, cycleLocalSpace_eq_bot K c L hL]
-  simp
+  set_option synthInstance.maxHeartbeats 200000 in
+    simp
 
 /-- Actual weighted conditional Shannon entropy, not a dimension surrogate. -/
 noncomputable def cycleEntropy (K : Type) [Field K] [Fintype K]
