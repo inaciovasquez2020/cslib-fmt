@@ -33,6 +33,10 @@ noncomputable def cycleEntropy (K : Type) [Field K] [Fintype K]
     Finite.of_injective (fun f : Module.Dual K (graphCycles G) => (fun x => f x))
       (by intro f g h; ext x; exact congrFun h x)
   letI : Fintype (Module.Dual K (graphCycles G)) := Fintype.ofFinite _
+  letI : Finite G.localCycles := Finite.of_injective (fun z : G.localCycles => z.val) Subtype.val_injective
+  letI : Finite (Module.Dual K G.localCycles) :=
+    Finite.of_injective (fun f : Module.Dual K G.localCycles => (fun x => f x))
+      (by intro f g h; ext x; exact congrFun h x)
   letI : Fintype (Module.Dual K G.localCycles) := Fintype.ofFinite _
   exact ∑ y : Module.Dual K G.localCycles,
     observedMass (uniformFiniteProbability _).mass (graphObservation G) y *
@@ -49,6 +53,10 @@ theorem cycleEntropy_exact (K : Type) [Field K] [Fintype K]
     Finite.of_injective (fun f : Module.Dual K (graphCycles G) => (fun x => f x))
       (by intro f g h; ext x; exact congrFun h x)
   letI : Fintype (Module.Dual K (graphCycles G)) := Fintype.ofFinite _
+  letI : Finite G.localCycles := Finite.of_injective (fun z : G.localCycles => z.val) Subtype.val_injective
+  letI : Finite (Module.Dual K G.localCycles) :=
+    Finite.of_injective (fun f : Module.Dual K G.localCycles => (fun x => f x))
+      (by intro f g h; ext x; exact congrFun h x)
   letI : Fintype (Module.Dual K G.localCycles) := Fintype.ofFinite _
   letI : Fintype (LinearMap.ker (graphObservation G)) := Fintype.ofFinite _
   calc
