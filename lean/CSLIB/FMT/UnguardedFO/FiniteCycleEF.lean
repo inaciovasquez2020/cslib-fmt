@@ -47,7 +47,7 @@ theorem cycleShift_fresh (c L n : Nat) [NeZero L] (t : Int)
   rw [Fintype.card_prod, Fintype.card_prod, Fintype.card_fin,
     Fintype.card_fin, ZMod.card] at hc
   have hi : (Fintype.card (Set.Icc (-t) t) : Int) = 2*t+1 := by
-    rw [Int.card_fintype_Icc_of_le (by omega)]
+    rw [Int.card_fintype_Icc_of_le (a := -t) (b := t) (by omega)]
     omega
   have hh : (c : Int) * (L : Int) ≤
       (n : Int) * (Fintype.card (Set.Icc (-t) t) : Int) := by
