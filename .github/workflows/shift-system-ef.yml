@@ -1,0 +1,55 @@
+name: Shift-system EF isolated audit
+on:
+  push:
+    branches: [research/rank-bounded-ef-20261124]
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/ShiftSystemEF.lean'
+      - '.github/workflows/shift-system-ef.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+      - name: Install pinned Lean
+        run: |
+          curl -sSf https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Isolated compile and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          D="$RUNNER_TEMP/shift-ef-audit"
+          mkdir -p "$D/CSLIB/FMT/UnguardedFO"
+          git rev-parse HEAD > "$D/head.txt"
+          sha256sum lean/CSLIB/FMT/UnguardedFO/{SyntaxSemantics,RankBoundedEF,ShiftSystemEF}.lean > "$D/source.sha256"
+          export LEAN_PATH="$D"
+          lean -o "$D/CSLIB/FMT/UnguardedFO/SyntaxSemantics.olean" lean/CSLIB/FMT/UnguardedFO/SyntaxSemantics.lean
+          lean -o "$D/CSLIB/FMT/UnguardedFO/RankBoundedEF.olean" lean/CSLIB/FMT/UnguardedFO/RankBoundedEF.lean
+          lean lean/CSLIB/FMT/UnguardedFO/ShiftSystemEF.lean 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import sys, re
+          log = open(sys.argv[1]).read()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in ("shiftAgreement_forward", "shiftAgreement_wins", "shiftGraphs_rankEquivalent"):
+              full = "CSLIB.FMT.UnguardedFO." + name
+              lines = [line for line in log.splitlines() if line.startswith("'" + full + "'")]
+              assert len(lines) == 1, full
+              line = lines[0]
+              if "does not depend on any axioms" in line:
+                  continue
+              match = re.search(r"\[([^\]]*)\]", line)
+              assert match, line
+              assert {a.strip() for a in match.group(1).split(",") if a.strip()} <= allowed, line
+          print("AXIOM_AUDIT := PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shift-system-ef-receipt
+          path: ${{ runner.temp }}/shift-ef-audit/
