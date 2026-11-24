@@ -1,0 +1,56 @@
+name: Finite cycle EF isolated audit
+on:
+  push:
+    branches: [research/rank-bounded-ef-20261124]
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleEF.lean'
+      - '.github/workflows/finite-cycle-ef.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Isolated compile and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          D="$RUNNER_TEMP/cycle-ef-audit"
+          mkdir -p "$D"
+          git rev-parse HEAD > "$D/head.txt"
+          sha256sum lean/CSLIB/FMT/UnguardedFO/{SyntaxSemantics,RankBoundedEF,ShiftSystemEF,FiniteCycleEF}.lean > "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.ShiftSystemEF 2>&1 | tee "$D/dependency.log"
+          lake env lean lean/CSLIB/FMT/UnguardedFO/FiniteCycleEF.lean 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import sys, re
+          log = open(sys.argv[1]).read()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for name in ("cycleShift_free", "cycleShift_fresh", "cycleShift_rankEquivalent", "oneCycle_manyCycles_rankEquivalent"):
+              full = "CSLIB.FMT.UnguardedFO." + name
+              lines = [line for line in log.splitlines() if line.startswith("'" + full + "'")]
+              assert len(lines) == 1, full
+              line = lines[0]
+              if "does not depend on any axioms" in line:
+                  continue
+              match = re.search(r"\[([^\]]*)\]", line)
+              assert match, line
+              assert {a.strip() for a in match.group(1).split(",") if a.strip()} <= allowed, line
+          print("AXIOM_AUDIT := PASS")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: finite-cycle-ef-receipt
+          path: ${{ runner.temp }}/cycle-ef-audit/
