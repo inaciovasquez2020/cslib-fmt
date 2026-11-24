@@ -15,6 +15,7 @@ def cycleSimpleGraph (c L : Nat) (hL : 4 ≤ L) : SimpleGraph (CycleVertex c L) 
         have he := (shift_reverse (cycleShift c L) (-1) u v).mp h
         simpa using he)
   loopless := by
+    constructor
     intro v h
     have hf := cycleShift_free c L 1 (by omega : (1 : Int) < (L : Int))
     rcases h with h | h
