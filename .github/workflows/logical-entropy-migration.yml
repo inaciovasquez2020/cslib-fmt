@@ -38,14 +38,12 @@ jobs:
           log = open(sys.argv[1]).read()
           allowed = {"propext", "Classical.choice", "Quot.sound"}
           for full in ("URF.EntropyBridge.graphObservation_hidden_finrank", "URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate", "URF.EntropyBridge.radiusOne_uniform_entropy_eq_cliqueH1_candidate", "LogicalEntropy.entropy_gap_lower_bound"):
-              lines = [line for line in log.splitlines() if line.startswith("'" + full + "'")]
-              assert len(lines) == 1, full
-              line = lines[0]
-              if "does not depend on any axioms" in line:
-                  continue
-              match = re.search(r"\[([^\]]*)\]", line)
-              assert match, line
-              assert {a.strip() for a in match.group(1).split(",") if a.strip()} <= allowed, line
+              pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              matches = list(re.finditer(pattern, log, re.MULTILINE))
+              assert len(matches) == 1, full
+              axioms = matches[0].group(1)
+              if axioms is not None:
+                  assert {a.strip() for a in axioms.split(",") if a.strip()} <= allowed, matches[0].group(0)
           print("AXIOM_AUDIT := PASS")
           PY
       - uses: actions/upload-artifact@v4
