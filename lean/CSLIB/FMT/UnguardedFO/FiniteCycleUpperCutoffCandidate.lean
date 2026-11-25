@@ -33,7 +33,7 @@ private theorem coordinate_support_le (i : Fin c) (a : K) :
     rw [cycleBoundary_component_constant
       ((cycleConcreteKernelEquiv K c L hL).symm z)
       (E.symm e.val).1 (E.symm e.val).2] at hindexed
-    have hcoordinate : Pi.single i a (E.symm e.val).1 ≠ 0 := by
+    have hcoordinate : (Pi.single i a : Fin c → K) (E.symm e.val).1 ≠ 0 := by
       simpa only [z, concreteCoordinateEquiv, LinearEquiv.symm_trans_apply,
         LinearEquiv.symm_apply_apply, cycleKernelEquiv] using hindexed
     by_contra hne
