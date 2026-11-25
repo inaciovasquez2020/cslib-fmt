@@ -29,7 +29,7 @@ jobs:
           mkdir -p "$D"
           git rev-parse HEAD > "$D/head.txt"
           SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundedSupportCandidate.lean'
-          test "$(git hash-object "$SRC")" = '7c437ed8cd985485f117b2d089141f34114e609c'
+          test "$(git hash-object "$SRC")" = '7cbd7f9b2a2218b5736ee11db7f11173962c950f'
           sha256sum "$SRC" > "$D/source.sha256"
           lake build CSLIB.FMT.UnguardedFO.FiniteCycleComponentSupportCandidate 2>&1 | tee "$D/dependency.log"
           lake env lean "$SRC" 2>&1 | tee "$D/lean.log"
