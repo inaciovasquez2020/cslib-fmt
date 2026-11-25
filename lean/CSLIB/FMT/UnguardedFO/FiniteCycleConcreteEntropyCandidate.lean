@@ -88,11 +88,15 @@ theorem cycleConcreteEntropy_exact [Fintype K]
 
 /-- The concrete bounded-support observation has the same exact entropy
 as the already-verified indexed radius-one observation when cutoff < L. -/
-theorem cycleConcreteEntropy_eq_indexed [Fintype K]
-    (cutoff : Nat) (hcut : cutoff < L) :
-    cycleConcreteEntropy K c L hL cutoff = cycleEntropy K c L := by
-  rw [cycleConcreteEntropy_exact K c L hL cutoff hcut,
-      cycleEntropy_exact K c L hL]
+theorem cycleConcreteEntropy_eq_indexed
+    (K0 : Type) [Field K0] [Fintype K0]
+    (c0 L0 : Nat) (hL0 : 4 ≤ L0)
+    [LinearOrder (CycleVertex c0 L0)] [NeZero L0]
+    (cutoff : Nat) (hcut : cutoff < L0) :
+    cycleConcreteEntropy K0 c0 L0 hL0 cutoff =
+      cycleEntropy K0 c0 L0 := by
+  rw [cycleConcreteEntropy_exact K0 c0 L0 hL0 cutoff hcut,
+      cycleEntropy_exact K0 c0 L0 hL0]
 
 #print axioms CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_eq_indexed
 
