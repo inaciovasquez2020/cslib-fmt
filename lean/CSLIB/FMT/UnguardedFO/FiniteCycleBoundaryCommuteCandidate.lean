@@ -70,10 +70,10 @@ theorem cycleSignedTransport_boundary (z : CycleVertex c L → K) :
       (cycleSignedTransport K c L hL z) =
     cycleBoundary K c L z := by
   funext v
-  change (simpleGraphIncidence (K := K) (cycleSimpleGraph c L hL)).mulVec
-      (cycleSignedTransport K c L hL z) v =
-        z (v.1, v.2 - 1) - z v
-  rw [Matrix.mulVec_apply_eq_sum]
+  change (∑ e : OrderedEdge (cycleSimpleGraph c L hL),
+      simpleGraphIncidence (K := K) (cycleSimpleGraph c L hL) v e *
+        cycleSignedTransport K c L hL z e) =
+      z (v.1, v.2 - 1) - z v
   have hsum :
       (∑ e : OrderedEdge (cycleSimpleGraph c L hL),
         simpleGraphIncidence (K := K) (cycleSimpleGraph c L hL) v e *
