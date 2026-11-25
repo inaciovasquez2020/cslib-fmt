@@ -42,15 +42,13 @@ jobs:
           s=open(sys.argv[1],encoding='utf-8').read()
           for name in ('URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate',
                        'CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp'):
-              matching=[line for line in s.splitlines() if ("'"+name+"' depends on axioms:") in line]
-              if len(matching)!=1:
-                  raise SystemExit('AXIOM_REPORT_COUNT_FAIL: '+name+' '+str(len(matching)))
-              m=re.search(r'\[([^\]]*)\]',matching[0].split('depends on axioms:',1)[1])
-              if m is None:
-                  raise SystemExit('AXIOM_PARSE_FAIL: '+name)
-              ax={x.strip() for x in m.group(1).split(',') if x.strip()}
+              pattern=r"(?m)^'"+re.escape(name)+r"' depends on axioms:\s*\[([^\]]*)\]"
+              reports=re.findall(pattern,s)
+              if len(reports)!=1:
+                  raise SystemExit('AXIOM_REPORT_COUNT_FAIL: '+name+' '+str(len(reports)))
+              ax={x.strip() for x in reports[0].split(',') if x.strip()}
               if not ax <= {'propext','Classical.choice','Quot.sound'}:
-                  raise SystemExit('FORBIDDEN_AXIOS: '+name+' '+repr(ax))
+                  raise SystemExit('FORBIDDEN_AXIOMS: '+name+' '+repr(ax))
               print('DIRECT_IMPORT_AXIOMS_PASS',name,sorted(ax))
           PY
           echo 'PERMANENT_DEPENDENCY_INTEGRATION := PASS'
