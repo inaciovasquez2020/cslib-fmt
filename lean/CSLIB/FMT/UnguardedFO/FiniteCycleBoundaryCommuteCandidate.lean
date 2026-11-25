@@ -12,6 +12,7 @@ open URF.EntropyBridge
 
 variable (K : Type*) [Field K] (c L : Nat) (hL : 4 ≤ L)
 variable [LinearOrder (CycleVertex c L)]
+variable [NeZero L]
 
 /-- Cyclic successor is a permutation with predecessor as its inverse. -/
 private def cycleSuccessorEquiv : CycleVertex c L ≃ CycleVertex c L where
