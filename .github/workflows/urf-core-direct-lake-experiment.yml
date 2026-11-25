@@ -70,12 +70,9 @@ jobs:
             test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
             timeout 900 lake build URF.Foundation.SharpCliqueEntropy 2>&1 | tee "$RUNNER_TEMP/direct-core-build.log"
           )
-          # Change ONLY the ephemeral CI checkout; do not modify tracked remote source.
-          COPY='cslib/lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean'
-          test "$(git -C cslib hash-object lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean)" = '07b831bf13039994336d62e39faba5797d340f53'
-          cp "$COPY" "$RUNNER_TEMP/original-imported-entropy.lean"
-          printf 'import URF.Foundation.SharpCliqueEntropy\n#print axioms URF.EntropyBridge.graphObservation_hidden_finrank\n' > "$COPY"
-          test "$(git -C cslib status --short -- lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean | head -1 | cut -c1-2)" = ' M'
+          # The tracked CSLIB module is now the canonical import bridge.
+          test "$(git -C cslib hash-object lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean)" = '4705612542d847f2787aa0dda3c43739cd52ba0b'
+          grep -Fx 'import URF.Foundation.SharpCliqueEntropy' cslib/lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean
           (
             cd integration
             timeout 900 lake build Integration.JointImport 2>&1 | tee "$RUNNER_TEMP/direct-joint-build.log"
@@ -98,7 +95,7 @@ jobs:
               raise SystemExit('JOINT_IMPORT_FORBIDDEN_AXIOMS: '+repr(axioms))
           print('JOINT_IMPORT_AXIOM_AUDIT := PASS',sorted(axioms))
           PY
-          echo 'DIRECT_DEPENDENCY_JOINT_IMPORT := PASS (EPHEMERAL_BRIDGE)'
+          echo 'DIRECT_DEPENDENCY_JOINT_IMPORT := PASS (TRACKED_CANONICAL_BRIDGE)'
       - name: Preserve logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
