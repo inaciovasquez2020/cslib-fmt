@@ -30,7 +30,7 @@ jobs:
       - name: Prepare pinned CSLIB Lean and Mathlib
         uses: leanprover/lean-action@v1
         with:
-          working-directory: cslib
+          lake-package-directory: cslib
           build: 'false'
           test: 'false'
           lint: 'false'
