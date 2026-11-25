@@ -1,0 +1,84 @@
+name: Canonical URF entropy compatibility audit
+"on":
+  pull_request:
+    paths:
+      - '.github/workflows/canonical-urf-entropy-compatibility.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout CSLIB research revision
+        uses: actions/checkout@v5
+        with:
+          path: cslib
+          persist-credentials: false
+      - name: Checkout pinned URF core source (sparse)
+        uses: actions/checkout@v5
+        with:
+          repository: inaciovasquez2020/urf-core
+          ref: 422294157daa95a8e7d95a0ce79caf5492821a9c
+          path: urf-core
+          persist-credentials: false
+          sparse-checkout: |
+            lean/URF/Foundation/SharpCliqueEntropy.lean
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+      - name: Prepare pinned CSLIB Lean and Mathlib
+        uses: leanprover/lean-action@v1
+        with:
+          working-directory: cslib
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Audit provenance and compile canonical URF source using CSLIB toolchain
+        shell: bash
+        working-directory: cslib
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          test "$(git -C ../urf-core rev-parse HEAD)" = '422294157daa95a8e7d95a0ce79caf5492821a9c'
+          CORE='../urf-core/lean/URF/Foundation/SharpCliqueEntropy.lean'
+          COPY='lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean'
+          test "$(git hash-object "$CORE")" = '7ef78cafc5927245e3e854a53cd32d5378ca87e3'
+          test "$(git hash-object "$COPY")" = '07b831bf13039994336d62e39faba5797d340f53'
+          python3 - "$CORE" "$COPY" <<'PY'
+          from pathlib import Path
+          import sys
+          canonical=Path(sys.argv[1]).read_bytes()
+          copied=Path(sys.argv[2]).read_bytes()
+          expected=b'\n#print axioms URF.EntropyBridge.graphObservation_hidden_finrank\n'
+          if copied != canonical + expected:
+              raise SystemExit('SOURCE_IDENTITY_FAIL')
+          print('CANONICAL_SOURCE_IDENTITY := PASS')
+          PY
+          lake env lean "$CORE" 2>&1 | tee "$RUNNER_TEMP/canonical-urf-compatibility.log"
+          python3 - "$RUNNER_TEMP/canonical-urf-compatibility.log" <<'PY'
+          import re,sys
+          log=open(sys.argv[1],encoding='utf-8').read()
+          required=[
+              'URF.EntropyBridge.radiusOne_kernel_card_eq_pow_cliqueH1_candidate',
+              'URF.EntropyBridge.radiusOne_uniform_entropy_eq_cliqueH1_candidate',
+              'URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate']
+          for name in required:
+              pattern=r"^'"+re.escape(name)+r"' depends on axioms:\s*\[([^\]]*)\]"
+              found=re.findall(pattern,log,re.M)
+              if len(found)!=1:
+                  raise SystemExit('AXIOM_REPORT_MISSING_OR_DUPLICATE: '+name)
+              axioms={a.strip() for a in found[0].split(',') if a.strip()}
+              if not axioms <= {'propext','Classical.choice','Quot.sound'}:
+                  raise SystemExit('FORBIDDEN_AXIOM: '+name+' '+repr(axioms))
+              print('CROSS_TOOLCHAIN_AXIOS_PASS',name,sorted(axioms))
+          print('CROSS_TOOLCHAIN_COMPATIBILITY := PASS')
+          PY
+      - name: Preserve verification log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-urf-entropy-compatibility-log
+          path: ${{ runner.temp }}/canonical-urf-compatibility.log
