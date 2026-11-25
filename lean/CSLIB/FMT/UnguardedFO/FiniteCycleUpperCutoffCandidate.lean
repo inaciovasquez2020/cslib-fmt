@@ -33,9 +33,16 @@ private theorem coordinate_support_le (i : Fin c) (a : K) :
     rw [cycleBoundary_component_constant
       ((cycleConcreteKernelEquiv K c L hL).symm z)
       (E.symm e.val).1 (E.symm e.val).2] at hindexed
+    have hq : (cycleConcreteKernelEquiv K c L hL).symm z =
+        (cycleKernelEquiv K c L).symm (Pi.single i a) := by
+      change (cycleConcreteKernelEquiv K c L hL).symm
+        (cycleConcreteKernelEquiv K c L hL
+          ((cycleKernelEquiv K c L).symm (Pi.single i a))) = _
+      exact (cycleConcreteKernelEquiv K c L hL).symm_apply_apply _
+    rw [hq] at hindexed
     have hcoordinate : (Pi.single i a : Fin c → K) (E.symm e.val).1 ≠ 0 := by
-      simpa only [z, concreteCoordinateEquiv, LinearEquiv.symm_trans_apply,
-        LinearEquiv.symm_apply_apply, cycleKernelEquiv] using hindexed
+      change (Pi.single i a : Fin c → K) (E.symm e.val).1 ≠ 0 at hindexed
+      exact hindexed
     by_contra hne
     exact hcoordinate (by simp [Pi.single_apply, hne])
   let f : {e : OrderedEdge (cycleSimpleGraph c L hL) // z.val e ≠ 0} →
@@ -68,7 +75,7 @@ theorem cycleConcreteBoundedSupport_eq_top (cutoff : Nat) (hcut : L ≤ cutoff) 
     let a : Fin c → K := E.symm z
     have hsum : (∑ i : Fin c, Pi.single i (a i)) = a := by
       funext j
-      exact Fintype.sum_pi_single j a
+      simpa only [Finset.sum_apply] using (Fintype.sum_pi_single j a)
     have hmem : E a ∈ S := by
       rw [← hsum, map_sum]
       exact Submodule.sum_mem S (fun i _ => hsingle i (a i))
