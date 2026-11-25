@@ -84,9 +84,14 @@ jobs:
           import re,sys
           log=open(sys.argv[1],encoding='utf-8').read()
           name='CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp'
-          matches=re.findall(r"'"+re.escape(name)+r"' depends on axioms:\s*\[([^\]]*)\]",log,re.M)
+          cleaned=re.sub(r'\\x1b\\[[0-9;]*[A-Za-z]', '', log)
+          matching=[line for line in cleaned.splitlines()
+                    if name in line and 'depends on axioms:' in line]
+          if len(matching)!=1:
+              raise SystemExit('JOINT_IMPORT_AXIOM_REPORT_MISSING: '+repr(matching[:3]))
+          matches=re.findall(r'\\[([^\\]]*)\\]',matching[0].split('depends on axioms:',1)[1])
           if len(matches)!=1:
-              raise SystemExit('JOINT_IMPORT_AXIOM_REPORT_MISSING')
+              raise SystemExit('JOINT_IMPORT_AXIOS_MALFORMED: '+repr(matching[0]))
           axioms={x.strip() for x in matches[0].split(',') if x.strip()}
           if not axioms <= {'propext','Classical.choice','Quot.sound'}:
               raise SystemExit('JOINT_IMPORT_FORBIDDEN_AXIOMS: '+repr(axioms))
