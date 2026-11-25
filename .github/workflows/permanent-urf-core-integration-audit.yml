@@ -31,7 +31,6 @@ jobs:
           test "$(git -C .lake/packages/urf_core rev-parse HEAD)" = '422294157daa95a8e7d95a0ce79caf5492821a9c'
           test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
           timeout 1200 lake build CSLIB.FMT.UnguardedFO.FiniteCycleSharpEntropyCandidate 2>&1 | tee "$RUNNER_TEMP/permanent-lean.log"
-          timeout 1200 lake build CSLIB 2>&1 | tee -a "$RUNNER_TEMP/permanent-lean.log"
           cat > "$RUNNER_TEMP/DirectDependencyAxioms.lean" <<'LEAN'
           import CSLIB.FMT.UnguardedFO.FiniteCycleSharpEntropyCandidate
           #print axioms URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate
