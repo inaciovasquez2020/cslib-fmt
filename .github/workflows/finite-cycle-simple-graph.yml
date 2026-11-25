@@ -30,8 +30,8 @@ jobs:
           D="$RUNNER_TEMP/finite-cycle-simple-graph"
           mkdir -p "$D"
           git rev-parse HEAD > "$D/head.txt"
-          sha256sum lean/CSLIB/FMT/UnguardedFO/{SyntaxSemantics,RankBoundedEF,ShiftSystemEF,FiniteCycleEF,FiniteCycleChain,FiniteCycleLocal,ImportedSharpCliqueEntropy,ImportedLogicalEntropyEstimator,FiniteCycleEntropy,FiniteCycleSimpleGraph}.lean > "$D/source.sha256"
-          lake build CSLIB.FMT.UnguardedFO.FiniteCycleEntropy 2>&1 | tee "$D/dependency.log"
+          sha256sum lean/CSLIB/FMT/UnguardedFO/{SyntaxSemantics,RankBoundedEF,ShiftSystemEF,FiniteCycleEF,FiniteCycleChain,FiniteCycleLocal,ImportedSharpCliqueEntropy,SignedSuccessorIncidence,FiniteCycleSimpleGraph}.lean > "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleLocal CSLIB.FMT.UnguardedFO.SignedSuccessorIncidence 2>&1 | tee "$D/dependency.log"
           lake env lean lean/CSLIB/FMT/UnguardedFO/FiniteCycleSimpleGraph.lean 2>&1 | tee "$D/lean.log"
           python3 - "$D/lean.log" <<'PY'
           import sys, re
