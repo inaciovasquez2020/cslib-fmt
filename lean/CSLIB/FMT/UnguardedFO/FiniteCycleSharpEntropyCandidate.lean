@@ -25,7 +25,8 @@ theorem cycleConcreteObservation_finrank_zero (cutoff : Nat) (hcut : L ≤ cutof
     Module.finrank K
       (boundedSupportCycleSpace (K := K) (cycleSimpleGraph c L hL) cutoff) = 0
   rw [cycleConcreteBoundedSupport_eq_top K c L hL cutoff hcut]
-  simp
+  set_option synthInstance.maxHeartbeats 200000 in
+    simp
 
 /-- Actual finite probability-weighted conditional entropy is zero above cutoff. -/
 theorem cycleConcreteEntropy_upper_zero [Fintype K]
