@@ -86,7 +86,8 @@ jobs:
           name='CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp'
           cleaned=re.sub(r'\x1b\[[0-9;]*[A-Za-z]', '', log)
           matching=[line for line in cleaned.splitlines()
-                    if name in line and 'depends on axioms:' in line]
+                    if 'info: lean/Integration/JointImport.lean:' in line
+                    and "'"+name+"' depends on axioms:" in line]
           if len(matching)!=1:
               raise SystemExit('JOINT_IMPORT_AXIOM_REPORT_MISSING: '+repr(matching[:3]))
           matches=re.findall(r'\[([^\]]*)\]',matching[0].split('depends on axioms:',1)[1])
