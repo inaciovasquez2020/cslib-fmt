@@ -29,7 +29,8 @@ theorem cycleConcreteObservation_finrank (cutoff : Nat) (hcut : cutoff < L) :
       (boundedSupportCycleSpace (K := K) (cycleSimpleGraph c L hL) cutoff) = c
   rw [cycleConcreteKernel_finrank K c L hL,
       cycleConcreteBoundedSupport_eq_bot K c L hL cutoff hcut]
-  simp
+  set_option synthInstance.maxHeartbeats 200000 in
+    simp
 
 /-- Actual probability-weighted finite conditional Shannon entropy on the
 concrete graph observation, not a definitional cycle-rank proxy. -/
