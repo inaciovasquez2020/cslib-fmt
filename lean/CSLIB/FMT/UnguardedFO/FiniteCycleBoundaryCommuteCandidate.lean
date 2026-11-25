@@ -21,13 +21,13 @@ private def cycleSuccessorEquiv : CycleVertex c L ≃ CycleVertex c L where
     intro ⟨i, x⟩
     apply Prod.ext
     · rfl
-    · change (1 : ZMod L) + x - 1 = x
+    · dsimp [cycleSuccessor, cycleShift]
       abel
   right_inv := by
     intro ⟨i, x⟩
     apply Prod.ext
     · rfl
-    · change (1 : ZMod L) + (x - 1) = x
+    · dsimp [cycleSuccessor, cycleShift]
       abel
 
 private theorem cycleSignedTransport_at_index (z : CycleVertex c L → K)
