@@ -69,9 +69,30 @@ jobs:
             timeout 240 lake update 2>&1 | tee "$RUNNER_TEMP/direct-lake-update.log"
             test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
             timeout 900 lake build URF.Foundation.SharpCliqueEntropy 2>&1 | tee "$RUNNER_TEMP/direct-core-build.log"
+          )
+          # Change ONLY the ephemeral CI checkout; do not modify tracked remote source.
+          COPY='cslib/lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean'
+          test "$(git -C cslib hash-object lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean)" = '07b831bf13039994336d62e39faba5797d340f53'
+          cp "$COPY" "$RUNNER_TEMP/original-imported-entropy.lean"
+          printf 'import URF.Foundation.SharpCliqueEntropy\n#print axioms URF.EntropyBridge.graphObservation_hidden_finrank\n' > "$COPY"
+          test "$(git -C cslib status --short -- lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean | head -1 | cut -c1-2)" = ' M'
+          (
+            cd integration
             timeout 900 lake build Integration.JointImport 2>&1 | tee "$RUNNER_TEMP/direct-joint-build.log"
           )
-          echo 'DIRECT_DEPENDENCY_JOINT_IMPORT := PASS'
+          python3 - "$RUNNER_TEMP/direct-joint-build.log" <<'PY'
+          import re,sys
+          log=open(sys.argv[1],encoding='utf-8').read()
+          name='CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp'
+          matches=re.findall(r"^'"+re.escape(name)+r"' depends on axioms:\s*\[([^\]]*)\]",log,re.M)
+          if len(matches)!=1:
+              raise SystemExit('JOINT_IMPORT_AXIOM_REPORT_MISSING')
+          axioms={x.strip() for x in matches[0].split(',') if x.strip()}
+          if not axioms <= {'propext','Classical.choice','Quot.sound'}:
+              raise SystemExit('JOINT_IMPORT_FORBIDDEN_AXIOMS: '+repr(axioms))
+          print('JOINT_IMPORT_AXIOM_AUDIT := PASS',sorted(axioms))
+          PY
+          echo 'DIRECT_DEPENDENCY_JOINT_IMPORT := PASS (EPHEMERAL_BRIDGE)'
       - name: Preserve logs even on failure
         if: always()
         uses: actions/upload-artifact@v4
