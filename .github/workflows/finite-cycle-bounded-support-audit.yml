@@ -55,14 +55,14 @@ jobs:
           set -euo pipefail
           D="$RUNNER_TEMP/cslib-cycle-bounded-support"
           SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleConcreteEntropyCandidate.lean'
-          test "$(git hash-object "$SRC")" = '5161b7d25b08667c4b21eb8fdb540c3c8e1c084d'
+          test "$(git hash-object "$SRC")" = 'd198edf1ad16191b371c1ed5f7659591087a3cb1'
           sha256sum "$SRC" >> "$D/source.sha256"
           lake build CSLIB.FMT.UnguardedFO.FiniteCycleBoundedSupportCandidate 2>&1 | tee "$D/entropy-dependency.log"
           lake env lean "$SRC" 2>&1 | tee "$D/entropy.log"
           python3 - "$D/entropy.log" <<'PY'
           import re, sys
           log = open(sys.argv[1], encoding='utf-8').read()
-          for name in ('cycleConcreteObservation_finrank', 'cycleConcreteEntropy_exact'):
+          for name in ('cycleConcreteObservation_finrank', 'cycleConcreteEntropy_exact', 'cycleConcreteEntropy_eq_indexed'):
               full = 'CSLIB.FMT.UnguardedFO.' + name
               pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
               matches = list(re.finditer(pattern, log, re.MULTILINE))
