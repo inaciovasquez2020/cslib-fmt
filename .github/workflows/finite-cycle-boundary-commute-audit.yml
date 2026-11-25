@@ -29,7 +29,7 @@ jobs:
           mkdir -p "$D"
           git rev-parse HEAD > "$D/head.txt"
           SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundaryCommuteCandidate.lean'
-          printf '%s  %s\n' 'f81166be8bfb4e56384da59ab1db3a7462d1f67707c2b592e4343aca6d7d3824' "$SRC" | sha256sum --check
+          printf '%s  %s\n' '282a21938ea75a0dde4bf294c65e62e89971f3abafc543179185c03a1eb46e47' "$SRC" | sha256sum --check
           sha256sum "$SRC" > "$D/source.sha256"
           lake build CSLIB.FMT.UnguardedFO.FiniteCycleIncidenceCoeffCandidate 2>&1 | tee "$D/dependency.log"
           lake env lean "$SRC" 2>&1 | tee "$D/lean.log"
