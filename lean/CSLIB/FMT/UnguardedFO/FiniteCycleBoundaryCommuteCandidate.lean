@@ -22,12 +22,14 @@ private def cycleSuccessorEquiv : CycleVertex c L ≃ CycleVertex c L where
     apply Prod.ext
     · rfl
     · dsimp [cycleSuccessor, cycleShift]
+      simp only [Int.cast_one, neg_one_zsmul]
       abel
   right_inv := by
     intro ⟨i, x⟩
     apply Prod.ext
     · rfl
     · dsimp [cycleSuccessor, cycleShift]
+      simp only [Int.cast_one, neg_one_zsmul]
       abel
 
 private theorem cycleSignedTransport_at_index (z : CycleVertex c L → K)
