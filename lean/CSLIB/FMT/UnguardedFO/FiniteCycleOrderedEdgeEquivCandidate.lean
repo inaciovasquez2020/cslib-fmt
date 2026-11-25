@@ -22,7 +22,7 @@ noncomputable def cycleOrderedEdgeIndex (w : CycleVertex c L) :
   have hne : w ≠ cycleSuccessor c L w := by
     intro hw
     have hloop : (cycleSimpleGraph c L hL).Adj w w := Or.inl hw.symm
-    exact (cycleSimpleGraph c L hL).loopless w hloop
+    exact (cycleSimpleGraph c L hL).loopless.irrefl w hloop
   by_cases h : w < cycleSuccessor c L w
   · exact ⟨(w, cycleSuccessor c L w), ⟨h, hs⟩⟩
   · have hlt : cycleSuccessor c L w < w :=
