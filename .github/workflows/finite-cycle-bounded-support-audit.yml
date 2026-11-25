@@ -55,7 +55,7 @@ jobs:
           set -euo pipefail
           D="$RUNNER_TEMP/cslib-cycle-bounded-support"
           SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleConcreteEntropyCandidate.lean'
-          test "$(git hash-object "$SRC")" = '7502a25c4508ec090f4bbd64753bcfaf2614bcc9'
+          test "$(git hash-object "$SRC")" = '5161b7d25b08667c4b21eb8fdb540c3c8e1c084d'
           sha256sum "$SRC" >> "$D/source.sha256"
           lake build CSLIB.FMT.UnguardedFO.FiniteCycleBoundedSupportCandidate 2>&1 | tee "$D/entropy-dependency.log"
           lake env lean "$SRC" 2>&1 | tee "$D/entropy.log"
