@@ -1,0 +1,80 @@
+name: URF core direct Lake dependency experiment
+"on":
+  pull_request:
+    paths:
+      - '.github/workflows/urf-core-direct-lake-experiment.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout CSLIB PR
+        uses: actions/checkout@v5
+        with:
+          path: cslib
+          persist-credentials: false
+      - name: Checkout canonical URF core
+        uses: actions/checkout@v5
+        with:
+          repository: inaciovasquez2020/urf-core
+          ref: 422294157daa95a8e7d95a0ce79caf5492821a9c
+          path: urf-core
+          persist-credentials: false
+          sparse-checkout: |
+            lakefile.lean
+            lean-toolchain
+            lake-manifest.json
+            lean/URF/Foundation/SharpCliqueEntropy.lean
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+      - name: Prepare existing CSLIB Mathlib environment
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: cslib
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Probe actual Lake dependency and joint import (scratch only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C cslib rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git -C urf-core rev-parse HEAD)" = '422294157daa95a8e7d95a0ce79caf5492821a9c'
+          test "$(git -C cslib/.lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          mkdir -p integration
+          cp cslib/lean-toolchain integration/lean-toolchain
+          cat > integration/lakefile.lean <<'LEAN'
+          import Lake
+          open Lake DSL
+          package integration where
+          require urf_core from "../urf-core"
+          require «FMT» from "../cslib"
+          lean_lib Integration where
+            srcDir := "lean"
+          LEAN
+          mkdir -p integration/lean/Integration
+          cat > integration/lean/Integration/JointImport.lean <<'LEAN'
+          import URF.Foundation.SharpCliqueEntropy
+          import CSLIB.FMT.UnguardedFO.FiniteCycleSharpEntropyCandidate
+          #check URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate
+          #check CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp
+          #print axioms CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp
+          LEAN
+          (
+            cd integration
+            timeout 240 lake update 2>&1 | tee "$RUNNER_TEMP/direct-lake-update.log"
+            test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+            timeout 900 lake build URF.Foundation.SharpCliqueEntropy 2>&1 | tee "$RUNNER_TEMP/direct-core-build.log"
+            timeout 900 lake build Integration.JointImport 2>&1 | tee "$RUNNER_TEMP/direct-joint-build.log"
+          )
+          echo 'DIRECT_DEPENDENCY_JOINT_IMPORT := PASS'
+      - name: Preserve logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: direct-lake-integration-experiment
+          path: ${{ runner.temp }}/direct-*.log
