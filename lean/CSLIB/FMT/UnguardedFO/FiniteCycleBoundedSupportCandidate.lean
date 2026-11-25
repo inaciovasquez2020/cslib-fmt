@@ -10,6 +10,8 @@ namespace CSLIB.FMT.UnguardedFO
 
 open URF.EntropyBridge
 
+attribute [local instance] Classical.propDecidable
+
 variable (K : Type*) [Field K] (c L : Nat) (hL : 4 ≤ L)
 variable [LinearOrder (CycleVertex c L)] [NeZero L]
 
