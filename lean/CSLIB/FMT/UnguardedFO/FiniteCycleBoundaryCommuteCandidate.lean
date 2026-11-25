@@ -88,9 +88,7 @@ theorem cycleSignedTransport_boundary (z : CycleVertex c L → K) :
     intro w hw
     rw [cycleSignedTransport_at_index (K := K) c L hL z w]
     rw [← mul_assoc, cycleSignedIncidenceCoeff (K := K) c L hL v w]
-    by_cases hvw : v = w <;>
-      by_cases hvs : v = cycleSuccessor c L w <;>
-      simp [hvw, hvs]
+    simp [sub_mul, ite_mul]
   rw [hsum, Finset.sum_sub_distrib]
   rw [cycleIncoming_sum (c := c) (L := L) z v]
   simp
