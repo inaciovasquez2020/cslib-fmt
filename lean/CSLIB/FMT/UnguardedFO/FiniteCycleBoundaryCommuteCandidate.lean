@@ -90,7 +90,7 @@ theorem cycleSignedTransport_boundary (z : CycleVertex c L → K) :
     rw [← mul_assoc, cycleSignedIncidenceCoeff (K := K) c L hL v w]
     simp [sub_mul, ite_mul]
   rw [hsum, Finset.sum_sub_distrib]
-  rw [cycleIncoming_sum (c := c) (L := L) z v]
+  rw [cycleIncoming_sum (K := K) (c := c) (L := L) z v]
   simp
 
 #print axioms CSLIB.FMT.UnguardedFO.cycleSignedTransport_boundary
