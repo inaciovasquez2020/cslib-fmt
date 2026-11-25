@@ -3,6 +3,7 @@ name: Finite cycle bounded-support vanishing audit
   pull_request:
     paths:
       - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundedSupportCandidate.lean'
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleConcreteEntropyCandidate.lean'
       - '.github/workflows/finite-cycle-bounded-support-audit.yml'
   workflow_dispatch:
 permissions:
@@ -37,6 +38,31 @@ jobs:
           import re, sys
           log = open(sys.argv[1], encoding='utf-8').read()
           for name in ('cycleConcreteKernel_support_ge_length', 'cycleConcreteBoundedSupport_eq_bot'):
+              full = 'CSLIB.FMT.UnguardedFO.' + name
+              pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              matches = list(re.finditer(pattern, log, re.MULTILINE))
+              if len(matches) != 1:
+                  raise SystemExit('MISSING_AXIOM_REPORT: '+name)
+              raw = matches[0].group(1)
+              axioms = set() if raw is None else {a.strip() for a in raw.split(',') if a.strip()}
+              if not axioms <= {'propext', 'Classical.choice', 'Quot.sound'}:
+                  raise SystemExit('UNEXPECTED_AXIOMS: '+repr(sorted(axioms)))
+              print('LEAN_VERIFIED_ISOLATED', name, sorted(axioms))
+          PY
+      - name: Exact concrete Shannon entropy and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/cslib-cycle-bounded-support"
+          SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleConcreteEntropyCandidate.lean'
+          test "$(git hash-object "$SRC")" = '7502a25c4508ec090f4bbd64753bcfaf2614bcc9'
+          sha256sum "$SRC" >> "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleBoundedSupportCandidate 2>&1 | tee "$D/entropy-dependency.log"
+          lake env lean "$SRC" 2>&1 | tee "$D/entropy.log"
+          python3 - "$D/entropy.log" <<'PY'
+          import re, sys
+          log = open(sys.argv[1], encoding='utf-8').read()
+          for name in ('cycleConcreteObservation_finrank', 'cycleConcreteEntropy_exact'):
               full = 'CSLIB.FMT.UnguardedFO.' + name
               pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
               matches = list(re.finditer(pattern, log, re.MULTILINE))
