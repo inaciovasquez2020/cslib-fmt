@@ -29,7 +29,7 @@ jobs:
           mkdir -p "$D"
           echo "$GITHUB_SHA" > "$D/head.txt"
           SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleOrderedEdgeEquivCandidate.lean'
-          printf '%s  %s\n' '10eaca93ad38501863602a473772e750d249a8eb067a8cf36b67964ee1c56d34' "$SRC" | sha256sum --check
+          printf '%s  %s\n' 'e8039fa691d6b13171feb4fa3e7b7f167f5df838b11493358c86df06d938ca73' "$SRC" | sha256sum --check
           sha256sum "$SRC" > "$D/source.sha256"
           lake build CSLIB.FMT.UnguardedFO.FiniteCycleSimpleGraph 2>&1 | tee "$D/dependency.log"
           lake env lean "$SRC" 2>&1 | tee "$D/lean.log"
