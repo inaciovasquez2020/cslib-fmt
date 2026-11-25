@@ -84,7 +84,7 @@ jobs:
           import re,sys
           log=open(sys.argv[1],encoding='utf-8').read()
           name='CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp'
-          matches=re.findall(r"^'"+re.escape(name)+r"' depends on axioms:\s*\[([^\]]*)\]",log,re.M)
+          matches=re.findall(r"(?:^|\\n)(?:info: [^\\n]*? )?'"+re.escape(name)+r"' depends on axioms:\s*\[([^\]]*)\]",log,re.M)
           if len(matches)!=1:
               raise SystemExit('JOINT_IMPORT_AXIOM_REPORT_MISSING')
           axioms={x.strip() for x in matches[0].split(',') if x.strip()}
