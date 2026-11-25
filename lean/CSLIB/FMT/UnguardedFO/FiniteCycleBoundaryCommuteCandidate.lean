@@ -79,8 +79,8 @@ theorem cycleSignedTransport_boundary (z : CycleVertex c L → K) :
         simpleGraphIncidence (K := K) (cycleSimpleGraph c L hL) v e *
           cycleSignedTransport K c L hL z e) =
         ∑ w : CycleVertex c L,
-          (if v = cycleSuccessor c L w then z w else 0) -
-            (if v = w then z w else 0) := by
+          ((if v = cycleSuccessor c L w then z w else 0) -
+            (if v = w then z w else 0)) := by
     rw [← Equiv.sum_comp (cycleOrderedEdgeEquiv c L hL)
       (fun e => simpleGraphIncidence (K := K) (cycleSimpleGraph c L hL) v e *
         cycleSignedTransport K c L hL z e)]
