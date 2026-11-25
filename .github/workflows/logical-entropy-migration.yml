@@ -31,7 +31,14 @@ jobs:
           mkdir -p "$D"
           git rev-parse HEAD > "$D/head.txt"
           sha256sum lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean lean/CSLIB/FMT/UnguardedFO/ImportedLogicalEntropyEstimator.lean > "$D/source.sha256"
-          lake env lean lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean 2>&1 | tee "$D/lean.log"
+          lake build URF.Foundation.SharpCliqueEntropy 2>&1 | tee "$D/core-build.log"
+          cat > "$D/CoreAxiomProbe.lean" <<'LEAN'
+          import URF.Foundation.SharpCliqueEntropy
+          #print axioms URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate
+          #print axioms URF.EntropyBridge.radiusOne_uniform_entropy_eq_cliqueH1_candidate
+          LEAN
+          lake env lean "$D/CoreAxiomProbe.lean" 2>&1 | tee "$D/lean.log"
+          lake env lean lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean 2>&1 | tee -a "$D/lean.log"
           lake env lean lean/CSLIB/FMT/UnguardedFO/ImportedLogicalEntropyEstimator.lean 2>&1 | tee -a "$D/lean.log"
           python3 - "$D/lean.log" <<'PY'
           import sys, re
