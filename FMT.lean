@@ -81,3 +81,6 @@ import FMT.Graph.Cycle.CyclePath
 import FMT.Graph.Cycle.CycleDiameter
 
 import FMT.Graph.FiniteGraphDiameter
+
+import CSLIB.FMT.UnguardedFO.FiniteCycleEntropy
+import CSLIB.FMT.UnguardedFO.CyclePartitionRadiusMinimax

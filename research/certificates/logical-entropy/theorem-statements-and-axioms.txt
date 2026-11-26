@@ -1,0 +1,452 @@
+info: [root]: lakefile.lean and lakefile.toml are both present; using lakefile.lean
+warning: LeanSearchClient: repository '/Users/inaciof.vasquez/Documents/Codex/2026-11-25/complete-urf-core-pr-603-repository/work/cslib-fmt/.lake/packages/LeanSearchClient' has local changes
+CSLIB.FMT.UnguardedFO.SuccessorEdges.edgeEquiv.{u_1} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) : V ≃ URF.EntropyBridge.OrderedEdge G
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.edgeEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.signedEdges.{u_1, u_2} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] :
+  (V → K) ≃ₗ[K] URF.EntropyBridge.OrderedEdge G → K
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.signedEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.signedEdges_ne_zero_iff.{u_1, u_2} {V : Type u_1} [LinearOrder V]
+  {G : SimpleGraph V} (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] (z : V → K) (u : V) :
+  (s.signedEdges K) z (s.edgeEquiv u) ≠ 0 ↔ z u ≠ 0
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.signedEdges_ne_zero_iff' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.signed_incidence.{u_1, u_2} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] (u v : V) :
+  URF.EntropyBridge.simpleGraphIncidence G v (s.edgeEquiv u) * s.edgeSign K u =
+    (if v = s.next u then 1 else 0) - if v = u then 1 else 0
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.signed_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.boundary_intertwines.{u_1, u_2} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] [Fintype V] (z : V → K) (v : V) :
+  (URF.EntropyBridge.simpleGraphBoundary G) ((s.signedEdges K) z) v = z ((Equiv.symm s.next) v) - z v
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.boundary_intertwines' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.kernelEquiv.{u_1, u_2} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] [Fintype V] (B : (V → K) →ₗ[K] V → K)
+  (hB : ∀ (z : V → K) (v : V), B z v = z ((Equiv.symm s.next) v) - z v) :
+  ↥B.ker ≃ₗ[K] ↥(URF.EntropyBridge.simpleGraphBoundary G).ker
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.kernelEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleShift_free (c L : ℕ) (t : ℤ) (hL : t < ↑L) :
+  CSLIB.FMT.UnguardedFO.FreeAt (CSLIB.FMT.UnguardedFO.cycleShift c L) t
+'CSLIB.FMT.UnguardedFO.cycleShift_free' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleShift_fresh (c L n : ℕ) [NeZero L] (t : ℤ) (ht : 0 ≤ t)
+  (hcard : ↑n * (2 * t + 1) < ↑c * ↑L) : CSLIB.FMT.UnguardedFO.FreshAt (CSLIB.FMT.UnguardedFO.cycleShift c L) n t
+'CSLIB.FMT.UnguardedFO.cycleShift_fresh' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleShift_rankEquivalent (c L C M r : ℕ) [NeZero L] [NeZero M]
+  (hL : CSLIB.FMT.UnguardedFO.shiftRadius r < ↑L) (hM : CSLIB.FMT.UnguardedFO.shiftRadius r < ↑M)
+  (hc : ↑r * (2 * CSLIB.FMT.UnguardedFO.shiftRadius r + 1) < ↑c * ↑L)
+  (hC : ↑r * (2 * CSLIB.FMT.UnguardedFO.shiftRadius r + 1) < ↑C * ↑M) :
+  CSLIB.FMT.UnguardedFO.RankEquivalent (CSLIB.FMT.UnguardedFO.shiftGraph (CSLIB.FMT.UnguardedFO.cycleShift c L))
+    (CSLIB.FMT.UnguardedFO.shiftGraph (CSLIB.FMT.UnguardedFO.cycleShift C M)) r
+'CSLIB.FMT.UnguardedFO.cycleShift_rankEquivalent' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.oneCycle_manyCycles_rankEquivalent (c L r : ℕ) (hc : 1 ≤ c) (hL : 4 ≤ L)
+  (hr : CSLIB.FMT.UnguardedFO.shiftRadius r < ↑L) (hsize : ↑r * (2 * CSLIB.FMT.UnguardedFO.shiftRadius r + 1) < ↑L) :
+  CSLIB.FMT.UnguardedFO.RankEquivalent (CSLIB.FMT.UnguardedFO.shiftGraph (CSLIB.FMT.UnguardedFO.cycleShift 1 (c * L)))
+    (CSLIB.FMT.UnguardedFO.shiftGraph (CSLIB.FMT.UnguardedFO.cycleShift c L)) r
+'CSLIB.FMT.UnguardedFO.oneCycle_manyCycles_rankEquivalent' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleBoundary_component_constant.{u_1} {K : Type u_1} [Field K] {c L : ℕ} [NeZero L]
+  (z : ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker) (i : Fin c) (x : ZMod L) : ↑z (i, x) = ↑z (i, 0)
+'CSLIB.FMT.UnguardedFO.cycleBoundary_component_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleKernelEquiv.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L] :
+  ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker ≃ₗ[K] Fin c → K
+'CSLIB.FMT.UnguardedFO.cycleKernelEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleKernel_finrank.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L] :
+  Module.finrank K ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker = c
+'CSLIB.FMT.UnguardedFO.cycleKernel_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleAdjacent_interp (c L : ℕ) (a : Fin 2 → CSLIB.FMT.UnguardedFO.CycleVertex c L) :
+  (CSLIB.FMT.UnguardedFO.shiftGraph (CSLIB.FMT.UnguardedFO.cycleShift c L)).interp () a ↔
+    CSLIB.FMT.UnguardedFO.cycleAdjacent c L (a 0) (a 1)
+'CSLIB.FMT.UnguardedFO.cycleAdjacent_interp' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleShift_two_outside_ball (c L : ℕ) (hL : 4 ≤ L) (v : CSLIB.FMT.UnguardedFO.CycleVertex c L) :
+  ¬CSLIB.FMT.UnguardedFO.cycleClosedBall c L v ((CSLIB.FMT.UnguardedFO.cycleShift c L).shift 2 v)
+'CSLIB.FMT.UnguardedFO.cycleShift_two_outside_ball' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleBallSupported_zero.{u_1} {K : Type u_1} [Field K] {c L : ℕ} [NeZero L] (hL : 4 ≤ L)
+  (v : CSLIB.FMT.UnguardedFO.CycleVertex c L) (z : ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker)
+  (hs : CSLIB.FMT.UnguardedFO.CycleBallSupported v z) : z = 0
+'CSLIB.FMT.UnguardedFO.cycleBallSupported_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleLocalSpace_eq_bot.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L] (hL : 4 ≤ L) :
+  CSLIB.FMT.UnguardedFO.cycleLocalSpace K c L = ⊥
+'CSLIB.FMT.UnguardedFO.cycleLocalSpace_eq_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraph_interp (c L : ℕ) (hL : 4 ≤ L)
+  (a : Fin 2 → CSLIB.FMT.UnguardedFO.CycleVertex c L) :
+  (CSLIB.FMT.UnguardedFO.shiftGraph (CSLIB.FMT.UnguardedFO.cycleShift c L)).interp () a ↔
+    (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL).Adj (a 0) (a 1)
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraph_interp' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraph_successor_adj (c L : ℕ) (hL : 4 ≤ L)
+  (v : CSLIB.FMT.UnguardedFO.CycleVertex c L) :
+  (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL).Adj v (CSLIB.FMT.UnguardedFO.cycleSuccessor c L v)
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraph_successor_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSuccessor_edge_index_unique (c L : ℕ) (hL : 4 ≤ L)
+  (u v : CSLIB.FMT.UnguardedFO.CycleVertex c L)
+  (h :
+    u = v ∧ CSLIB.FMT.UnguardedFO.cycleSuccessor c L u = CSLIB.FMT.UnguardedFO.cycleSuccessor c L v ∨
+      u = CSLIB.FMT.UnguardedFO.cycleSuccessor c L v ∧ CSLIB.FMT.UnguardedFO.cycleSuccessor c L u = v) :
+  u = v
+'CSLIB.FMT.UnguardedFO.cycleSuccessor_edge_index_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraph_edge_exists (c L : ℕ) (hL : 4 ≤ L) (u v : CSLIB.FMT.UnguardedFO.CycleVertex c L)
+  (h : (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL).Adj u v) :
+  ∃ w, u = w ∧ v = CSLIB.FMT.UnguardedFO.cycleSuccessor c L w ∨ v = w ∧ u = CSLIB.FMT.UnguardedFO.cycleSuccessor c L w
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraph_edge_exists' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraph_boundary_intertwines.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) (z : CSLIB.FMT.UnguardedFO.CycleVertex c L → K)
+  (v : CSLIB.FMT.UnguardedFO.CycleVertex c L) :
+  (URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL))
+      (((CSLIB.FMT.UnguardedFO.cycleSuccessorEdges c L hL).signedEdges K) z) v =
+    (CSLIB.FMT.UnguardedFO.cycleBoundary K c L) z v
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraph_boundary_intertwines' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraphKernelEquiv.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker ≃ₗ[K]
+    ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL)).ker
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraphKernelEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraphCirculationEquiv.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL)).ker ≃ₗ[K] Fin c → K
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraphCirculationEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraphKernel_finrank.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  Module.finrank K ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL)).ker = c
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraphKernel_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSimpleGraph_ballSupported_iff.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) (v : CSLIB.FMT.UnguardedFO.CycleVertex c L)
+  (z : ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker) :
+  CSLIB.FMT.UnguardedFO.CycleGraphBallSupported K c L hL v
+      ((CSLIB.FMT.UnguardedFO.cycleSimpleGraphKernelEquiv K c L hL) z) ↔
+    CSLIB.FMT.UnguardedFO.CycleBallSupported v z
+'CSLIB.FMT.UnguardedFO.cycleSimpleGraph_ballSupported_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.presentationConditionalEntropy_eq_finrank.{u_1, u_2, u_3} {K : Type u_1} {V : Type u_2}
+  {E : Type u_3} [Field K] [Fintype K] [Fintype V] [Fintype E] (G : URF.EntropyBridge.GraphChainPresentation K V E) :
+  CSLIB.FMT.UnguardedFO.presentationConditionalEntropy G =
+    ↑(Module.finrank K ↥(URF.EntropyBridge.graphObservation G).ker) * Real.log ↑(Fintype.card K)
+'CSLIB.FMT.UnguardedFO.presentationConditionalEntropy_eq_finrank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace_eq_map (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  Submodule.map (↑(CSLIB.FMT.UnguardedFO.cycleSimpleGraphKernelEquiv K c L hL))
+      (CSLIB.FMT.UnguardedFO.cycleLocalSpace K c L) =
+    CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace K c L hL
+'CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace_eq_map' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace_eq_bot (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace K c L hL = ⊥
+'CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace_eq_bot' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphObservation_eq_zero (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L)
+  (x : Module.Dual K ↥(URF.EntropyBridge.graphCycles (CSLIB.FMT.UnguardedFO.cycleGraphPresentation K c L hL))) :
+  (URF.EntropyBridge.graphObservation (CSLIB.FMT.UnguardedFO.cycleGraphPresentation K c L hL)) x = 0
+'CSLIB.FMT.UnguardedFO.cycleGraphObservation_eq_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphEntropy_exact (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) [Fintype K] :
+  CSLIB.FMT.UnguardedFO.cycleGraphEntropy K c L hL = ↑c * Real.log ↑(Fintype.card K)
+'CSLIB.FMT.UnguardedFO.cycleGraphEntropy_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphEntropy_transport (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) [Fintype K] :
+  CSLIB.FMT.UnguardedFO.cycleGraphEntropy K c L hL = CSLIB.FMT.UnguardedFO.cycleEntropy K c L
+'CSLIB.FMT.UnguardedFO.cycleGraphEntropy_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleDeficit_eq_graph (K : Type) [Field K] [Fintype K] (p : CSLIB.FMT.UnguardedFO.CycleParameters)
+  (hL : 4 ≤ p.length) :
+  CSLIB.FMT.UnguardedFO.cycleDeficit K p = CSLIB.FMT.UnguardedFO.cycleGraphEntropy K p.components p.length hL
+'CSLIB.FMT.UnguardedFO.cycleDeficit_eq_graph' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleDeficit_eq_indexed (K : Type) [Field K] [Fintype K]
+  (p : CSLIB.FMT.UnguardedFO.CycleParameters) :
+  CSLIB.FMT.UnguardedFO.cycleDeficit K p = CSLIB.FMT.UnguardedFO.cycleEntropy K p.components p.length
+'CSLIB.FMT.UnguardedFO.cycleDeficit_eq_indexed' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleObservation_finrank (K : Type) [Field K] (c L : ℕ) [NeZero L] (hL : 4 ≤ L) :
+  Module.finrank K ↥(URF.EntropyBridge.graphObservation (CSLIB.FMT.UnguardedFO.cyclePresentation K c L)).ker = c
+'CSLIB.FMT.UnguardedFO.cycleObservation_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleEntropy_exact (K : Type) [Field K] [Fintype K] (c L : ℕ) [NeZero L] (hL : 4 ≤ L) :
+  CSLIB.FMT.UnguardedFO.cycleEntropy K c L = ↑c * Real.log ↑(Fintype.card K)
+'CSLIB.FMT.UnguardedFO.cycleEntropy_exact' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.witnessLength_bounds (r : ℕ) :
+  4 ≤ CSLIB.FMT.UnguardedFO.witnessLength r ∧
+    CSLIB.FMT.UnguardedFO.shiftRadius r < ↑(CSLIB.FMT.UnguardedFO.witnessLength r) ∧
+      ↑r * (2 * CSLIB.FMT.UnguardedFO.shiftRadius r + 1) < ↑(CSLIB.FMT.UnguardedFO.witnessLength r)
+'CSLIB.FMT.UnguardedFO.witnessLength_bounds' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleOrder_eq_card (p : CSLIB.FMT.UnguardedFO.CycleParameters) :
+  Fintype.card (CSLIB.FMT.UnguardedFO.CycleVertex p.components p.length) = CSLIB.FMT.UnguardedFO.cycleOrder p
+'CSLIB.FMT.UnguardedFO.cycleOrder_eq_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.logicalEntropy_witnesses (K : Type) [Field K] [Fintype K] (r m : ℕ) :
+  ∃ G H,
+    4 ≤ G.length ∧
+      4 ≤ H.length ∧
+        CSLIB.FMT.UnguardedFO.cycleOrder G = CSLIB.FMT.UnguardedFO.cycleOrder H ∧
+          CSLIB.FMT.UnguardedFO.RankEquivalent (CSLIB.FMT.UnguardedFO.cycleStructure G)
+              (CSLIB.FMT.UnguardedFO.cycleStructure H) r ∧
+            CSLIB.FMT.UnguardedFO.cycleDeficit K H - CSLIB.FMT.UnguardedFO.cycleDeficit K G =
+              ↑m * Real.log ↑(Fintype.card K)
+'CSLIB.FMT.UnguardedFO.logicalEntropy_witnesses' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.logicalEntropy_estimator_lower_bound (K : Type) [Field K] [Fintype K] (r m : ℕ)
+  (A : CSLIB.FMT.UnguardedFO.CycleParameters → ℝ)
+  (hInv :
+    ∀ (G H : CSLIB.FMT.UnguardedFO.CycleParameters),
+      CSLIB.FMT.UnguardedFO.RankEquivalent (CSLIB.FMT.UnguardedFO.cycleStructure G)
+          (CSLIB.FMT.UnguardedFO.cycleStructure H) r →
+        A G = A H) :
+  ∃ G H,
+    CSLIB.FMT.UnguardedFO.cycleOrder G = CSLIB.FMT.UnguardedFO.cycleOrder H ∧
+      CSLIB.FMT.UnguardedFO.RankEquivalent (CSLIB.FMT.UnguardedFO.cycleStructure G)
+          (CSLIB.FMT.UnguardedFO.cycleStructure H) r ∧
+        ↑m * Real.log ↑(Fintype.card K) / 2 ≤
+          max |A G - CSLIB.FMT.UnguardedFO.cycleDeficit K G| |A H - CSLIB.FMT.UnguardedFO.cycleDeficit K H|
+'CSLIB.FMT.UnguardedFO.logicalEntropy_estimator_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_vertices_card (sizes : List ℕ) :
+  Fintype.card (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes) = ∑ i, sizes.get i
+'CSLIB.FMT.UnguardedFO.cyclePartition_vertices_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_adj_iff_next {sizes : List ℕ} (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i)
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (u v : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes) :
+  (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes).Adj u v ↔
+    CSLIB.FMT.UnguardedFO.cyclePartitionNext sizes hp u = v ∨ CSLIB.FMT.UnguardedFO.cyclePartitionNext sizes hp v = u
+'CSLIB.FMT.UnguardedFO.cyclePartition_adj_iff_next' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartitionDirectedKernelEquiv.{u_1} (K : Type u_1) [Field K] (sizes : List ℕ)
+  (hpos : ∀ (i : Fin sizes.length), 0 < sizes.get i) :
+  ↥(CSLIB.FMT.UnguardedFO.cyclePartitionDirectedBoundary K sizes hpos).ker ≃ₗ[K] Fin sizes.length → K
+'CSLIB.FMT.UnguardedFO.cyclePartitionDirectedKernelEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartitionDirectedKernel_finrank.{u_1} (K : Type u_1) [Field K] (sizes : List ℕ)
+  (hpos : ∀ (i : Fin sizes.length), 0 < sizes.get i) :
+  Module.finrank K ↥(CSLIB.FMT.UnguardedFO.cyclePartitionDirectedBoundary K sizes hpos).ker = sizes.length
+'CSLIB.FMT.UnguardedFO.cyclePartitionDirectedKernel_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartitionSuccessorEdges {sizes : List ℕ} (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i)
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) :
+  CSLIB.FMT.UnguardedFO.SuccessorEdges (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes)
+'CSLIB.FMT.UnguardedFO.cyclePartitionSuccessorEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_predecessorBoundary_apply.{u_1} {sizes : List ℕ}
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (K : Type u_1) [Field K]
+  (z : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes → K) (v : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes) :
+  (CSLIB.FMT.UnguardedFO.cyclePartitionPredecessorBoundary hp K) z v =
+    z ((Equiv.symm (CSLIB.FMT.UnguardedFO.cyclePartitionNextPerm hp)) v) - z v
+'CSLIB.FMT.UnguardedFO.cyclePartition_predecessorBoundary_apply' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_predecessorBoundary_ker.{u_1} {sizes : List ℕ}
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (K : Type u_1) [Field K] :
+  (CSLIB.FMT.UnguardedFO.cyclePartitionPredecessorBoundary hp K).ker =
+    (CSLIB.FMT.UnguardedFO.cyclePartitionDirectedBoundary K sizes hp).ker
+'CSLIB.FMT.UnguardedFO.cyclePartition_predecessorBoundary_ker' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartitionIncidenceKernelEquiv.{u_1} {sizes : List ℕ}
+  (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i) (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (K : Type u_1)
+  [Field K] [LinearOrder (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes)] :
+  ↥(CSLIB.FMT.UnguardedFO.cyclePartitionDirectedBoundary K sizes hp).ker ≃ₗ[K]
+    ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes)).ker
+'CSLIB.FMT.UnguardedFO.cyclePartitionIncidenceKernelEquiv' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_incidenceKernel_finrank.{u_1} {sizes : List ℕ}
+  (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i) (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (K : Type u_1)
+  [Field K] [LinearOrder (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes)] :
+  Module.finrank K
+      ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes)).ker =
+    sizes.length
+'CSLIB.FMT.UnguardedFO.cyclePartition_incidenceKernel_finrank' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_extremizers (N L : ℕ) (hNL : L ≤ N) (hL : 0 < L) :
+  (∃ sizes, sizes.sum = N ∧ sizes.length = 1 ∧ ∀ t ∈ sizes, L ≤ t) ∧
+    ∃ sizes, sizes.sum = N ∧ sizes.length = N / L ∧ ∀ t ∈ sizes, L ≤ t
+'CSLIB.FMT.UnguardedFO.cyclePartition_extremizers' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_count_le (N L : ℕ) (hL : 0 < L) (sizes : List ℕ) (hsum : sizes.sum = N)
+  (hmin : ∀ t ∈ sizes, L ≤ t) : sizes.length ≤ N / L
+'CSLIB.FMT.UnguardedFO.cyclePartition_count_le' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_rootedBallIso {sizes : List ℕ} (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i)
+  (r : ℕ) (u : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes) (hsize : 2 * r + 2 ≤ sizes.get u.fst) :
+  CSLIB.FMT.UnguardedFO.centeredPath r ≃g
+    SimpleGraph.induce
+      (CSLIB.FMT.UnguardedFO.rootedBallVertices (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes) r u)
+      (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes)
+'CSLIB.FMT.UnguardedFO.cyclePartition_rootedBallIso' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_rootedBallIso_root {sizes : List ℕ}
+  (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i) (r : ℕ) (u : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes)
+  (hsize : 2 * r + 2 ≤ sizes.get u.fst) :
+  (CSLIB.FMT.UnguardedFO.cyclePartition_rootedBallIso h3 r u hsize) (CSLIB.FMT.UnguardedFO.centeredPathRoot r) =
+    CSLIB.FMT.UnguardedFO.rootedBallRoot (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes) r u
+'CSLIB.FMT.UnguardedFO.cyclePartition_rootedBallIso_root' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.rootedNeighborhoodObservation {V : Type} [Fintype V] (G : SimpleGraph V) (r : ℕ) :
+  Multiset CSLIB.FMT.UnguardedFO.RootedNeighborhoodClass
+'CSLIB.FMT.UnguardedFO.rootedNeighborhoodObservation' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_neighborhoodObservation_eq_replicate {sizes : List ℕ} (r : ℕ)
+  (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i) (hsize : ∀ (i : Fin sizes.length), 2 * r + 2 ≤ sizes.get i) :
+  CSLIB.FMT.UnguardedFO.rootedNeighborhoodObservation (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph sizes) r =
+    Multiset.replicate (Fintype.card (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes))
+      (CSLIB.FMT.UnguardedFO.centeredPathClass r)
+'CSLIB.FMT.UnguardedFO.cyclePartition_neighborhoodObservation_eq_replicate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+CSLIB.FMT.UnguardedFO.admissibleCycleEntropy.{u_1} (K : Type u_1) [Field K] [Fintype K] {N L : ℕ}
+  (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L) : ℝ
+'CSLIB.FMT.UnguardedFO.admissibleCycleEntropy' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.admissibleCycleEntropy_eq.{u_1} (K : Type u_1) [Field K] [Fintype K] {N L : ℕ} (hL : 3 ≤ L)
+  (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L) :
+  CSLIB.FMT.UnguardedFO.admissibleCycleEntropy K g = ↑g.sizes.length * Real.log ↑(Fintype.card K)
+'CSLIB.FMT.UnguardedFO.admissibleCycleEntropy_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.admissibleCycleObservation_eq {N L r : ℕ} (hL : max 3 (2 * r + 2) ≤ L)
+  (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L) :
+  CSLIB.FMT.UnguardedFO.admissibleCycleObservation r g =
+    Multiset.replicate N (CSLIB.FMT.UnguardedFO.centeredPathClass r)
+'CSLIB.FMT.UnguardedFO.admissibleCycleObservation_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_radius_minimax.{u_1} (K : Type u_1) [Field K] [Fintype K] (N L r : ℕ) (hNL : L ≤ N)
+  (hL : max 3 (2 * r + 2) ≤ L) :
+  (∀ (estimate : Multiset CSLIB.FMT.UnguardedFO.RootedNeighborhoodClass → ℝ),
+      ∃ g,
+        (↑(N / L) - 1) * Real.log ↑(Fintype.card K) / 2 ≤
+          |estimate (CSLIB.FMT.UnguardedFO.admissibleCycleObservation r g) -
+              CSLIB.FMT.UnguardedFO.admissibleCycleEntropy K g|) ∧
+    ∃ estimate,
+      ∀ (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L),
+        |estimate (CSLIB.FMT.UnguardedFO.admissibleCycleObservation r g) -
+              CSLIB.FMT.UnguardedFO.admissibleCycleEntropy K g| ≤
+          (↑(N / L) - 1) * Real.log ↑(Fintype.card K) / 2
+'CSLIB.FMT.UnguardedFO.cyclePartition_radius_minimax' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_radius_minimax_value.{u_1} (K : Type u_1) [Field K] [Fintype K] (N L r : ℕ)
+  (hNL : L ≤ N) (hL : max 3 (2 * r + 2) ≤ L) :
+  IsLeast
+    {E |
+      ∃ estimate,
+        ∀ (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L),
+          |estimate (CSLIB.FMT.UnguardedFO.admissibleCycleObservation r g) -
+                CSLIB.FMT.UnguardedFO.admissibleCycleEntropy K g| ≤
+            E}
+    ((↑(N / L) - 1) * Real.log ↑(Fintype.card K) / 2)
+'CSLIB.FMT.UnguardedFO.cyclePartition_radius_minimax_value' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.RankEquivalent {σ : CSLIB.FMT.UnguardedFO.RelLanguage}
+  (M N : CSLIB.FMT.UnguardedFO.RelStructure σ) (r : ℕ) : Prop
+'CSLIB.FMT.UnguardedFO.RankEquivalent' does not depend on any axioms
+CSLIB.FMT.UnguardedFO.quantifierRank {σ : CSLIB.FMT.UnguardedFO.RelLanguage} {n : ℕ} :
+  CSLIB.FMT.UnguardedFO.Formula σ n → ℕ
+'CSLIB.FMT.UnguardedFO.quantifierRank' does not depend on any axioms
+CSLIB.FMT.UnguardedFO.shiftGraphLanguage : CSLIB.FMT.UnguardedFO.RelLanguage
+'CSLIB.FMT.UnguardedFO.shiftGraphLanguage' does not depend on any axioms
+CSLIB.FMT.UnguardedFO.rankBackAndForth_implies_rankEquivalent {σ : CSLIB.FMT.UnguardedFO.RelLanguage}
+  (M N : CSLIB.FMT.UnguardedFO.RelStructure σ) (r : ℕ)
+  (h :
+    CSLIB.FMT.UnguardedFO.RankBackAndForth M N r CSLIB.FMT.UnguardedFO.emptyAssignment
+      CSLIB.FMT.UnguardedFO.emptyAssignment) :
+  CSLIB.FMT.UnguardedFO.RankEquivalent M N r
+'CSLIB.FMT.UnguardedFO.rankBackAndForth_implies_rankEquivalent' depends on axioms: [propext]
+CSLIB.FMT.UnguardedFO.cycleBoundary.{u_1} (K : Type u_1) [Field K] (c L : ℕ) :
+  (CSLIB.FMT.UnguardedFO.CycleVertex c L → K) →ₗ[K] CSLIB.FMT.UnguardedFO.CycleVertex c L → K
+'CSLIB.FMT.UnguardedFO.cycleBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSuccessorPerm (c L : ℕ) : Equiv.Perm (CSLIB.FMT.UnguardedFO.CycleVertex c L)
+'CSLIB.FMT.UnguardedFO.cycleSuccessorPerm' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleSuccessorEdges (c L : ℕ) (hL : 4 ≤ L) :
+  CSLIB.FMT.UnguardedFO.SuccessorEdges (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL)
+'CSLIB.FMT.UnguardedFO.cycleSuccessorEdges' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.CycleBallSupported.{u_1} {K : Type u_1} [Field K] {c L : ℕ}
+  (v : CSLIB.FMT.UnguardedFO.CycleVertex c L) (z : ↥(CSLIB.FMT.UnguardedFO.cycleBoundary K c L).ker) : Prop
+'CSLIB.FMT.UnguardedFO.CycleBallSupported' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.CycleGraphBallSupported.{u_1} (K : Type u_1) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) (v : CSLIB.FMT.UnguardedFO.CycleVertex c L)
+  (z : ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL)).ker) : Prop
+'CSLIB.FMT.UnguardedFO.CycleGraphBallSupported' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  Submodule K ↥(URF.EntropyBridge.simpleGraphBoundary (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL)).ker
+'CSLIB.FMT.UnguardedFO.cycleGraphLocalSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleGraphPresentation (K : Type) [Field K] (c L : ℕ) [NeZero L]
+  [LinearOrder (CSLIB.FMT.UnguardedFO.CycleVertex c L)] (hL : 4 ≤ L) :
+  URF.EntropyBridge.GraphChainPresentation K (CSLIB.FMT.UnguardedFO.CycleVertex c L)
+    (URF.EntropyBridge.OrderedEdge (CSLIB.FMT.UnguardedFO.cycleSimpleGraph c L hL))
+'CSLIB.FMT.UnguardedFO.cycleGraphPresentation' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.presentationConditionalEntropy.{u_1, u_2, u_3} {K : Type u_1} {V : Type u_2} {E : Type u_3}
+  [Field K] [Fintype K] [Fintype V] [Fintype E] (G : URF.EntropyBridge.GraphChainPresentation K V E) : ℝ
+'CSLIB.FMT.UnguardedFO.presentationConditionalEntropy' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleDeficit (K : Type) [Field K] [Fintype K] (p : CSLIB.FMT.UnguardedFO.CycleParameters) : ℝ
+'CSLIB.FMT.UnguardedFO.cycleDeficit' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cycleStructure (p : CSLIB.FMT.UnguardedFO.CycleParameters) :
+  CSLIB.FMT.UnguardedFO.RelStructure CSLIB.FMT.UnguardedFO.shiftGraphLanguage
+'CSLIB.FMT.UnguardedFO.cycleStructure' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph (sizes : List ℕ) :
+  SimpleGraph (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes)
+'CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph' does not depend on any axioms
+CSLIB.FMT.UnguardedFO.cyclePartitionDirectedBoundary.{u_1} (K : Type u_1) [Field K] (sizes : List ℕ)
+  (hpos : ∀ (i : Fin sizes.length), 0 < sizes.get i) :
+  (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes → K) →ₗ[K] CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes → K
+'CSLIB.FMT.UnguardedFO.cyclePartitionDirectedBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_successor_iff_next {sizes : List ℕ}
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (u v : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes) :
+  CSLIB.FMT.UnguardedFO.cyclePartitionSuccessorRel sizes u v ↔ CSLIB.FMT.UnguardedFO.cyclePartitionNext sizes hp u = v
+'CSLIB.FMT.UnguardedFO.cyclePartition_successor_iff_next' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_next_injective {sizes : List ℕ} (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) :
+  Function.Injective (CSLIB.FMT.UnguardedFO.cyclePartitionNext sizes hp)
+'CSLIB.FMT.UnguardedFO.cyclePartition_next_injective' depends on axioms: [propext]
+CSLIB.FMT.UnguardedFO.cyclePartitionNextPerm {sizes : List ℕ} (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) :
+  Equiv.Perm (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes)
+'CSLIB.FMT.UnguardedFO.cyclePartitionNextPerm' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartition_next_next_ne {sizes : List ℕ} (h3 : ∀ (i : Fin sizes.length), 3 ≤ sizes.get i)
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (v : CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes) :
+  CSLIB.FMT.UnguardedFO.cyclePartitionNext sizes hp (CSLIB.FMT.UnguardedFO.cyclePartitionNext sizes hp v) ≠ v
+'CSLIB.FMT.UnguardedFO.cyclePartition_next_next_ne' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.cyclePartitionPredecessorBoundary.{u_1} {sizes : List ℕ}
+  (hp : ∀ (i : Fin sizes.length), 0 < sizes.get i) (K : Type u_1) [Field K] :
+  (CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes → K) →ₗ[K] CSLIB.FMT.UnguardedFO.CyclePartitionVertex sizes → K
+'CSLIB.FMT.UnguardedFO.cyclePartitionPredecessorBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily (N L : ℕ) : Type
+'CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily' depends on axioms: [propext]
+CSLIB.FMT.UnguardedFO.AdmissibleCycleSpace.{u_1} (K : Type u_1) [Field K] {N L : ℕ}
+  (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L) :
+  Submodule K (URF.EntropyBridge.OrderedEdge (CSLIB.FMT.UnguardedFO.cyclePartitionSimpleGraph g.sizes) → K)
+'CSLIB.FMT.UnguardedFO.AdmissibleCycleSpace' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.admissibleCycleObservation {N L : ℕ} (r : ℕ)
+  (g : CSLIB.FMT.UnguardedFO.AdmissibleCycleFamily N L) : Multiset CSLIB.FMT.UnguardedFO.RootedNeighborhoodClass
+'CSLIB.FMT.UnguardedFO.admissibleCycleObservation' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.rootedBallVertices {V : Type} (G : SimpleGraph V) (r : ℕ) (u : V) : Set V
+'CSLIB.FMT.UnguardedFO.rootedBallVertices' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.RootedNeighborhood.isoSetoid : Setoid CSLIB.FMT.UnguardedFO.RootedNeighborhood
+'CSLIB.FMT.UnguardedFO.RootedNeighborhood.isoSetoid' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.graphRootedBall {V : Type} (G : SimpleGraph V) (r : ℕ) (u : V) :
+  CSLIB.FMT.UnguardedFO.RootedNeighborhood
+'CSLIB.FMT.UnguardedFO.graphRootedBall' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.centeredPath (r : ℕ) : SimpleGraph (CSLIB.FMT.UnguardedFO.CenteredPathVertex r)
+'CSLIB.FMT.UnguardedFO.centeredPath' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.orderedEdge.{u_1} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (u : V) : URF.EntropyBridge.OrderedEdge G
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.orderedEdge' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.endpoints.{u_1} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (u : V) :
+  ↑(s.orderedEdge u) = (u, s.next u) ∨ ↑(s.orderedEdge u) = (s.next u, u)
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.endpoints' depends on axioms: [propext, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.edgeSign_sq.{u_1, u_2} {V : Type u_1} [LinearOrder V] {G : SimpleGraph V}
+  (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] (u : V) : s.edgeSign K u * s.edgeSign K u = 1
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.edgeSign_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+CSLIB.FMT.UnguardedFO.SuccessorEdges.signedEdges_apply_edge.{u_1, u_2} {V : Type u_1} [LinearOrder V]
+  {G : SimpleGraph V} (s : CSLIB.FMT.UnguardedFO.SuccessorEdges G) (K : Type u_2) [Field K] (z : V → K) (u : V) :
+  (s.signedEdges K) z (s.edgeEquiv u) = s.edgeSign K u * z u
+'CSLIB.FMT.UnguardedFO.SuccessorEdges.signedEdges_apply_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.simpleGraphIncidence.{u_1, u_2} {V : Type u_1} {K : Type u_2} [LinearOrder V] [Field K]
+  (G : SimpleGraph V) : Matrix V (URF.EntropyBridge.OrderedEdge G) K
+'URF.EntropyBridge.simpleGraphIncidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.simpleGraphBoundary.{u_1, u_2} {V : Type u_1} {K : Type u_2} [LinearOrder V] [Fintype V] [Field K]
+  (G : SimpleGraph V) : (URF.EntropyBridge.OrderedEdge G → K) →ₗ[K] V → K
+'URF.EntropyBridge.simpleGraphBoundary' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.graphObservation.{u_1, u_2, u_3} {K : Type u_1} {Vert : Type u_2} {Edge : Type u_3} [Field K]
+  [Fintype Vert] [Fintype Edge] (G : URF.EntropyBridge.GraphChainPresentation K Vert Edge) :
+  Module.Dual K ↥(URF.EntropyBridge.graphCycles G) →ₗ[K] Module.Dual K ↥G.localCycles
+'URF.EntropyBridge.graphObservation' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.graphObservation_hidden_finrank.{u_1, u_2, u_3} {K : Type u_1} {Vert : Type u_2} {Edge : Type u_3}
+  [Field K] [Fintype Vert] [Fintype Edge] (G : URF.EntropyBridge.GraphChainPresentation K Vert Edge) :
+  Module.finrank K ↥(URF.EntropyBridge.graphObservation G).ker =
+    Module.finrank K ↥(URF.EntropyBridge.graphCycles G) - Module.finrank K ↥G.localCycles
+'URF.EntropyBridge.graphObservation_hidden_finrank' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.finiteEntropy.{u_1} {α : Type u_1} [Fintype α] (p : α → ℝ) : ℝ
+'URF.EntropyBridge.finiteEntropy' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.uniformFiniteProbability.{u_1} (α : Type u_1) [Fintype α] [Nonempty α] :
+  URF.EntropyBridge.FiniteProbability α
+'URF.EntropyBridge.uniformFiniteProbability' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.uniform_entropy_exact_candidate.{u_1} {α : Type u_1} [Fintype α] [Nonempty α] :
+  (URF.EntropyBridge.finiteEntropy fun x => 1 / ↑(Fintype.card α)) = Real.log ↑(Fintype.card α)
+'URF.EntropyBridge.uniform_entropy_exact_candidate' depends on axioms: [propext, Classical.choice, Quot.sound]
+URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate.{u_1, u_2, u_3} {K : Type u_1} {Q : Type u_2}
+  {W : Type u_3} [Field K] [AddCommGroup Q] [Module K Q] [AddCommGroup W] [Module K W] [Fintype Q] [Fintype W]
+  (f : Q →ₗ[K] W) [Fintype ↥f.ker] :
+  ∑ y,
+      URF.EntropyBridge.observedMass (URF.EntropyBridge.uniformFiniteProbability Q).mass (⇑f) y *
+        URF.EntropyBridge.finiteEntropy
+          (URF.EntropyBridge.conditionalMass (URF.EntropyBridge.uniformFiniteProbability Q).mass (⇑f) y) =
+    Real.log ↑(Fintype.card ↥f.ker)
+'URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+LogicalEntropy.entropy_gap_lower_bound.{u_1} {α : Type u_1} (R : α → α → Prop) (D A : α → ℝ)
+  (hInv : ∀ (x y : α), R x y → A x = A y) (G H : α) (hGH : R G H) (m q : ℝ) (hm : 0 ≤ m) (hq : 1 ≤ q)
+  (hgap : D H - D G = m * Real.log q) : m * Real.log q / 2 ≤ max |A G - D G| |A H - D H|
+'LogicalEntropy.entropy_gap_lower_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
