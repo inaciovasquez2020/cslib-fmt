@@ -1,4 +1,5 @@
 import CSLIB.FMT.UnguardedFO.FiniteCycleBoundedSupportCandidate
+import CSLIB.FMT.UnguardedFO.FiniteCycleEntropy
 
 /-!
 The actual finite conditional Shannon entropy for the concrete ordinary
