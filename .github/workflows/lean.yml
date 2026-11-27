@@ -32,7 +32,6 @@ jobs:
 
       - name: Fetch Mathlib cache
         run: |
-          lake update
           for attempt in 1 2 3; do
             lake exe cache get && break
             if [ "$attempt" = 3 ]; then
@@ -42,4 +41,6 @@ jobs:
           done
 
       - name: Build
-        run: lake build
+        run: |
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          lake build

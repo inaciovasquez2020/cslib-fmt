@@ -1,0 +1,23 @@
+Baseline: f1063991a264bff3022d6bd1335a01667d165cf7
+Lean: 4.30.0-rc1
+Mathlib: 0c154d67103f74be3a0f2c509f72ccbf5be9f2a7
+URF-core source: d5916b12a6eb2df34fb150ce2e804236f077e7c7
+
+Full library build: PASS (8333 jobs)
+Integrated axiom audit: PASS (101 declarations)
+Source SHA-256 verification: PASS
+Static CI policy checks: PASS
+
+Permitted axioms:
+propext, Classical.choice, Quot.sound
+
+LeanSearchClient pinned revision:
+c5d5b8fe6e5158def25cd28eb94e4141ad97c843
+
+Shared Git object pack unavailable.
+Isolated upstream object integrity: PASS
+Tracked dependency source comparison: 15/15 identical.
+Other dependency pins and working-tree checks: PASS.
+
+Remote exact-head CI: required before merge.
+No originality or external endorsement claimed.

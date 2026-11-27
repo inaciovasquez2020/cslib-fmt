@@ -1,0 +1,39 @@
+name: URF entropy integration
+on:
+  push:
+    branches: [research/urf-entropy-integration-20261125]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  exact-head:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Build the libraries and audit the exact head
+        shell: bash
+        run: |
+          set -euo pipefail
+          cert=research/certificates/logical-entropy
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          sha256sum -c "$cert/source.sha256"
+          D="$RUNNER_TEMP/urf-entropy-integration"
+          mkdir -p "$D"
+          git rev-parse HEAD | tee "$D/head.txt"
+          lake build FMT CslibFmt 2>&1 | tee "$D/build.log"
+          lake env lean --root="$cert" "$cert/Audit.lean" 2>&1 | tee "$D/theorem-statements-and-axioms.log"
+          python3 "$cert/check_axioms.py" "$cert/Audit.lean" "$D/theorem-statements-and-axioms.log" | tee "$D/axiom-gate.log"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: urf-entropy-integration-receipts
+          path: ${{ runner.temp }}/urf-entropy-integration/
