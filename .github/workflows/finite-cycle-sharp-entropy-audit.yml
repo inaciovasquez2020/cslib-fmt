@@ -1,0 +1,50 @@
+name: Finite cycle sharp entropy threshold audit
+"on":
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleSharpEntropyCandidate.lean'
+      - '.github/workflows/finite-cycle-sharp-entropy-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Source-locked sharp entropy Lean and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleSharpEntropyCandidate.lean'
+          test "$(git hash-object "$SRC")" = '0d9227db8c2ea7734bbb3a2614dc66bdb81fd508'
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleUpperCutoffCandidate
+          lake env lean "$SRC" 2>&1 | tee "$RUNNER_TEMP/sharp-entropy.log"
+          python3 - "$RUNNER_TEMP/sharp-entropy.log" <<'PY'
+          import re,sys
+          s=open(sys.argv[1],encoding='utf-8').read()
+          for short in ('cycleConcreteObservation_finrank_zero','cycleConcreteEntropy_upper_zero','cycleConcreteEntropy_sharp'):
+              name='CSLIB.FMT.UnguardedFO.'+short
+              pattern=r"^'"+re.escape(name)+r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              m=re.findall(pattern,s,re.M)
+              if len(m)!=1:
+                  raise SystemExit('MISSING_AXIOM_REPORT: '+name)
+              axioms={a.strip() for a in m[0].split(',') if a.strip()}
+              if not axioms <= {'propext','Classical.choice','Quot.sound'}:
+                  raise SystemExit('UNEXPECTED_AXIOMS: '+repr(sorted(axioms)))
+              print('LEAN_VERIFIED_ISOLATED',name,sorted(axioms))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle-sharp-entropy-lean-log
+          path: ${{ runner.temp }}/sharp-entropy.log

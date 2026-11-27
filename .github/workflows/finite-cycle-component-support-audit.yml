@@ -1,0 +1,55 @@
+name: Finite cycle concrete component support audit
+"on":
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleComponentSupportCandidate.lean'
+      - '.github/workflows/finite-cycle-component-support-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Exact componentwise support audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          D="$RUNNER_TEMP/cslib-cycle-component-support"
+          mkdir -p "$D"
+          git rev-parse HEAD > "$D/head.txt"
+          SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleComponentSupportCandidate.lean'
+          test "$(git hash-object "$SRC")" = 'f4a7f29fbbf46fbc87e599a684ad58b840ec4505'
+          sha256sum "$SRC" > "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleKernelEquivCandidate 2>&1 | tee "$D/dependency.log"
+          lake env lean "$SRC" 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import re, sys
+          log = open(sys.argv[1], encoding='utf-8').read()
+          for name in ('cycleConcreteKernel_support_transport', 'cycleConcreteKernel_component_support_iff'):
+              full = 'CSLIB.FMT.UnguardedFO.' + name
+              pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              matches = list(re.finditer(pattern, log, re.MULTILINE))
+              if len(matches) != 1:
+                  raise SystemExit('MISSING_AXIOM_REPORT: '+name)
+              raw = matches[0].group(1)
+              axioms = set() if raw is None else {a.strip() for a in raw.split(',') if a.strip()}
+              if not axioms <= {'propext', 'Classical.choice', 'Quot.sound'}:
+                  raise SystemExit('UNEXPECTED_AXIOMS: '+repr(sorted(axioms)))
+              print('LEAN_VERIFIED_ISOLATED', name, sorted(axioms))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle-component-support-lean-receipt
+          path: ${{ runner.temp }}/cslib-cycle-component-support/

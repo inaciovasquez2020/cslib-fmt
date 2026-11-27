@@ -1,0 +1,104 @@
+name: URF core direct Lake dependency experiment
+"on":
+  pull_request:
+    paths:
+      - '.github/workflows/urf-core-direct-lake-experiment.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout CSLIB PR
+        uses: actions/checkout@v5
+        with:
+          path: cslib
+          persist-credentials: false
+      - name: Checkout canonical URF core
+        uses: actions/checkout@v5
+        with:
+          repository: inaciovasquez2020/urf-core
+          ref: 422294157daa95a8e7d95a0ce79caf5492821a9c
+          path: urf-core
+          persist-credentials: false
+          sparse-checkout: |
+            lakefile.lean
+            lean-toolchain
+            lake-manifest.json
+            lean/URF/Foundation/SharpCliqueEntropy.lean
+          sparse-checkout-cone-mode: false
+          filter: blob:none
+      - name: Prepare existing CSLIB Mathlib environment
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: cslib
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Probe actual Lake dependency and joint import (scratch only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C cslib rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git -C urf-core rev-parse HEAD)" = '422294157daa95a8e7d95a0ce79caf5492821a9c'
+          test "$(git -C cslib/.lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          mkdir -p integration
+          cp cslib/lean-toolchain integration/lean-toolchain
+          cat > integration/lakefile.lean <<'LEAN'
+          import Lake
+          open Lake DSL
+          package integration where
+          require urf_core from "../urf-core"
+          require «FMT» from "../cslib"
+          lean_lib Integration where
+            srcDir := "lean"
+          LEAN
+          mkdir -p integration/lean/Integration
+          cat > integration/lean/Integration/JointImport.lean <<'LEAN'
+          import URF.Foundation.SharpCliqueEntropy
+          import CSLIB.FMT.UnguardedFO.FiniteCycleSharpEntropyCandidate
+          #check URF.EntropyBridge.linear_uniform_conditional_entropy_exact_candidate
+          #check CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp
+          #print axioms CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp
+          LEAN
+          (
+            cd integration
+            timeout 240 lake update 2>&1 | tee "$RUNNER_TEMP/direct-lake-update.log"
+            test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+            timeout 900 lake build URF.Foundation.SharpCliqueEntropy 2>&1 | tee "$RUNNER_TEMP/direct-core-build.log"
+          )
+          # The tracked CSLIB module is now the canonical import bridge.
+          test "$(git -C cslib hash-object lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean)" = '4705612542d847f2787aa0dda3c43739cd52ba0b'
+          grep -Fx 'import URF.Foundation.SharpCliqueEntropy' cslib/lean/CSLIB/FMT/UnguardedFO/ImportedSharpCliqueEntropy.lean
+          (
+            cd integration
+            timeout 900 lake build Integration.JointImport 2>&1 | tee "$RUNNER_TEMP/direct-joint-build.log"
+          )
+          python3 - "$RUNNER_TEMP/direct-joint-build.log" <<'PY'
+          import re,sys
+          log=open(sys.argv[1],encoding='utf-8').read()
+          name='CSLIB.FMT.UnguardedFO.cycleConcreteEntropy_sharp'
+          cleaned=re.sub(r'\x1b\[[0-9;]*[A-Za-z]', '', log)
+          matching=[line for line in cleaned.splitlines()
+                    if 'info: lean/Integration/JointImport.lean:' in line
+                    and "'"+name+"' depends on axioms:" in line]
+          if len(matching)!=1:
+              raise SystemExit('JOINT_IMPORT_AXIOM_REPORT_MISSING: '+repr(matching[:3]))
+          matches=re.findall(r'\[([^\]]*)\]',matching[0].split('depends on axioms:',1)[1])
+          if len(matches)!=1:
+              raise SystemExit('JOINT_IMPORT_AXIOS_MALFORMED: '+repr(matching[0]))
+          axioms={x.strip() for x in matches[0].split(',') if x.strip()}
+          if not axioms <= {'propext','Classical.choice','Quot.sound'}:
+              raise SystemExit('JOINT_IMPORT_FORBIDDEN_AXIOMS: '+repr(axioms))
+          print('JOINT_IMPORT_AXIOM_AUDIT := PASS',sorted(axioms))
+          PY
+          echo 'DIRECT_DEPENDENCY_JOINT_IMPORT := PASS (TRACKED_CANONICAL_BRIDGE)'
+      - name: Preserve logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: direct-lake-integration-experiment
+          path: ${{ runner.temp }}/direct-*.log

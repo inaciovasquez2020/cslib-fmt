@@ -1,0 +1,81 @@
+name: Finite cycle bounded-support vanishing audit
+"on":
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundedSupportCandidate.lean'
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleConcreteEntropyCandidate.lean'
+      - '.github/workflows/finite-cycle-bounded-support-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Minimum support and bounded locality compiler audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          D="$RUNNER_TEMP/cslib-cycle-bounded-support"
+          mkdir -p "$D"
+          git rev-parse HEAD > "$D/head.txt"
+          SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundedSupportCandidate.lean'
+          test "$(git hash-object "$SRC")" = '7cbd7f9b2a2218b5736ee11db7f11173962c950f'
+          sha256sum "$SRC" > "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleComponentSupportCandidate 2>&1 | tee "$D/dependency.log"
+          lake env lean "$SRC" 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import re, sys
+          log = open(sys.argv[1], encoding='utf-8').read()
+          for name in ('cycleConcreteKernel_support_ge_length', 'cycleConcreteBoundedSupport_eq_bot'):
+              full = 'CSLIB.FMT.UnguardedFO.' + name
+              pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              matches = list(re.finditer(pattern, log, re.MULTILINE))
+              if len(matches) != 1:
+                  raise SystemExit('MISSING_AXIOM_REPORT: '+name)
+              raw = matches[0].group(1)
+              axioms = set() if raw is None else {a.strip() for a in raw.split(',') if a.strip()}
+              if not axioms <= {'propext', 'Classical.choice', 'Quot.sound'}:
+                  raise SystemExit('UNEXPECTED_AXIOMS: '+repr(sorted(axioms)))
+              print('LEAN_VERIFIED_ISOLATED', name, sorted(axioms))
+          PY
+      - name: Exact concrete Shannon entropy and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          D="$RUNNER_TEMP/cslib-cycle-bounded-support"
+          SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleConcreteEntropyCandidate.lean'
+          test "$(git hash-object "$SRC")" = '615268dd757f81ed33eb407fa130929f0b8947e9'
+          sha256sum "$SRC" >> "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleBoundedSupportCandidate CSLIB.FMT.UnguardedFO.FiniteCycleEntropy 2>&1 | tee "$D/entropy-dependency.log"
+          lake env lean "$SRC" 2>&1 | tee "$D/entropy.log"
+          python3 - "$D/entropy.log" <<'PY'
+          import re, sys
+          log = open(sys.argv[1], encoding='utf-8').read()
+          for name in ('cycleConcreteObservation_finrank', 'cycleConcreteEntropy_exact', 'cycleConcreteEntropy_eq_indexed'):
+              full = 'CSLIB.FMT.UnguardedFO.' + name
+              pattern = r"^'" + re.escape(full) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+              matches = list(re.finditer(pattern, log, re.MULTILINE))
+              if len(matches) != 1:
+                  raise SystemExit('MISSING_AXIOM_REPORT: '+name)
+              raw = matches[0].group(1)
+              axioms = set() if raw is None else {a.strip() for a in raw.split(',') if a.strip()}
+              if not axioms <= {'propext', 'Classical.choice', 'Quot.sound'}:
+                  raise SystemExit('UNEXPECTED_AXIOMS: '+repr(sorted(axioms)))
+              print('LEAN_VERIFIED_ISOLATED', name, sorted(axioms))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cycle-bounded-support-lean-receipt
+          path: ${{ runner.temp }}/cslib-cycle-bounded-support/

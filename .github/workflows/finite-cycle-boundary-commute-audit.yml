@@ -1,0 +1,54 @@
+name: Finite cycle signed boundary intertwining audit
+"on":
+  pull_request:
+    paths:
+      - 'lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundaryCommuteCandidate.lean'
+      - '.github/workflows/finite-cycle-boundary-commute-audit.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+        with:
+          build: 'false'
+          test: 'false'
+          lint: 'false'
+          use-mathlib-cache: 'true'
+      - name: Boundary commute compiler and axiom audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(cat lean-toolchain)" = 'leanprover/lean4:v4.30.0-rc1'
+          test "$(git -C .lake/packages/mathlib rev-parse HEAD)" = '0c154d67103f74be3a0f2c509f72ccbf5be9f2a7'
+          D="$RUNNER_TEMP/cslib-cycle-boundary-commute"
+          mkdir -p "$D"
+          git rev-parse HEAD > "$D/head.txt"
+          SRC='lean/CSLIB/FMT/UnguardedFO/FiniteCycleBoundaryCommuteCandidate.lean'
+          printf '%s  %s\n' '60eaf54c8b58763ae9d22f11b2d2f1f66d937d92d293929569c49e71180c8917' "$SRC" | sha256sum --check
+          sha256sum "$SRC" > "$D/source.sha256"
+          lake build CSLIB.FMT.UnguardedFO.FiniteCycleIncidenceCoeffCandidate 2>&1 | tee "$D/dependency.log"
+          lake env lean "$SRC" 2>&1 | tee "$D/lean.log"
+          python3 - "$D/lean.log" <<'PY'
+          import re, sys
+          log = open(sys.argv[1], encoding='utf-8').read()
+          name = 'CSLIB.FMT.UnguardedFO.cycleSignedTransport_boundary'
+          pattern = r"^'" + re.escape(name) + r"' (?:does not depend on any axioms|depends on axioms: \[([^\]]*)\])\s*$"
+          matches = list(re.finditer(pattern, log, re.MULTILINE))
+          if len(matches) != 1:
+              raise SystemExit('MISSING_AXIOM_REPORT')
+          raw = matches[0].group(1)
+          axioms = set() if raw is None else {a.strip() for a in raw.split(',') if a.strip()}
+          if not axioms <= {'propext', 'Classical.choice', 'Quot.sound'}:
+              raise SystemExit('UNEXPECTED_AXIOMS: '+repr(axioms))
+          print('LEAN_VERIFIED_ISOLATED', name, sorted(axioms))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: boundary-commute-lean-receipt
+          path: ${{ runner.temp }}/cslib-cycle-boundary-commute/
